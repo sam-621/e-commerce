@@ -32,3 +32,10 @@ enum Color {
     Blue, //value = 2
   }
 let c: Color = Color.Green;
+
+//As
+let someValue: unknown = "this is a string";
+let strLength: number = (someValue as string).length;
+
+let someValue2: unknown = "this is a string";
+let strLength2: number = (<string>someValue).length;
