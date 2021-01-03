@@ -1,5 +1,6 @@
-import app from "../src/app";
+import Server from "../src/app";
 import req from "supertest";
+const app = new Server(3000).App
 
 
 describe('hi', () => {
