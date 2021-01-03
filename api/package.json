@@ -1,0 +1,30 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "description": "development api for e-commerce",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "webpack",
+    "start": "node ./dist/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogeliosamuel621/E-commerce.git"
+  },
+  "keywords": [
+    "api",
+    "typescript"
+  ],
+  "author": "Rogelio Samuel <@rogeliosamuel21>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rogeliosamuel621/E-commerce/issues"
+  },
+  "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme",
+  "devDependencies": {
+    "ts-loader": "^8.0.13",
+    "typescript": "^4.1.3",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
