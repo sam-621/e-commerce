@@ -3,6 +3,10 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
 	entry: path.resolve(__dirname, "src/app.ts"),
+	output: {
+		filename: "bundle.js",
+		path: path.resolve(__dirname, "dist"),
+	},
 	mode: "production",
 	target: "node",
 	externals: [nodeExternals()],
@@ -17,9 +21,5 @@ module.exports = {
 	},
 	resolve: {
 		extensions: [".tsx", ".ts", ".js"],
-	},
-	output: {
-		filename: "bundle.js",
-		path: path.resolve(__dirname, "dist"),
 	},
 };
