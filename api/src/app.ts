@@ -11,7 +11,9 @@ class server {
     }
 
     private routing(): void {
-        this.App.get('/', (req: Request, res: Response) => res.send('hello'))
+        this.App.get('/', (req: Request, res: Response) => {
+            res.status(500).json({msg: 'not work'})
+        })
     }
 
     public startServer(): void{
