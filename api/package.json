@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "node ./dist/bundle.js",
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
