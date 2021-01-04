@@ -1,6 +1,6 @@
 import { Router } from 'express';
-const router = Router();
 import { registerController } from './user.controllers';
+const router = Router();
 
 router.post('/register', registerController);
 
