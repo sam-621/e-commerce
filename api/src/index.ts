@@ -1,8 +1,8 @@
-import Server from './app'
+import Server from './app';
 
 function main(): void {
-  const server = new Server(3000)
-  server.startServer()
+  const server = new Server(3000);
+  server.startServer();
 }
 
-main()
+main();
