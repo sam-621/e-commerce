@@ -4,7 +4,7 @@ const app = new Server(3000).App;
 
 describe('API KEY test', () => {
   test('test for ', async (done) => {
-    const res = await req(app).get('/');
+    const res = await req(app).post('/register');
 
     expect(res.status).toBe(401);
     done();

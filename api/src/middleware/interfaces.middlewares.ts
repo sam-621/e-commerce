@@ -6,6 +6,6 @@ export interface IApiKeyMiddleware {
 export interface IHandlerErrors {
   statusCode: number;
   message: string;
-  err: any;
+  error: any;
   logError(error: any): void;
 }
