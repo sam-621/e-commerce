@@ -7,7 +7,7 @@
     "build": "webpack",
     "start": "node ./dist/bundle.js",
     "dev": "nodemon ./src/index.ts",
-    "test": "jest"
+    "test:app": "jest ./app/"
   },
   "repository": {
     "type": "git",
@@ -61,9 +61,6 @@
       "ts-jest": {
         "tsconfig": "tsconfig.json"
       }
-    },
-    "testMatch": [
-      "**/__tests__/*.(ts|tsx|js)"
-    ]
+    }
   }
 }
