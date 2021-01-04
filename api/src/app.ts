@@ -1,5 +1,5 @@
-import express, { Application, Request, Response } from 'express';
-import { apiKey } from './middleware';
+import express, { Application } from 'express';
+import { apiKey, handlerErrors } from './middleware';
 import { MODE } from './config';
 import { router } from './router';
 
@@ -12,14 +12,19 @@ class server {
     this.App = express();
     this.middlewareInput();
     this.routing();
+    this.middlewareOutput();
   }
 
-  private middlewareInput() {
+  private middlewareInput(): void {
     this.App.use(apiKey);
   }
 
   private routing(): void {
     router(this.App);
+  }
+
+  private middlewareOutput(): void {
+    this.App.use(handlerErrors);
   }
 
   public startServer(): void {

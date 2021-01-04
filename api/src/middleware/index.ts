@@ -1,3 +1,4 @@
 import { apiKey } from './apiKey';
+import { ErrorHandler, handlerErrors } from './handleError';
 
-export { apiKey };
+export { apiKey, handlerErrors, ErrorHandler };
