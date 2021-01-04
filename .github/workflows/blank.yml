@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     paths-ignore:
-      - "docs/**"
+      - 'docs/**'
     branches: [main, dev]
   pull_request:
     branches: [main, dev]
@@ -32,5 +32,5 @@ jobs:
         run: cd api && npm install
 
       # Runs a set of commands using the runners shell
-      - name: Run tests
-        run: cd api && npm run test --if-present
+      - name: Run app tests
+        run: cd api && npm run test:app
