@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import { apiKey } from './middleware';
 import { MODE } from './config';
+import { router } from './router';
 
 class server {
   public App: Application;
@@ -18,7 +19,7 @@ class server {
   }
 
   private routing(): void {
-    this.App.get('/', (req: Request, res: Response) => res.send('hello'));
+    router(this.App);
   }
 
   public startServer(): void {

@@ -2,7 +2,7 @@ import { API_KEY } from '../config';
 import { apiKeyMiddleware } from './interfaces.middlewares';
 
 const apiKey: apiKeyMiddleware = (req, res, next) => {
-  const { apiKey } = req.headers;
+  const apiKey = req.headers['api_key'];
 
   if (!apiKey || apiKey !== API_KEY) {
     return res.status(401).json({
