@@ -5,9 +5,9 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "webpack",
-    "start": "node ./dist/bundle.js",
-    "dev": "nodemon ./src/index.ts",
-    "test:app": "jest ./app/"
+    "start": "NODE_ENV=dev node ./dist/bundle.js",
+    "dev": "NODE_ENV=dev nodemon ./src/index.ts",
+    "test:app": "NODE_ENV=testing jest ./app/"
   },
   "repository": {
     "type": "git",

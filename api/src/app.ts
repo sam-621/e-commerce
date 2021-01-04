@@ -1,5 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import { apiKey } from './middleware';
+import { MODE } from './config';
 
 class server {
   public App: Application;
@@ -21,7 +22,7 @@ class server {
   }
 
   public startServer(): void {
-    this.App.listen(this.port, () => console.log(`Server on port ${this.port}`));
+    this.App.listen(this.port, () => console.log(`PORT[${this.port}] MODE[${MODE}]`));
   }
 }
 
