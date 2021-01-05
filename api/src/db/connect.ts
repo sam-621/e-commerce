@@ -7,11 +7,11 @@ async function connection(uri: string) {
       useUnifiedTopology: true,
       useFindAndModify: false,
     });
-    console.log('DB connected');
+    console.log(`DB connected [${uri}]`);
   } catch (error) {
     console.log(error);
     throw new Error('INTERNAL SERVER ERROR');
   }
 }
 
-module.exports = connection;
+export default connection;
