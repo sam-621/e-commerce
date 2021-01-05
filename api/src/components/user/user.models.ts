@@ -7,6 +7,6 @@ const userSchema: Schema = new Schema({
   password: { type: String, required: true },
 });
 
-const User = model<IUser>('user', userSchema);
+const UserModel = model<IUser>('user', userSchema);
 
-export default User;
+export default UserModel;

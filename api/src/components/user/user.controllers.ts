@@ -14,7 +14,7 @@ const registerController: IController = async (req, res, next) => {
 
   const user = new User(username, email, password);
 
-  const { err, msg, statusCode, data } = user.register();
+  const { err, msg, statusCode, data } = await user.register();
 
   if (err) {
     return next(new ErrorHandler(statusCode, msg, err));
