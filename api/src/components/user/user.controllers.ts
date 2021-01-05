@@ -14,13 +14,13 @@ const registerController: IController = async (req, res, next) => {
 
   const user = new User(username, email, password);
 
-  const { err, msg, statusCode, data } = await user.register();
+  const result = await user.register();
 
-  if (err) {
-    return next(new ErrorHandler(statusCode, msg, err));
+  if (result.err) {
+    return next(new ErrorHandler(result.statusCode, result.msg, result.err));
   }
 
-  return res.json(statusCode).json({ data, msg });
+  return res.status(result.statusCode).json({ data: result.data, msg: result.msg });
 };
 
 export { registerController };

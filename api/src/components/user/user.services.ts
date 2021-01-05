@@ -7,28 +7,33 @@ class User {
   private readonly email: string;
   private password: string;
   private error: any;
+  private emailTaken: boolean;
 
   constructor(username: string, email: string, password: string) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.emailTaken = false;
   }
 
   public async register(): Promise<IResponse> {
     try {
       const hashedPassword = await argon.hash(this.password);
 
-      const user: IUser = new UserModel({
+      const user = new UserModel({
         email: this.email,
         username: this.username,
         password: hashedPassword,
       });
 
-      const res = user.save();
-      console.log(res);
+      await user.save();
+
       return { data: null, msg: 'USER REGISTERED', statusCode: 200, err: false };
     } catch (e) {
-      return { data: null, err: e, statusCode: 500, msg: 'INTERNAL SERVER ERROR' };
+      if (e.code === 11000) {
+        return { data: null, msg: 'EMAIL ALREADY TAKEN', statusCode: 400, err: e };
+      }
+      return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500, err: e };
     }
   }
 }
