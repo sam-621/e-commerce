@@ -6,6 +6,7 @@ async function connection(uri: string) {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
+      useCreateIndex: true,
     });
     console.log(`DB connected [${uri}]`);
   } catch (error) {
