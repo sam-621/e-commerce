@@ -1,5 +1,4 @@
-const MONGO_URI: string = 'mongodb://localhost:27017/ecommerceTest';
-const API_KEY: string = 'secret';
+const MONGO_URI = 'mongodb://localhost:27017/ecommerceTest';
 
 class FakeUser {
   email: string;
@@ -13,4 +12,4 @@ class FakeUser {
   }
 }
 
-export { MONGO_URI, FakeUser, API_KEY };
+export { MONGO_URI, FakeUser };
