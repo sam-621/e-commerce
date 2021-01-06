@@ -1,3 +1,3 @@
 # GitHub workflows
 
-this jus install all dependencies and run test
+this jus install all dependencies and run test :)
