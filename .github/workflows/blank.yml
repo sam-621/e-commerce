@@ -34,3 +34,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run app tests
         run: cd api && npm run test:app
+
+      - name: Run routes tests
+        run: cd api && npm run test:routes
