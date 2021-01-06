@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import UserModel from '../../src/components/user/user.models';
-import { MONGO_URI } from './fakeData';
+import { MONGO_URI_TEST } from '../../src/config';
 
 async function dbConnection(done: any) {
-  await mongoose.connect(MONGO_URI, {
+  await mongoose.connect(MONGO_URI_TEST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
