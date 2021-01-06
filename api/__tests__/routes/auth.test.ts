@@ -1,7 +1,7 @@
 import App from '../../src/app';
 import req from 'supertest';
 import { dbClose, dbConnection, FakeUser } from '../utils/';
-import { API_KEY } from '../../src/config';
+import { API_KEY } from '../utils';
 const app = new App(3000).App;
 
 describe('Register endpoint', () => {
