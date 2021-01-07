@@ -23,4 +23,12 @@ const registerController: IController = async (req, res, next) => {
   return res.status(result.statusCode).json({ data: result.data, msg: result.msg });
 };
 
+const loginController: IController = async (req, res, next) => {
+  const errors: Result = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return next(new ErrorHandler(400, 'WRONG DATA SCHEMA', errors.array()));
+  }
+};
+
 export { registerController };
