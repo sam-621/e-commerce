@@ -5,3 +5,8 @@ export const registerValidator: Array<ValidationChain> = [
   check('email', 'Must be a valid email').isEmail(),
   check('password', 'Must be a valid password').isLength({ min: 6 }).isString(),
 ];
+
+export const loginValidator: Array<ValidationChain> = [
+  check('email', 'Must be an email').isEmail(),
+  check('password', 'Must have at least 6 characters').isLength({ min: 6 }),
+];

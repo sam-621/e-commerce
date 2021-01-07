@@ -5,4 +5,6 @@ const router = Router();
 
 router.post('/register', registerValidator, registerController);
 
+router.post('/login', registerValidator, registerController);
+
 export { router as userRouter };
