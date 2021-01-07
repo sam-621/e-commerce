@@ -29,6 +29,18 @@ const loginController: IController = async (req, res, next) => {
   if (!errors.isEmpty()) {
     return next(new ErrorHandler(400, 'WRONG DATA SCHEMA', errors.array()));
   }
+
+  const user = new User('', req.body.email, req.body.password);
+
+  const { data, err, statusCode, msg } = await user.login();
+
+  if (err) {
+    return next(new ErrorHandler(statusCode, msg, err));
+  }
+  return res.status(statusCode).json({
+    data: data,
+    msg: msg,
+  });
 };
 
-export { registerController };
+export { registerController, loginController };
