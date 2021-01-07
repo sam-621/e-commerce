@@ -32,14 +32,14 @@ const loginController: IController = async (req, res, next) => {
 
   const user = new User('', req.body.email, req.body.password);
 
-  const { data, err, statusCode, msg } = await user.login();
+  const result = await user.login();
 
-  if (err) {
-    return next(new ErrorHandler(statusCode, msg, err));
+  if (result.err) {
+    return next(new ErrorHandler(result.statusCode, result.msg, result.err));
   }
-  return res.status(statusCode).json({
-    data: data,
-    msg: msg,
+  return res.status(result.statusCode).json({
+    data: result.data,
+    msg: result.msg,
   });
 };
 
