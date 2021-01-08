@@ -32,3 +32,47 @@ describe('Register endpoint', () => {
     done();
   });
 });
+
+describe('Login endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).post('/login');
+
+    expect(res.status).toBe(401);
+    done();
+  });
+
+  test('Should response 400 WRONG DATA SCHEMA', async (done) => {
+    const fakeUser = new FakeUser('', 'admim@gmail.c', '123');
+    const res = await req(app).post('/login').set('api_key', API_KEY).send(fakeUser);
+
+    expect(res.status).toBe(400);
+    done();
+  });
+
+  test('Should response 401 WRONG EMAIL', async (done) => {
+    const fakeUser = new FakeUser('', 'wrongEmail@gmail.com', '123456');
+    const res = await req(app).post('/login').set('api_key', API_KEY).send(fakeUser);
+
+    expect(res.status).toBe(401);
+    done();
+  });
+
+  test('Should response 401 WRONG PASSWORD', async (done) => {
+    const fakeUser = new FakeUser('', 'userTest@gmail.com', 'wrong password');
+    const res = await req(app).post('/login').set('api_key', API_KEY).send(fakeUser);
+
+    expect(res.status).toBe(401);
+    done();
+  });
+
+  test('Should response 200 EVERYTHING OK', async (done) => {
+    const fakeUser = new FakeUser('', 'userTest@gmail.com', '123456');
+    const res = await req(app).post('/login').set('api_key', API_KEY).send(fakeUser);
+
+    expect(res.status).toBe(200);
+    done();
+  });
+});
