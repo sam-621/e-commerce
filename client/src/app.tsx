@@ -4,7 +4,7 @@ import './styles/app.css'
 const app = () => {
 	return (
 		<>
-			<h1>Hello world typescript and React!!</h1>
+			<h1>App</h1>
 		</>
 	);
 };
