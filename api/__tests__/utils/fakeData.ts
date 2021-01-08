@@ -12,4 +12,7 @@ class FakeUser {
   }
 }
 
-export { MONGO_URI, FakeUser };
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjVmZjNjNjIzODNlMTk3MDRmZDRmOGZhMiIsImlhdCI6MTYxMDEzNTgyM30.tghNKoDQ3vQOuNDEHb8I-hu6aQWMwsrvTo41XD222K4';
+
+export { MONGO_URI, FakeUser, token };
