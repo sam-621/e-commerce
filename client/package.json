@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/rogeliosamuel621/E-commerce/issues"
   },
-  "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme"
+  "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme",
+  "devDependencies": {
+    "webpack": "^5.12.1",
+    "webpack-cli": "^4.3.1"
+  }
 }
