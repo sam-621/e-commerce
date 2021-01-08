@@ -1,0 +1,23 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "description": "client for an e-commerce",
+  "main": "src/index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogeliosamuel621/E-commerce.git"
+  },
+  "keywords": [
+    "React",
+    "Typescript"
+  ],
+  "author": "Rogelio Samuel <@rogeliosamuel21>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rogeliosamuel621/E-commerce/issues"
+  },
+  "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme"
+}
