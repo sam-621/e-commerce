@@ -1,7 +1,6 @@
 .RegisterForm-container {
   border-radius: 12px;
   display: grid;
-  justify-content: center;
   margin: 50px 10px 0 10px;
 }
 .RegisterForm {
@@ -14,6 +13,7 @@
 }
 .RegisterForm-header h1 {
   color: #2f80ed;
+  text-align: center;
   font-size: 24px;
   font-weight: 700;
   margin: 0;
@@ -42,4 +42,20 @@
 }
 .RegisterForm-footer p a {
   color: #2f80ed;
+}
+
+@media screen and (min-width: 425px) {
+  .RegisterForm-container {
+    margin: 50px 20px 0 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .RegisterForm-container {
+    margin: 50px 100px 0 100px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .RegisterForm-container {
+    margin: 50px 25% 0 25%;
+  }
 }
