@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/containers/registerForm.css';
 
 import { Input } from '../atoms/';
@@ -23,7 +24,7 @@ const RegisterForm = () => {
         </form>
         <div className="RegisterForm-footer">
           <p>
-            Already have an account? <a href="/login">Login</a>
+            Already have an account? <Link to="/login">Login</Link>
           </p>
         </div>
       </div>
