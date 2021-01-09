@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import '../../styles/containers/formRegister.css'
 
 import {Input} from '../atoms/'
 const [email, setEmail] = useState<string>('')

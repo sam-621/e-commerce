@@ -1,0 +1,45 @@
+.RegisterForm-container {
+	border-radius: 12px;
+	display: grid;
+	justify-content: center;
+	margin-top: 100px;
+}
+.RegisterForm {
+	background-color: white;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+	border-radius: 12px;
+	display: grid;
+	padding: 35px 40px;
+	grid-gap: 40px;
+}
+.RegisterForm-header h1 {
+	color: #2f80ed;
+	font-size: 36px;
+	font-weight: 700;
+	margin: 0;
+}
+.RegisterForm-form-inputContainer {
+	display: grid;
+	grid-gap: 20px;
+}
+.RegisterForm-form-submit {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+.RegisterForm-form-submit input {
+	background: #2f80ed;
+	border-radius: 8px;
+	border: none;
+	padding: 10px 50px;
+	color: white;
+	cursor: pointer;
+	font-family: 'Poppins', sans-serif;
+}
+.RegisterForm-footer p {
+	text-align: center;
+	font-size: 14px;
+}
+.RegisterForm-footer p a {
+	color: #2f80ed;
+}
