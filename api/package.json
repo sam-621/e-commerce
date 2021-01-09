@@ -58,7 +58,6 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "npm run test:app && npm run test:routes",
       "pre-push": "npm run test:app && npm run test:routes"
     }
   },
