@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { RegisterForm } from '../containers';
+
 const Register = () => {
-    return (
-        <>
-            <h1>Register page</h1>
-        </>
-    );
-}
+  return (
+    <>
+      <RegisterForm />
+    </>
+  );
+};
 
 export default Register;

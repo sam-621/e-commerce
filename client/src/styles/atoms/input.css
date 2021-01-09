@@ -1,0 +1,8 @@
+.EditInputText-Container input {
+  background: #eeeeee;
+  border: 2px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 100%;
+}
