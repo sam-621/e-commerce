@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { ObjectId } from 'mongoose';
 
 export interface IApiKeyMiddleware {
   (req: Request, res: Response, next: NextFunction): void | Response;
@@ -13,7 +14,7 @@ export interface IHandlerErrors {
 
 export interface IRequest extends Request {
   user?: {
-    ID: string;
+    ID: ObjectId;
   };
 }
 

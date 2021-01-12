@@ -1,5 +1,8 @@
 import { IControllerWithToken } from './product.interfaces';
 import { products } from './products';
+import { Product } from './product.services';
+import { Result, validationResult } from 'express-validator';
+import { ErrorHandler } from '../../middleware';
 
 const getProductsController: IControllerWithToken = (req, res, next) => {
   return res.status(200).json({
@@ -8,10 +11,26 @@ const getProductsController: IControllerWithToken = (req, res, next) => {
   });
 };
 
-const buyProductController: IControllerWithToken = (req, res, next) => {
-  return res.status(200).json({
-    data: null,
-    msg: 'Product bought',
+const buyProductController: IControllerWithToken = async (req, res, next) => {
+  const errors: Result = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    next(new ErrorHandler(400, 'WRONG DATA SCHEMA', errors.array()));
+  }
+
+  const { productName, productPrice, productImage, ProductDescription } = req.body;
+
+  const product = new Product(productName, productPrice, ProductDescription, productImage);
+
+  const result = await product.buyProduct(req.user.ID);
+
+  if (result.err) {
+    next(new ErrorHandler(result.statusCode, result.msg, result.err));
+  }
+
+  return res.status(result.statusCode).json({
+    data: result.data,
+    msg: result.msg,
   });
 };
 

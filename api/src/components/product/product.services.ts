@@ -26,6 +26,13 @@ class Product {
       });
 
       await product.save();
+
+      return {
+        data: null,
+        msg: 'PRODUCT BOUGHT',
+        statusCode: 200,
+        err: false,
+      };
     } catch (e) {
       return {
         data: null,
