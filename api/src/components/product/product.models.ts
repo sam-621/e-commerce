@@ -9,6 +9,6 @@ const ProductSchema: Schema = new Schema({
   buyer: { required: true, type: Types.ObjectId },
 });
 
-const ProductModel = model<IProduct>('product', ProductSchema);
+const ProductModel = model<IProduct>('products', ProductSchema);
 
 export default ProductModel;

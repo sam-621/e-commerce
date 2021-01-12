@@ -15,17 +15,17 @@ const buyProductController: IControllerWithToken = async (req, res, next) => {
   const errors: Result = validationResult(req);
 
   if (!errors.isEmpty()) {
-    next(new ErrorHandler(400, 'WRONG DATA SCHEMA', errors.array()));
+    return next(new ErrorHandler(400, 'WRONG DATA SCHEMA', errors.array()));
   }
 
-  const { productName, productPrice, productImage, ProductDescription } = req.body;
+  const { productName, productPrice, productImage, productDescription } = req.body;
 
-  const product = new Product(productName, productPrice, ProductDescription, productImage);
+  const product = new Product(productName, productPrice, productDescription, productImage);
 
   const result = await product.buyProduct(req.user.ID);
 
   if (result.err) {
-    next(new ErrorHandler(result.statusCode, result.msg, result.err));
+    return next(new ErrorHandler(result.statusCode, result.msg, result.err));
   }
 
   return res.status(result.statusCode).json({

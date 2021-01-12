@@ -3,7 +3,7 @@ import { Document, ObjectId } from 'mongoose';
 import { IRequest } from '../../middleware/interfaces.middlewares';
 
 export interface IControllerWithToken {
-  (req: IRequest, res: Response, next: NextFunction): Response | Promise<Response>;
+  (req: IRequest, res: Response, next: NextFunction): Response | Promise<Response | void>;
 }
 
 export interface IProduct extends Document {
