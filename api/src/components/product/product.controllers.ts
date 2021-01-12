@@ -1,11 +1,18 @@
-import { IControllerGetProducts } from './product.interfaces';
+import { IControllerWithToken } from './product.interfaces';
 import { products } from './products';
 
-const getProductsController: IControllerGetProducts = (req, res, next) => {
+const getProductsController: IControllerWithToken = (req, res, next) => {
   return res.status(200).json({
     data: products,
     msg: 'OK',
   });
 };
 
-export { getProductsController };
+const buyProductController: IControllerWithToken = (req, res, next) => {
+  return res.status(200).json({
+    data: null,
+    msg: 'Product bought',
+  });
+};
+
+export { getProductsController, buyProductController };

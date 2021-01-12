@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 
-export interface IControllerGetProducts {
+export interface IControllerWithToken {
   (req: Request, res: Response, next: NextFunction): Response;
 }
