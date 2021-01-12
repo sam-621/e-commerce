@@ -19,10 +19,10 @@ export interface IRequest extends Request {
 }
 
 export interface IPayload {
-  ID: string;
+  ID: ObjectId;
   rol: string;
 }
 
 export interface IDecoded extends IPayload {
-  iat: string;
+  iat: ObjectId;
 }
