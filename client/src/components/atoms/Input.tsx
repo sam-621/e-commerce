@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../styles/atoms/input.css';
-import {InputParams} from './interfaces'
+import { InputParams } from './interfaces';
 
-const Input = ({type, setValue, placeHolder, value}: InputParams) => {
+const Input = ({ type, setValue, placeHolder, value }: InputParams) => {
   return (
-    <div className="EditInputText-Container">
+    <label className="EditInputText-Container">
       <input
         type={type}
         onChange={(e) => setValue(e.target.value)}
@@ -12,7 +12,7 @@ const Input = ({type, setValue, placeHolder, value}: InputParams) => {
         value={value}
         required
       />
-    </div>
+    </label>
   );
 };
 
