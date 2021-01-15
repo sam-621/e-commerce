@@ -1,7 +1,7 @@
 .RegisterForm-container {
   border-radius: 12px;
   display: grid;
-  margin: 50px 10px 0 10px;
+  margin: 0 10px 0 10px;
 }
 .RegisterForm {
   background-color: white;
