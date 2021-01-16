@@ -1,8 +1,13 @@
 .EditInputText-Container input {
-  background: #eeeeee;
-  border: 2px solid #c4c4c4;
+  outline: none;
+  outline-width: 1px;
+  border: 1px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 5px;
   padding: 10px 20px;
   width: 100%;
+}
+.EditInputText-Container input:focus {
+  transition: 0.25s;
+  border: 0.5px solid #2f80ed;
 }
