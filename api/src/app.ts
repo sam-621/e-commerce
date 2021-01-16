@@ -18,9 +18,9 @@ class server {
   }
 
   private middlewareInput(): void {
-    this.App.use(apiKey);
-    this.App.use(helmet());
     this.App.use(cors());
+    this.App.use(helmet());
+    this.App.use(apiKey);
     this.App.use(express.json());
   }
 
