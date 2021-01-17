@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from '../atoms';
+import { Header, Loader } from '../atoms';
 import { NavMobile, Searcher } from '../molecules';
 
 const Home = () => {
@@ -8,6 +8,7 @@ const Home = () => {
     <>
       <Header />
       <Searcher />
+      <Loader height="20px" width="20px" border="5px" />
       <NavMobile />
     </>
   );
