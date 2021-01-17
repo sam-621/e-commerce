@@ -2,6 +2,7 @@ import React, { useState, SyntheticEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../../styles/containers/registerForm.css';
 import axios from 'axios';
+import Cookie from 'universal-cookie';
 
 import { Input } from '../atoms/';
 import { API_KEY, API_URI } from '../../config';
@@ -11,6 +12,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const history = useHistory();
+  const cookie = new Cookie();
 
   async function login(e: SyntheticEvent): Promise<void> {
     e.preventDefault();
@@ -26,7 +28,9 @@ const LoginForm = () => {
       console.log(res);
 
       if (res.status === 200) {
+        cookie.set('token', res.data.data);
         history.push('/home');
+        return;
       }
     } catch (e) {
       const httpException = new HTTPException(e.message);
