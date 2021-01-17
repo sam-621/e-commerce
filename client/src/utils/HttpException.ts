@@ -5,7 +5,7 @@ class HTTPException {
     this.message = message;
   }
 
-  public getRegisterMessage() {
+  public getRegisterMessage(): string {
     const statusCode: number = this.convertIntoStatusCode();
     let message: string = '';
 
@@ -13,6 +13,24 @@ class HTTPException {
       case 400:
         message = 'Email already taken';
         break;
+      case 500:
+        message = 'Something went wrong, try it later';
+        break;
+    }
+
+    return message;
+  }
+
+  public getLoginMessage(): string {
+    const statusCode: number = this.convertIntoStatusCode();
+    let message: string = '';
+
+    switch (statusCode) {
+      case 400:
+        message = 'Wrong data schema';
+        break;
+      case 401:
+        message = 'Wrong credentials';
       case 500:
         message = 'Something went wrong, try it later';
         break;
