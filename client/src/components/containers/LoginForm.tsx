@@ -34,7 +34,7 @@ const LoginForm = () => {
       }
     } catch (e) {
       const httpException = new HTTPException(e.message);
-      const message = httpException.getRegisterMessage();
+      const message = httpException.getLoginMessage();
       alert(message);
     }
   }

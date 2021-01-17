@@ -3,6 +3,7 @@ class HTTPException {
 
   constructor(message: string) {
     this.message = message;
+    console.log(this.message);
   }
 
   public getRegisterMessage(): string {
@@ -31,6 +32,7 @@ class HTTPException {
         break;
       case 401:
         message = 'Wrong credentials';
+        break;
       case 500:
         message = 'Something went wrong, try it later';
         break;
