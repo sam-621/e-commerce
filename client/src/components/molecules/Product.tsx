@@ -15,11 +15,11 @@ const Product = ({ description, image, price, title }: IProductProps) => {
       </div>
       <div className="Product-options">
         <div className="Product-options-price">
-          <p>{price}</p>
+          <p>$ {price}</p>
         </div>
-        <div className="Product-options-action">
+        <div className="Product-options-btn">
           <button>
-            <img src={AddIcon} alt="add to cart icon" />
+            <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
           </button>
         </div>
       </div>

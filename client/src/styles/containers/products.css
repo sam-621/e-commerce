@@ -1,0 +1,5 @@
+.Products {
+  display: grid;
+  grid-gap: 30px;
+  margin: 50px 10px;
+}

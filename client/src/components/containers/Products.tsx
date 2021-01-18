@@ -1,11 +1,12 @@
 import React from 'react';
+import '../../styles/containers/products.css';
 
 import { Product } from '../molecules';
 import { productsData } from '../../products';
 
 const Products = () => {
   return (
-    <main>
+    <main className="Products">
       {productsData.map((prod) => {
         return (
           <Product
