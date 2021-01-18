@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { Header, Loader } from '../atoms';
+import { Header } from '../atoms';
 import { NavMobile, Searcher } from '../molecules';
+import { Products } from '../containers';
 
 const Home = () => {
   return (
     <>
       <Header />
       <Searcher />
-      <Loader height="20px" width="20px" border="5px" />
+      <Products />
       <NavMobile />
     </>
   );
