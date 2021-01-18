@@ -11,8 +11,10 @@ function useFetchData(token: string): { data: Array<IProducts>; loading: boolean
   async function fetchData() {
     try {
       setLoading(true);
+
       const res = await axios.get(`${API_URI}/products`, headers);
       setData(res.data.data);
+
       setLoading(false);
     } catch (e) {
       console.log(e);
