@@ -41,6 +41,22 @@ class HTTPException {
     return message;
   }
 
+  public getProductsMessage(): string {
+    const statusCode: number = this.convertIntoStatusCode();
+    let message: string = '';
+
+    switch (statusCode) {
+      case 401:
+        message = `You don't have permission to see this content`;
+        break;
+      case 500:
+        message = 'Something went wrong, try it later';
+        break;
+    }
+
+    return message;
+  }
+
   private convertIntoStatusCode(): number {
     let statusCode: number = 0;
 
