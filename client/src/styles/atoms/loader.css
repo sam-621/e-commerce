@@ -1,3 +1,8 @@
+.Loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .Loader {
   border-radius: 50%;
   animation: loader 1s linear infinite;

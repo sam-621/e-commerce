@@ -4,6 +4,7 @@ import useFetchData from '../../hooks/useFetchData';
 import Cookie from 'universal-cookie';
 
 import { Product } from '../molecules';
+import { Loader } from '../atoms';
 
 const Products = () => {
   const cookie = new Cookie();
@@ -12,21 +13,25 @@ const Products = () => {
 
   console.log(data);
 
-  return loading ? (
-    <h1>Loading</h1>
-  ) : (
+  return (
     <main className="Products">
-      {data.map((prod: any) => {
-        return (
-          <Product
-            key={prod.id}
-            image={prod.image}
-            description={prod.description}
-            price={prod.price}
-            title={prod.title}
-          />
-        );
-      })}
+      {loading ? (
+        <Loader border="5px" width="30px" height="30px" />
+      ) : (
+        <>
+          {data.map((prod: any) => {
+            return (
+              <Product
+                key={prod.id}
+                image={prod.image}
+                description={prod.description}
+                price={prod.price}
+                title={prod.title}
+              />
+            );
+          })}
+        </>
+      )}
     </main>
   );
 };
