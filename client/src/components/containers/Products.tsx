@@ -1,15 +1,25 @@
 import React from 'react';
 import '../../styles/containers/products.css';
+import useFetchData from '../../hooks/useFetchData';
+import Cookie from 'universal-cookie';
 
 import { Product } from '../molecules';
-import { productsData } from '../../products';
 
 const Products = () => {
-  return (
+  const cookie = new Cookie();
+
+  const { data, loading } = useFetchData(cookie.get('token'));
+
+  console.log(data);
+
+  return loading ? (
+    <h1>Loading</h1>
+  ) : (
     <main className="Products">
-      {productsData.map((prod) => {
+      {data.map((prod: any) => {
         return (
           <Product
+            key={prod.id}
             image={prod.image}
             description={prod.description}
             price={prod.price}
