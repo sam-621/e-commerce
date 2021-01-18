@@ -1,9 +1,21 @@
 import React from 'react';
 
+import { Product } from '../molecules';
+import { productsData } from '../../products';
+
 const Products = () => {
   return (
     <main>
-      <h1>Products</h1>
+      {productsData.map((prod) => {
+        return (
+          <Product
+            image={prod.image}
+            description={prod.description}
+            price={prod.price}
+            title={prod.title}
+          />
+        );
+      })}
     </main>
   );
 };

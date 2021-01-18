@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../styles/molecules/product.css';
+
 import AddIcon from '../../img/add.svg';
 
 const Product = ({ description, image, price, title }: IProductProps) => {
