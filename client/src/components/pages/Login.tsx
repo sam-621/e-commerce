@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { LoginForm } from '../containers/';
-import { Header } from '../atoms';
+import { LoginForm, Nav } from '../containers/';
 
 const Login = () => {
   return (
     <>
-      <Header />
+      <Nav />
       <LoginForm />
     </>
   );
