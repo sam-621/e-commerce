@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Nav } from '../containers';
+import { Nav, PayPal } from '../containers';
 import { productsData } from '../../products';
 import { ProductForBuy } from '../molecules';
 import { useParams } from 'react-router-dom';
@@ -18,6 +18,7 @@ const Payment = () => {
         price={productsData[params.productID - 1].price}
         title={productsData[params.productID - 1].title}
       />
+      <PayPal amount={productsData[params.productID - 1].price} />
     </>
   );
 };
