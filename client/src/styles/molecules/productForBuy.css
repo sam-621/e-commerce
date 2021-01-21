@@ -1,0 +1,34 @@
+.ProductForBuy {
+  display: grid;
+  justify-content: center;
+  margin: 10px;
+}
+.ProductForBuy-img {
+  display: flex;
+  justify-content: center;
+}
+.ProductForBuy-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+.ProductForBuy-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5px;
+}
+.ProductForBuy-info-text h2 {
+  font-size: 1.6rem;
+}
+.ProductForBuy-info-text p {
+  font-size: 1.4rem;
+}
+.ProductForBuy-info-price {
+  min-width: 30px;
+  height: 100%;
+}
+.ProductForBuy-info-price p {
+  font-size: 1.4rem;
+  color: #545454;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Nav } from '../containers';
 import { productsData } from '../../products';
-import { Product } from '../molecules';
+import { ProductForBuy } from '../molecules';
 import { useParams } from 'react-router-dom';
 
 const Payment = () => {
@@ -11,7 +11,7 @@ const Payment = () => {
   return (
     <>
       <Nav />
-      <Product
+      <ProductForBuy
         description={productsData[params.productID - 1].description}
         id={productsData[params.productID - 1].id}
         image={productsData[params.productID - 1].image}
