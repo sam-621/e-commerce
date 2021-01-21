@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
+import { API_KEY, API_URI, MODE } from '../../config';
 
 const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
   const cookie = new Cookie();
-  const clientId =
-    process.env.NODE_ENV === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
+  const clientId = MODE === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
 
   function createOrder(data: any, actions: any) {
     console.log(data, actions, 'create order');
@@ -31,8 +31,8 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
         productImage: image,
         productDescription: description,
       };
-      const res = await axios.post(`${process.env.API_URI}/products/buy`, data, {
-        headers: { api_key: 'secret', authorization: cookie.get('token') },
+      const res = await axios.post(`${API_URI}/products/buy`, data, {
+        headers: { api_key: API_KEY, authorization: cookie.get('token') },
       });
 
       console.log(res);
