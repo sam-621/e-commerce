@@ -2,8 +2,9 @@ import React from 'react';
 import '../../styles/molecules/product.css';
 
 import AddIcon from '../../img/add.svg';
+import { Link } from 'react-router-dom';
 
-const Product = ({ description, image, price, title }: IProductProps) => {
+const Product = ({ description, image, price, title, id }: IProductProps) => {
   return (
     <article className="Product">
       <div className="Product-image">
@@ -18,9 +19,9 @@ const Product = ({ description, image, price, title }: IProductProps) => {
           <p>$ {price}</p>
         </div>
         <div className="Product-options-btn">
-          <button>
+          <Link to={`/home/${id}`}>
             <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
-          </button>
+          </Link>
         </div>
       </div>
     </article>
@@ -32,6 +33,7 @@ interface IProductProps {
   title: string;
   description: string;
   price: number;
+  id: number;
 }
 
 export default Product;

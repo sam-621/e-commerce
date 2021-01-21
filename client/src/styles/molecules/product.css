@@ -25,7 +25,7 @@
 .Product-options-price p {
   font-size: 1.4rem;
 }
-.Product-options-btn button {
+.Product-options-btn a {
   background-color: #2f80ed;
   border: none;
   border-radius: 5px;
