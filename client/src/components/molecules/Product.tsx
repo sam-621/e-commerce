@@ -33,7 +33,7 @@ interface IProductProps {
   title: string;
   description: string;
   price: number;
-  id: number;
+  id: number | any;
 }
 
 export default Product;
