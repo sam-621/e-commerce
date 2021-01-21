@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { PayPalButton } from 'react-paypal-button-v2';
+import axios from 'axios';
+import Cookie from 'universal-cookie';
 
-const PayPal = ({ amount }: IPayPalProps) => {
+const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
+  const cookie = new Cookie();
   const clientId =
     process.env.NODE_ENV === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
 
@@ -18,11 +21,21 @@ const PayPal = ({ amount }: IPayPalProps) => {
     });
   }
 
-  function onSuccess(details: any, data: any) {
+  async function onSuccess(details: any, data: any) {
     console.log(details, data, 'onSuccess');
 
     if (details.status === 'COMPLETED') {
-      alert('success');
+      const data = {
+        productName: name,
+        productPrice: amount,
+        productImage: image,
+        productDescription: description,
+      };
+      const res = await axios.post(`${process.env.API_URI}/products/buy`, data, {
+        headers: { api_key: 'secret', authorization: cookie.get('token') },
+      });
+
+      console.log(res);
     }
   }
 
@@ -41,7 +54,10 @@ const PayPal = ({ amount }: IPayPalProps) => {
 };
 
 interface IPayPalProps {
+  name: string;
   amount: number;
+  description: string;
+  image: string;
 }
 
 export default PayPal;
