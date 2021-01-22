@@ -9,7 +9,6 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
   const clientId = MODE === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
 
   function createOrder(data: any, actions: any) {
-    console.log(data, actions, 'create order');
     return actions.order.create({
       purchase_units: [
         {
@@ -24,8 +23,6 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
   }
 
   async function onSuccess(details: any, data: any) {
-    console.log(details, data, 'onSuccess');
-
     if (details.status === 'COMPLETED') {
       const data = {
         productName: name,

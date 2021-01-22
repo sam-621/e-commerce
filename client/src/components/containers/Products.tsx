@@ -11,8 +11,6 @@ const Products = () => {
 
   const { data, loading } = useFetchData(cookie.get('token'));
 
-  console.log(data);
-
   return (
     <main className="Products">
       {loading ? (

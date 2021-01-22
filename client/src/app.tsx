@@ -5,8 +5,6 @@ import { Register, Login, Home, Payment } from './components/pages/';
 import { API_KEY, API_URI, CLIENTID, MODE } from './config';
 
 const app = () => {
-  console.log({ API_URI, API_KEY, CLIENTID, MODE });
-
   return (
     <BrowserRouter>
       <Switch>

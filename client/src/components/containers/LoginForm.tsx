@@ -25,7 +25,6 @@ const LoginForm = () => {
     try {
       const data = { email, password };
       const res = await axios.post(`${API_URI}/login`, data, { headers: { api_key: API_KEY } });
-      console.log(res);
 
       if (res.status === 200) {
         cookie.set('token', res.data.data);
