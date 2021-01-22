@@ -39,6 +39,6 @@ export const products: Array<object> = [
     image: 'https://arepa.s3.amazonaws.com/hoodie.png',
     title: 'Hoodie',
     price: 35,
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    description: 'Una sudadera muy espectacular',
   },
 ];
