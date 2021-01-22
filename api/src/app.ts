@@ -7,9 +7,9 @@ import { router } from './router';
 
 class server {
   public App: Application;
-  private port: number;
+  private port: number | string;
 
-  constructor(port: number) {
+  constructor(port: number | string) {
     this.port = port;
     this.App = express();
     this.middlewareInput();
