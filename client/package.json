@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack serve --open chrome",
     "build": "webpack --mode production",
-    "start": "http-server ./dist/ --proxy http://localhost:8080? -o"
+    "start": "webpack serve --content-base ./dist/  --open chrome --mode production"
   },
   "repository": {
     "type": "git",
