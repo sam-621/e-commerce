@@ -13,7 +13,9 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
     return actions.order.create({
       purchase_units: [
         {
+          description: description,
           amount: {
+            currency_code: 'MXN',
             value: amount,
           },
         },
@@ -35,7 +37,9 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
         headers: { api_key: API_KEY, authorization: cookie.get('token') },
       });
 
-      console.log(res);
+      if (res.status === 200) {
+        alert('Su pago ha sido completado');
+      }
     }
   }
 
