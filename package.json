@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "an e-commerce",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rogeliosamuel621/E-commerce.git"
@@ -23,8 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "npm run test:api"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
