@@ -1,25 +1,30 @@
 {
   "name": "e-commerce",
-  "version": "1.0.0",
-  "description": "Development :)",
+  "version": "0.0.0",
+  "description": "an e-commerce",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
-    "build": "cd api && npm install && npm run build",
-    "heroku-prebuild": "cd api && npm install --dev",
-    "start": "cd api && npm run start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rogeliosamuel621/E-commerce.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "rogeliosamuel621",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rogeliosamuel621/E-commerce/issues"
   },
-  "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme"
+  "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "husky": "^4.3.8",
+    "lerna": "^3.22.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "npm run test:api"
+    }
+  }
 }
