@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongoose';
+
 export interface IDecoded {
   id: string;
   iat: number;
@@ -5,5 +7,5 @@ export interface IDecoded {
 }
 
 export interface IPayload {
-  id: string;
+  id: ObjectId;
 }

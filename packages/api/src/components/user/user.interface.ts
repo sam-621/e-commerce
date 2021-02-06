@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
-import { IPayload } from '../../middleware/interfaces.middlewares';
+import { IPayload } from '../auth/auth.interfaces';
 
 export interface IProduct {
   productName: string;
@@ -18,16 +18,9 @@ export interface IUser extends Document {
 }
 
 export interface IController {
-  (req: Request, res: Response, next: NextFunction): Promise<void | Response>;
+  (req: Request, res: Response, next: NextFunction): Promise<Response>;
 }
 
 export interface IDataForToken extends IPayload {
   err?: { msg: string; statusCode: number };
-}
-
-export interface IResponse {
-  data: null | object | [] | string;
-  msg: string;
-  err: any;
-  statusCode: number;
 }

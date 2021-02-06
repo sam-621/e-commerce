@@ -22,7 +22,7 @@ const buyProductController: IControllerWithToken = async (req, res, next) => {
 
   const product = new Product(productName, productPrice, productDescription, productImage);
 
-  const result = await product.buyProduct(req.user.ID);
+  const result = await product.buyProduct(req.user.id);
 
   if (result.err) {
     return next(new ErrorHandler(result.statusCode, result.msg, result.err));

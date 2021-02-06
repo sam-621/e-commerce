@@ -18,7 +18,7 @@ function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as IDecoded;
 
-    const user: IUser = UserModel.findById(decoded.ID, '_id');
+    const user: IUser = UserModel.findById(decoded.id, '_id');
 
     if (!user) {
       return res.status(401).json({

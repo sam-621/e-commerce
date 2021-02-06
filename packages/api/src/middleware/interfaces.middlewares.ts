@@ -14,14 +14,12 @@ export interface IHandlerErrors {
 
 export interface IRequest extends Request {
   user?: {
-    ID: ObjectId;
+    id: ObjectId;
   };
 }
 
-export interface IPayload {
-  ID: ObjectId;
-}
-
-export interface IDecoded extends IPayload {
-  iat: ObjectId;
+export interface IDecoded {
+  id: ObjectId;
+  iat: number;
+  exp: number;
 }
