@@ -6,7 +6,8 @@
   "scripts": {
     "dev:app": "lerna run dev",
     "heroku-prebuild": "cd packages/api && npm install --dev",
-    "start": "cd packages/api && npm run start"
+    "start": "cd packages/api && npm run start",
+    "build": "cd packages/api && npm run build"
   },
   "repository": {
     "type": "git",
