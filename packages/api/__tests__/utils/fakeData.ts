@@ -1,13 +1,5 @@
 class MockUser {
-  email: string;
-  password: string;
-  username: string;
-
-  constructor(username: string, email: string, password: string) {
-    this.username = username || 'userTest';
-    this.email = email || 'userTest@gmail.com';
-    this.password = password || '123456';
-  }
+  constructor(public username: string, public email: string, public password: string) {}
 }
 
 class MockProduct {

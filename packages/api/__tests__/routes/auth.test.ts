@@ -1,8 +1,8 @@
 import App from '../../src/app';
 import req from 'supertest';
 import { dbClose, dbConnection, MockUser, dbConnectionAnCreateUser } from '../utils/';
-import UserModel from '../../src/components/user/user.models';
 import { API_KEY } from '../../src/config';
+import UserModel from '../../src/components/user/user.models';
 const app = new App(3000).App;
 
 describe('Register endpoint', () => {
@@ -18,17 +18,18 @@ describe('Register endpoint', () => {
   });
 
   test('Should response 400 SAME EMAIL', async (done) => {
-    const mockUser = new MockUser('', 'admin@gmail.com', '123456');
-    const user = await UserModel.create(mockUser);
+    const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
+    await UserModel.create(mockUser);
 
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(400);
+    await UserModel.deleteMany();
     done();
   });
 
   test('Should response 200 EVERYTHING OK', async (done) => {
-    const mockUser = new MockUser('userTest', 'register@gmail.com', '123456');
+    const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(200);

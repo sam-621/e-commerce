@@ -47,13 +47,12 @@ describe('Buy a product endpoint', () => {
   test('Should response 200, EVERYTHING OK', async (done) => {
     const mockProduct = new MockProduct('image url', 'product', 25, 'description');
     const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
-    await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
-    const loginRes = await req(app).post('/login').set('api_key', API_KEY).send(mockUser);
+    const registerRes = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
     const res = await req(app)
       .put('/products/buy')
       .set('api_key', API_KEY)
-      .set('authorization', loginRes.body.data)
+      .set('authorization', registerRes.body.data)
       .send(mockProduct);
 
     expect(res.status).toBe(200);

@@ -9,7 +9,7 @@ const ProductSchema: Schema = new Schema({
 });
 
 const userSchema: Schema = new Schema({
-  username: { type: String, required: false, default: '' },
+  username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   cart: { type: [ProductSchema], required: false, default: [] },
