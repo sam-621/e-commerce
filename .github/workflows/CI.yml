@@ -6,9 +6,9 @@ on:
   push:
     paths-ignore:
       - 'docs/**'
-    branches: [main, dev]
+    branches: [dev]
   pull_request:
-    branches: [main, dev]
+    branches: [dev]
 
 jobs:
   build_and_test_in_ubuntu_latest:
