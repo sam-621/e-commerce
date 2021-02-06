@@ -8,6 +8,6 @@ router.post('/register', registerValidator, areWrongData, registerController);
 
 router.post('/login', loginValidator, areWrongData, loginController);
 
-router.get('/auth', jwtMiddleware, refreshTokenController);
+router.get('/refresh', jwtMiddleware, refreshTokenController);
 
 export { router as userRouter };

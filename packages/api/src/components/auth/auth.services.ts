@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { ObjectId } from 'mongoose';
 import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
 import { IDecoded, IPayload } from './auth.interfaces';
 
@@ -22,11 +23,9 @@ class AuthServices {
     return decoded;
   }
 
-  public refreshToken(token: string): string {
-    const decoded: IDecoded = this.verifyToken(token);
-
+  public refreshToken(id: ObjectId): string {
     const payload: IPayload = {
-      id: decoded.id,
+      id: id,
     };
 
     const tokenRefreshed: string = this.createToken(payload);

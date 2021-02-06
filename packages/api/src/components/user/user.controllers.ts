@@ -54,17 +54,13 @@ const loginController: IController = async (req, res, next) => {
 };
 
 const refreshTokenController = async (req: IRequest, res: Response, next: NextFunction) => {
-  const payload = {
-    ID: req.user.id,
-  };
-  const token = jwt.sign(
-    payload,
-    JWT_SECRET,
-    MODE === 'production' ? { expiresIn: EXPIRES_IN } : null
-  );
+  const authService = new AuthServices();
+
+  const tokenRefreshed: string = authService.refreshToken(req.user.id);
 
   return res.status(200).json({
-    data: token,
+    message: 'TOKEN REFRESHED',
+    data: tokenRefreshed,
   });
 };
 
