@@ -1,1 +1,0 @@
-worker: node packages/api/dist/bundle.js
