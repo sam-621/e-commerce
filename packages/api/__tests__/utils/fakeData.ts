@@ -10,7 +10,16 @@ class MockUser {
   }
 }
 
+class MockProduct {
+  constructor(
+    public productImage: string,
+    public productName: string,
+    public productPrice: number,
+    public productDescription: string
+  ) {}
+}
+
 const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjVmZjUyNDVhMThlMDdkMDBlNWE4MDEwYSIsImlhdCI6MTYxMDU3NDM2OX0.GV1LM9UTnVK_i9cdkKcojWWfz2RtfMsfRz-uTw0ODj0';
 
-export { MockUser, token };
+export { MockUser, token, MockProduct };
