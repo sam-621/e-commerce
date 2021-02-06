@@ -18,13 +18,31 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build_in_ubuntu_latest:
+  build_and_test_in_ubuntu_latest:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: install global dependencies
+        run: npm install
+
+      - name: install dependencies
+        run: npm run install:app
+
+      - name: Build app
+        run: npm run build:app
+
+      - name: run tests in api
+        run: cd packages/api && npm run test:routes
+
+  build_and_test_in_windows_latest:
+    runs-on: windows-latest
+
+    steps:
       - uses: actions/checkout@v2
 
       - name: install global dependencies
