@@ -1,4 +1,4 @@
-import { dbClose, dbConnection } from './dbHandler';
-import { MONGO_URI, FakeUser, token } from './fakeData';
+import { dbClose, dbConnection, dbConnectionAnCreateUser } from './dbHandler';
+import { FakeUser, token } from './fakeData';
 
-export { dbConnection, dbClose, MONGO_URI, FakeUser, token };
+export { dbConnection, dbClose, FakeUser, token, dbConnectionAnCreateUser };
