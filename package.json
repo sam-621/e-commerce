@@ -6,7 +6,9 @@
   "scripts": {
     "install:app": "cd packages/api && npm install && cd .. && cd frontend && npm install",
     "build:app": "lerna run build",
+    "start:app": "lerna run start",
     "dev:app": "lerna run dev",
+
     "heroku-prebuild": "cd packages/api && npm install --dev",
     "start": "cd packages/api && npm run start",
     "build": "cd packages/api && npm run build"
