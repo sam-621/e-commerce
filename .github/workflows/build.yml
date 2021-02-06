@@ -29,22 +29,12 @@ jobs:
 
       - name: install global dependencies
         run: npm install
-      # Runs a single command using the runners shell
+
       - name: install dependencies
         run: npm run install:app
 
-      # Runs a set of commands using the runners shell
       - name: Build app
         run: npm run build:app
 
-  test_in_ubuntu_latest:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: run test
+      - name: run tests in api
         run: cd packages/api && npm run test:routes
