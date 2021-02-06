@@ -1,10 +1,19 @@
 import { Document } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 
+export interface IProduct {
+  productName: string;
+  ProductDescription: string;
+  productPrice: number;
+  productImage: string;
+}
+
 export interface IUser extends Document {
   username: string;
   email: string;
   password: string;
+  cart: IProduct[];
+  productsBought: IProduct[];
   code?: any;
 }
 

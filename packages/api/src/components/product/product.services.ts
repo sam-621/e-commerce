@@ -1,6 +1,6 @@
 import { ObjectId } from 'mongoose';
-import { IProduct } from './product.interfaces';
-import ProductModel from './product.models';
+import { IUser } from '../user/user.interface';
+import UserModel from '../user/user.models';
 
 class Product {
   private readonly name: string;
@@ -17,15 +17,16 @@ class Product {
 
   public async buyProduct(buyerID: ObjectId) {
     try {
-      const product: IProduct = new ProductModel({
+      const user: IUser = await UserModel.findById(buyerID);
+
+      user.productsBought.push({
         productName: this.name,
-        ProductDescription: this.description,
         productPrice: this.price,
+        ProductDescription: this.description,
         productImage: this.image,
-        buyer: buyerID,
       });
 
-      await product.save();
+      await user.save();
 
       return {
         data: null,

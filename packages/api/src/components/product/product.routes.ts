@@ -6,6 +6,6 @@ import { buyProductValidator } from './product.validators';
 
 router.get('/products', jwtMiddleware, getProductsController);
 
-router.post('/products/buy', jwtMiddleware, buyProductValidator, buyProductController);
+router.put('/products/buy', jwtMiddleware, buyProductValidator, buyProductController);
 
 export { router as productRouter };
