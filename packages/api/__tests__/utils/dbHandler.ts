@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import UserModel from '../../src/components/user/user.models';
-import ProductModel from '../../src/components/product/product.models';
 import { MockUser } from './';
 import argon from 'argon2';
 

@@ -9,12 +9,11 @@ export interface IProduct {
 }
 
 export interface IUser extends Document {
-  username: string;
+  username?: string;
   email: string;
   password: string;
-  cart: IProduct[];
-  productsBought: IProduct[];
-  code?: any;
+  cart?: IProduct[];
+  productsBought?: IProduct[];
 }
 
 export interface IController {

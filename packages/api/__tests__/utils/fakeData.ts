@@ -20,6 +20,6 @@ class MockProduct {
 }
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjVmZjUyNDVhMThlMDdkMDBlNWE4MDEwYSIsImlhdCI6MTYxMDU3NDM2OX0.GV1LM9UTnVK_i9cdkKcojWWfz2RtfMsfRz-uTw0ODj0';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjYwMWViOTYxOTc1MWY2MDFhY2JjZGRlZiIsImlhdCI6MTYxMjYyNzM4OX0.iFQ_YmCY5VP7mGhnqic5DlyL7wBAziqeUUORduurhuU';
 
 export { MockUser, token, MockProduct };

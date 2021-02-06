@@ -18,8 +18,8 @@ describe('Register endpoint', () => {
   });
 
   test('Should response 400 SAME EMAIL', async (done) => {
-    const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
-    await UserModel.create(mockUser);
+    const mockUser = new MockUser('', 'admin@gmail.com', '123456');
+    const user = await UserModel.create(mockUser);
 
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
