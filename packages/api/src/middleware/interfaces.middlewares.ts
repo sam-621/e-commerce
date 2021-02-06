@@ -17,9 +17,3 @@ export interface IRequest extends Request {
     id: ObjectId;
   };
 }
-
-export interface IDecoded {
-  id: ObjectId;
-  iat: number;
-  exp: number;
-}

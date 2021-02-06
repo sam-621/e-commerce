@@ -13,7 +13,7 @@ class AuthServices {
     return token;
   }
 
-  verifyToken(token: string): IDecoded {
+  public verifyToken(token: string): IDecoded {
     const decoded: IDecoded = jwt.verify(token, JWT_SECRET) as IDecoded;
 
     delete decoded.exp;

@@ -1,9 +1,10 @@
 import { Response, NextFunction } from 'express';
-import { IRequest, IDecoded } from './interfaces.middlewares';
-import { JWT_SECRET, MODE } from '../config';
-import jwt from 'jsonwebtoken';
+import { IRequest } from './interfaces.middlewares';
+import { MODE } from '../config';
 import UserModel from '../components//user/user.models';
 import { IUser } from '../components/user/user.interface';
+import { AuthServices } from '../components/auth/auth.services';
+import { IDecoded } from '../components/auth/auth.interfaces';
 
 function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   const token = req.headers['authorization'];
@@ -16,7 +17,8 @@ function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as IDecoded;
+    const authServices = new AuthServices();
+    const decoded: IDecoded = authServices.verifyToken(token);
 
     const user: IUser = UserModel.findById(decoded.id, '_id');
 

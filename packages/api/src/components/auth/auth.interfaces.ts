@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongoose';
 
 export interface IDecoded {
-  id: string;
+  id: ObjectId;
   iat: number;
   exp: number;
 }
