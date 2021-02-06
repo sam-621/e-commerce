@@ -21,6 +21,18 @@ class AuthServices {
 
     return decoded;
   }
+
+  public refreshToken(token: string): string {
+    const decoded: IDecoded = this.verifyToken(token);
+
+    const payload: IPayload = {
+      id: decoded.id,
+    };
+
+    const tokenRefreshed: string = this.createToken(payload);
+
+    return tokenRefreshed;
+  }
 }
 
 export { AuthServices };
