@@ -4,6 +4,8 @@
   "description": "an e-commerce",
   "main": "index.js",
   "scripts": {
+    "install:app": "lerna run install",
+    "build:app": "lerna run build",
     "dev:app": "lerna run dev",
     "heroku-prebuild": "cd packages/api && npm install --dev",
     "start": "cd packages/api && npm run start",
