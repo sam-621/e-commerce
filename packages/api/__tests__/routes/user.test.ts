@@ -1,6 +1,6 @@
 import App from '../../src/app';
 import req from 'supertest';
-import { dbClose, dbConnection, MockUser, dbConnectionAnCreateUser } from '../utils';
+import { dbClose, dbConnection, MockUser, dbConnectionAnCreateUser, token } from '../utils';
 import { API_KEY } from '../../src/config';
 import UserModel from '../../src/components/user/user.models';
 const app = new App(3000).App;
@@ -88,6 +88,35 @@ describe('Login endpoint', () => {
 
     expect(res.status).toBe(200);
     expect(res.body.message).toBe('USER LOGGED');
+    done();
+  });
+});
+
+describe('Refresh token endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).get('/refresh');
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO API_KEY PROVIDED');
+    done();
+  });
+
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).get('/refresh').set('api_key', API_KEY);
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO TOKEN PROVIDED');
+    done();
+  });
+
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).get('/refresh').set('api_key', API_KEY).set('authorization', token);
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('TOKEN REFRESHED');
     done();
   });
 });
