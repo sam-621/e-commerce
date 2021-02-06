@@ -30,7 +30,17 @@ class User {
 
       await user.save();
 
-      return { data: null, msg: 'USER REGISTERED', statusCode: 200, err: false };
+      const payload = {
+        ID: user._id,
+      };
+
+      const token = jwt.sign(
+        payload,
+        JWT_SECRET,
+        MODE === 'production' ? { expiresIn: EXPIRES_IN } : null
+      );
+
+      return { data: token, msg: 'USER REGISTERED', statusCode: 200, err: false };
     } catch (e) {
       if (e.code === 11000) {
         return { data: null, msg: 'EMAIL ALREADY TAKEN', statusCode: 400, err: e };
