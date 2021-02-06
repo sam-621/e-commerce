@@ -2,6 +2,10 @@ import { Result, validationResult } from 'express-validator';
 import { ErrorHandler } from '../../middleware';
 import { IController } from './user.interface';
 import { User } from './user.services';
+import jwt from 'jsonwebtoken';
+import { IRequest } from '../../middleware/interfaces.middlewares';
+import { NextFunction, Response } from 'express';
+import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
 
 const registerController: IController = async (req, res, next) => {
   const errors: Result = validationResult(req);
@@ -43,4 +47,19 @@ const loginController: IController = async (req, res, next) => {
   });
 };
 
-export { registerController, loginController };
+const refreshTokenController = async (req: IRequest, res: Response, next: NextFunction) => {
+  const payload = {
+    ID: req.user.ID,
+  };
+  const token = jwt.sign(
+    payload,
+    JWT_SECRET,
+    MODE === 'production' ? { expiresIn: EXPIRES_IN } : null
+  );
+
+  return res.status(200).json({
+    data: token,
+  });
+};
+
+export { registerController, loginController, refreshTokenController };

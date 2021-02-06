@@ -1,7 +1,7 @@
 import { IUser, IResponse } from './user.interface';
 import UserModel from './user.models';
 import { MODE, EXPIRES_IN, JWT_SECRET } from '../../config';
-import argon from 'argon2';
+import argon, { verify } from 'argon2';
 import jwt from 'jsonwebtoken';
 
 class User {
