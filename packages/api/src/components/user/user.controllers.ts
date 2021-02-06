@@ -20,7 +20,7 @@ const registerController: IController = async (req, res, next) => {
     return next(new ErrorHandler(result.statusCode, result.msg, result.err));
   }
 
-  return res.status(result.statusCode).json({ data: result.data, msg: result.msg });
+  return res.status(result.statusCode).json({ data: result.data, message: result.msg });
 };
 
 const loginController: IController = async (req, res, next) => {
@@ -39,7 +39,7 @@ const loginController: IController = async (req, res, next) => {
   }
   return res.status(result.statusCode).json({
     data: result.data,
-    msg: result.msg,
+    message: result.msg,
   });
 };
 

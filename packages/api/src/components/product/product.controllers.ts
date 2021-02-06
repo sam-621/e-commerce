@@ -7,7 +7,7 @@ import { ErrorHandler } from '../../middleware';
 const getProductsController: IControllerWithToken = (req, res, next) => {
   return res.status(200).json({
     data: products,
-    msg: 'OK',
+    message: 'OK',
   });
 };
 
@@ -30,7 +30,7 @@ const buyProductController: IControllerWithToken = async (req, res, next) => {
 
   return res.status(result.statusCode).json({
     data: result.data,
-    msg: result.msg,
+    message: result.msg,
   });
 };
 

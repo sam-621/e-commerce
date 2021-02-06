@@ -14,6 +14,7 @@ describe('Register endpoint', () => {
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(400);
+    expect(res.body.message).toBe('WRONG DATA SCHEMA');
     done();
   });
 
@@ -24,6 +25,7 @@ describe('Register endpoint', () => {
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(400);
+    expect(res.body.message).toBe('EMAIL ALREADY TAKEN');
     await UserModel.deleteMany();
     done();
   });
@@ -33,6 +35,7 @@ describe('Register endpoint', () => {
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(200);
+    expect(res.body.message).toBe('USER REGISTERED');
     done();
   });
 });
@@ -45,6 +48,7 @@ describe('Login endpoint', () => {
     const res = await req(app).post('/login');
 
     expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO API_KEY PROVIDED');
     done();
   });
 
@@ -53,6 +57,7 @@ describe('Login endpoint', () => {
     const res = await req(app).post('/login').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(400);
+    expect(res.body.message).toBe('WRONG DATA SCHEMA');
     done();
   });
 
@@ -62,6 +67,7 @@ describe('Login endpoint', () => {
     const res = await req(app).post('/login').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(401);
+    expect(res.body.message).toBe('WRONG CREDENTIALS');
     done();
   });
 
@@ -71,6 +77,7 @@ describe('Login endpoint', () => {
     const res = await req(app).post('/login').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(401);
+    expect(res.body.message).toBe('WRONG CREDENTIALS');
     done();
   });
 
@@ -80,6 +87,7 @@ describe('Login endpoint', () => {
     const res = await req(app).post('/login').set('api_key', API_KEY).send(mockUser);
 
     expect(res.status).toBe(200);
+    expect(res.body.message).toBe('USER LOGGED');
     done();
   });
 });

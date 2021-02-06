@@ -9,6 +9,7 @@ describe('Get products endpoint', () => {
     const res = await req(app).get('/products').set('api_key', API_KEY);
 
     expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO TOKEN PROVIDED');
     done();
   });
 
@@ -16,6 +17,7 @@ describe('Get products endpoint', () => {
     const res = await req(app).get('/products').set('api_key', API_KEY).set('authorization', token);
 
     expect(res.status).toBe(200);
+    expect(res.body.message).toBe('OK');
     done();
   });
 });
@@ -29,6 +31,7 @@ describe('Buy a product endpoint', () => {
     const res = await req(app).put('/products/buy').set('api_key', API_KEY).send(mockProduct);
 
     expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO TOKEN PROVIDED');
     done();
   });
 
@@ -41,6 +44,7 @@ describe('Buy a product endpoint', () => {
       .send(mockProduct);
 
     expect(res.status).toBe(400);
+    expect(res.body.message).toBe('WRONG DATA SCHEMA');
     done();
   });
 
@@ -56,6 +60,7 @@ describe('Buy a product endpoint', () => {
       .send(mockProduct);
 
     expect(res.status).toBe(200);
+    expect(res.body.message).toBe('PRODUCT BOUGHT');
     done();
   });
 });
