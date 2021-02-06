@@ -32,14 +32,12 @@ class Product {
         data: null,
         msg: 'PRODUCT BOUGHT',
         statusCode: 200,
-        err: false,
       };
     } catch (e) {
       return {
         data: null,
         msg: 'INTERNAL SERVER ERROR',
         statusCode: 500,
-        err: e,
       };
     }
   }
