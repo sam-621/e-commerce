@@ -1,16 +1,19 @@
 import React, { useState, SyntheticEvent } from 'react';
 import '../../styles/containers/registerForm.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { Input } from '../atoms/';
 import { API_KEY, API_URI } from '../../config/';
 import { HTTPException } from '../../utils/HttpException';
+import Cookie from 'universal-cookie';
 
 const RegisterForm = () => {
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const cookie = new Cookie();
+  const history = useHistory();
 
   async function handleSubmit(e: SyntheticEvent): Promise<void> {
     e.preventDefault();
@@ -24,7 +27,8 @@ const RegisterForm = () => {
       const res = await axios.post(`${API_URI}/register`, data, { headers: { api_key: API_KEY } });
 
       if (res.status === 200) {
-        alert('User registered');
+        cookie.set('token', res.data.data);
+        history.push('/home');
       }
     } catch (e) {
       const httpException = new HTTPException(e.message);
