@@ -1,4 +1,4 @@
-import { IUser, IResponse } from './user.interface';
+import { IUser, IResponse, IDataForToken } from './user.interface';
 import UserModel from './user.models';
 import { MODE, EXPIRES_IN, JWT_SECRET } from '../../config';
 import argon, { verify } from 'argon2';
@@ -18,7 +18,7 @@ class User {
     this.emailTaken = false;
   }
 
-  public async register(): Promise<IResponse> {
+  public async register(): Promise<IDataForToken> {
     try {
       const hashedPassword = await argon.hash(this.password);
 
@@ -30,22 +30,12 @@ class User {
 
       await user.save();
 
-      const payload = {
-        ID: user._id,
-      };
-
-      const token = jwt.sign(
-        payload,
-        JWT_SECRET,
-        MODE === 'production' ? { expiresIn: EXPIRES_IN } : null
-      );
-
-      return { data: token, msg: 'USER REGISTERED', statusCode: 200, err: false };
+      return { ID: user._id, err: null };
     } catch (e) {
       if (e.code === 11000) {
-        return { data: null, msg: 'EMAIL ALREADY TAKEN', statusCode: 400, err: e };
+        return { ID: null, err: { msg: 'EMAIL ALREADY TAKEN', statusCode: 400 } };
       }
-      return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500, err: e };
+      return { ID: null, err: { msg: 'INTERNAL SERVER ERROR', statusCode: 500 } };
     }
   }
 

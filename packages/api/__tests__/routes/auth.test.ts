@@ -34,7 +34,7 @@ describe('Register endpoint', () => {
     const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(201);
     expect(res.body.message).toBe('USER REGISTERED');
     done();
   });

@@ -1,4 +1,3 @@
-import { Result, validationResult } from 'express-validator';
 import { ErrorHandler } from '../../middleware';
 import { IController } from './user.interface';
 import { User } from './user.services';
@@ -12,13 +11,25 @@ const registerController: IController = async (req, res, next) => {
 
   const user = new User(username, email, password);
 
-  const result = await user.register();
+  const { ID, err } = await user.register();
 
-  if (result.err) {
-    return next(new ErrorHandler(result.statusCode, result.msg, result.err));
+  if (err) {
+    return res.status(err.statusCode).json({
+      message: err.msg,
+    });
   }
 
-  return res.status(result.statusCode).json({ data: result.data, message: result.msg });
+  const payload = {
+    ID,
+  };
+
+  const token = jwt.sign(
+    payload,
+    JWT_SECRET,
+    MODE === 'production' ? { expiresIn: EXPIRES_IN } : null
+  );
+
+  return res.status(201).json({ data: token, message: 'USER REGISTERED' });
 };
 
 const loginController: IController = async (req, res, next) => {
