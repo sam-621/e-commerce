@@ -1,5 +1,3 @@
-const MONGO_URI = 'mongodb://localhost:27017/ecommerceTest';
-
 class FakeUser {
   email: string;
   password: string;
@@ -15,4 +13,4 @@ class FakeUser {
 const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjVmZjUyNDVhMThlMDdkMDBlNWE4MDEwYSIsImlhdCI6MTYxMDU3NDM2OX0.GV1LM9UTnVK_i9cdkKcojWWfz2RtfMsfRz-uTw0ODj0';
 
-export { MONGO_URI, FakeUser, token };
+export { FakeUser, token };

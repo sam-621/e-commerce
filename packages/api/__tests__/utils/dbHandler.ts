@@ -1,24 +1,25 @@
 import mongoose from 'mongoose';
-import ProductModel from '../../src/components/product/product.models';
-import UserModel from '../../src/components/user/user.models';
-import { MONGO_URI } from './fakeData';
+import { MongoMemoryServer } from 'mongodb-memory-server';
+
+const mongod = new MongoMemoryServer();
 
 async function dbConnection(done: any) {
-  await mongoose.connect(MONGO_URI, {
+  const uri = await mongod.getUri();
+
+  await mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
   });
-  done();
+  // done();
 }
 
 async function dbClose(done: any) {
-  await UserModel.findOneAndDelete({ email: 'register@gmail.com' });
-  await ProductModel.findOneAndDelete({ productName: 'Camiseta' });
-
+  await mongoose.connection.dropDatabase();
   await mongoose.connection.close();
-  done();
+  await mongod.stop();
+  // done();
 }
 
 export { dbConnection, dbClose };
