@@ -20,7 +20,6 @@ export interface IRequest extends Request {
 
 export interface IPayload {
   ID: ObjectId;
-  rol: string;
 }
 
 export interface IDecoded extends IPayload {
