@@ -27,6 +27,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: install global dependencies
+        run: npm install
       # Runs a single command using the runners shell
       - name: install dependencies
         run: npm run install:app
