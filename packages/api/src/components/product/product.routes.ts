@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { jwtMiddleware } from '../../middleware/jwt';
+import { jwtMiddleware, areWrongData } from '../../middleware/';
 const router = Router();
 import { getProductsController, buyProductController } from './product.controllers';
 import { buyProductValidator } from './product.validators';
 
 router.get('/products', jwtMiddleware, getProductsController);
 
-router.put('/products/buy', jwtMiddleware, buyProductValidator, buyProductController);
+router.put('/products/buy', jwtMiddleware, buyProductValidator, areWrongData, buyProductController);
 
 export { router as productRouter };

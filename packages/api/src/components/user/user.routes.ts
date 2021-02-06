@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { jwtMiddleware } from '../../middleware/jwt';
+import { jwtMiddleware, areWrongData } from '../../middleware/';
 import { registerController, loginController, refreshTokenController } from './user.controllers';
 import { registerValidator, loginValidator } from './user.validators';
 const router = Router();
 
-router.post('/register', registerValidator, registerController);
+router.post('/register', registerValidator, areWrongData, registerController);
 
-router.post('/login', loginValidator, loginController);
+router.post('/login', loginValidator, areWrongData, loginController);
 
 router.get('/auth', jwtMiddleware, refreshTokenController);
 

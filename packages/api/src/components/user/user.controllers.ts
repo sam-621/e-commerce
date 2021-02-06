@@ -8,12 +8,6 @@ import { NextFunction, Response } from 'express';
 import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
 
 const registerController: IController = async (req, res, next) => {
-  const errors: Result = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return next(new ErrorHandler(400, 'WRONG DATA SCHEMA', errors.array()));
-  }
-
   const { username, email, password } = req.body;
 
   const user = new User(username, email, password);
@@ -28,12 +22,6 @@ const registerController: IController = async (req, res, next) => {
 };
 
 const loginController: IController = async (req, res, next) => {
-  const errors: Result = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return next(new ErrorHandler(400, 'WRONG DATA SCHEMA', errors.array()));
-  }
-
   const user = new User('', req.body.email, req.body.password);
 
   const result = await user.login();
