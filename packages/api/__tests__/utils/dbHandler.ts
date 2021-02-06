@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import UserModel from '../../src/components/user/user.models';
 import ProductModel from '../../src/components/product/product.models';
-import { FakeUser } from './';
+import { MockUser } from './';
 import argon from 'argon2';
 
 const mongod = new MongoMemoryServer();
@@ -36,7 +36,7 @@ async function dbConnectionAnCreateUser(done) {
     useCreateIndex: true,
   });
 
-  const mockUser = new FakeUser('admin', 'admin@gmail.com', '123456');
+  const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
   mockUser.password = await argon.hash(mockUser.password);
   UserModel.create(mockUser);
 
