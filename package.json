@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "an e-commerce",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev:app": "lerna run dev"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rogeliosamuel621/E-commerce.git"
