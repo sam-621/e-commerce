@@ -1,6 +1,6 @@
 import App from '../../src/app';
 import req from 'supertest';
-import { dbClose, dbConnection, MockUser, dbConnectionAnCreateUser } from '../utils/';
+import { dbClose, dbConnection, MockUser, dbConnectionAnCreateUser } from '../utils';
 import { API_KEY } from '../../src/config';
 import UserModel from '../../src/components/user/user.models';
 const app = new App(3000).App;
