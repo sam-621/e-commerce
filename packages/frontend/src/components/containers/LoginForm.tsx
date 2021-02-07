@@ -55,7 +55,7 @@ const LoginForm = () => {
         </form>
         <div className="RegisterForm-footer">
           <p>
-            Don't you have an account? <Link to="/">login</Link>
+            Don't you have an account? <Link to="/register">Register</Link>
           </p>
         </div>
       </div>
