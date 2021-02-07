@@ -50,12 +50,12 @@ const LoginForm = () => {
             <Input placeHolder="Password" setValue={setPassword} type="password" value={password} />
           </div>
           <div className="RegisterForm-form-submit">
-            <input type="submit" value="Register" />
+            <input type="submit" value="Login" />
           </div>
         </form>
         <div className="RegisterForm-footer">
           <p>
-            don't you have an account? <Link to="/">Register</Link>
+            Don't you have an account? <Link to="/">login</Link>
           </p>
         </div>
       </div>

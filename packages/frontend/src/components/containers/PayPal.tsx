@@ -23,20 +23,26 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
   }
 
   async function onSuccess(details: any, data: any) {
-    if (details.status === 'COMPLETED') {
-      const data = {
-        productName: name,
-        productPrice: amount,
-        productImage: image,
-        productDescription: description,
-      };
-      const res = await axios.post(`${API_URI}/products/buy`, data, {
-        headers: { api_key: API_KEY, authorization: cookie.get('token') },
-      });
+    if (details.status === 'COMPLETED' && cookie.get('token')) {
+      try {
+        const data = {
+          productName: name,
+          productPrice: amount,
+          productImage: image,
+          productDescription: description,
+        };
+        const res = await axios.put(`${API_URI}/products/buy`, data, {
+          headers: { api_key: API_KEY, authorization: cookie.get('token') },
+        });
 
-      if (res.status === 200) {
-        alert('Su pago ha sido completado');
+        if (res.status === 200) {
+          alert('your pay has been completed, you can verify it in your PayPal account');
+        }
+      } catch (e) {
+        alert('something went wrong in the server, but your pay was completed successfully');
       }
+    } else if (details.status === 'COMPLETED') {
+      alert('your pay has been completed, you can verify it in your PayPal account');
     }
   }
 
