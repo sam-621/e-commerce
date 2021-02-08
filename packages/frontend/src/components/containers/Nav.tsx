@@ -17,7 +17,11 @@ const Nav = () => {
           <Link to="/profile" className="NavMobile-userIcon">
             <img src={UserIcon} />
           </Link>
-        ) : null}
+        ) : (
+          <Link to="/register" className="Nav-registerLink">
+            Register
+          </Link>
+        )}
       </div>
     </nav>
   );
