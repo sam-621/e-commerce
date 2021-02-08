@@ -3,3 +3,14 @@
   grid-gap: 30px;
   margin: 50px 10px;
 }
+@media screen and (min-width: 768px) {
+  .Products {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Products {
+    grid-template-columns: auto auto auto;
+  }
+}

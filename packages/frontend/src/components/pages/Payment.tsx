@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/pages/payment.css';
 
 import { Nav, PayPal } from '../containers';
 import { productsData } from '../../products';
@@ -11,19 +12,21 @@ const Payment = () => {
   return (
     <>
       <Nav />
-      <ProductForBuy
-        description={productsData[params.productID - 1].description}
-        id={productsData[params.productID - 1].id}
-        image={productsData[params.productID - 1].image}
-        price={productsData[params.productID - 1].price}
-        title={productsData[params.productID - 1].title}
-      />
-      <PayPal
-        amount={productsData[params.productID - 1].price}
-        description={productsData[params.productID - 1].description}
-        image={productsData[params.productID - 1].image}
-        name={productsData[params.productID - 1].title}
-      />
+      <section className="Payment-info">
+        <ProductForBuy
+          description={productsData[params.productID - 1].description}
+          id={productsData[params.productID - 1].id}
+          image={productsData[params.productID - 1].image}
+          price={productsData[params.productID - 1].price}
+          title={productsData[params.productID - 1].title}
+        />
+        <PayPal
+          amount={productsData[params.productID - 1].price}
+          description={productsData[params.productID - 1].description}
+          image={productsData[params.productID - 1].image}
+          name={productsData[params.productID - 1].title}
+        />
+      </section>
     </>
   );
 };

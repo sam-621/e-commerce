@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/containers/paypal.css';
 import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
@@ -47,15 +48,17 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
   }
 
   return (
-    <section>
+    <section className="Pay-options">
       <h1>Pay with PayPal</h1>
-      <PayPalButton
-        options={{ clientId: clientId, currency: 'MXN' }}
-        amount={amount}
-        createOrder={createOrder}
-        onSuccess={onSuccess}
-        style={{ layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay' }}
-      />
+      <div className="Pay-options-paypal">
+        <PayPalButton
+          options={{ clientId: clientId, currency: 'MXN' }}
+          amount={amount}
+          createOrder={createOrder}
+          onSuccess={onSuccess}
+          style={{ layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay' }}
+        />
+      </div>
     </section>
   );
 };
