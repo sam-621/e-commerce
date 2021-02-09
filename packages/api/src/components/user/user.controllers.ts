@@ -3,7 +3,6 @@ import { User } from './user.services';
 import jwt from 'jsonwebtoken';
 import { IRequest } from '../../middleware/interfaces.middlewares';
 import { NextFunction, Response } from 'express';
-import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
 import { AuthServices } from '../auth/auth.services';
 import { IPayload } from '../auth/auth.interfaces';
 

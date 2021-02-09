@@ -41,6 +41,33 @@ class Product {
       };
     }
   }
+
+  public async addToCart(buyerID: ObjectId) {
+    try {
+      const user: IUser = await UserModel.findById(buyerID);
+
+      user.cart.push({
+        productName: this.name,
+        productPrice: this.price,
+        ProductDescription: this.description,
+        productImage: this.image,
+      });
+
+      await user.save();
+
+      return {
+        data: null,
+        msg: 'PRODUCT ADDED TO CART',
+        statusCode: 200,
+      };
+    } catch (e) {
+      return {
+        data: null,
+        msg: 'INTERNAL SERVER ERROR',
+        statusCode: 500,
+      };
+    }
+  }
 }
 
 export { Product };
