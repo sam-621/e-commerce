@@ -5,19 +5,20 @@ import Cookie from 'universal-cookie';
 
 import { Product } from '../molecules';
 import { Loader } from '../atoms';
+import { IFetchedData } from '../../hooks/hooks.interfaces';
 
 const Products = () => {
   const cookie = new Cookie();
 
-  const { data, loading } = useFetchData(cookie.get('token'));
+  const res = useFetchData(cookie.get('token')) as IFetchedData;
 
   return (
     <main className="Products">
-      {loading ? (
+      {res.loading ? (
         <Loader border="5px" width="30px" height="30px" />
       ) : (
         <>
-          {data.map((prod: any) => {
+          {res.data.map((prod: any) => {
             return (
               <Product
                 key={prod.id}

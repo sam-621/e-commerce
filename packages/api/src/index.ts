@@ -6,7 +6,6 @@ function main(): void {
   const server = new Server(PORT);
   connect(MONGO_URI);
   server.startServer();
-  console.log('works');
 }
 
 main();

@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_KEY, API_URI } from '../config';
-import { IProducts } from './hooks.interfaces';
+import { IProducts, IFetchedData } from './hooks.interfaces';
 import { HTTPException } from '../utils/HttpException';
 
-function useFetchData(
-  token: string
-): { data: Array<IProducts>; loading: boolean; errorMessage: string } {
+function useFetchData(token: string): IFetchedData {
   const [data, setData] = useState<Array<IProducts>>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
   const headers = { headers: { api_key: API_KEY, authorization: token } };
 
   async function fetchData() {
@@ -25,7 +22,6 @@ function useFetchData(
       const msg = httpException.getProductsMessage();
       alert(msg);
 
-      setErrorMessage(msg);
       setLoading(false);
     }
   }
@@ -34,7 +30,7 @@ function useFetchData(
     fetchData();
   }, []);
 
-  return { data, loading, errorMessage };
+  return { data, loading };
 }
 
 export default useFetchData;

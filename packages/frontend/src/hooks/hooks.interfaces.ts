@@ -5,3 +5,8 @@ export interface IProducts {
   price: number;
   title: string;
 }
+
+export interface IFetchedData {
+  data: IProducts[];
+  loading: boolean;
+}

@@ -3,7 +3,6 @@ class HTTPException {
 
   constructor(message: string) {
     this.message = message;
-    console.log(this.message);
   }
 
   public getRegisterMessage(): string {
