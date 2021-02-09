@@ -13,7 +13,6 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
 
   function createOrder(data: any, actions: any) {
     setLoading(true);
-
     return actions.order.create({
       purchase_units: [
         {
@@ -54,15 +53,21 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
 
   return (
     <section className="Pay-options">
-      <h1>Pay with PayPal</h1>
+      <div className="Pay-options-title">
+        <h1>Pay with PayPal</h1>
+        {loading ? (
+          <div className="Loader-container">
+            <Loader border="5px" width="20px" height="20px" />
+          </div>
+        ) : null}
+      </div>
       <div className="Pay-options-paypal">
-        {loading ? <Loader border="5px" width="30px" height="30px" /> : null}
         <PayPalButton
           options={{ clientId: clientId, currency: 'MXN' }}
           amount={amount}
           createOrder={createOrder}
           onSuccess={onSuccess}
-          onButtonReady={() => console.log('start')}
+          onError={() => console.log('err')}
           style={{ layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay' }}
         />
       </div>

@@ -4,3 +4,9 @@
 .Pay-options h1 {
   font-size: 2rem;
 }
+
+.Pay-options-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
