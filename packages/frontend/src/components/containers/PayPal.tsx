@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/containers/paypal.css';
 import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
 import { API_KEY, API_URI, MODE } from '../../config';
+import { Loader } from '../atoms';
 
 const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
   const cookie = new Cookie();
   const clientId = MODE === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
+  const [loading, setLoading] = useState(false);
 
   function createOrder(data: any, actions: any) {
+    setLoading(true);
+
     return actions.order.create({
       purchase_units: [
         {
@@ -24,6 +28,7 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
   }
 
   async function onSuccess(details: any, data: any) {
+    setLoading(false);
     if (details.status === 'COMPLETED' && cookie.get('token')) {
       try {
         const data = {
@@ -51,11 +56,13 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
     <section className="Pay-options">
       <h1>Pay with PayPal</h1>
       <div className="Pay-options-paypal">
+        {loading ? <Loader border="5px" width="30px" height="30px" /> : null}
         <PayPalButton
           options={{ clientId: clientId, currency: 'MXN' }}
           amount={amount}
           createOrder={createOrder}
           onSuccess={onSuccess}
+          onButtonReady={() => console.log('start')}
           style={{ layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay' }}
         />
       </div>
