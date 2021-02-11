@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 import UserIcon from '../../img/usericon.svg';
+import CartIcon from '../../img/cart.svg';
 
 const Nav = () => {
   const cookie = new Cookies();
@@ -14,8 +15,8 @@ const Nav = () => {
       </div>
       <div>
         {cookie.get('token') ? (
-          <Link to="/profile" className="NavMobile-userIcon">
-            <img src={UserIcon} />
+          <Link to="/cart" className="NavMobile-userIcon">
+            <img src={CartIcon} />
           </Link>
         ) : (
           <Link to="/register" className="Nav-registerLink">
