@@ -25,3 +25,5 @@ interface ICartCard {
   description: string;
   price: number;
 }
+
+export default CartCard;
