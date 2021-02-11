@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/app.css';
-import { Register, Login, Home, Payment, Main } from './components/pages/';
+import { Register, Login, Home, Payment, Main, Cart } from './components/pages/';
 
 const app = () => {
   return (
@@ -11,6 +11,7 @@ const app = () => {
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/home/cart" component={Cart} />
         <Route exact path="/home/:productID" component={Payment} />
       </Switch>
     </BrowserRouter>

@@ -15,7 +15,7 @@ const Nav = () => {
       </div>
       <div>
         {cookie.get('token') ? (
-          <Link to="/cart" className="NavMobile-userIcon">
+          <Link to="/home/cart" className="NavMobile-userIcon">
             <img src={CartIcon} />
           </Link>
         ) : (
