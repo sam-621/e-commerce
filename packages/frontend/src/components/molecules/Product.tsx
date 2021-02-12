@@ -5,11 +5,15 @@ import AddIcon from '../../img/add.svg';
 import { Link } from 'react-router-dom';
 
 const Product = ({ description, image, price, title, id }: IProductProps) => {
+  function addToCart() {
+    console.log(`Product ${id} added to cart`);
+  }
+
   return (
     <article className="Product">
-      <div className="Product-image">
+      <Link to={`/home/${id}`} className="Product-image">
         <img src={image} alt={title} />
-      </div>
+      </Link>
       <div className="Product-info">
         <h2>{title}</h2>
         <p>{description}</p>
@@ -19,9 +23,9 @@ const Product = ({ description, image, price, title, id }: IProductProps) => {
           <p>$ {price}</p>
         </div>
         <div className="Product-options-btn">
-          <Link to={`/home/${id}`}>
+          <button onClick={addToCart}>
             <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
-          </Link>
+          </button>
         </div>
       </div>
     </article>
