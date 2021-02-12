@@ -1,12 +1,19 @@
 import App from '../../src/app';
 import req from 'supertest';
 import { API_KEY } from '../../src/config';
-import { dbClose, dbConnection, token, MockProduct, MockUser } from '../utils/';
+import {
+  dbClose,
+  dbConnection,
+  registerUserAndGetToken,
+  MockProduct,
+  clearDatabase,
+} from '../utils/';
 const app = new App(3000).App;
 
 describe('Add to cart endpoint', () => {
   beforeAll(dbConnection);
   afterAll(dbClose);
+  beforeEach(clearDatabase);
 
   test('Should response 401, NO TOKEN PROVIDED', async (done) => {
     const mockProduct = new MockProduct('image url', 'product', 25, 'description');
@@ -18,6 +25,7 @@ describe('Add to cart endpoint', () => {
   });
 
   test('Should response 400, WRONG DATA SCHEMA', async (done) => {
+    const token: string = await registerUserAndGetToken();
     const mockProduct = new MockProduct('', 'product', 25, 'description');
     const res = await req(app)
       .put('/cart/add')
@@ -32,13 +40,12 @@ describe('Add to cart endpoint', () => {
 
   test('Should response 200, EVERYTHING OK', async (done) => {
     const mockProduct = new MockProduct('image url', 'product', 25, 'description');
-    const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
-    const registerRes = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
+    const token: string = await registerUserAndGetToken();
 
     const res = await req(app)
       .put('/cart/add')
       .set('api_key', API_KEY)
-      .set('authorization', registerRes.body.data)
+      .set('authorization', token)
       .send(mockProduct);
 
     expect(res.status).toBe(200);
@@ -60,6 +67,7 @@ describe('get cart products endpoint', () => {
   });
 
   test('Should response 200, EVERYTHING OK', async (done) => {
+    const token: string = await registerUserAndGetToken();
     const res = await req(app).get('/cart/get').set('api_key', API_KEY).set('authorization', token);
 
     expect(res.status).toBe(200);

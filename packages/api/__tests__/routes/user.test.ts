@@ -1,6 +1,13 @@
 import App from '../../src/app';
 import req from 'supertest';
-import { dbClose, dbConnection, MockUser, dbConnectionAnCreateUser, token } from '../utils';
+import {
+  dbClose,
+  dbConnection,
+  MockUser,
+  dbConnectionAnCreateUser,
+  clearDatabase,
+  registerUserAndGetToken,
+} from '../utils';
 import { API_KEY } from '../../src/config';
 import UserModel from '../../src/components/user/user.models';
 const app = new App(3000).App;
@@ -95,6 +102,7 @@ describe('Login endpoint', () => {
 describe('Refresh token endpoint', () => {
   beforeAll(dbConnection);
   afterAll(dbClose);
+  beforeEach(clearDatabase);
 
   test('Should response 401 NO API_KEY PROVIDED', async (done) => {
     const res = await req(app).get('/refresh');
@@ -104,7 +112,7 @@ describe('Refresh token endpoint', () => {
     done();
   });
 
-  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+  test('Should response 401 NO TOKEN PROVIDED', async (done) => {
     const res = await req(app).get('/refresh').set('api_key', API_KEY);
 
     expect(res.status).toBe(401);
@@ -112,7 +120,9 @@ describe('Refresh token endpoint', () => {
     done();
   });
 
-  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+  test('Should response 200 ok', async (done) => {
+    const token: string = await registerUserAndGetToken();
+
     const res = await req(app).get('/refresh').set('api_key', API_KEY).set('authorization', token);
 
     expect(res.status).toBe(200);

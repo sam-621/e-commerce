@@ -1,4 +1,12 @@
-import { dbClose, dbConnection, dbConnectionAnCreateUser } from './dbHandler';
-import { MockUser, token, MockProduct } from './fakeData';
+import { dbClose, dbConnection, dbConnectionAnCreateUser, clearDatabase } from './dbHandler';
+import { MockUser, MockProduct, registerUserAndGetToken } from './fakeData';
 
-export { dbConnection, dbClose, MockUser, token, dbConnectionAnCreateUser, MockProduct };
+export {
+  dbConnection,
+  dbClose,
+  MockUser,
+  registerUserAndGetToken,
+  dbConnectionAnCreateUser,
+  MockProduct,
+  clearDatabase,
+};

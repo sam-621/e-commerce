@@ -7,10 +7,10 @@ class MockUser {
 
 class MockProduct {
   constructor(
-    public productImage: string,
-    public productName: string,
-    public productPrice: number,
-    public productDescription: string
+    public image: string,
+    public name: string,
+    public price: number,
+    public description: string
   ) {}
 }
 
@@ -27,7 +27,7 @@ async function registerUserAndGetToken(): Promise<string> {
 
     await user.save();
 
-    const token = jwt.sign({ id: user._id }, 'secret');
+    const token = jwt.sign({ id: user._id }, 'jwt_secret');
 
     return token;
   } catch (e) {
