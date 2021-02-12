@@ -46,3 +46,24 @@ describe('Add to cart endpoint', () => {
     done();
   });
 });
+
+describe('get cart products endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+
+  test('Should response 401, NO TOKEN PROVIDED', async (done) => {
+    const res = await req(app).get('/cart/get').set('api_key', API_KEY);
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO TOKEN PROVIDED');
+    done();
+  });
+
+  test('Should response 200, EVERYTHING OK', async (done) => {
+    const res = await req(app).get('/cart/get').set('api_key', API_KEY).set('authorization', token);
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('OK');
+    done();
+  });
+});

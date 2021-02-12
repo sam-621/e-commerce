@@ -23,7 +23,7 @@ const getCartProductsController: IControllerWithToken = async (req, res, next) =
   const { data, msg, statusCode } = await cart.getCartProducts(req.user.id);
 
   return res.status(statusCode).json({
-    msg,
+    message: msg,
     data,
   });
 };

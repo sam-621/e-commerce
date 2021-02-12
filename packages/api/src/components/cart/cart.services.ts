@@ -27,6 +27,8 @@ class Cart {
         statusCode: 200,
       };
     } catch (e) {
+      console.log(e);
+
       return {
         data: null,
         msg: 'INTERNAL SERVER ERROR',
@@ -45,6 +47,8 @@ class Cart {
         statusCode: 200,
       };
     } catch (e) {
+      console.log(e);
+
       return {
         data: null,
         msg: 'INTERNAL SERVER ERROR',
