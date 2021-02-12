@@ -1,3 +1,5 @@
+import { SetStateAction } from 'react';
+
 interface IProduct {
   name: string;
   description: string;
@@ -10,4 +12,8 @@ interface ICartProducts {
   cart: IProduct[];
 }
 
-export { IProduct, ICartProducts };
+interface ICtxReturns {
+  setProductsCart?: SetStateAction<IProduct[]>;
+  productsCart: IProduct[];
+}
+export { IProduct, ICartProducts, ICtxReturns };

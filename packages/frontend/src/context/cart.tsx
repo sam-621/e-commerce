@@ -1,5 +1,5 @@
-import React, { ReactChild, useEffect, useState } from 'react';
-import { ICartProducts } from './interfaces';
+import React, { useEffect, useState } from 'react';
+import { IProduct } from './interfaces';
 import Cookie from 'universal-cookie';
 import AxiosInstance from '../utils/Axios';
 import { API_KEY } from '../config';
@@ -7,7 +7,7 @@ import { API_KEY } from '../config';
 const CartContext = React.createContext({});
 
 export function CartContextProvider({ children }: any) {
-  const [productsCart, setProductsCart] = useState<ICartProducts>({ _id: '', cart: [] });
+  const [productsCart, setProductsCart] = useState<IProduct[]>([]);
   const cookie = new Cookie();
 
   async function getCartProducts() {
@@ -20,7 +20,7 @@ export function CartContextProvider({ children }: any) {
       const res = await AxiosInstance.get('cart/get', { headers });
       console.log(res);
 
-      setProductsCart(res.data.data);
+      setProductsCart(res.data.data.cart);
     } catch (e) {
       console.log(e);
     }
