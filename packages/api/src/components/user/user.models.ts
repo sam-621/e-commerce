@@ -2,10 +2,10 @@ import { Schema, model } from 'mongoose';
 import { IUser } from './user.interface';
 
 const ProductSchema: Schema = new Schema({
-  productName: { required: true, type: String },
-  ProductDescription: { required: true, type: String },
-  productPrice: { required: true, type: Number },
-  productImage: { required: true, type: String },
+  name: { required: true, type: String },
+  description: { required: true, type: String },
+  price: { required: true, type: Number },
+  image: { required: true, type: String },
 });
 
 const userSchema: Schema = new Schema({

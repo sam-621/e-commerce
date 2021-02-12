@@ -1,9 +1,7 @@
 import { ObjectId } from 'mongoose';
 import { IProduct, IUser } from '../user/user.interface';
 import UserModel from '../user/user.models';
-import { User } from '../user/user.services';
 import { IAddToCartParams, ICartServiceRes } from './cart.interfaces';
-import { cartRouter } from './cart.routes';
 
 class Cart {
   public async addToCart(params: IAddToCartParams): Promise<ICartServiceRes> {
@@ -13,10 +11,10 @@ class Cart {
       const user: IUser = await UserModel.findById(buyerID);
 
       user.cart.push({
-        productName: name,
-        productPrice: price,
-        ProductDescription: description,
-        productImage: image,
+        name: name,
+        price: price,
+        description: description,
+        image: image,
       });
 
       await user.save();

@@ -10,9 +10,9 @@ const getProductsController: IControllerWithToken = (req, res, next) => {
 };
 
 const buyProductController: IControllerWithToken = async (req, res, next) => {
-  const { productName, productPrice, productImage, productDescription } = req.body;
+  const { name, price, description, image } = req.body;
 
-  const product = new Product(productName, productPrice, productDescription, productImage);
+  const product = new Product(name, price, description, image);
 
   const { data, msg, statusCode } = await product.buyProduct(req.user.id);
 

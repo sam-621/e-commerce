@@ -20,10 +20,10 @@ class Product {
       const user: IUser = await UserModel.findById(buyerID);
 
       user.productsBought.push({
-        productName: this.name,
-        productPrice: this.price,
-        ProductDescription: this.description,
-        productImage: this.image,
+        name: this.name,
+        price: this.price,
+        description: this.description,
+        image: this.image,
       });
 
       await user.save();
@@ -47,10 +47,10 @@ class Product {
       const user: IUser = await UserModel.findById(buyerID);
 
       user.cart.push({
-        productName: this.name,
-        productPrice: this.price,
-        ProductDescription: this.description,
-        productImage: this.image,
+        name: this.name,
+        price: this.price,
+        description: this.description,
+        image: this.image,
       });
 
       await user.save();

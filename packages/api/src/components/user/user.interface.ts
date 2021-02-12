@@ -3,10 +3,10 @@ import { Request, Response, NextFunction } from 'express';
 import { IPayload } from '../auth/auth.interfaces';
 
 export interface IProduct {
-  productName: string;
-  ProductDescription: string;
-  productPrice: number;
-  productImage: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
 }
 
 export interface IUser extends Document {
