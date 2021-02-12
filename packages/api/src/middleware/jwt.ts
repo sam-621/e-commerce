@@ -6,7 +6,7 @@ import { IUser } from '../components/user/user.interface';
 import { AuthServices } from '../components/auth/auth.services';
 import { IDecoded } from '../components/auth/auth.interfaces';
 
-function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
+async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   const token = req.headers['authorization'];
 
   if (!token) {
@@ -20,7 +20,7 @@ function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
     const authServices = new AuthServices();
     const decoded: IDecoded = authServices.verifyToken(token);
 
-    const user: IUser = UserModel.findById(decoded.id, '_id');
+    const user: IUser = await UserModel.findById(decoded.id, '_id');
 
     if (!user) {
       return res.status(401).json({
