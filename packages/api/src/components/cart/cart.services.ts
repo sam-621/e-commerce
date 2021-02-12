@@ -1,8 +1,11 @@
-import { IUser } from '../user/user.interface';
+import { ObjectId } from 'mongoose';
+import { IProduct, IUser } from '../user/user.interface';
 import UserModel from '../user/user.models';
+import { User } from '../user/user.services';
 import { IAddToCartParams, ICartServiceRes } from './cart.interfaces';
+import { cartRouter } from './cart.routes';
 
-class Product {
+class Cart {
   public async addToCart(params: IAddToCartParams): Promise<ICartServiceRes> {
     const { buyerID, description, image, name, price } = params;
 
@@ -31,6 +34,24 @@ class Product {
       };
     }
   }
+
+  public async getCartProducts(userID: ObjectId): Promise<ICartServiceRes> {
+    try {
+      const cartProducts: IProduct[] = await UserModel.findById(userID, 'cart');
+
+      return {
+        data: cartProducts,
+        msg: 'OK',
+        statusCode: 200,
+      };
+    } catch (e) {
+      return {
+        data: null,
+        msg: 'INTERNAL SERVER ERROR',
+        statusCode: 500,
+      };
+    }
+  }
 }
 
-export { Product };
+export { Cart };
