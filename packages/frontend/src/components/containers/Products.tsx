@@ -3,11 +3,11 @@ import '../../styles/containers/products.css';
 import AxiosInstance from '../../utils/Axios';
 import { Product } from '../molecules';
 import { Loader } from '../atoms';
-import { IProducts } from '../../hooks/hooks.interfaces';
+import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
 
 const Products = () => {
-  const [data, setData] = useState<Array<IProducts>>([]);
+  const [data, setData] = useState<Array<IProduct>>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   async function getProducts(): Promise<void> {
@@ -16,7 +16,6 @@ const Products = () => {
 
       const res = await AxiosInstance.get('/products');
       setData(res.data.data);
-
       setLoading(false);
     } catch (e) {
       const httpException = new HTTPException(e.message);
@@ -37,7 +36,7 @@ const Products = () => {
         <Loader border="5px" width="30px" height="30px" />
       ) : (
         <>
-          {data.map((prod: IProducts) => {
+          {data.map((prod: IProduct) => {
             return (
               <Product
                 key={prod.id}
@@ -45,7 +44,7 @@ const Products = () => {
                 id={prod.id}
                 description={prod.description}
                 price={prod.price}
-                title={prod.title}
+                name={prod.name}
               />
             );
           })}
