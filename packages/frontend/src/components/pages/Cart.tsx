@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { Nav } from '../containers/';
+import { Nav, CartContent } from '../containers/';
 
 const Cart = () => {
   return (
     <>
       <Nav />
+      <CartContent />
     </>
   );
 };
