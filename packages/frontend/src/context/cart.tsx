@@ -1,13 +1,13 @@
 import React, { ReactChild, useEffect, useState } from 'react';
-import { IProduct } from './interfaces';
+import { ICartProducts } from './interfaces';
 import Cookie from 'universal-cookie';
 import AxiosInstance from '../utils/Axios';
 import { API_KEY } from '../config';
 
 const CartContext = React.createContext({});
 
-export function CartContextProvider({ children }: { children: ReactChild }) {
-  const [productsCart, setProductsCart] = useState<IProduct[]>([]);
+export function CartContextProvider({ children }: any) {
+  const [productsCart, setProductsCart] = useState<ICartProducts>({ _id: '', cart: [] });
   const cookie = new Cookie();
 
   async function getCartProducts() {
@@ -27,8 +27,8 @@ export function CartContextProvider({ children }: { children: ReactChild }) {
   }
 
   useEffect(() => {
-    getCartProducts;
-  });
+    getCartProducts();
+  }, []);
 
   return (
     <CartContext.Provider value={{ productsCart, setProductsCart }}>
