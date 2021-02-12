@@ -17,8 +17,7 @@ export function CartContextProvider({ children }: any) {
     if (!token) return;
 
     try {
-      const res = await AxiosInstance.get('cart/get', { headers });
-      console.log(res);
+      const res = await AxiosInstance.get('/cart/get', { headers });
 
       setProductsCart(res.data.data.cart);
     } catch (e) {

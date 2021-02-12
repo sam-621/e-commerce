@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/molecules/product.css';
 
 import AddIcon from '../../img/add.svg';
 import { Link } from 'react-router-dom';
+import AxiosInstance from '../../utils/Axios';
+import { API_KEY } from '../../config';
+import Cookie from 'universal-cookie';
+import CartContext from '../../context/cart';
+import { ICtxReturns } from '../../context/interfaces';
 
 const Product = ({ description, image, price, name, id }: IProductProps) => {
-  function addToCart() {
-    console.log(`Product ${id} added to cart`);
+  const { productsCart, setProductsCart } = useContext(CartContext) as ICtxReturns;
+  async function addToCart() {
+    const cookie = new Cookie();
+    const token: string | null = cookie.get('token');
+    const headers = { api_key: API_KEY, authorization: token };
+    const data: IProductProps = { description, image, price, name };
+
+    try {
+      const res = await AxiosInstance.put('/cart/add', data, { headers });
+      console.log(res);
+      console.log(productsCart);
+
+      setProductsCart([...productsCart, data]);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
@@ -37,7 +56,7 @@ interface IProductProps {
   name: string;
   description: string;
   price: number;
-  id: number | any;
+  id?: number | any;
 }
 
 export default Product;

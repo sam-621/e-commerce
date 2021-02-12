@@ -10,7 +10,6 @@ import { ICtxReturns } from '../../context/interfaces';
 
 const Nav = () => {
   const { productsCart } = useContext(CartContext) as ICtxReturns;
-  console.log(productsCart);
 
   const cookie = new Cookies();
 
@@ -21,7 +20,7 @@ const Nav = () => {
       </div>
       <div className="Nav-actions">
         {cookie.get('token') ? (
-          <Link to="/home/cart" className="Nav-actions-cart">
+          <Link to="/cart" className="Nav-actions-cart">
             <img src={CartIcon} />
             <p>{productsCart.length}</p>
           </Link>

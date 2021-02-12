@@ -14,7 +14,7 @@ interface ICartProducts {
 }
 
 interface ICtxReturns {
-  setProductsCart?: SetStateAction<IProduct[]>;
-  productsCart: IProduct[];
+  setProductsCart?: any;
+  productsCart?: IProduct[];
 }
 export { IProduct, ICartProducts, ICtxReturns };
