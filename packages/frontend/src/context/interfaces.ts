@@ -1,7 +1,7 @@
 import { SetStateAction } from 'react';
 
 interface IProduct {
-  id?: string;
+  _id?: string;
   name: string;
   description: string;
   price: number;

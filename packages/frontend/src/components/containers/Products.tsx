@@ -37,11 +37,13 @@ const Products = () => {
       ) : (
         <>
           {data.map((prod: IProduct) => {
+            console.log(prod);
+
             return (
               <Product
-                key={prod.id}
+                key={prod._id}
                 image={prod.image}
-                id={prod.id}
+                id={prod._id}
                 description={prod.description}
                 price={prod.price}
                 name={prod.name}

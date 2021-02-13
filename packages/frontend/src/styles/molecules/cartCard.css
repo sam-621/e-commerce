@@ -1,0 +1,36 @@
+.CartCard {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 0 10px 0 0;
+}
+.CartCard-img {
+  width: 70%;
+}
+.CartCard-img img {
+  width: 100%;
+  height: 90px;
+  border-radius: 5px 5px 0 0;
+  object-fit: contain;
+}
+.CartCard-text {
+  display: flex;
+  height: 100%;
+}
+.CartCard-text-info {
+  align-self: center;
+}
+.CartCard-text-info h2 {
+  font-size: 16px;
+  margin: 0;
+}
+.CartCard-text-info p {
+  font-size: 12px;
+  margin: 0;
+}
+.CartCard-text-price {
+  width: 40px;
+}

@@ -1,18 +1,19 @@
 import React from 'react';
+import '../../styles/molecules/cartCard.css';
 
-const CartCard = ({ description, img, price, title }: ICartCard) => {
+const CartCard = ({ description, img, price, name }: ICartCard) => {
   return (
-    <article>
-      <div>
-        <img src={img} alt={title} />
+    <article className="CartCard">
+      <div className="CartCard-img">
+        <img src={img} alt={name} />
       </div>
-      <div>
-        <div>
-          <h2>{title}</h2>
+      <div className="CartCard-text">
+        <div className="CartCard-text-info">
+          <h2>{name}</h2>
           <p>{description}</p>
         </div>
-        <div>
-          <p>{price}</p>
+        <div className="CartCard-text-price">
+          <p>$ {price}</p>
         </div>
       </div>
     </article>
@@ -21,7 +22,7 @@ const CartCard = ({ description, img, price, title }: ICartCard) => {
 
 interface ICartCard {
   img: string;
-  title: string;
+  name: string;
   description: string;
   price: number;
 }
