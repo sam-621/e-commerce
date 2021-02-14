@@ -16,5 +16,6 @@ interface ICartProducts {
 interface ICtxReturns {
   setProductsCart?: any;
   productsCart?: IProduct[];
+  fetching?: boolean;
 }
 export { IProduct, ICartProducts, ICtxReturns };

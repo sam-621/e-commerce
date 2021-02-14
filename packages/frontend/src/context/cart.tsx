@@ -8,9 +8,11 @@ const CartContext = React.createContext({});
 
 export function CartContextProvider({ children }: any) {
   const [productsCart, setProductsCart] = useState<IProduct[]>([]);
+  const [fetching, setFetching] = useState<boolean>(false);
   const cookie = new Cookie();
 
   async function getCartProducts() {
+    setFetching(true);
     const token: string | null = cookie.get('token');
     const headers = { api_key: API_KEY, authorization: token };
 
@@ -20,8 +22,10 @@ export function CartContextProvider({ children }: any) {
       const res = await AxiosInstance.get('/cart/get', { headers });
 
       setProductsCart(res.data.data.cart);
+      setFetching(false);
     } catch (e) {
       console.log(e);
+      setFetching(false);
     }
   }
 
@@ -30,7 +34,7 @@ export function CartContextProvider({ children }: any) {
   }, []);
 
   return (
-    <CartContext.Provider value={{ productsCart, setProductsCart }}>
+    <CartContext.Provider value={{ productsCart, setProductsCart, fetching }}>
       {children}
     </CartContext.Provider>
   );
