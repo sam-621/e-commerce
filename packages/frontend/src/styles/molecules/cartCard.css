@@ -1,36 +1,46 @@
 .CartCard {
-  display: flex;
-  align-items: center;
+  display: grid;
+  /* justify-content: space-between; */
+  grid-template-columns: auto auto auto;
   background-color: white;
   border: 1px solid #c4c4c4;
-  box-sizing: border-box;
   border-radius: 5px;
-  padding: 0 10px 0 0;
 }
 .CartCard-img {
-  width: 70%;
+  /* width: 40%; */
+  display: flex;
+  justify-content: center;
 }
 .CartCard-img img {
-  width: 100%;
+  width: 100px;
   height: 90px;
   border-radius: 5px 5px 0 0;
   object-fit: contain;
 }
 .CartCard-text {
-  display: flex;
   height: 100%;
 }
-.CartCard-text-info {
-  align-self: center;
-}
-.CartCard-text-info h2 {
+.CartCard-text h2 {
   font-size: 16px;
-  margin: 0;
+  margin: 10px 0 0 0;
 }
-.CartCard-text-info p {
+.CartCard-text p {
   font-size: 12px;
   margin: 0;
 }
-.CartCard-text-price {
+.CardCard-remove {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: -40px;
+  right: 10px;
+  height: 40px;
+}
+.CardCard-remove button {
+  padding: 0;
+  height: 40px;
   width: 40px;
+  background-color: #d32626;
+  border: none;
+  border-radius: 5px;
 }

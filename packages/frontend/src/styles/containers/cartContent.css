@@ -1,4 +1,4 @@
-.CartContent {
+.CartContent-products {
   display: grid;
   grid-gap: 20px;
   margin: 0 10px;

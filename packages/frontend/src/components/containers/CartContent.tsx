@@ -10,17 +10,11 @@ const CartContent = () => {
 
   return (
     <main className="CartContent">
-      {productsCart.map((prod) => {
-        return (
-          <CartCard
-            key={prod._id}
-            description={prod.description}
-            img={prod.image}
-            name={prod.name}
-            price={prod.price}
-          />
-        );
-      })}
+      <div className="CartContent-products">
+        {productsCart.map((prod) => {
+          return <CartCard key={prod._id} img={prod.image} name={prod.name} price={prod.price} />;
+        })}
+      </div>
     </main>
   );
 };
