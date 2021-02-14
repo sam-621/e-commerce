@@ -50,6 +50,19 @@ class Cart {
       };
     }
   }
+
+  public async removeCartProduct(productID: ObjectId, userID: ObjectId): Promise<ICartServiceRes> {
+    try {
+      await UserModel.updateOne({ _id: userID }, { $pull: { cart: { _id: productID } } });
+
+      const cartProducts: IProduct[] = await UserModel.findById(userID, 'cart');
+
+      return { data: cartProducts, msg: 'PRODUCT REMOVED', statusCode: 200 };
+    } catch (e) {
+      console.log(e);
+      return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500 };
+    }
+  }
 }
 
 export { Cart };

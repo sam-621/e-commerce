@@ -28,4 +28,15 @@ const getCartProductsController: IControllerWithToken = async (req, res, next) =
   });
 };
 
-export { addToCartController, getCartProductsController };
+const removeCartProductController: IControllerWithToken = async (req, res, next) => {
+  const cart = new Cart();
+
+  const { data, msg, statusCode } = await cart.removeCartProduct(req.body.productID, req.user.id);
+
+  return res.status(statusCode).json({
+    message: msg,
+    data,
+  });
+};
+
+export { addToCartController, getCartProductsController, removeCartProductController };

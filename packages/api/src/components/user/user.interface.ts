@@ -1,8 +1,9 @@
-import { Document } from 'mongoose';
+import { Document, ObjectId } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 import { IPayload } from '../auth/auth.interfaces';
 
 export interface IProduct {
+  _id?: ObjectId;
   name: string;
   description: string;
   price: number;
