@@ -1,5 +1,32 @@
+.CartContent {
+  margin: 0 10px 50px 10px;
+}
 .CartContent-products {
   display: grid;
   grid-gap: 20px;
-  margin: 0 10px;
+  margin-bottom: 20px;
+}
+.CartContent-actions {
+  display: grid;
+  grid-gap: 10px;
+}
+.CartContent-actions button {
+  background-color: #d32626;
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+}
+.CartContent-actions a {
+  text-align: center;
+  text-decoration: none;
+  background-color: #2f80ed;
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
 }
