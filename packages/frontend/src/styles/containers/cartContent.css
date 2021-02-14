@@ -30,3 +30,19 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
 }
+
+@media screen and (min-width: 768px) {
+  .CartContent {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto;
+    margin: 0 100px 50px 100px;
+  }
+  .CartContent-products {
+    overflow-y: scroll;
+    height: 66vh;
+  }
+  .CartContent-actions {
+    height: 100px;
+  }
+}
