@@ -1,12 +1,21 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+import Cookie from 'universal-cookie';
 
 import { Nav, CartContent } from '../containers/';
 
 const Cart = () => {
+  const cookie = new Cookie();
   return (
     <>
-      <Nav />
-      <CartContent />
+      {cookie.get('token') ? (
+        <>
+          <Nav />
+          <CartContent />
+        </>
+      ) : (
+        <Redirect to="login" />
+      )}
     </>
   );
 };
