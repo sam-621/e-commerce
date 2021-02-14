@@ -13,7 +13,8 @@
   object-fit: contain;
 }
 .ProductForBuy-info {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
   padding-right: 5px;
@@ -31,4 +32,13 @@
 .ProductForBuy-info-price p {
   font-size: 1.4rem;
   color: #545454;
+}
+
+@media screen and (min-width: 768px) {
+  .ProductForBuy {
+    grid-template-columns: auto auto;
+  }
+  .ProductForBuy-img img {
+    height: 300px;
+  }
 }

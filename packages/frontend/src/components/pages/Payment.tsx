@@ -20,12 +20,12 @@ const Payment = () => {
           price={productsData[params.productID - 1].price}
           title={productsData[params.productID - 1].title}
         />
-        <PayPal
+        {/* <PayPal
           amount={productsData[params.productID - 1].price}
           description={productsData[params.productID - 1].description}
           image={productsData[params.productID - 1].image}
           name={productsData[params.productID - 1].title}
-        />
+        /> */}
       </section>
     </>
   );

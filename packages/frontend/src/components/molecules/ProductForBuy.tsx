@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../styles/molecules/productForBuy.css';
 
+import { Nav, PayPal } from '../containers';
+
 const ProductForBuy = ({ description, image, price, title, id }: IProductProps) => {
   return (
     <article className="ProductForBuy">
@@ -15,6 +17,7 @@ const ProductForBuy = ({ description, image, price, title, id }: IProductProps) 
         <div className="ProductForBuy-info-price">
           <p>$ {price}</p>
         </div>
+        <PayPal amount={price} description={description} image={image} name={title} />
       </div>
     </article>
   );
