@@ -1,5 +1,5 @@
 import { dbClose, dbConnection, dbConnectionAnCreateUser, clearDatabase } from './dbHandler';
-import { MockUser, MockProduct, registerUserAndGetToken } from './fakeData';
+import { MockUser, MockProduct, registerUserAndGetToken, addToCart } from './fakeData';
 
 export {
   dbConnection,
@@ -9,4 +9,5 @@ export {
   dbConnectionAnCreateUser,
   MockProduct,
   clearDatabase,
+  addToCart,
 };

@@ -1,5 +1,6 @@
 import UserModel from '../../src/components/user/user.models';
 import jwt from 'jsonwebtoken';
+import { IUser } from '../../src/components/user/user.interface';
 
 class MockUser {
   constructor(public username: string, public email: string, public password: string) {}
@@ -35,4 +36,28 @@ async function registerUserAndGetToken(): Promise<string> {
   }
 }
 
-export { MockUser, token, MockProduct, registerUserAndGetToken };
+async function addToCart(): Promise<IUser> {
+  try {
+    const user = new UserModel({
+      username: 'admin',
+      email: 'admin@gmail.com',
+      password: '123456',
+      cart: [
+        {
+          image: 'https://arepa.s3.amazonaws.com/camiseta.png',
+          name: 'Camiseta',
+          price: 25,
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+        },
+      ],
+    });
+
+    await user.save();
+
+    return user;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export { MockUser, token, MockProduct, registerUserAndGetToken, addToCart };

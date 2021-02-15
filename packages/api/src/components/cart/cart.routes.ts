@@ -13,6 +13,12 @@ router.put('/cart/add', jwtMiddleware, buyProductValidator, areWrongData, addToC
 
 router.get('/cart/get', jwtMiddleware, getCartProductsController);
 
-router.put('/cart/remove', jwtMiddleware, removeCartProductValidator, removeCartProductController);
+router.put(
+  '/cart/remove',
+  jwtMiddleware,
+  removeCartProductValidator,
+  areWrongData,
+  removeCartProductController
+);
 
 export { router as cartRouter };

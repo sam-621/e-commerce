@@ -7,7 +7,9 @@ import {
   registerUserAndGetToken,
   MockProduct,
   clearDatabase,
+  addToCart,
 } from '../utils/';
+import { IUser } from '../../src/components/user/user.interface';
 const app = new App(3000).App;
 
 describe('Add to cart endpoint', () => {
@@ -72,6 +74,54 @@ describe('get cart products endpoint', () => {
 
     expect(res.status).toBe(200);
     expect(res.body.message).toBe('OK');
+    done();
+  });
+});
+
+describe('Remove product cart endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+
+  test('Should response 401, NO TOKEN PROVIDED', async (done) => {
+    const res = await req(app).put('/cart/remove').set('api_key', API_KEY);
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO TOKEN PROVIDED');
+    done();
+  });
+
+  test('Should response 400, WRONG DATA SCHEMA', async (done) => {
+    const token: string = await registerUserAndGetToken();
+    const data = {
+      productID: '1',
+    };
+
+    const res = await req(app)
+      .put('/cart/remove')
+      .set('api_key', API_KEY)
+      .set('authorization', token)
+      .send(data);
+
+    expect(res.status).toBe(400);
+    expect(res.body.message).toBe('WRONG DATA SCHEMA');
+    done();
+  });
+
+  test('Should response 200, EVERYTHING OK', async (done) => {
+    const token: string = await registerUserAndGetToken();
+    const user: IUser = await addToCart();
+    const data = {
+      productID: user.cart[0]._id,
+    };
+
+    const res = await req(app)
+      .put('/cart/remove')
+      .set('api_key', API_KEY)
+      .set('authorization', token)
+      .send(data);
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('PRODUCT REMOVED');
     done();
   });
 });
