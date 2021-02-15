@@ -40,7 +40,7 @@
   }
   .CartContent-products {
     overflow-y: scroll;
-    height: 66vh;
+    max-height: 66vh;
   }
   .CartContent-actions {
     height: 100px;
