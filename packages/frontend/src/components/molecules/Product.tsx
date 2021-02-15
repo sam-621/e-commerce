@@ -19,13 +19,9 @@ const Product = ({ description, image, price, name, id }: IProductProps) => {
 
     try {
       const res = await AxiosInstance.put('/cart/add', data, { headers });
-      console.log(res);
-      console.log(productsCart);
 
-      setProductsCart([...productsCart, data]);
-    } catch (e) {
-      console.log(e);
-    }
+      setProductsCart(res.data.data);
+    } catch (e) {}
   }
 
   return (

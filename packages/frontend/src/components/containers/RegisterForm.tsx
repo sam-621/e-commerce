@@ -25,7 +25,6 @@ const RegisterForm = () => {
     try {
       const data = { username, email, password };
       const res = await axios.post(`${API_URI}/register`, data, { headers: { api_key: API_KEY } });
-      console.log(res);
 
       if (res.status === 201) {
         cookie.set('token', res.data.data);

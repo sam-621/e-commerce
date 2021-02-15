@@ -8,8 +8,7 @@ import { Link } from 'react-router-dom';
 import { Loader } from '../atoms';
 
 const CartContent = () => {
-  const { productsCart, fetching } = useContext(CartContext) as ICtxReturns;
-  console.log(productsCart);
+  const { productsCart, fetching, setProductsCart } = useContext(CartContext) as ICtxReturns;
 
   return (
     <main className="CartContent">
@@ -20,7 +19,14 @@ const CartContent = () => {
           <div className="CartContent-products">
             {productsCart.map((prod) => {
               return (
-                <CartCard key={prod._id} img={prod.image} name={prod.name} price={prod.price} />
+                <CartCard
+                  key={prod._id}
+                  img={prod.image}
+                  name={prod.name}
+                  price={prod.price}
+                  _id={prod._id}
+                  setProductsCart={setProductsCart}
+                />
               );
             })}
           </div>

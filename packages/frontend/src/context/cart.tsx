@@ -24,7 +24,6 @@ export function CartContextProvider({ children }: any) {
       setProductsCart(res.data.data.cart);
       setFetching(false);
     } catch (e) {
-      console.log(e);
       setFetching(false);
     }
   }

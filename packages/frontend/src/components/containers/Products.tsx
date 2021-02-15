@@ -37,8 +37,6 @@ const Products = () => {
       ) : (
         <>
           {data.map((prod: IProduct) => {
-            console.log(prod);
-
             return (
               <Product
                 key={prod._id}
