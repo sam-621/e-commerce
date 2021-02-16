@@ -32,7 +32,6 @@ const CartContent = () => {
           </div>
           <div className="CartContent-actions">
             <Link to="#">Buy all</Link>
-            <button>Remove all</button>
           </div>
         </>
       )}

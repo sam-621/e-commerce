@@ -11,9 +11,9 @@ import { ICtxReturns } from '../../context/interfaces';
 
 const Product = ({ description, image, price, name, id }: IProductProps) => {
   const { productsCart, setProductsCart } = useContext(CartContext) as ICtxReturns;
+  const cookie = new Cookie();
+  const token: string | null = cookie.get('token');
   async function addToCart() {
-    const cookie = new Cookie();
-    const token: string | null = cookie.get('token');
     const headers = { api_key: API_KEY, authorization: token };
     const data: IProductProps = { description, image, price, name };
 
@@ -38,9 +38,11 @@ const Product = ({ description, image, price, name, id }: IProductProps) => {
           <p>$ {price}</p>
         </div>
         <div className="Product-options-btn">
-          <button onClick={addToCart}>
-            <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
-          </button>
+          {token ? (
+            <button onClick={addToCart}>
+              <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
+            </button>
+          ) : null}
         </div>
       </div>
     </article>

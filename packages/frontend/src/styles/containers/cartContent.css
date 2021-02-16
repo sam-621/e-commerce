@@ -11,6 +11,7 @@
   grid-gap: 10px;
 }
 .CartContent-actions button {
+  cursor: pointer;
   background-color: #d32626;
   padding: 10px 0;
   border: none;
@@ -43,6 +44,6 @@
     max-height: 66vh;
   }
   .CartContent-actions {
-    height: 100px;
+    height: 40px;
   }
 }
