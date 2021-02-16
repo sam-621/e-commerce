@@ -8,7 +8,7 @@
     "start": "node ./dist/bundle.js",
     "dev": "NODE_ENV=dev nodemon ./src/index.ts",
     "test:app": "jest ./app/",
-    "test:routes": "jest ./routes/"
+    "test": "jest ./routes/"
   },
   "repository": {
     "type": "git",
