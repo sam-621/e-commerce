@@ -37,14 +37,10 @@ jobs:
 
       # install lerna
       - name: install global dependencies
-        run: npm install
-
-      # install dependencies for building and test the app
-      - name: install dependencies
-        run: npm run install:app
+        run: npm i lerna && npm run install:app
 
       - name: Build app
         run: npm run build:app
 
-      - name: run tests in api
-        run: cd packages/api && npm run test:routes
+      - name: run tests
+        run: npm run test:app
