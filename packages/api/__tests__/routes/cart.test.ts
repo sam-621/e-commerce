@@ -52,6 +52,7 @@ describe('Add to cart endpoint', () => {
 
     expect(res.status).toBe(200);
     expect(res.body.message).toBe('PRODUCT ADDED TO CART');
+    expect(res.body.data.length).toBe(1);
     done();
   });
 });
