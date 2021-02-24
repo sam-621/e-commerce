@@ -24,6 +24,7 @@ function cartReducer(state: IInitialState = initialState, action: IAction): IIni
       try {
         AxiosInstance.get('/cart/get', { headers }).then((res) => {
           state.cart = res.data.data.cart;
+          console.log(state);
           return state;
         });
         // setProductsCart(res.data.data.cart);
