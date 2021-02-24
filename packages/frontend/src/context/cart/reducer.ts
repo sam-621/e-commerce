@@ -8,7 +8,10 @@ const initialState: IInitialState = {
 function cartReducer(state: IInitialState = initialState, action: IAction): IInitialState {
   switch (action.type) {
     case ADD_TO_CART:
-      return state;
+      return {
+        ...state,
+        cart: state.cart.concat(action.data),
+      };
 
     case GET_CART:
       return {
