@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Dispatch, useContext } from 'react';
 import '../../styles/molecules/cartCard.css';
 import AxiosInstance from '../../utils/Axios';
 import { HTTPException } from '../../utils/HttpException';
@@ -7,9 +7,10 @@ import Cookie from 'universal-cookie';
 import { API_KEY } from '../../config';
 import CartContext from '../../context/cart/cart';
 import { removeFromCart } from '../../context/cart/actionsCreator';
+import { IAction, IInitialState } from '../../context/interfaces';
 
 const CartCard = ({ img, price, name, _id }: ICartCard) => {
-  const [state, dispatch] = useContext(CartContext) as any[];
+  const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const cookie = new Cookie();
 
   async function removeFromTheCart() {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Dispatch, useContext } from 'react';
 import '../../styles/molecules/product.css';
 
 import AddIcon from '../../img/add.svg';
@@ -7,11 +7,11 @@ import AxiosInstance from '../../utils/Axios';
 import { API_KEY } from '../../config';
 import Cookie from 'universal-cookie';
 import CartContext from '../../context/cart/cart';
-import { IProduct } from '../../context/interfaces';
+import { IAction, ICtxReturns, IInitialState, IProduct } from '../../context/interfaces';
 import { addToCartAction } from '../../context/cart/actionsCreator';
 
 const Product = ({ description, image, price, name, id }: IProductProps) => {
-  const [state, dispatch] = useContext(CartContext) as any[];
+  const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const cookie = new Cookie();
   const token: string | null = cookie.get('token');
   async function addToCart() {

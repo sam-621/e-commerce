@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, { Dispatch, useContext } from 'react';
 import '../../styles/containers/cartContent.css';
 
 import { CartCard } from '../molecules/';
 import CartContext from '../../context/cart/cart';
 import { Link } from 'react-router-dom';
+import { IAction, IInitialState } from '../../context/interfaces';
 
 const CartContent = () => {
-  const [state] = useContext(CartContext) as any[];
+  const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
 
   return (
     <main className="CartContent">

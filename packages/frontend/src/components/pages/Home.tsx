@@ -1,15 +1,9 @@
-import React, { useContext } from 'react';
-import { addToCartAction, getCartProducts } from '../../context/cart/actionsCreator';
-import CartContext from '../../context/cart/cart';
+import React from 'react';
 
 // import { Searcher } from '../molecules';
 import { Products, Nav } from '../containers';
 
 const Home = () => {
-  // const [state, dispatch] = useContext(CartContext) as any[];
-  // dispatch(getCartProducts());
-  // console.log(state);
-
   return (
     <>
       <Nav />
