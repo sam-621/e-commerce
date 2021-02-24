@@ -1,5 +1,5 @@
-import { IProduct } from '../interfaces';
-import { ADD_TO_CART } from './actions';
+import { IAction, IProduct } from '../interfaces';
+import { ADD_TO_CART, GET_CART } from './actions';
 
 function addToCartAction(product: IProduct) {
   return {
@@ -8,4 +8,11 @@ function addToCartAction(product: IProduct) {
   };
 }
 
-export { addToCartAction };
+function getCartProducts(): IAction {
+  return {
+    type: GET_CART,
+    data: null,
+  };
+}
+
+export { addToCartAction, getCartProducts };

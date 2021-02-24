@@ -18,4 +18,14 @@ interface ICtxReturns {
   productsCart?: IProduct[];
   fetching?: boolean;
 }
-export { IProduct, ICartProducts, ICtxReturns };
+
+interface IInitialState {
+  cart: IProduct[];
+}
+
+interface IAction {
+  type: string;
+  data: IProduct | null;
+}
+
+export { IProduct, ICartProducts, ICtxReturns, IInitialState, IAction };

@@ -1,4 +1,4 @@
-import { IProduct } from '../interfaces';
+import { IAction, IInitialState, IProduct } from '../interfaces';
 import { ADD_TO_CART } from './actions';
 
 const initialState: IInitialState = {
@@ -12,13 +12,4 @@ function cartReducer(state: IInitialState = initialState, action: IAction) {
     default:
       return state;
   }
-}
-
-interface IInitialState {
-  cart: IProduct[];
-}
-
-interface IAction {
-  type: string;
-  data: IProduct;
 }
