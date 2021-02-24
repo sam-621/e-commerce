@@ -15,6 +15,11 @@ export function CartContextProvider({ children }: any) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   useEffect(() => {
+    if (!token) {
+      dispatch(getCartProducts());
+      return;
+    }
+
     AxiosInstance.get('/cart/get', { headers }).then((res) => {
       dispatch(getCartProducts(res.data.data.cart));
     });
