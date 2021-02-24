@@ -9,7 +9,8 @@ import CartContext from '../../context/cart/cart';
 import { ICtxReturns } from '../../context/interfaces';
 
 const Nav = () => {
-  const { productsCart } = useContext(CartContext) as ICtxReturns;
+  const [state] = useContext(CartContext) as any[];
+  console.log(state);
 
   const cookie = new Cookies();
 
@@ -22,7 +23,7 @@ const Nav = () => {
         {cookie.get('token') ? (
           <Link to="/cart" className="Nav-actions-cart">
             <img src={CartIcon} />
-            <p>{productsCart.length}</p>
+            <p>{state.cart.length}</p>
           </Link>
         ) : (
           <Link to="/register" className="Nav-registerLink">
