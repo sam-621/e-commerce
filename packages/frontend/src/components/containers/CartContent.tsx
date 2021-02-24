@@ -3,7 +3,7 @@ import '../../styles/containers/cartContent.css';
 import { ICtxReturns } from '../../context/interfaces';
 
 import { CartCard } from '../molecules/';
-import CartContext from '../../context/cart';
+import CartContext from '../../context/cart/cart';
 import { Link } from 'react-router-dom';
 import { Loader } from '../atoms';
 

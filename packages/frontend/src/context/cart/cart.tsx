@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { IProduct } from './interfaces';
+import { IProduct } from '../interfaces';
 import Cookie from 'universal-cookie';
-import AxiosInstance from '../utils/Axios';
-import { API_KEY } from '../config';
+import AxiosInstance from '../../utils/Axios';
+import { API_KEY } from '../../config';
 
 const CartContext = React.createContext({});
 

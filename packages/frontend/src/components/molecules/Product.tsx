@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import AxiosInstance from '../../utils/Axios';
 import { API_KEY } from '../../config';
 import Cookie from 'universal-cookie';
-import CartContext from '../../context/cart';
+import CartContext from '../../context/cart/cart';
 import { ICtxReturns } from '../../context/interfaces';
 
 const Product = ({ description, image, price, name, id }: IProductProps) => {

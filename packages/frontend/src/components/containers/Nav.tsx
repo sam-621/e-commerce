@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 
 import UserIcon from '../../img/usericon.svg';
 import CartIcon from '../../img/cart.svg';
-import CartContext from '../../context/cart';
+import CartContext from '../../context/cart/cart';
 import { ICtxReturns } from '../../context/interfaces';
 
 const Nav = () => {
