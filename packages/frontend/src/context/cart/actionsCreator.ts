@@ -8,10 +8,10 @@ function addToCartAction(product: IProduct) {
   };
 }
 
-function getCartProducts(): IAction {
+function getCartProducts(products: IProduct[]): IAction {
   return {
     type: GET_CART,
-    data: null,
+    data: products,
   };
 }
 

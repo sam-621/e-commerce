@@ -10,7 +10,7 @@ import { ICtxReturns } from '../../context/interfaces';
 
 const Nav = () => {
   const [state] = useContext(CartContext) as any[];
-  console.log(state);
+  // console.log(state);
 
   const cookie = new Cookies();
 

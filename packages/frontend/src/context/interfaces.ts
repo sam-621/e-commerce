@@ -25,7 +25,7 @@ interface IInitialState {
 
 interface IAction {
   type: string;
-  data: IProduct | null;
+  data: IProduct[] | null;
 }
 
 export { IProduct, ICartProducts, ICtxReturns, IInitialState, IAction };

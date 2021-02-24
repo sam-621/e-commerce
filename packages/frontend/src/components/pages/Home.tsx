@@ -6,8 +6,9 @@ import CartContext from '../../context/cart/cart';
 import { Products, Nav } from '../containers';
 
 const Home = () => {
-  const [state, dispatch] = useContext(CartContext) as any[];
-  dispatch(getCartProducts());
+  // const [state, dispatch] = useContext(CartContext) as any[];
+  // dispatch(getCartProducts());
+  // console.log(state);
 
   return (
     <>
