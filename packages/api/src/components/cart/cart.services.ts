@@ -20,7 +20,7 @@ class Cart {
       await user.save();
 
       return {
-        data: user.cart,
+        data: user.cart[user.cart.length - 1],
         msg: 'PRODUCT ADDED TO CART',
         statusCode: 200,
       };
