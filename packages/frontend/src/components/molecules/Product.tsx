@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Dispatch, useContext } from 'react';
 import '../../styles/molecules/product.css';
 
 import AddIcon from '../../img/add.svg';
@@ -6,21 +6,22 @@ import { Link } from 'react-router-dom';
 import AxiosInstance from '../../utils/Axios';
 import { API_KEY } from '../../config';
 import Cookie from 'universal-cookie';
-import CartContext from '../../context/cart';
-import { ICtxReturns } from '../../context/interfaces';
+import CartContext from '../../context/cart/cart';
+import { IAction, ICtxReturns, IInitialState, IProduct } from '../../context/interfaces';
+import { addToCartAction } from '../../context/cart/actionsCreator';
 
 const Product = ({ description, image, price, name, id }: IProductProps) => {
-  const { productsCart, setProductsCart } = useContext(CartContext) as ICtxReturns;
+  const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const cookie = new Cookie();
   const token: string | null = cookie.get('token');
   async function addToCart() {
     const headers = { api_key: API_KEY, authorization: token };
-    const data: IProductProps = { description, image, price, name };
+    const data: IProduct = { description, image, price, name, _id: id };
 
     try {
-      const res = await AxiosInstance.put('/cart/add', data, { headers });
-
-      setProductsCart(res.data.data);
+      AxiosInstance.put('/cart/add', data, { headers }).then((res) => {
+        dispatch(addToCartAction(res.data.data));
+      });
     } catch (e) {}
   }
 

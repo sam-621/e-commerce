@@ -10,7 +10,7 @@ export interface IAddToCartParams {
 }
 
 export interface ICartServiceRes {
-  data: null | IProduct[];
+  data: null | IProduct[] | IProduct;
   msg: string;
   statusCode: number;
 }

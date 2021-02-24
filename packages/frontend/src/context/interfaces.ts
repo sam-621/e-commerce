@@ -1,4 +1,4 @@
-import { SetStateAction } from 'react';
+import { Dispatch, DispatchWithoutAction, SetStateAction } from 'react';
 
 interface IProduct {
   _id?: string;
@@ -14,8 +14,17 @@ interface ICartProducts {
 }
 
 interface ICtxReturns {
-  setProductsCart?: any;
-  productsCart?: IProduct[];
-  fetching?: boolean;
+  state: IInitialState;
+  dispatcher: Dispatch<IAction>;
 }
-export { IProduct, ICartProducts, ICtxReturns };
+
+interface IInitialState {
+  cart: IProduct[];
+}
+
+interface IAction {
+  type: string;
+  data: IProduct[] | IProduct | string;
+}
+
+export { IProduct, ICartProducts, ICtxReturns, IInitialState, IAction };
