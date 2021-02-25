@@ -10,7 +10,7 @@ class MockProduct {
   constructor(
     public image: string,
     public name: string,
-    public price: number,
+    public price: number | string,
     public description: string
   ) {}
 }

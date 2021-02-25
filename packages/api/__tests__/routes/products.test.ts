@@ -35,19 +35,21 @@ describe('Buy a product endpoint', () => {
     done();
   });
 
-  // test('Should response 400, WRONG DATA SCHEMA', async (done) => {
-  //   const token: string = await registerUserAndGetToken();
-  //   const mockProduct = new MockProduct('', 'product', 25, 'description');
-  //   const res = await req(app)
-  //     .put('/products/buy')
-  //     .set('api_key', API_KEY)
-  //     .set('authorization', token)
-  //     .send(mockProduct);
+  test('Should response 400, WRONG DATA SCHEMA', async (done) => {
+    const token: string = await registerUserAndGetToken();
+    const mockProduct1 = new MockProduct('image url1', 'product1', 251, 'description1');
+    const mockProduct2 = new MockProduct('image url2', 'product2', '252', 'description2');
+    const mockData = [mockProduct1, mockProduct2];
+    const res = await req(app)
+      .put('/products/buy')
+      .set('api_key', API_KEY)
+      .set('authorization', token)
+      .send(mockData);
 
-  //   expect(res.status).toBe(400);
-  //   expect(res.body.message).toBe('WRONG DATA SCHEMA');
-  //   done();
-  // });
+    expect(res.status).toBe(400);
+    expect(res.body.message).toBe('WRONG DATA SCHEMA');
+    done();
+  });
 
   test('Should response 200, EVERYTHING OK', async (done) => {
     const token: string = await registerUserAndGetToken();
