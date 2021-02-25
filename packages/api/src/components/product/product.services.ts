@@ -1,30 +1,13 @@
 import { ObjectId } from 'mongoose';
-import { IUser } from '../user/user.interface';
+import { IProduct, IUser } from '../user/user.interface';
 import UserModel from '../user/user.models';
 
 class Product {
-  private readonly name: string;
-  private readonly price: number;
-  private readonly description: string;
-  private readonly image: string;
-
-  constructor(name: string, price: number, description: string, image: string) {
-    this.name = name;
-    this.price = price;
-    this.description = description;
-    this.image = image;
-  }
-
-  public async buyProduct(buyerID: ObjectId) {
+  public async buyProduct(buyerID: ObjectId, products: IProduct[]) {
     try {
       const user: IUser = await UserModel.findById(buyerID);
 
-      user.productsBought.push({
-        name: this.name,
-        price: this.price,
-        description: this.description,
-        image: this.image,
-      });
+      user.productsBought = user.productsBought.concat(products);
 
       await user.save();
 
@@ -42,16 +25,11 @@ class Product {
     }
   }
 
-  public async addToCart(buyerID: ObjectId) {
+  public async addToCart(buyerID: ObjectId, product: IProduct) {
     try {
       const user: IUser = await UserModel.findById(buyerID);
 
-      user.cart.push({
-        name: this.name,
-        price: this.price,
-        description: this.description,
-        image: this.image,
-      });
+      user.cart.push(product);
 
       await user.save();
 

@@ -7,9 +7,9 @@ const addToCartController: IControllerWithToken = async (req, res, next) => {
 
   const params: IAddToCartParams = { ...dto, buyerID: req.user.id };
 
-  const product = new Cart();
+  const cart = new Cart();
 
-  const { data, msg, statusCode } = await product.addToCart(params);
+  const { data, msg, statusCode } = await cart.addToCart(params);
 
   return res.status(statusCode).json({
     data: data,
