@@ -51,3 +51,5 @@ async function propertiesAreCorrect(arr: IProduct[]): Promise<boolean> {
 
   return isOk;
 }
+
+export default isAnArray;

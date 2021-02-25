@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import { jwtMiddleware, areWrongData } from '../../middleware/';
+import { jwtMiddleware, isAnArray } from '../../middleware/';
 const router = Router();
 import { getProductsController, buyProductController } from './product.controllers';
-import { buyProductValidator } from './product.validators';
 
 router.get('/products', getProductsController);
 
-router.put('/products/buy', jwtMiddleware, buyProductController);
-// buyProductValidator, areWrongData,
+router.put('/products/buy', jwtMiddleware, isAnArray, buyProductController);
 
 export { router as productRouter };
