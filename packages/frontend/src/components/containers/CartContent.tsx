@@ -29,7 +29,6 @@ const CartContent = () => {
           <Link to="#">Buy all</Link>
         </div>
       </>
-      )
     </main>
   );
 };

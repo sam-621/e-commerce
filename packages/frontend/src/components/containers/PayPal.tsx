@@ -30,12 +30,14 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
     setLoading(false);
     if (details.status === 'COMPLETED' && cookie.get('token')) {
       try {
-        const data = {
-          productName: name,
-          productPrice: amount,
-          productImage: image,
-          productDescription: description,
-        };
+        const data = [
+          {
+            name: name,
+            price: amount,
+            image: image,
+            description: description,
+          },
+        ];
         const res = await axios.put(`${API_URI}/products/buy`, data, {
           headers: { api_key: API_KEY, authorization: cookie.get('token') },
         });
