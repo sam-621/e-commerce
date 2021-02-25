@@ -4,6 +4,7 @@ import cors from 'cors';
 import { apiKey, handlerErrors } from './middleware';
 import { MODE } from './config';
 import { router } from './router';
+import expressValidator from 'express-validator';
 
 class server {
   public App: Application;
