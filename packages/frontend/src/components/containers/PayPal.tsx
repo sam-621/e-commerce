@@ -15,10 +15,10 @@ const PayPal = ({ products }: IPayPalProps) => {
   const units = products.map((prod) => {
     amount += prod.price;
     return {
-      description: products[0].description,
+      description: prod.description,
       amount: {
         currency_code: 'MXN',
-        value: products[0].price,
+        value: prod.price,
       },
     };
   });
@@ -35,14 +35,7 @@ const PayPal = ({ products }: IPayPalProps) => {
     setLoading(false);
     if (details.status === 'COMPLETED' && cookie.get('token')) {
       try {
-        const data = [
-          {
-            name: products[0].name,
-            price: products[0].price,
-            image: products[0].image,
-            description: products[0].description,
-          },
-        ];
+        const data = products;
         const res = await axios.put(`${API_URI}/products/buy`, data, {
           headers: { api_key: API_KEY, authorization: cookie.get('token') },
         });
@@ -71,10 +64,10 @@ const PayPal = ({ products }: IPayPalProps) => {
       <div className="Pay-options-paypal">
         <PayPalButton
           options={{ clientId: clientId, currency: 'MXN' }}
-          // amount={amount}
+          amount={amount}
           createOrder={createOrder}
           onSuccess={onSuccess}
-          onError={() => console.log('err')}
+          onError={(e: any) => console.log(e)}
           style={{ layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay' }}
         />
       </div>

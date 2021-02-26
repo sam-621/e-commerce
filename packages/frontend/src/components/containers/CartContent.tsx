@@ -5,6 +5,7 @@ import { CartCard } from '../molecules/';
 import CartContext from '../../context/cart/cart';
 import { Link } from 'react-router-dom';
 import { IAction, IInitialState } from '../../context/interfaces';
+import PayPal from './PayPal';
 
 const CartContent = () => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
@@ -25,9 +26,7 @@ const CartContent = () => {
             );
           })}
         </div>
-        <div className="CartContent-actions">
-          <Link to="#">Buy all</Link>
-        </div>
+        {/* <div className="CartContent-actions"><PayPal products={state.cart} /></div> */}
       </>
     </main>
   );
