@@ -9,8 +9,6 @@ function addToCartAction(product: IProduct): IAction {
 }
 
 function getCartProducts(products: IProduct[] = []): IAction {
-  console.log(products);
-
   return {
     type: GET_CART,
     data: products,

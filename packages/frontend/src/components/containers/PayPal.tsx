@@ -5,24 +5,29 @@ import axios from 'axios';
 import Cookie from 'universal-cookie';
 import { API_KEY, API_URI, MODE } from '../../config';
 import { Loader } from '../atoms';
+import { IProduct } from '../../context/interfaces';
 
-const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
+const PayPal = ({ products }: IPayPalProps) => {
   const cookie = new Cookie();
   const clientId = MODE === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
   const [loading, setLoading] = useState(false);
+  let amount = 0;
+  const units = products.map((prod) => {
+    amount += prod.price;
+    return {
+      description: prod.description,
+      amount: {
+        currency_code: 'MXN',
+        value: prod.price,
+      },
+    };
+  });
+  console.log(units);
 
   function createOrder(data: any, actions: any) {
     setLoading(true);
     return actions.order.create({
-      purchase_units: [
-        {
-          description: description,
-          amount: {
-            currency_code: 'MXN',
-            value: amount,
-          },
-        },
-      ],
+      purchase_units: units,
     });
   }
 
@@ -30,14 +35,7 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
     setLoading(false);
     if (details.status === 'COMPLETED' && cookie.get('token')) {
       try {
-        const data = [
-          {
-            name: name,
-            price: amount,
-            image: image,
-            description: description,
-          },
-        ];
+        const data = products;
         const res = await axios.put(`${API_URI}/products/buy`, data, {
           headers: { api_key: API_KEY, authorization: cookie.get('token') },
         });
@@ -69,7 +67,7 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
           amount={amount}
           createOrder={createOrder}
           onSuccess={onSuccess}
-          onError={() => console.log('err')}
+          onError={(e: any) => console.log(e)}
           style={{ layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay' }}
         />
       </div>
@@ -78,10 +76,7 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
 };
 
 interface IPayPalProps {
-  name: string;
-  amount: number;
-  description: string;
-  image: string;
+  products: IProduct[];
 }
 
 export default PayPal;

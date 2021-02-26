@@ -8,12 +8,15 @@ import { API_KEY } from '../../config';
 import CartContext from '../../context/cart/cart';
 import { removeFromCart } from '../../context/cart/actionsCreator';
 import { IAction, IInitialState } from '../../context/interfaces';
+import { Link } from 'react-router-dom';
 
-const CartCard = ({ img, price, name, _id }: ICartCard) => {
+const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const cookie = new Cookie();
 
   async function removeFromTheCart() {
+    console.log(frontID);
+
     const headers = { api_key: API_KEY, authorization: cookie.get('token') };
     try {
       const res = await AxiosInstance.put('/cart/remove', { productID: _id }, { headers });
@@ -30,9 +33,9 @@ const CartCard = ({ img, price, name, _id }: ICartCard) => {
 
   return (
     <article className="CartCard">
-      <div className="CartCard-img">
+      <Link to={`/home/${frontID}`} className="CartCard-img">
         <img src={img} alt={name} />
-      </div>
+      </Link>
       <div className="CartCard-text">
         <h2>{name}</h2>
         <p>$ {price}</p>
@@ -47,6 +50,7 @@ const CartCard = ({ img, price, name, _id }: ICartCard) => {
 };
 
 interface ICartCard {
+  frontID: number;
   _id: string;
   img: string;
   name: string;

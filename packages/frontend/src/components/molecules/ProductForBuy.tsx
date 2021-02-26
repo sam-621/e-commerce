@@ -1,34 +1,31 @@
 import React from 'react';
+import { IProduct } from '../../context/interfaces';
 import '../../styles/molecules/productForBuy.css';
 
 import { Nav, PayPal } from '../containers';
 
-const ProductForBuy = ({ description, image, price, title, id }: IProductProps) => {
+const ProductForBuy = ({ products }: IProductProps) => {
   return (
     <article className="ProductForBuy">
       <div className="ProductForBuy-img">
-        <img src={image} alt={title} />
+        <img src={products[0].image} alt={products[0].name} />
       </div>
       <div className="ProductForBuy-info">
         <div className="ProductForBuy-info-text">
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <h2>{products[0].name}</h2>
+          <p>{products[0].description}</p>
         </div>
         <div className="ProductForBuy-info-price">
-          <p>$ {price}</p>
+          <p>$ {products[0].price}</p>
         </div>
-        <PayPal amount={price} description={description} image={image} name={title} />
+        <PayPal products={products} />
       </div>
     </article>
   );
 };
 
 interface IProductProps {
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-  id: number | any;
+  products: IProduct[];
 }
 
 export default ProductForBuy;
