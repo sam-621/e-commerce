@@ -11,19 +11,23 @@ const PayPal = ({ products }: IPayPalProps) => {
   const cookie = new Cookie();
   const clientId = MODE === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
   const [loading, setLoading] = useState(false);
+  let amount = 0;
+  const units = products.map((prod) => {
+    amount += prod.price;
+    return {
+      description: products[0].description,
+      amount: {
+        currency_code: 'MXN',
+        value: products[0].price,
+      },
+    };
+  });
+  console.log(units);
 
   function createOrder(data: any, actions: any) {
     setLoading(true);
     return actions.order.create({
-      purchase_units: [
-        {
-          description: products[0].description,
-          amount: {
-            currency_code: 'MXN',
-            value: products[0].price,
-          },
-        },
-      ],
+      purchase_units: units,
     });
   }
 
