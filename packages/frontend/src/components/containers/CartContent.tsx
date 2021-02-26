@@ -22,6 +22,7 @@ const CartContent = () => {
                 name={prod.name}
                 price={prod.price}
                 _id={prod._id}
+                frontID={prod.frontID}
               />
             );
           })}
