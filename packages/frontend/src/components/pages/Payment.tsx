@@ -8,24 +8,13 @@ import { useParams } from 'react-router-dom';
 
 const Payment = () => {
   const params = useParams<RouterParams>();
+  const product = [productsData[params.productID - 1]];
 
   return (
     <>
       <Nav />
       <section className="Payment-info">
-        <ProductForBuy
-          description={productsData[params.productID - 1].description}
-          id={productsData[params.productID - 1].id}
-          image={productsData[params.productID - 1].image}
-          price={productsData[params.productID - 1].price}
-          title={productsData[params.productID - 1].title}
-        />
-        {/* <PayPal
-          amount={productsData[params.productID - 1].price}
-          description={productsData[params.productID - 1].description}
-          image={productsData[params.productID - 1].image}
-          name={productsData[params.productID - 1].title}
-        /> */}
+        <ProductForBuy products={product} />
       </section>
     </>
   );

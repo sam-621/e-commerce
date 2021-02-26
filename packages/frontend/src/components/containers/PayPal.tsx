@@ -5,8 +5,9 @@ import axios from 'axios';
 import Cookie from 'universal-cookie';
 import { API_KEY, API_URI, MODE } from '../../config';
 import { Loader } from '../atoms';
+import { IProduct } from '../../context/interfaces';
 
-const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
+const PayPal = ({ products }: IPayPalProps) => {
   const cookie = new Cookie();
   const clientId = MODE === 'development' ? process.env.CLIENTID_DEV : process.env.CLIENTID_PROD;
   const [loading, setLoading] = useState(false);
@@ -16,10 +17,10 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
     return actions.order.create({
       purchase_units: [
         {
-          description: description,
+          description: products[0].description,
           amount: {
             currency_code: 'MXN',
-            value: amount,
+            value: products[0].price,
           },
         },
       ],
@@ -32,10 +33,10 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
       try {
         const data = [
           {
-            name: name,
-            price: amount,
-            image: image,
-            description: description,
+            name: products[0].name,
+            price: products[0].price,
+            image: products[0].image,
+            description: products[0].description,
           },
         ];
         const res = await axios.put(`${API_URI}/products/buy`, data, {
@@ -66,7 +67,7 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
       <div className="Pay-options-paypal">
         <PayPalButton
           options={{ clientId: clientId, currency: 'MXN' }}
-          amount={amount}
+          // amount={amount}
           createOrder={createOrder}
           onSuccess={onSuccess}
           onError={() => console.log('err')}
@@ -78,10 +79,7 @@ const PayPal = ({ amount, description, image, name }: IPayPalProps) => {
 };
 
 interface IPayPalProps {
-  name: string;
-  amount: number;
-  description: string;
-  image: string;
+  products: IProduct[];
 }
 
 export default PayPal;
