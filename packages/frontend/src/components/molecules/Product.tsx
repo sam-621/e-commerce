@@ -20,7 +20,8 @@ const Product = ({ description, image, price, name, id }: IProductProps) => {
 
     try {
       AxiosInstance.put('/cart/add', data, { headers }).then((res) => {
-        dispatch(addToCartAction(res.data.data));
+        const product = { ...res.data.data, frontID: id };
+        dispatch(addToCartAction(product));
       });
     } catch (e) {}
   }
