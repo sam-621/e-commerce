@@ -1,6 +1,7 @@
 import { Document, ObjectId } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 import { IPayload } from '../auth/auth.interfaces';
+import { IRequest } from '../../middleware/interfaces.middlewares';
 
 export interface IProduct {
   _id?: ObjectId;
@@ -19,7 +20,7 @@ export interface IUser extends Document {
 }
 
 export interface IController {
-  (req: Request, res: Response, next: NextFunction): Promise<Response>;
+  (req: IRequest, res: Response, next: NextFunction): Promise<Response>;
 }
 
 export interface IDataForToken extends IPayload {
