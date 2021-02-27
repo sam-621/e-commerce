@@ -31,8 +31,12 @@ const RegisterForm = () => {
         history.push('/home');
       }
     } catch (e) {
+      console.log(e.message);
+
       const httpException = new HTTPException(e.message);
       const message = httpException.getRegisterMessage();
+      console.log(message);
+
       alert(message);
     }
   }
