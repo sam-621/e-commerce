@@ -36,7 +36,7 @@ class AuthServices {
 
   public async getUser(userID: ObjectId): Promise<IGetUser> {
     try {
-      const user = await UserModel.findById(userID);
+      const user = await UserModel.findById(userID, 'email username cart productsBought');
 
       return {
         data: user,
