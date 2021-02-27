@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongoose';
 import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
-import { IDecoded, IPayload } from './auth.interfaces';
+import UserModel from '../user/user.models';
+import { IDecoded, IGetUser, IPayload } from './auth.interfaces';
 
 class AuthServices {
   public createToken(payload: IPayload): string {
@@ -31,6 +32,25 @@ class AuthServices {
     const tokenRefreshed: string = this.createToken(payload);
 
     return tokenRefreshed;
+  }
+
+  public async getUser(userID: ObjectId): Promise<IGetUser> {
+    try {
+      const user = await UserModel.findById(userID);
+
+      return {
+        data: user,
+        msg: 'OK',
+        err: null,
+      };
+    } catch (e) {
+      console.log(e);
+      return {
+        data: null,
+        msg: 'INTERNAL SERVER ERROR',
+        err: { msg: 'INTERNAL SERVER ERROR', statusCode: 500 },
+      };
+    }
   }
 }
 
