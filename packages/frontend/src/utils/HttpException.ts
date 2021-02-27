@@ -11,6 +11,9 @@ class HTTPException {
 
     switch (statusCode) {
       case 400:
+        message = 'Wrong data schema';
+        break;
+      case 401:
         message = 'Email already taken';
         break;
       case 500:
@@ -76,6 +79,8 @@ class HTTPException {
         statusCode = 404;
         break;
     }
+
+    console.log(statusCode);
 
     return statusCode;
   }
