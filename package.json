@@ -4,7 +4,7 @@
   "description": "an e-commerce",
   "main": "index.js",
   "scripts": {
-    "install:app": "lerna bootstrap",
+    "install:app": "npm install && lerna bootstrap",
     "build:app": "lerna run build",
     "start:app": "lerna run start",
     "dev:app": "lerna run dev",
