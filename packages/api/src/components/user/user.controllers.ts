@@ -59,13 +59,13 @@ const getUserData: IController = async (req, res, next) => {
 
   if (user.err) {
     return res.status(user.err.statusCode).json({
-      msg: user.err.msg,
+      message: user.err.msg,
       data: null,
     });
   }
 
   return res.status(200).json({
-    msg: user.msg,
+    message: user.msg,
     data: user.data,
   });
 };
