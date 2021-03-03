@@ -6,11 +6,10 @@ import Cookies from 'universal-cookie';
 import UserIcon from '../../img/usericon.svg';
 import CartIcon from '../../img/cart.svg';
 import CartContext from '../../context/cart/cart';
-import { IAction, ICtxReturns, IInitialState } from '../../context/interfaces';
+import { IAction, IInitialState } from '../../context/interfaces';
 
 const Nav = () => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
-  // console.log(state);
 
   const cookie = new Cookies();
 
@@ -21,10 +20,15 @@ const Nav = () => {
       </div>
       <div className="Nav-actions">
         {cookie.get('token') ? (
-          <Link to="/cart" className="Nav-actions-cart">
-            <img src={CartIcon} />
-            <p>{state.cart.length}</p>
-          </Link>
+          <>
+            <Link to="/user">
+              <img src={UserIcon} />
+            </Link>
+            <Link to="/cart" className="Nav-actions-cart">
+              <img src={CartIcon} />
+              <p>{state.cart.length}</p>
+            </Link>
+          </>
         ) : (
           <Link to="/register" className="Nav-registerLink">
             Register
