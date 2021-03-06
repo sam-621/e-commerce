@@ -10,7 +10,9 @@ const Home = () => {
   const cookie = new Cookies();
   const { isAuth, finished, token } = useAuth(cookie.get('token'));
 
-  cookie.set('token', token);
+  if (token) {
+    cookie.set('token', token);
+  }
 
   if (!finished) {
     return <Loader border="5px" width="30px" height="30px" />;

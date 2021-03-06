@@ -9,7 +9,7 @@ const useAuth: IUseAuth = (tokenArg) => {
   const [finished, setFinished] = useState<boolean>(false);
 
   if (!tokenArg) {
-    return { isAuth, finished, token };
+    return { isAuth, finished: true, token };
   }
 
   async function refreshToken(): Promise<void> {
@@ -31,8 +31,6 @@ const useAuth: IUseAuth = (tokenArg) => {
   }
 
   useEffect(() => {
-    console.log('mount in hook');
-
     refreshToken();
 
     return () => {
