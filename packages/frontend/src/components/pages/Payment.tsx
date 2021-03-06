@@ -8,14 +8,27 @@ import { ProductForBuy } from '../molecules';
 import { useParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../../hooks';
+import Cookies from 'universal-cookie';
+import { Loader } from '../atoms';
 
 const Payment = () => {
+  const cookies = new Cookies();
+  const { finished, isAuth, token } = useAuth(cookies.get('token'));
   const params = useParams<RouterParams>();
   const product = [productsData[params.productID - 1]];
 
+  if (token) {
+    cookies.set('token', token);
+  }
+
+  if (!finished) {
+    return <Loader border="5px" width="30px" height="30px" />;
+  }
+
   return (
     <>
-      <Nav />
+      <Nav isAuth={isAuth} />
       <section className="Payment-info">
         <ProductForBuy products={product} />
       </section>

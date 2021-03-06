@@ -18,6 +18,9 @@ class MockProduct {
 const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjYwMWViOTYxOTc1MWY2MDFhY2JjZGRlZiIsImlhdCI6MTYxMjYyNzM4OX0.iFQ_YmCY5VP7mGhnqic5DlyL7wBAziqeUUORduurhuU';
 
+const tokenExpired =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2FiZmFiMTI0ZmY1MDkzNTRkYzg3NyIsImlhdCI6MTYxNTA0NjU4MSwiZXhwIjoxNjE1MDQ2NTgxfQ.VekBYAaO4UXaOOQZlVRNfNxUup8tXmp9LB5Jc3glKdg';
+
 async function registerUserAndGetToken(): Promise<string> {
   try {
     const user = new UserModel({
@@ -60,4 +63,4 @@ async function addToCart(): Promise<IUser> {
   }
 }
 
-export { MockUser, token, MockProduct, registerUserAndGetToken, addToCart };
+export { MockUser, token, tokenExpired, MockProduct, registerUserAndGetToken, addToCart };

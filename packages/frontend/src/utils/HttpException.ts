@@ -80,8 +80,6 @@ class HTTPException {
         break;
     }
 
-    console.log(statusCode);
-
     return statusCode;
   }
 }
