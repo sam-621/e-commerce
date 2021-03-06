@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongoose';
 import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
-import { IDecoded, IPayload } from './auth.interfaces';
+import { IDecoded, IDecodedService, IPayload } from './auth.interfaces';
 
 class AuthServices {
   public createToken(payload: IPayload): string {
@@ -14,13 +14,20 @@ class AuthServices {
     return token;
   }
 
-  public verifyToken(token: string): IDecoded {
-    const decoded: IDecoded = jwt.verify(token, JWT_SECRET) as IDecoded;
+  public verifyToken(token: string): IDecodedService {
+    try {
+      const decoded: IDecoded = jwt.verify(token, JWT_SECRET) as IDecoded;
 
-    delete decoded.exp;
-    delete decoded.iat;
+      delete decoded.exp;
+      delete decoded.iat;
 
-    return decoded;
+      return { decoded, err: null };
+    } catch (e) {
+      if (e.message === 'jwt expired') {
+        return { decoded: null, err: { status: true, message: 'JWT HAS EXPIRED' } };
+      }
+      console.log(e);
+    }
   }
 
   public refreshToken(id: ObjectId): string {

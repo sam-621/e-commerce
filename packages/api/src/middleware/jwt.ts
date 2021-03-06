@@ -1,10 +1,9 @@
 import { Response, NextFunction } from 'express';
 import { IRequest } from './interfaces.middlewares';
-import { MODE } from '../config';
 import UserModel from '../components//user/user.models';
 import { IUser } from '../components/user/user.interface';
 import { AuthServices } from '../components/auth/auth.services';
-import { IDecoded } from '../components/auth/auth.interfaces';
+import { IDecoded, IDecodedService } from '../components/auth/auth.interfaces';
 
 async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   const token = req.headers['authorization'];
@@ -18,7 +17,14 @@ async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
 
   try {
     const authServices = new AuthServices();
-    const decoded: IDecoded = authServices.verifyToken(token);
+    const { decoded, err }: IDecodedService = authServices.verifyToken(token);
+
+    if (err.status) {
+      return res.status(400).json({
+        data: null,
+        message: err.message,
+      });
+    }
 
     const user: IUser = await UserModel.findById(decoded.id, '_id');
 
@@ -32,7 +38,7 @@ async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
     req.user = decoded as IDecoded;
     return next();
   } catch (err) {
-    MODE === 'dev' ? console.log(err) : null;
+    console.log(err);
 
     return res.status(500).json({
       statusCode: 500,

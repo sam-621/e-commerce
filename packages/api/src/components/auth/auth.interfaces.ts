@@ -9,3 +9,8 @@ export interface IDecoded {
 export interface IPayload {
   id: ObjectId;
 }
+
+export interface IDecodedService {
+  decoded: IDecoded;
+  err: { status: boolean; message: string };
+}
