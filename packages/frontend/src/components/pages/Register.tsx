@@ -5,7 +5,7 @@ import { RegisterForm, Nav } from '../containers';
 const Register = () => {
   return (
     <>
-      <Nav />
+      <Nav isAuth={false} />
       <RegisterForm />
     </>
   );

@@ -5,7 +5,7 @@ import { LoginForm, Nav } from '../containers/';
 const Login = () => {
   return (
     <>
-      <Nav />
+      <Nav isAuth={false} />
       <LoginForm />
     </>
   );

@@ -15,7 +15,7 @@ const Payment = () => {
 
   return (
     <>
-      <Nav />
+      <Nav isAuth={false} />
       <section className="Payment-info">
         <ProductForBuy products={product} />
       </section>

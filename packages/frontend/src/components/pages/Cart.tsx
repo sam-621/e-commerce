@@ -13,7 +13,7 @@ const Cart = () => {
     <>
       {cookie.get('token') ? (
         <>
-          <Nav />
+          <Nav isAuth={true} />
           <CartContent />
           <ToastContainer
             position="bottom-right"
