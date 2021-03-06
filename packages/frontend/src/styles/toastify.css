@@ -1,4 +1,5 @@
 .Toastify__toast--error,
-.Toastify__toast--success {
+.Toastify__toast--success,
+.Toastify__toast--warning {
   font-size: 1.6rem;
 }

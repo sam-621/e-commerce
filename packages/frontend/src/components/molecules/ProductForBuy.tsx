@@ -2,7 +2,7 @@ import React from 'react';
 import { IProduct } from '../../context/interfaces';
 import '../../styles/molecules/productForBuy.css';
 
-import { Nav, PayPal } from '../containers';
+import { PayPal } from '../containers';
 
 const ProductForBuy = ({ products }: IProductProps) => {
   return (

@@ -1,10 +1,13 @@
 import React from 'react';
 import '../../styles/pages/payment.css';
+import '../../styles/toastify.css';
 
-import { Nav, PayPal } from '../containers';
+import { Nav } from '../containers';
 import { productsData } from '../../products';
 import { ProductForBuy } from '../molecules';
 import { useParams } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Payment = () => {
   const params = useParams<RouterParams>();
@@ -16,6 +19,14 @@ const Payment = () => {
       <section className="Payment-info">
         <ProductForBuy products={product} />
       </section>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
     </>
   );
 };
