@@ -18,19 +18,9 @@ const Home = () => {
 
   return (
     <>
-      {isAuth ? (
-        <>
-          <Nav isAuth={isAuth} />
-          {/* <Searcher /> */}
-          <Products />
-        </>
-      ) : (
-        <>
-          <Nav isAuth={isAuth} />
-          {/* <Searcher /> */}
-          <Products />
-        </>
-      )}
+      <Nav isAuth={isAuth} />
+      {/* <Searcher /> */}
+      <Products />
     </>
   );
 };
