@@ -18,6 +18,10 @@ const Payment = () => {
   const params = useParams<RouterParams>();
   const product = [productsData[params.productID - 1]];
 
+  if (token) {
+    cookies.set('token', token);
+  }
+
   if (!finished) {
     return <Loader border="5px" width="30px" height="30px" />;
   }
