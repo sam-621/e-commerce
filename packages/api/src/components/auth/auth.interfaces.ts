@@ -12,5 +12,5 @@ export interface IPayload {
 
 export interface IDecodedService {
   decoded: IDecoded;
-  err: { status: boolean; message: string };
+  err: string;
 }

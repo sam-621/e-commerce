@@ -19,10 +19,10 @@ async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
     const authServices = new AuthServices();
     const { decoded, err }: IDecodedService = authServices.verifyToken(token);
 
-    if (err.status) {
+    if (err) {
       return res.status(400).json({
         data: null,
-        message: err.message,
+        message: err,
       });
     }
 

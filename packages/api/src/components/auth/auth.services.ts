@@ -24,7 +24,7 @@ class AuthServices {
       return { decoded, err: null };
     } catch (e) {
       if (e.message === 'jwt expired') {
-        return { decoded: null, err: { status: true, message: 'JWT HAS EXPIRED' } };
+        return { decoded: null, err: 'JWT HAS EXPIRED' };
       }
       console.log(e);
     }
