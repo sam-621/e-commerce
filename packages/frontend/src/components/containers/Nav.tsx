@@ -10,7 +10,6 @@ import { IAction, ICtxReturns, IInitialState } from '../../context/interfaces';
 
 const Nav = ({ isAuth }: { isAuth: boolean }) => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
-  // console.log(state);
 
   const cookie = new Cookies();
 

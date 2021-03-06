@@ -33,9 +33,9 @@ const useAuth: IUseAuth = (tokenArg) => {
   useEffect(() => {
     refreshToken();
 
-    return () => {
-      console.log('??');
-    };
+    // return () => {
+    //   console.log('??');
+    // };
   }, []);
 
   return { isAuth, finished, token };

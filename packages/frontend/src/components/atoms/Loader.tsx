@@ -2,8 +2,6 @@ import React from 'react';
 import '../../styles/atoms/loader.css';
 
 const Loader = ({ width = '20px', height = '20px', border = '5px' }: ILoaderProps) => {
-  console.log('loader :)');
-
   return (
     <div className="Loader-container">
       <div

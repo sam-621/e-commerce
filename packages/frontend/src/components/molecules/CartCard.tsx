@@ -16,8 +16,6 @@ const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
   const cookie = new Cookie();
 
   async function removeFromTheCart() {
-    console.log(frontID);
-
     const headers = { api_key: API_KEY, authorization: cookie.get('token') };
     try {
       const res = await AxiosInstance.put('/cart/remove', { productID: _id }, { headers });
