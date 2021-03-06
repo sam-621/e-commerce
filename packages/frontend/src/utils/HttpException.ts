@@ -30,7 +30,7 @@ class HTTPException {
 
     switch (statusCode) {
       case 400:
-        message = 'Wrong data schema';
+        message = 'Some of the data is incorrect';
         break;
       case 401:
         message = 'Wrong credentials';

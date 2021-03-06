@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import '../../styles/containers/registerForm.css';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Input } from '../atoms/';
 import { API_KEY, API_URI } from '../../config';
@@ -34,32 +36,47 @@ const LoginForm = () => {
     } catch (e) {
       const httpException = new HTTPException(e.message);
       const message = httpException.getLoginMessage();
-      alert(message);
+      toast.error(message);
     }
   }
 
   return (
-    <div className="RegisterForm-container">
-      <div className="RegisterForm">
-        <div className="RegisterForm-header">
-          <h1>Login</h1>
-        </div>
-        <form className="RegisterForm-form" onSubmit={login}>
-          <div className="RegisterForm-form-inputContainer">
-            <Input placeHolder="Email" setValue={setEmail} type="email" value={email} />
-            <Input placeHolder="Password" setValue={setPassword} type="password" value={password} />
+    <>
+      <div className="RegisterForm-container">
+        <div className="RegisterForm">
+          <div className="RegisterForm-header">
+            <h1>Login</h1>
           </div>
-          <div className="RegisterForm-form-submit">
-            <input type="submit" value="Login" />
+          <form className="RegisterForm-form" onSubmit={login}>
+            <div className="RegisterForm-form-inputContainer">
+              <Input placeHolder="Email" setValue={setEmail} type="email" value={email} />
+              <Input
+                placeHolder="Password"
+                setValue={setPassword}
+                type="password"
+                value={password}
+              />
+            </div>
+            <div className="RegisterForm-form-submit">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+          <div className="RegisterForm-footer">
+            <p>
+              Don't you have an account? <Link to="/register">Register</Link>
+            </p>
           </div>
-        </form>
-        <div className="RegisterForm-footer">
-          <p>
-            Don't you have an account? <Link to="/register">Register</Link>
-          </p>
         </div>
       </div>
-    </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
+    </>
   );
 };
 
