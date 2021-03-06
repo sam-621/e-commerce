@@ -9,6 +9,7 @@ import CartContext from '../../context/cart/cart';
 import { removeFromCart } from '../../context/cart/actionsCreator';
 import { IAction, IInitialState } from '../../context/interfaces';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
@@ -23,11 +24,12 @@ const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
 
       if (res.status === 200) {
         dispatch(removeFromCart(_id));
+        toast.success('Product removed successfully');
       }
     } catch (e) {
       const httpException = new HTTPException(e.message);
       const msg: string = httpException.getProductsMessage();
-      alert(msg);
+      toast.error(msg);
     }
   }
 
