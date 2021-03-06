@@ -6,12 +6,22 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Nav, CartContent } from '../containers/';
+import { useAuth } from '../../hooks';
+import { Loader } from '../atoms';
 
 const Cart = () => {
   const cookie = new Cookie();
+  const { finished, isAuth, token } = useAuth(cookie.get('token'));
+
+  cookie.set('token', token);
+
+  if (!finished) {
+    return <Loader border="5px" width="30px" height="30px" />;
+  }
+
   return (
     <>
-      {cookie.get('token') ? (
+      {isAuth ? (
         <>
           <Nav isAuth={true} />
           <CartContent />
