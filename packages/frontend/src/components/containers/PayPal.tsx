@@ -3,6 +3,8 @@ import '../../styles/containers/paypal.css';
 import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
+import { toast } from 'react-toastify';
+
 import { API_KEY, API_URI, MODE } from '../../config';
 import { Loader } from '../atoms';
 import { IProduct } from '../../context/interfaces';
@@ -41,13 +43,15 @@ const PayPal = ({ products }: IPayPalProps) => {
         });
 
         if (res.status === 200) {
-          alert('your pay has been completed, you can verify it in your PayPal account');
+          toast.success('your pay has been completed, you can verify it in your PayPal account');
         }
       } catch (e) {
-        alert('something went wrong in the server, but your pay was completed successfully');
+        toast.warning(
+          'something went wrong in the server, but your pay was completed successfully'
+        );
       }
     } else if (details.status === 'COMPLETED') {
-      alert('your pay has been completed, you can verify it in your PayPal account');
+      toast.success('your pay has been completed, you can verify it in your PayPal account');
     }
   }
 

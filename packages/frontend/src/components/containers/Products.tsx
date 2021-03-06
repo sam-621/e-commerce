@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/containers/products.css';
+import '../../styles/toastify.css';
+
 import AxiosInstance from '../../utils/Axios';
 import { Product } from '../molecules';
 import { Loader } from '../atoms';
 import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Products = () => {
   const [data, setData] = useState<Array<IProduct>>([]);
@@ -50,6 +54,14 @@ const Products = () => {
           })}
         </>
       )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
     </main>
   );
 };

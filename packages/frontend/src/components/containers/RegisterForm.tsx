@@ -1,7 +1,10 @@
 import React, { useState, SyntheticEvent } from 'react';
 import '../../styles/containers/registerForm.css';
+import '../../styles/toastify.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Input } from '../atoms/';
 import { API_KEY, API_URI } from '../../config/';
@@ -31,39 +34,51 @@ const RegisterForm = () => {
         history.push('/home');
       }
     } catch (e) {
-      console.log(e.message);
-
       const httpException = new HTTPException(e.message);
       const message = httpException.getRegisterMessage();
-      console.log(message);
 
-      alert(message);
+      toast.error(message);
     }
   }
 
   return (
-    <div className="RegisterForm-container">
-      <div className="RegisterForm">
-        <div className="RegisterForm-header">
-          <h1>Create an account</h1>
-        </div>
-        <form className="RegisterForm-form" onSubmit={handleSubmit}>
-          <div className="RegisterForm-form-inputContainer">
-            <Input placeHolder="Username" setValue={setUsername} type="text" value={username} />
-            <Input placeHolder="Email" setValue={setEmail} type="email" value={email} />
-            <Input placeHolder="Password" setValue={setPassword} type="password" value={password} />
+    <>
+      <div className="RegisterForm-container">
+        <div className="RegisterForm">
+          <div className="RegisterForm-header">
+            <h1>Create an account</h1>
           </div>
-          <div className="RegisterForm-form-submit">
-            <input type="submit" value="Register" />
+          <form className="RegisterForm-form" onSubmit={handleSubmit}>
+            <div className="RegisterForm-form-inputContainer">
+              <Input placeHolder="Username" setValue={setUsername} type="text" value={username} />
+              <Input placeHolder="Email" setValue={setEmail} type="email" value={email} />
+              <Input
+                placeHolder="Password"
+                setValue={setPassword}
+                type="password"
+                value={password}
+              />
+            </div>
+            <div className="RegisterForm-form-submit">
+              <input type="submit" value="Register" />
+            </div>
+          </form>
+          <div className="RegisterForm-footer">
+            <p>
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
           </div>
-        </form>
-        <div className="RegisterForm-footer">
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
         </div>
       </div>
-    </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
+    </>
   );
 };
 

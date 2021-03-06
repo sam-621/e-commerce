@@ -9,11 +9,13 @@ import Cookie from 'universal-cookie';
 import CartContext from '../../context/cart/cart';
 import { IAction, ICtxReturns, IInitialState, IProduct } from '../../context/interfaces';
 import { addToCartAction } from '../../context/cart/actionsCreator';
+import { toast } from 'react-toastify';
 
 const Product = ({ description, image, price, name, id }: IProductProps) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const cookie = new Cookie();
   const token: string | null = cookie.get('token');
+
   async function addToCart() {
     const headers = { api_key: API_KEY, authorization: token };
     const data: IProduct = { description, image, price, name, _id: id };
@@ -22,6 +24,7 @@ const Product = ({ description, image, price, name, id }: IProductProps) => {
       AxiosInstance.put('/cart/add', data, { headers }).then((res) => {
         const product = { ...res.data.data, frontID: id };
         dispatch(addToCartAction(product));
+        toast.success('Added to cart');
       });
     } catch (e) {}
   }
