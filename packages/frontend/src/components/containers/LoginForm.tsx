@@ -1,6 +1,7 @@
 import React, { useState, SyntheticEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../../styles/containers/registerForm.css';
+import '../../styles/toastify.css';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
