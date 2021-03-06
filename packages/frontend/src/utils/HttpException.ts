@@ -11,10 +11,10 @@ class HTTPException {
 
     switch (statusCode) {
       case 400:
-        message = 'Wrong data schema';
+        message = 'Some of the data is incorrect';
         break;
       case 401:
-        message = 'Email already taken';
+        message = 'There is already an account with that email';
         break;
       case 500:
         message = 'Something went wrong, try it later';
