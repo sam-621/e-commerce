@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/atoms/logOut.css';
 import Cookies from 'universal-cookie';
 
 const Logout = () => {
@@ -8,7 +9,7 @@ const Logout = () => {
   }
   return (
     <button className="LogOut" onClick={HandleLogOut}>
-      LogOut
+      Log out
     </button>
   );
 };
