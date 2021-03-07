@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { useAuth } from '../../hooks';
 import { Loader } from '../atoms';
-import { Nav } from '../containers/';
+import { Nav, UserForms } from '../containers/';
 
 const User = () => {
   const cookie = new Cookies();
@@ -22,7 +22,7 @@ const User = () => {
       {isAuth ? (
         <>
           <Nav isAuth={isAuth} />
-          <h1>User</h1>
+          <UserForms />
         </>
       ) : (
         <Redirect to="/login" />
