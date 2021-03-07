@@ -2,6 +2,7 @@ import { Schema, model } from 'mongoose';
 import { IUser } from './user.interface';
 
 const ProductSchema: Schema = new Schema({
+  frontID: { required: true, type: Number },
   name: { required: true, type: String },
   description: { required: true, type: String },
   price: { required: true, type: Number },

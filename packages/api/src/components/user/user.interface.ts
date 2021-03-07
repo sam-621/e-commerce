@@ -5,6 +5,7 @@ import { IRequest } from '../../middleware/interfaces.middlewares';
 
 export interface IProduct {
   _id?: ObjectId;
+  frontID: number;
   name: string;
   description: string;
   price: number;

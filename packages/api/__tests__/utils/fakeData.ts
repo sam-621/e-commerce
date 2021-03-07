@@ -8,6 +8,7 @@ class MockUser {
 
 class MockProduct {
   constructor(
+    public frontID: number,
     public image: string,
     public name: string,
     public price: number | string,
@@ -47,6 +48,7 @@ async function addToCart(): Promise<IUser> {
       password: '123456',
       cart: [
         {
+          frontID: 1,
           image: 'https://arepa.s3.amazonaws.com/camiseta.png',
           name: 'Camiseta',
           price: 25,
