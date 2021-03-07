@@ -1,12 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongoose';
 import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
-<<<<<<< HEAD
 import UserModel from '../user/user.models';
-import { IDecoded, IGetUser, IPayload } from './auth.interfaces';
-=======
-import { IDecoded, IDecodedService, IPayload } from './auth.interfaces';
->>>>>>> c38d002396a779bcc36cf36e296f985cda487f14
+import { IDecoded, IGetUser, IPayload, IDecodedService } from './auth.interfaces';
 
 class AuthServices {
   public createToken(payload: IPayload): string {
