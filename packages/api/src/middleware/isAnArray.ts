@@ -47,6 +47,11 @@ async function propertiesAreCorrect(arr: IProduct[]): Promise<boolean> {
       isOk = false;
       return;
     }
+
+    if (typeof arr[i].frontID !== 'number') {
+      isOk = false;
+      return;
+    }
   }
 
   return isOk;

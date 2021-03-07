@@ -5,12 +5,13 @@ import { IAddToCartParams, ICartServiceRes } from './cart.interfaces';
 
 class Cart {
   public async addToCart(params: IAddToCartParams): Promise<ICartServiceRes> {
-    const { buyerID, description, image, name, price } = params;
+    const { buyerID, description, image, name, price, frontID } = params;
 
     try {
       const user: IUser = await UserModel.findById(buyerID);
 
       user.cart.push({
+        frontID,
         name: name,
         price: price,
         description: description,
@@ -25,6 +26,8 @@ class Cart {
         statusCode: 200,
       };
     } catch (e) {
+      console.log(e);
+
       return {
         data: null,
         msg: 'INTERNAL SERVER ERROR',

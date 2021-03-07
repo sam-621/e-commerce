@@ -18,7 +18,7 @@ describe('Add to cart endpoint', () => {
   beforeEach(clearDatabase);
 
   test('Should response 401, NO TOKEN PROVIDED', async (done) => {
-    const mockProduct = new MockProduct('image url', 'product', 25, 'description');
+    const mockProduct = new MockProduct(1, 'image url', 'product', 25, 'description');
     const res = await req(app).put('/cart/add').set('api_key', API_KEY).send(mockProduct);
 
     expect(res.status).toBe(401);
@@ -28,7 +28,7 @@ describe('Add to cart endpoint', () => {
 
   test('Should response 400, WRONG DATA SCHEMA', async (done) => {
     const token: string = await registerUserAndGetToken();
-    const mockProduct = new MockProduct('', 'product', 25, 'description');
+    const mockProduct = new MockProduct(1, '', 'product', 25, 'description');
     const res = await req(app)
       .put('/cart/add')
       .set('api_key', API_KEY)
@@ -41,7 +41,7 @@ describe('Add to cart endpoint', () => {
   });
 
   test('Should response 200, EVERYTHING OK', async (done) => {
-    const mockProduct = new MockProduct('image url', 'product', 25, 'description');
+    const mockProduct = new MockProduct(1, 'image url', 'product', 25, 'description');
     const token: string = await registerUserAndGetToken();
 
     const res = await req(app)

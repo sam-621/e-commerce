@@ -4,6 +4,7 @@ import { IPayload } from '../auth/auth.interfaces';
 
 export interface IProduct {
   _id?: ObjectId;
+  frontID: number;
   name: string;
   description: string;
   price: number;

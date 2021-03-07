@@ -2,6 +2,7 @@ import { Dispatch, DispatchWithoutAction, SetStateAction } from 'react';
 
 interface IProduct {
   _id?: string;
+  frontID: number;
   name: string;
   description: string;
   price: number;
