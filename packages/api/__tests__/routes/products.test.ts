@@ -27,7 +27,7 @@ describe('Buy a product endpoint', () => {
   beforeEach(clearDatabase);
 
   test('Should response 401, NO TOKEN PROVIDED', async (done) => {
-    const mockProduct = new MockProduct('image url', 'product', 25, 'description');
+    const mockProduct = new MockProduct(1, 'image url', 'product', 25, 'description');
     const res = await req(app).put('/products/buy').set('api_key', API_KEY).send(mockProduct);
 
     expect(res.status).toBe(401);
@@ -37,8 +37,8 @@ describe('Buy a product endpoint', () => {
 
   test('Should response 400, WRONG DATA SCHEMA', async (done) => {
     const token: string = await registerUserAndGetToken();
-    const mockProduct1 = new MockProduct('image url1', 'product1', 251, 'description1');
-    const mockProduct2 = new MockProduct('image url2', 'product2', '252', 'description2');
+    const mockProduct1 = new MockProduct(1, 'image url1', 'product1', 251, 'description1');
+    const mockProduct2 = new MockProduct(1, 'image url2', 'product2', '252', 'description2');
     const mockData = [mockProduct1, mockProduct2];
     const res = await req(app)
       .put('/products/buy')
@@ -53,8 +53,8 @@ describe('Buy a product endpoint', () => {
 
   test('Should response 200, EVERYTHING OK', async (done) => {
     const token: string = await registerUserAndGetToken();
-    const mockProduct1 = new MockProduct('image url1', 'product1', 251, 'description1');
-    const mockProduct2 = new MockProduct('image url2', 'product2', 252, 'description2');
+    const mockProduct1 = new MockProduct(1, 'image url1', 'product1', 251, 'description1');
+    const mockProduct2 = new MockProduct(1, 'image url2', 'product2', 252, 'description2');
     const mockData = [mockProduct1, mockProduct2];
 
     const res = await req(app)
