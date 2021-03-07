@@ -7,6 +7,7 @@ import {
   dbConnectionAnCreateUser,
   clearDatabase,
   registerUserAndGetToken,
+  tokenExpired,
 } from '../utils';
 import { API_KEY } from '../../src/config';
 import UserModel from '../../src/components/user/user.models';
@@ -151,6 +152,17 @@ describe('Refresh token endpoint', () => {
 
     expect(res.status).toBe(401);
     expect(res.body.message).toBe('NO TOKEN PROVIDED');
+    done();
+  });
+
+  test('Should response 401 NO TOKEN PROVIDED', async (done) => {
+    const res = await req(app)
+      .get('/refresh')
+      .set('api_key', API_KEY)
+      .set('authorization', tokenExpired);
+
+    expect(res.status).toBe(400);
+    expect(res.body.message).toBe('JWT HAS EXPIRED');
     done();
   });
 

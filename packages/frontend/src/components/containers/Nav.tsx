@@ -8,7 +8,7 @@ import CartIcon from '../../img/cart.svg';
 import CartContext from '../../context/cart/cart';
 import { IAction, IInitialState } from '../../context/interfaces';
 
-const Nav = () => {
+const Nav = ({ isAuth }: { isAuth: boolean }) => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
 
   const cookie = new Cookies();
@@ -19,6 +19,7 @@ const Nav = () => {
         <Link to="/home">Shopy</Link>
       </div>
       <div className="Nav-actions">
+<<<<<<< HEAD
         {cookie.get('token') ? (
           <>
             <Link to="/user">
@@ -29,6 +30,13 @@ const Nav = () => {
               <p>{state.cart.length}</p>
             </Link>
           </>
+=======
+        {isAuth ? (
+          <Link to="/cart" className="Nav-actions-cart">
+            <img src={CartIcon} />
+            <p>{state.cart.length}</p>
+          </Link>
+>>>>>>> c38d002396a779bcc36cf36e296f985cda487f14
         ) : (
           <Link to="/register" className="Nav-registerLink">
             Register

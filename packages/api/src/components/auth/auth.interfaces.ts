@@ -11,8 +11,14 @@ export interface IPayload {
   id: ObjectId;
 }
 
+<<<<<<< HEAD
 export interface IGetUser {
   err: { statusCode: number; msg: string };
   data: IUser | null;
   msg: string;
+=======
+export interface IDecodedService {
+  decoded: IDecoded;
+  err: string;
+>>>>>>> c38d002396a779bcc36cf36e296f985cda487f14
 }

@@ -24,7 +24,6 @@ const PayPal = ({ products }: IPayPalProps) => {
       },
     };
   });
-  console.log(units);
 
   function createOrder(data: any, actions: any) {
     setLoading(true);

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/atoms/loader.css';
 
-const Loader = ({ width, height, border }: ILoaderProps) => {
+const Loader = ({ width = '20px', height = '20px', border = '5px' }: ILoaderProps) => {
   return (
     <div className="Loader-container">
       <div
@@ -18,9 +18,9 @@ const Loader = ({ width, height, border }: ILoaderProps) => {
 };
 
 interface ILoaderProps {
-  width: string;
-  height: string;
-  border: string;
+  width?: string;
+  height?: string;
+  border?: string;
 }
 
 export default Loader;
