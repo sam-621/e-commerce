@@ -9,7 +9,7 @@ const User = () => {
     <>
       {cookie.get('token') ? (
         <>
-          <Nav />
+          <Nav isAuth={false} />
           <h1>User</h1>
         </>
       ) : (

@@ -19,24 +19,11 @@ const Nav = ({ isAuth }: { isAuth: boolean }) => {
         <Link to="/home">Shopy</Link>
       </div>
       <div className="Nav-actions">
-<<<<<<< HEAD
-        {cookie.get('token') ? (
-          <>
-            <Link to="/user">
-              <img src={UserIcon} />
-            </Link>
-            <Link to="/cart" className="Nav-actions-cart">
-              <img src={CartIcon} />
-              <p>{state.cart.length}</p>
-            </Link>
-          </>
-=======
         {isAuth ? (
           <Link to="/cart" className="Nav-actions-cart">
             <img src={CartIcon} />
             <p>{state.cart.length}</p>
           </Link>
->>>>>>> c38d002396a779bcc36cf36e296f985cda487f14
         ) : (
           <Link to="/register" className="Nav-registerLink">
             Register
