@@ -4,6 +4,7 @@ import { Cart } from './cart.services';
 
 const addToCartController: IControllerWithToken = async (req, res, next) => {
   const dto = req.body;
+  console.log(dto);
 
   const params: IAddToCartParams = { ...dto, buyerID: req.user.id };
 

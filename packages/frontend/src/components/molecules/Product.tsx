@@ -18,7 +18,7 @@ const Product = ({ description, image, price, name, id }: IProductProps) => {
 
   async function addToCart() {
     const headers = { api_key: API_KEY, authorization: token };
-    const data: IProduct = { description, image, price, name, _id: id };
+    const data: IProduct = { description, image, price, name, frontID: id };
 
     try {
       AxiosInstance.put('/cart/add', data, { headers }).then((res) => {
