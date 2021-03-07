@@ -1,10 +1,11 @@
 import React from 'react';
+import '../../styles/containers/userForms.css';
 
 import { BasicInfo } from '../molecules';
 
 const UserForms = () => {
   return (
-    <main>
+    <main className="UserForms">
       <BasicInfo />
     </main>
   );
