@@ -6,6 +6,7 @@ const Logout = () => {
   const cookie = new Cookies();
   function HandleLogOut() {
     cookie.remove('token');
+    window.location.href = '/home'
   }
   return (
     <button className="LogOut" onClick={HandleLogOut}>
