@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/molecules/userInput.css';
 
-const UserInput = ({ label, type, placeHolder, value, setValue }: IUserInputProps) => {
+const UserInput = ({ label, type, placeHolder = '', value, setValue }: IUserInputProps) => {
   return (
     <div className="UserInput">
       <label htmlFor={label}>
@@ -24,7 +24,7 @@ export default UserInput;
 interface IUserInputProps {
   label: string;
   type: string;
-  placeHolder: string;
+  placeHolder?: string;
   value: string;
   setValue: any;
 }
