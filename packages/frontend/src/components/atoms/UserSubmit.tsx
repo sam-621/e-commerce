@@ -1,10 +1,11 @@
 import React from 'react';
+import '../../styles/atoms/userSubmit.css';
 
 const UserSubmit = () => {
   return (
-    <>
-      <h1>User submit</h1>
-    </>
+    <div className="UserSubmit">
+      <input type="submit" value="Save" />
+    </div>
   );
 };
 

@@ -1,0 +1,10 @@
+.UserSubmit input {
+  min-width: 135px;
+  background-color: #2f80ed;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 0;
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+}
