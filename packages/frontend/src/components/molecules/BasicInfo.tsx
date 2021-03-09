@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/molecules/basicInfo.css';
 
-import { LogOut } from '../atoms';
-import UserInput from './UserInput';
+import { LogOut, UserInput } from '../atoms';
 
 const BasicInfo = () => {
   const [firstName, setFirstName] = useState<string>('');
