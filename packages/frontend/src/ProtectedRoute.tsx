@@ -5,9 +5,9 @@ import { useAuth } from './hooks';
 import { Loader } from './components/atoms';
 
 const ProtectedRoute = ({
+  path,
   Component,
   exact = true,
-  path,
   redirect = '/login',
 }: IProtectedRouteProp) => {
   const cookie = new Cookies();
@@ -15,7 +15,7 @@ const ProtectedRoute = ({
 
   if (token) cookie.set('token', token);
 
-  function render() {
+  function render(): JSX.Element {
     if (!finished) return <Loader />;
 
     if (isAuth) return <Component />;
