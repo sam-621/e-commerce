@@ -15,7 +15,6 @@ const Cart = () => {
         autoClose={5000}
         hideProgressBar={false}
         closeOnClick
-        pauseOnFocusLoss
         pauseOnHover
       />
     </>

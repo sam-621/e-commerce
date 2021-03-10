@@ -32,7 +32,7 @@ describe('Register endpoint', () => {
 
     const res = await req(app).post('/register').set('api_key', API_KEY).send(mockUser);
 
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(401);
     expect(res.body.message).toBe('EMAIL ALREADY TAKEN');
     await UserModel.deleteMany();
     done();

@@ -28,7 +28,7 @@ class User {
       return { id: user._id, err: null };
     } catch (e) {
       if (e.code === 11000) {
-        return { id: null, err: { msg: 'EMAIL ALREADY TAKEN', statusCode: 400 } };
+        return { id: null, err: { msg: 'EMAIL ALREADY TAKEN', statusCode: 401 } };
       }
       return { id: null, err: { msg: 'INTERNAL SERVER ERROR', statusCode: 500 } };
     }
