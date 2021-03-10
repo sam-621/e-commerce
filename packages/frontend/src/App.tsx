@@ -3,8 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/app.css';
 import { Register, Login, Home, Payment, Main, Cart, User } from './components/pages/';
 import { CartContextProvider } from './context/cart/cart';
+import ProtectedRoute from './ProtectedRoute';
 
-const app = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -14,7 +15,7 @@ const app = () => {
         <CartContextProvider>
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:productID" component={Payment} />
-          <Route exact path="/cart" component={Cart} />
+          <ProtectedRoute path="/cart" Component={Cart} />
           <Route exact path="/user" component={User} />
         </CartContextProvider>
       </Switch>
@@ -22,4 +23,4 @@ const app = () => {
   );
 };
 
-export default app;
+export default App;
