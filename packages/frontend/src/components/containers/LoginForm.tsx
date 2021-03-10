@@ -2,13 +2,12 @@ import React, { useState, SyntheticEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../../styles/containers/registerForm.css';
 import '../../styles/toastify.css';
-import axios from 'axios';
+import { post } from '../../utils/petitions';
 import Cookie from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Input } from '../atoms/';
-import { API_KEY, API_URI } from '../../config';
 import { HTTPException } from '../../utils/HttpException';
 
 const LoginForm = () => {
@@ -27,7 +26,7 @@ const LoginForm = () => {
 
     try {
       const data = { email, password };
-      const res = await axios.post(`${API_URI}/login`, data, { headers: { api_key: API_KEY } });
+      const res = await post('/login', data);
 
       if (res.status === 200) {
         cookie.set('token', res.data.data);
