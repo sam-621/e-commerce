@@ -4,18 +4,24 @@ import Cookies from 'universal-cookie';
 import { useAuth } from './hooks';
 import { Loader } from './components/atoms';
 
-const ProtectedRoute = ({ Component, exact, path }: IProtectedRouteProp) => {
+const ProtectedRoute = ({ Component, exact = true, path }: IProtectedRouteProp) => {
   const cookie = new Cookies();
   const { finished, isAuth, token } = useAuth(cookie.get('token'));
 
   if (token) cookie.set('token', token);
 
-  if (!finished) return <Loader />;
+  function render() {
+    if (!finished) return <Loader />;
 
-  return isAuth ? (
-    <Route exact={exact} path={path} component={Component} />
-  ) : (
-    <Redirect to="/login" />
+    if (isAuth) return <Component />;
+
+    return <Redirect to="/login" />;
+  }
+
+  return (
+    <Route exact={exact} path={path}>
+      {render()}
+    </Route>
   );
 };
 
