@@ -2,12 +2,11 @@ import React, { useState, SyntheticEvent } from 'react';
 import '../../styles/containers/registerForm.css';
 import '../../styles/toastify.css';
 import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { post } from '../../utils/petitions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Input } from '../atoms/';
-import { API_KEY, API_URI } from '../../config/';
 import { HTTPException } from '../../utils/HttpException';
 import Cookie from 'universal-cookie';
 
@@ -27,7 +26,7 @@ const RegisterForm = () => {
     }
     try {
       const data = { username, email, password };
-      const res = await axios.post(`${API_URI}/register`, data, { headers: { api_key: API_KEY } });
+      const res = await post('/register', data);
 
       if (res.status === 201) {
         cookie.set('token', res.data.data);

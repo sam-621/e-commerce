@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../styles/containers/products.css';
 import '../../styles/toastify.css';
 
-import AxiosInstance from '../../utils/Axios';
+import { get } from '../../utils/petitions';
 import { Product } from '../molecules';
 import { Loader } from '../atoms';
 import { IProduct } from '../../context/interfaces';
@@ -18,7 +18,7 @@ const Products = () => {
     try {
       setLoading(true);
 
-      const res = await AxiosInstance.get('/products');
+      const res = await get('/products');
       setData(res.data.data);
       setLoading(false);
     } catch (e) {

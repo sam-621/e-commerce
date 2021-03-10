@@ -1,6 +1,5 @@
 import React, { Dispatch, useContext } from 'react';
 import '../../styles/molecules/cartCard.css';
-import AxiosInstance from '../../utils/Axios';
 import { HTTPException } from '../../utils/HttpException';
 import RemoveIcon from '../../img/remove.svg';
 import Cookie from 'universal-cookie';
@@ -10,6 +9,7 @@ import { removeFromCart } from '../../context/cart/actionsCreator';
 import { IAction, IInitialState } from '../../context/interfaces';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { put } from '../../utils/petitions';
 
 const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
@@ -18,7 +18,7 @@ const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
   async function removeFromTheCart() {
     const headers = { api_key: API_KEY, authorization: cookie.get('token') };
     try {
-      const res = await AxiosInstance.put('/cart/remove', { productID: _id }, { headers });
+      const res = await put('/cart/remove', { productID: _id }, { headers });
 
       if (res.status === 200) {
         dispatch(removeFromCart(_id));
