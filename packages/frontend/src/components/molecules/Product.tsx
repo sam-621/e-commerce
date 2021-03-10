@@ -3,13 +3,13 @@ import '../../styles/molecules/product.css';
 
 import AddIcon from '../../img/add.svg';
 import { Link } from 'react-router-dom';
-import AxiosInstance from '../../utils/Axios';
 import { API_KEY } from '../../config';
 import Cookie from 'universal-cookie';
 import CartContext from '../../context/cart/cart';
 import { IAction, ICtxReturns, IInitialState, IProduct } from '../../context/interfaces';
 import { addToCartAction } from '../../context/cart/actionsCreator';
 import { toast } from 'react-toastify';
+import { put } from '../../utils/petitions';
 
 const Product = ({ description, image, price, name, id }: IProductProps) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
@@ -21,7 +21,7 @@ const Product = ({ description, image, price, name, id }: IProductProps) => {
     const data: IProduct = { description, image, price, name, frontID: id };
 
     try {
-      AxiosInstance.put('/cart/add', data, { headers }).then((res) => {
+      put('/cart/add', data, { headers }).then((res) => {
         const product = { ...res.data.data, frontID: id };
         dispatch(addToCartAction(product));
         toast.success('Added to cart');

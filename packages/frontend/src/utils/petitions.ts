@@ -9,6 +9,10 @@ export const post = async (url: string, data: any, config?: IConfig): Promise<Ax
   return await AxiosInstance.post(url, data, config);
 };
 
+export const put = async (url: string, data: any, config?: IConfig): Promise<AxiosResponse> => {
+  return await AxiosInstance.put(url, data, config);
+};
+
 interface IConfig {
   headers: {
     authorization: string;
