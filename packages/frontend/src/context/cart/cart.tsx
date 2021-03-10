@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Cookie from 'universal-cookie';
-import AxiosInstance from '../../utils/Axios';
+import { get } from '../../utils/petitions';
 import { cartReducer, initialState } from './reducer';
 import { getCartProducts } from './actionsCreator';
 
@@ -19,7 +19,7 @@ export function CartContextProvider({ children }: any) {
       return;
     }
 
-    AxiosInstance.get('/cart/get', { headers }).then((res) => {
+    get('/cart/get', { headers }).then((res) => {
       dispatch(getCartProducts(res.data.data.cart));
     });
   }, []);
