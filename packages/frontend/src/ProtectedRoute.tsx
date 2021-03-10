@@ -4,7 +4,12 @@ import Cookies from 'universal-cookie';
 import { useAuth } from './hooks';
 import { Loader } from './components/atoms';
 
-const ProtectedRoute = ({ Component, exact = true, path }: IProtectedRouteProp) => {
+const ProtectedRoute = ({
+  Component,
+  exact = true,
+  path,
+  redirect = '/login',
+}: IProtectedRouteProp) => {
   const cookie = new Cookies();
   const { finished, isAuth, token } = useAuth(cookie.get('token'));
 
@@ -15,7 +20,7 @@ const ProtectedRoute = ({ Component, exact = true, path }: IProtectedRouteProp) 
 
     if (isAuth) return <Component />;
 
-    return <Redirect to="/login" />;
+    return <Redirect to={redirect} />;
   }
 
   return (
@@ -27,8 +32,9 @@ const ProtectedRoute = ({ Component, exact = true, path }: IProtectedRouteProp) 
 
 interface IProtectedRouteProp {
   Component: FunctionComponent;
-  exact: boolean;
   path: string;
+  exact?: boolean;
+  redirect?: string;
 }
 
 export default ProtectedRoute;
