@@ -16,7 +16,8 @@ const App = () => {
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:productID" component={Payment} />
           <ProtectedRoute path="/cart" Component={Cart} />
-          <Route exact path="/user" component={User} />
+          <ProtectedRoute path="/user" Component={User} />
+          {/* <Route exact path="/user" component={User} /> */}
         </CartContextProvider>
       </Switch>
     </BrowserRouter>
