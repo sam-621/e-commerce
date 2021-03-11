@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
+import { IProduct } from '../../context/interfaces';
 import '../../styles/molecules/basicInfo.css';
 import { get } from '../../utils/petitions';
 
@@ -13,7 +14,7 @@ const BasicInfo = () => {
 
   async function getUserInfo() {
     const res = await get('/user', { headers: { authorization: token } });
-    const info = res.data.data;
+    const info = res.data.data as IUserInfo;
     setUsername(info.username);
     setEmail(info.email);
   }
@@ -35,4 +36,13 @@ const BasicInfo = () => {
     </section>
   );
 };
+
 export default BasicInfo;
+
+interface IUserInfo {
+  cart: IProduct[];
+  email: string;
+  productsBought: IProduct[];
+  username: string;
+  _id: string;
+}
