@@ -21,9 +21,9 @@ const User = () => {
     <>
       {/* {isAuth ? (
         <> */}
-          <Nav isAuth={true} />
-          <UserForms />
-        {/* </>
+      <Nav isAuth={true} />
+      <UserForms />
+      {/* </>
       ) : (
         <Redirect to="/login" />
       )} */}
