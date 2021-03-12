@@ -3,6 +3,6 @@ import Product from './Product';
 import ProductForBuy from './ProductForBuy';
 import CartCard from './CartCard';
 import BasicInfo from './BasicInfo';
-import ProductsBought from './ProductsBought';
+import ListProducts from './ListProducts';
 
-export { Searcher, Product, ProductForBuy, CartCard, BasicInfo, ProductsBought };
+export { Searcher, Product, ProductForBuy, CartCard, BasicInfo, ListProducts };

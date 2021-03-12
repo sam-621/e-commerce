@@ -1,14 +1,14 @@
 import React from 'react';
 import '../../styles/containers/userForms.css';
 
-import { BasicInfo, ProductsBought } from '../molecules';
+import { BasicInfo, ListProducts } from '../molecules';
 
 const UserForms = () => {
   return (
     <main className="UserForms">
       <BasicInfo />
-      <hr/>
-      <ProductsBought />
+      <hr />
+      <ListProducts />
     </main>
   );
 };
