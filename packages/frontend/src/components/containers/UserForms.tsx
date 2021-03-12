@@ -7,6 +7,7 @@ const UserForms = () => {
   return (
     <main className="UserForms">
       <BasicInfo />
+      <hr/>
     </main>
   );
 };

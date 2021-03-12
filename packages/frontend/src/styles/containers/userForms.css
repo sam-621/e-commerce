@@ -1,3 +1,13 @@
 .UserForms {
   margin: 0 10px;
+  display: grid;
+  grid-gap: 25px;
+}
+.UserForms hr{
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .UserForms{
+    margin: 0 25%;  
+  }
 }

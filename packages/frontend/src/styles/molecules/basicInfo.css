@@ -6,8 +6,3 @@
   display: grid;
   grid-gap: 25px;
 }
-@media screen and (min-width: 768px) {
-  .BasicInfo{
-    margin: 0 25%;  
-  }
-}
