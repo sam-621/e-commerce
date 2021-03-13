@@ -2,18 +2,26 @@ import React from 'react';
 import '../../styles/molecules/listProducts.css';
 import { Link } from 'react-router-dom';
 import { MiniProduct } from '../atoms';
+import { IProduct } from '../../context/interfaces';
 
-const ListProducts = ({ title, url }: IListProductsProps) => {
+const ListProducts = ({ products, title, url }: IListProductsProps) => {
   return (
     <div className="ListProducts">
       <div className="ListProducts-title">
         <h3>{title}</h3>
-        <Link to={url}>See all -{'>'}</Link>
+        <Link to={`/user/${url}`}>See all -{'>'}</Link>
       </div>
       <div className="ListProducts-products">
-        <MiniProduct price={1.8} productName="Product " />
-        <MiniProduct price={1.8} productName="Product " />
-        <MiniProduct price={1.8} productName="Product " />
+        {products.map((prod) => {
+          return (
+            <MiniProduct
+              key={prod._id}
+              price={prod.price}
+              productName={prod.name}
+              frontID={prod.frontID.toString()}
+            />
+          );
+        })}
       </div>
     </div>
   );
@@ -22,6 +30,7 @@ const ListProducts = ({ title, url }: IListProductsProps) => {
 export default ListProducts;
 
 interface IListProductsProps {
+  products: IProduct[];
   title: string;
   url: string;
 }
