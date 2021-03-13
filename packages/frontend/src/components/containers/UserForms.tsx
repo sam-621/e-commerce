@@ -8,7 +8,7 @@ const UserForms = () => {
     <main className="UserForms">
       <BasicInfo />
       <hr />
-      <ListProducts />
+      <ListProducts title="Test title" url="#"  />
     </main>
   );
 };
