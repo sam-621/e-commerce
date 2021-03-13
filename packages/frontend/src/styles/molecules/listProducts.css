@@ -5,8 +5,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 .ListProducts-title h3{
+  margin: 0;
   font-size: 1.8rem;
   font-weight: 400;
   color: #4D4D4D;
