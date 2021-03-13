@@ -1,0 +1,16 @@
+.MiniProduct{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+}
+.MiniProduct h4, .MiniProduct p{
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.MiniProduct p{
+  color: #545454;
+}

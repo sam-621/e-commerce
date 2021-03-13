@@ -1,6 +1,7 @@
 import React from 'react';
-import '../../styles/molecules/listProducts.css'
+import '../../styles/molecules/listProducts.css';
 import { Link } from 'react-router-dom';
+import { MiniProduct } from '../atoms';
 
 const ListProducts = ({ title, url }: IListProductsProps) => {
   return (
@@ -10,7 +11,9 @@ const ListProducts = ({ title, url }: IListProductsProps) => {
         <Link to={url}>See all -{'>'}</Link>
       </div>
       <div className="ListProducts-products">
-        <h1>Products</h1>
+        <MiniProduct price={1.8} productName="Product " />
+        <MiniProduct price={1.8} productName="Product " />
+        <MiniProduct price={1.8} productName="Product " />
       </div>
     </div>
   );

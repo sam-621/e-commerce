@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import '../../styles/atoms/miniProduct.css'
 
 const MiniProduct = ({ productName, price }: IMiniProductProps) => {
   return (
-    <article>
+    <Link to="#" className="MiniProduct">
       <h4>{productName}</h4>
-      <p>{price}</p>
-    </article>
+      <p>${price}</p>
+    </Link>
   );
 };
 

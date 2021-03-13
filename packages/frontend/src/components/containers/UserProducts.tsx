@@ -1,10 +1,11 @@
 import React from 'react';
+import { ListProducts } from '../molecules';
 
 const UserProducts = () => {
   return (
-    <>
-      <h1>User products</h1>
-    </>
+    <section>
+      <ListProducts title="Test title" url="#" />
+    </section>
   );
 };
 
