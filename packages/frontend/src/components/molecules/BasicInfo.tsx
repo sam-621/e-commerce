@@ -1,27 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Cookies from 'universal-cookie';
-import { IProduct } from '../../context/interfaces';
+import React, { useState } from 'react';
 import '../../styles/molecules/basicInfo.css';
-import { get } from '../../utils/petitions';
 
 import { LogOut, UserInput, UserSubmit } from '../atoms';
 
-const BasicInfo = () => {
-  const cookie = new Cookies();
-  const token: string = cookie.get('token');
-  const [username, setUsername] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-
-  async function getUserInfo() {
-    const res = await get('/user', { headers: { authorization: token } });
-    const info = res.data.data as IUserInfo;
-    setUsername(info.username);
-    setEmail(info.email);
-  }
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
+const BasicInfo = ({ email, username }: IBasicInfoProps) => {
+  const [localUsername, setLocalUsername] = useState<string>(username);
+  const [localEmail, setLocalEmail] = useState<string>(email);
 
   return (
     <section className="BasicInfo">
@@ -29,8 +13,8 @@ const BasicInfo = () => {
         <LogOut />
       </div>
       <form action="" className="BasicInfo-form">
-        <UserInput label="Username" setValue={setUsername} type="text" value={username} />
-        <UserInput label="Email" setValue={setEmail} type="text" value={email} />
+        <UserInput label="Username" setValue={setLocalUsername} type="text" value={localUsername} />
+        <UserInput label="Email" setValue={setLocalEmail} type="text" value={localEmail} />
         <UserSubmit />
       </form>
     </section>
@@ -39,10 +23,7 @@ const BasicInfo = () => {
 
 export default BasicInfo;
 
-interface IUserInfo {
-  cart: IProduct[];
-  email: string;
-  productsBought: IProduct[];
+interface IBasicInfoProps {
   username: string;
-  _id: string;
+  email: string;
 }
