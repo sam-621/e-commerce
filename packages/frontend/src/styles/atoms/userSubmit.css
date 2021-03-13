@@ -1,4 +1,6 @@
 .UserSubmit input {
+  transition: 0.25s;
+  cursor: pointer;
   min-width: 135px;
   background-color: #2f80ed;
   color: white;
@@ -7,4 +9,8 @@
   padding: 12px 0;
   font-size: 1.6rem;
   font-family: 'Roboto', sans-serif;
+}
+.UserSubmit input:hover{
+  transition: 0.25s;
+  background-color: #1d6edb;
 }
