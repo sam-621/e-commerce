@@ -13,7 +13,8 @@ const UserForms = () => {
   const token: string = cookie.get('token');
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [productsBought, setProductsBought] = useState<IProduct[]>([]);
+  const [cartProducts, setCartProducts] = useState<IProduct[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function getUserInfo() {
@@ -22,7 +23,8 @@ const UserForms = () => {
     const info = res.data.data as IUserInfo;
     setUsername(info.username);
     setEmail(info.email);
-    setProducts(info.productsBought);
+    setProductsBought(info.productsBought);
+    setCartProducts(info.cart);
     setIsLoading(false);
   }
 
@@ -37,7 +39,7 @@ const UserForms = () => {
         <>
           <BasicInfo email={email} username={username} />
           <hr />
-          <UserProducts products={products} />
+          <UserProducts productsBought={productsBought} cartProducts={cartProducts} />
         </>
       )}
     </main>
