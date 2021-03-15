@@ -9,17 +9,24 @@ import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'universal-cookie';
 
-const Products = () => {
+const Products = ({ url = '/products' }) => {
   const [data, setData] = useState<Array<IProduct>>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const isGeneric: boolean = url === '/products';
 
   async function getProducts(): Promise<void> {
     try {
       setLoading(true);
 
-      const res = await get('/products');
-      setData(res.data.data);
+      if (isGeneric) {
+        const res = await get(url);
+        setData(res.data.data);
+      } else {
+        const res = await get(url, { headers: { authorization: new Cookies().get('token') } });
+        setData(res.data.data.productsBought);
+      }
       setLoading(false);
     } catch (e) {
       const httpException = new HTTPException(e.message);
@@ -45,7 +52,7 @@ const Products = () => {
               <Product
                 key={prod._id}
                 image={prod.image}
-                id={prod._id}
+                id={isGeneric ? prod._id : prod.frontID}
                 description={prod.description}
                 price={prod.price}
                 name={prod.name}
