@@ -10,6 +10,7 @@ import {
   Cart,
   User,
   UserProducts,
+  UserCart,
 } from './components/pages/';
 import { CartContextProvider } from './context/cart/cart';
 import ProtectedRoute from './ProtectedRoute';
@@ -27,6 +28,7 @@ const App = () => {
           <ProtectedRoute path="/cart" Component={Cart} />
           <ProtectedRoute path="/user" Component={User} />
           <ProtectedRoute path="/user/products" Component={UserProducts} />
+          <ProtectedRoute path="/user/cart" Component={UserCart} />
         </CartContextProvider>
       </Switch>
     </BrowserRouter>

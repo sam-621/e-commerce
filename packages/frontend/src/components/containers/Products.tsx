@@ -11,7 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'universal-cookie';
 
-const Products = ({ url = '/products' }) => {
+const Products = ({ url = '/products', products }: IProductsProps) => {
   const [data, setData] = useState<Array<IProduct>>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const isGeneric: boolean = url === '/products';
@@ -38,7 +38,10 @@ const Products = ({ url = '/products' }) => {
   }
 
   useEffect(() => {
-    getProducts();
+    if (!products) {
+      getProducts();
+    }
+    setData(products);
   }, []);
 
   return (
@@ -56,6 +59,7 @@ const Products = ({ url = '/products' }) => {
                 description={prod.description}
                 price={prod.price}
                 name={prod.name}
+                isGeneric={products ? false : isGeneric}
               />
             );
           })}
@@ -74,3 +78,8 @@ const Products = ({ url = '/products' }) => {
 };
 
 export default Products;
+
+interface IProductsProps {
+  url?: string;
+  products?: IProduct[];
+}

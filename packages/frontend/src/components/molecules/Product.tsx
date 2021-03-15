@@ -11,7 +11,7 @@ import { addToCartAction } from '../../context/cart/actionsCreator';
 import { toast } from 'react-toastify';
 import { put } from '../../utils/petitions';
 
-const Product = ({ description, image, price, name, id }: IProductProps) => {
+const Product = ({ description, image, price, name, id, isGeneric }: IProductProps) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const cookie = new Cookie();
   const token: string | null = cookie.get('token');
@@ -43,7 +43,7 @@ const Product = ({ description, image, price, name, id }: IProductProps) => {
           <p>$ {price}</p>
         </div>
         <div className="Product-options-btn">
-          {token ? (
+          {token && isGeneric ? (
             <button onClick={addToCart}>
               <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
             </button>
@@ -60,6 +60,7 @@ interface IProductProps {
   description: string;
   price: number;
   id?: number | any;
+  isGeneric?: boolean;
 }
 
 export default Product;
