@@ -1,7 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/app.css';
-import { Register, Login, Home, Payment, Main, Cart, User } from './components/pages/';
+import {
+  Register,
+  Login,
+  Home,
+  Payment,
+  Main,
+  Cart,
+  User,
+  UserProducts,
+} from './components/pages/';
 import { CartContextProvider } from './context/cart/cart';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -17,7 +26,7 @@ const App = () => {
           <Route exact path="/home/:productID" component={Payment} />
           <ProtectedRoute path="/cart" Component={Cart} />
           <ProtectedRoute path="/user" Component={User} />
-          {/* <Route exact path="/user" component={User} /> */}
+          <ProtectedRoute path="/user/products" Component={UserProducts} />
         </CartContextProvider>
       </Switch>
     </BrowserRouter>

@@ -5,5 +5,6 @@ import Home from './Home';
 import Payment from './Payment';
 import Cart from './Cart';
 import User from './User';
+import UserProducts from './UserProducts';
 
-export { Main, Login, Register, Home, Payment, Cart, User };
+export { Main, Login, Register, Home, Payment, Cart, User, UserProducts };
