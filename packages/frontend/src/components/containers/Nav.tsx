@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import UserIcon from '../../img/usericon.svg';
 import CartIcon from '../../img/cart.svg';
 import CartContext from '../../context/cart/cart';
-import { IAction, ICtxReturns, IInitialState } from '../../context/interfaces';
+import { IAction, IInitialState } from '../../context/interfaces';
 
 const Nav = ({ isAuth }: { isAuth: boolean }) => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
@@ -20,10 +20,15 @@ const Nav = ({ isAuth }: { isAuth: boolean }) => {
       </div>
       <div className="Nav-actions">
         {isAuth ? (
-          <Link to="/cart" className="Nav-actions-cart">
-            <img src={CartIcon} />
-            <p>{state.cart.length}</p>
-          </Link>
+          <>
+            <Link to="/cart" className="Nav-actions-cart">
+              <img src={CartIcon} />
+              <p>{state.cart.length}</p>
+            </Link>
+            <Link to="/user">
+              <img src={UserIcon} alt="User icon" />
+            </Link>
+          </>
         ) : (
           <Link to="/register" className="Nav-registerLink">
             Register

@@ -100,6 +100,40 @@ describe('Login endpoint', () => {
   });
 });
 
+describe('Get user info endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+  beforeEach(clearDatabase);
+
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).get('/user');
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO API_KEY PROVIDED');
+    done();
+  });
+
+  test('Should response 401 NO TOKEN PROVIDED', async (done) => {
+    const res = await req(app).get('/user').set('api_key', API_KEY);
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO TOKEN PROVIDED');
+    done();
+  });
+
+  test('Should response 200 OK', async (done) => {
+    const token: string = await registerUserAndGetToken();
+    const res = await req(app).get('/user').set('authorization', token).set('api_key', API_KEY);
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('OK');
+    expect(res.body.data.email).toBe('admin@gmail.com');
+    expect(res.body.data.cart.length).toBe(0);
+    expect(res.body.data.productsBought.length).toBe(0);
+    done();
+  });
+});
+
 describe('Refresh token endpoint', () => {
   beforeAll(dbConnection);
   afterAll(dbClose);

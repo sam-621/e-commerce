@@ -52,6 +52,24 @@ const loginController: IController = async (req, res, next) => {
   return res.status(200).json({ data: token, message: 'USER LOGGED' });
 };
 
+const getUserData: IController = async (req, res, next) => {
+  const authServices = new AuthServices();
+
+  const user = await authServices.getUser(req.user.id);
+
+  if (user.err) {
+    return res.status(user.err.statusCode).json({
+      message: user.err.msg,
+      data: null,
+    });
+  }
+
+  return res.status(200).json({
+    message: user.msg,
+    data: user.data,
+  });
+};
+
 const refreshTokenController = async (req: IRequest, res: Response, next: NextFunction) => {
   const authService = new AuthServices();
 
@@ -63,4 +81,4 @@ const refreshTokenController = async (req: IRequest, res: Response, next: NextFu
   });
 };
 
-export { registerController, loginController, refreshTokenController };
+export { registerController, loginController, refreshTokenController, getUserData };

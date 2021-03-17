@@ -14,14 +14,19 @@
   color: #2f80ed;
 }
 .Nav-actions {
-  width: 60px;
+  width: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .Nav-actions-cart {
   display: flex;
   align-items: center;
-  justify-content: space-around;
   text-decoration: none;
   color: black;
+}
+.Nav-actions-cart img {
+  margin-right: 5px;
 }
 .Nav-actions-cart p {
   font-size: 1.6rem;
