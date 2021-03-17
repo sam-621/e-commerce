@@ -7,20 +7,23 @@ import Cookie from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Input } from '../atoms/';
+import { Input, Loader } from '../atoms/';
 import { HTTPException } from '../../utils/HttpException';
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const history = useHistory();
   const cookie = new Cookie();
 
   async function login(e: SyntheticEvent): Promise<void> {
     e.preventDefault();
+    setIsLoading(true);
 
     if (password.length < 6) {
-      alert('Password must have at least 6 characters');
+      setIsLoading(false);
+      toast.error('Password must have at least 6 characters');
       return;
     }
 
@@ -29,11 +32,14 @@ const LoginForm = () => {
       const res = await post('/login', data);
 
       if (res.status === 200) {
+        setIsLoading(false);
         cookie.set('token', res.data.data);
         history.push('/home');
         return;
       }
     } catch (e) {
+      setIsLoading(false);
+
       const httpException = new HTTPException(e.message);
       const message = httpException.getLoginMessage();
       toast.error(message);
@@ -58,7 +64,7 @@ const LoginForm = () => {
               />
             </div>
             <div className="RegisterForm-form-submit">
-              <input type="submit" value="Login" />
+              {isLoading ? <Loader /> : <input type="submit" value="Login" />}
             </div>
           </form>
           <div className="RegisterForm-footer">
