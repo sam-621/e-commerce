@@ -1,4 +1,4 @@
-import React, { Dispatch, useContext, useState } from 'react';
+import React, { Dispatch, useContext } from 'react';
 import '../../styles/molecules/product.css';
 
 import AddIcon from '../../img/add.svg';
@@ -10,16 +10,13 @@ import { IAction, ICtxReturns, IInitialState, IProduct } from '../../context/int
 import { addToCartAction } from '../../context/cart/actionsCreator';
 import { toast } from 'react-toastify';
 import { put } from '../../utils/petitions';
-import { Loader } from '../atoms';
 
 const Product = ({ description, image, price, name, id, isGeneric }: IProductProps) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const cookie = new Cookie();
   const token: string | null = cookie.get('token');
 
   async function addToCart() {
-    setIsLoading(true);
     const headers = { api_key: API_KEY, authorization: token };
     const data: IProduct = { description, image, price, name, frontID: id };
 
@@ -27,13 +24,9 @@ const Product = ({ description, image, price, name, id, isGeneric }: IProductPro
       put('/cart/add', data, { headers }).then((res) => {
         const product = { ...res.data.data, frontID: id };
         dispatch(addToCartAction(product));
-        setIsLoading(false);
         toast.success('Added to cart');
       });
-    } catch (e) {
-      setIsLoading(false);
-      toast.error('Ocurrio un error al agregar al carrito');
-    }
+    } catch (e) {}
   }
 
   return (
@@ -51,13 +44,9 @@ const Product = ({ description, image, price, name, id, isGeneric }: IProductPro
         </div>
         <div className="Product-options-btn">
           {token && isGeneric ? (
-            isLoading ? (
-              <Loader />
-            ) : (
-              <button onClick={addToCart}>
-                <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
-              </button>
-            )
+            <button onClick={addToCart}>
+              <img src={AddIcon} alt="add to cart icon" width="30px" height="30px" />
+            </button>
           ) : null}
         </div>
       </div>
