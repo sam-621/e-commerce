@@ -39,6 +39,7 @@ const LoginForm = () => {
       }
     } catch (e) {
       setIsLoading(false);
+
       const httpException = new HTTPException(e.message);
       const message = httpException.getLoginMessage();
       toast.error(message);
