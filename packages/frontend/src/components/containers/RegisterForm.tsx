@@ -6,7 +6,7 @@ import { post } from '../../utils/petitions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Input } from '../atoms/';
+import { Input, Loader } from '../atoms/';
 import { HTTPException } from '../../utils/HttpException';
 import Cookie from 'universal-cookie';
 
@@ -14,14 +14,17 @@ const RegisterForm = () => {
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const cookie = new Cookie();
   const history = useHistory();
 
   async function handleSubmit(e: SyntheticEvent): Promise<void> {
     e.preventDefault();
+    setIsLoading(true);
 
     if (password.length < 6) {
-      alert('Password must have at least 6 characters');
+      setIsLoading(false);
+      toast.error('Password must have at least 6 characters');
       return;
     }
     try {
@@ -29,13 +32,15 @@ const RegisterForm = () => {
       const res = await post('/register', data);
 
       if (res.status === 201) {
+        setIsLoading(false);
         cookie.set('token', res.data.data);
         history.push('/home');
       }
     } catch (e) {
+      setIsLoading(false);
+
       const httpException = new HTTPException(e.message);
       const message = httpException.getRegisterMessage();
-
       toast.error(message);
     }
   }
@@ -59,7 +64,7 @@ const RegisterForm = () => {
               />
             </div>
             <div className="RegisterForm-form-submit">
-              <input type="submit" value="Register" />
+              {isLoading ? <Loader /> : <input type="submit" value="Login" />}
             </div>
           </form>
           <div className="RegisterForm-footer">
