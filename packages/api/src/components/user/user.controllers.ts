@@ -73,13 +73,13 @@ const getUserData: IController = async (req, res, next) => {
 const updateUserData: IController = async (req, res, next) => {
   const user = new User(req.body.username, req.body.email, '');
 
-  const {data, msg, statusCode} = await user.UpdateUserInfo(req.user.id);
+  const { data, msg, statusCode } = await user.UpdateUserInfo(req.user.id);
 
   return res.status(statusCode).json({
     message: msg,
     data: data,
   });
-}
+};
 
 const refreshTokenController = async (req: IRequest, res: Response, next: NextFunction) => {
   const authService = new AuthServices();

@@ -56,25 +56,23 @@ class User {
     }
   }
 
-  public async UpdateUserInfo(userID: ObjectId):Promise<ICartServiceRes> {
+  public async UpdateUserInfo(userID: ObjectId): Promise<ICartServiceRes> {
     try {
-      const res = await UserModel.findByIdAndUpdate(userID, {username: this.username, email: this.email})
-      console.log(res);
-      
-      return { data: res, msg: 'USER UPDATED', statusCode: 200 }
-      
+      await UserModel.findByIdAndUpdate(userID, { username: this.username, email: this.email });
+
+      return { data: null, msg: 'USER UPDATED', statusCode: 200 };
     } catch (e) {
       if (e.code === 11000) {
-        return { data: null, msg: 'EMAIL ALREADY TAKEN', statusCode: 401 }
+        return { data: null, msg: 'EMAIL ALREADY TAKEN', statusCode: 401 };
       }
-      return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500 }
+      return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500 };
     }
   }
 }
 
 interface IUpdateUserInfoProp {
-  username: string
-  email: string
+  username: string;
+  email: string;
 }
 
 export { User };
