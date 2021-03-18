@@ -56,9 +56,9 @@ class User {
     }
   }
 
-  public async UpdateUserInfo({username, email}: IUpdateUserInfoProp, userID: ObjectId):Promise<ICartServiceRes> {
+  public async UpdateUserInfo(userID: ObjectId):Promise<ICartServiceRes> {
     try {
-      const res = await UserModel.findByIdAndUpdate(userID, {username, email})
+      const res = await UserModel.findByIdAndUpdate(userID, {username: this.username, email: this.email})
       console.log(res);
       
       return { data: res, msg: 'USER UPDATED', statusCode: 200 }

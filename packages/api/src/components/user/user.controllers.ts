@@ -71,9 +71,13 @@ const getUserData: IController = async (req, res, next) => {
 };
 
 const updateUserData: IController = async (req, res, next) => {
-  return res.status(200).json({
-    message: 'WORK',
-    data: null,
+  const user = new User(req.body.username, req.body.email, '');
+
+  const {data, msg, statusCode} = await user.UpdateUserInfo(req.user.id);
+
+  return res.status(statusCode).json({
+    message: msg,
+    data: data,
   });
 }
 
