@@ -70,6 +70,13 @@ const getUserData: IController = async (req, res, next) => {
   });
 };
 
+const updateUserData: IController = async (req, res, next) => {
+  return res.status(200).json({
+    message: 'WORK',
+    data: null,
+  });
+}
+
 const refreshTokenController = async (req: IRequest, res: Response, next: NextFunction) => {
   const authService = new AuthServices();
 
@@ -81,4 +88,4 @@ const refreshTokenController = async (req: IRequest, res: Response, next: NextFu
   });
 };
 
-export { registerController, loginController, refreshTokenController, getUserData };
+export { registerController, loginController, refreshTokenController, getUserData, updateUserData };
