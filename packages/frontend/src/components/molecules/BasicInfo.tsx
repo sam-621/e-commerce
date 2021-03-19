@@ -9,15 +9,21 @@ const BasicInfo = ({ email, username }: IBasicInfoProps) => {
   const cookie = new Cookies();
   const [localUsername, setLocalUsername] = useState<string>(username);
   const [localEmail, setLocalEmail] = useState<string>(email);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function updateUserInfo(e: any) {
+    e.preventDefault();
+    setIsLoading(true);
+    const data = { email: localEmail, username: localUsername };
+    const config = { headers: { authorization: cookie.get('token') } };
+
     try {
-      const data = { email: localEmail, username: localUsername };
-      const config = { headers: { authorization: cookie.get('token') } };
       const res = await post('/user', data, config);
       console.log(res);
+      setIsLoading(false);
     } catch (e) {
       console.log(e);
+      setIsLoading(false);
     }
   }
 
@@ -29,7 +35,7 @@ const BasicInfo = ({ email, username }: IBasicInfoProps) => {
       <form onSubmit={updateUserInfo} className="BasicInfo-form">
         <UserInput label="Username" setValue={setLocalUsername} type="text" value={localUsername} />
         <UserInput label="Email" setValue={setLocalEmail} type="text" value={localEmail} />
-        <UserSubmit />
+        <UserSubmit isLoading={isLoading} />
       </form>
     </section>
   );
