@@ -1,0 +1,23 @@
+.UserInput label {
+  display: grid;
+  grid-gap: 10px;
+}
+.UserInput label span {
+  font-size: 1.8rem;
+  color: #4d4d4d;
+}
+.UserInput label input {
+  transition: 0.25s;
+  outline: none;
+  font-size: 1.8rem;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+.UserInput label input:focus {
+  transition: 0.25s;
+  border: 0.5px solid #2f80ed;
+}

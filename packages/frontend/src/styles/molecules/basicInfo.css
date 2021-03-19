@@ -1,0 +1,8 @@
+.BasicInfo-logOut {
+  display: flex;
+  justify-content: flex-end;
+}
+.BasicInfo-form {
+  display: grid;
+  grid-gap: 25px;
+}
