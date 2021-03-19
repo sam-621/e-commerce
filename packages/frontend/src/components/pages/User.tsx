@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Nav, UserForms } from '../containers/';
 
 const User = () => {
@@ -6,6 +7,14 @@ const User = () => {
     <>
       <Nav isAuth={true} />
       <UserForms />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
     </>
   );
 };

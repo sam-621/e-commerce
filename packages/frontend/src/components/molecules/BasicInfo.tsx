@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import '../../styles/molecules/basicInfo.css';
+import { HTTPException } from '../../utils/HttpException';
 import { post } from '../../utils/petitions';
-
 import { LogOut, UserInput, UserSubmit } from '../atoms';
 
 const BasicInfo = ({ email, username }: IBasicInfoProps) => {
@@ -22,8 +23,11 @@ const BasicInfo = ({ email, username }: IBasicInfoProps) => {
       console.log(res);
       setIsLoading(false);
     } catch (e) {
-      console.log(e);
       setIsLoading(false);
+
+      const httpException = new HTTPException(e.message);
+      const message = httpException.getRegisterMessage();
+      toast.error(message);
     }
   }
 
