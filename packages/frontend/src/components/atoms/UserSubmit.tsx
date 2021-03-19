@@ -1,12 +1,17 @@
 import React from 'react';
 import '../../styles/atoms/userSubmit.css';
+import Loader from './Loader';
 
-const UserSubmit = () => {
+const UserSubmit = ({ isLoading }: IUserSubmitProps) => {
   return (
     <div className="UserSubmit">
-      <input type="submit" value="Save" />
+      {isLoading ? <Loader /> : <input type="submit" value="Save" />}
     </div>
   );
 };
+
+interface IUserSubmitProps {
+  isLoading?: boolean;
+}
 
 export default UserSubmit;
