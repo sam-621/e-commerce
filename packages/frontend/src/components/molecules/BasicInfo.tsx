@@ -22,6 +22,7 @@ const BasicInfo = ({ email, username }: IBasicInfoProps) => {
       const res = await post('/user', data, config);
       console.log(res);
       setIsLoading(false);
+      toast.success('Data updated');
     } catch (e) {
       setIsLoading(false);
 
