@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 // import { Searcher } from '../molecules';
-import { Products, Nav } from '../containers';
+import { Products } from '../containers';
+import { Nav } from '../elements/';
 import { useAuth } from '../../hooks';
 import Cookies from 'universal-cookie';
 import { Loader } from '../atoms';

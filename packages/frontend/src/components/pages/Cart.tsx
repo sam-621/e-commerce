@@ -3,7 +3,8 @@ import '../../styles/toastify.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Nav, CartContent } from '../containers/';
+import { CartContent } from '../containers/';
+import { Nav } from '../elements/';
 
 const Cart = () => {
   return (

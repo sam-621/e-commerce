@@ -1,5 +1,5 @@
 import React, { Dispatch, useContext } from 'react';
-import '../../styles/containers/nav.css';
+import '../../styles/elements/nav.css';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 

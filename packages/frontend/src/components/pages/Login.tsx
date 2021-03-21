@@ -4,7 +4,8 @@ import Cookies from 'universal-cookie';
 import { useAuth } from '../../hooks';
 import { Loader } from '../atoms';
 
-import { LoginForm, Nav } from '../containers/';
+import { LoginForm } from '../containers/';
+import { Nav } from '../elements';
 
 const Login = () => {
   const cookie = new Cookies();

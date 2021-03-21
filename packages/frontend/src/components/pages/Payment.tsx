@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styles/pages/payment.css';
 import '../../styles/toastify.css';
 
-import { Nav } from '../containers';
+import { Nav } from '../elements';
 import { productsData } from '../../products';
 import { ProductForBuy } from '../molecules';
 import { useParams } from 'react-router-dom';
