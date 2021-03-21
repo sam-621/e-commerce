@@ -7,7 +7,8 @@ import Cookie from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Input, Loader } from '../atoms/';
+import { Loader } from '../atoms';
+import { Input } from '../elements';
 import { HTTPException } from '../../utils/HttpException';
 
 const LoginForm = () => {
