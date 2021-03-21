@@ -1,4 +1,4 @@
-import Input from './Input';
+import Input from '../elements/Input';
 import Loader from './Loader';
 import LogOut from './LogOut';
 import UserInput from './UserInput';
