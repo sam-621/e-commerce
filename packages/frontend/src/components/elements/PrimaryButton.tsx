@@ -10,8 +10,8 @@ const PrimaryButton = ({ children, type = 'submit', onClick }: IPrimaryButtonPro
 
 interface IPrimaryButtonProps {
   children: string;
-  type: 'submit' | 'reset' | 'button';
-  onClick: VoidFunction;
+  type?: 'submit' | 'reset' | 'button';
+  onClick?: VoidFunction;
 }
 
 export default PrimaryButton;

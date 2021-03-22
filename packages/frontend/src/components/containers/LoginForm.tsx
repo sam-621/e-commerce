@@ -7,7 +7,7 @@ import Cookie from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Loader } from '../elements';
+import { Loader, PrimaryButton } from '../elements';
 import { Input } from '../elements';
 import { HTTPException } from '../../utils/HttpException';
 
@@ -65,7 +65,7 @@ const LoginForm = () => {
               />
             </div>
             <div className="RegisterForm-form-submit">
-              {isLoading ? <Loader /> : <input type="submit" value="Login" />}
+              {isLoading ? <Loader /> : <PrimaryButton>Login</PrimaryButton>}
             </div>
           </form>
           <div className="RegisterForm-footer">
