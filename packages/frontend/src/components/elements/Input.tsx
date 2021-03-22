@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/atoms/input.css';
+import '../../styles/elements/input.css';
 import { InputParams } from './interfaces';
 
 const Input = ({ type, setValue, placeHolder, value }: InputParams) => {
