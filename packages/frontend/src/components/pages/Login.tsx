@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { useAuth } from '../../hooks';
-import { Loader } from '../atoms';
+import { Loader } from '../elements';
 
 import { LoginForm } from '../containers/';
 import { Nav } from '../elements';

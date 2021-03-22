@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../../hooks';
 import Cookies from 'universal-cookie';
-import { Loader } from '../atoms';
+import { Loader } from '../elements';
 
 const Payment = () => {
   const cookies = new Cookies();

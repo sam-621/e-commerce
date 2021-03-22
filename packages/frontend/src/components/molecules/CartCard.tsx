@@ -10,7 +10,7 @@ import { IAction, IInitialState } from '../../context/interfaces';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { put } from '../../utils/petitions';
-import { Loader } from '../atoms';
+import { Loader } from '../elements';
 
 const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];

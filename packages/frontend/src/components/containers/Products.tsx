@@ -4,7 +4,7 @@ import '../../styles/toastify.css';
 
 import { get } from '../../utils/petitions';
 import { Product } from '../molecules';
-import { Loader } from '../atoms';
+import { Loader } from '../elements';
 import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
 import { ToastContainer } from 'react-toastify';

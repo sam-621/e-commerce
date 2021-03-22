@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/atoms/loader.css';
+import '../../styles/elements/loader.css';
 
 const Loader = ({ width = '20px', height = '20px', border = '5px' }: ILoaderProps) => {
   return (

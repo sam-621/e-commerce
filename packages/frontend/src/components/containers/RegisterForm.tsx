@@ -6,7 +6,7 @@ import { post } from '../../utils/petitions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Loader } from '../atoms/';
+import { Loader } from '../elements/';
 import { Input } from '../elements';
 import { HTTPException } from '../../utils/HttpException';
 import Cookie from 'universal-cookie';

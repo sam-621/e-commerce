@@ -5,7 +5,7 @@ import { Products } from '../containers';
 import { Nav } from '../elements/';
 import { useAuth } from '../../hooks';
 import Cookies from 'universal-cookie';
-import { Loader } from '../atoms';
+import { Loader } from '../elements';
 
 const Home = () => {
   const cookie = new Cookies();

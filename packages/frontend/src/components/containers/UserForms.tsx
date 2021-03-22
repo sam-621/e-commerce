@@ -6,7 +6,7 @@ import { UserProducts } from '../containers';
 import { IProduct } from '../../context/interfaces';
 import { get } from '../../utils/petitions';
 import Cookies from 'universal-cookie';
-import { Loader } from '../atoms';
+import { Loader } from '../elements';
 
 const UserForms = () => {
   const cookie = new Cookies();

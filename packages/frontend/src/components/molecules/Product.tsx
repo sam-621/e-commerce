@@ -10,7 +10,7 @@ import { IAction, ICtxReturns, IInitialState, IProduct } from '../../context/int
 import { addToCartAction } from '../../context/cart/actionsCreator';
 import { toast } from 'react-toastify';
 import { put } from '../../utils/petitions';
-import { Loader } from '../atoms';
+import { Loader } from '../elements';
 
 const Product = ({ description, image, price, name, id, isGeneric }: IProductProps) => {
   const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];

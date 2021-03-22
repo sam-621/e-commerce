@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/atoms/userSubmit.css';
-import Loader from './Loader';
+import Loader from '../elements/Loader';
 
 const UserSubmit = ({ isLoading }: IUserSubmitProps) => {
   return (
