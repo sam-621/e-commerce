@@ -1,0 +1,15 @@
+.PrimaryButton {
+  transition: 0.25s;
+  font-size: 1.6rem;
+  background: #2f80ed;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 50px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+.PrimaryButton:hover {
+  transition: 0.25s;
+  background-color: #1d6edb;
+}

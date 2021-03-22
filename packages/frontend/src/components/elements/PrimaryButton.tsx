@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/elements/primaryButton.css';
 
 const PrimaryButton = ({ children, type = 'submit', onClick }: IPrimaryButtonProps) => {
   return (
