@@ -6,7 +6,7 @@ import { post } from '../../utils/petitions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Loader } from '../elements/';
+import { Loader, PrimaryButton } from '../elements/';
 import { Input } from '../elements';
 import { HTTPException } from '../../utils/HttpException';
 import Cookie from 'universal-cookie';
@@ -65,7 +65,7 @@ const RegisterForm = () => {
               />
             </div>
             <div className="RegisterForm-form-submit">
-              {isLoading ? <Loader /> : <input type="submit" value="Login" />}
+              {isLoading ? <Loader /> : <PrimaryButton>Register</PrimaryButton>}
             </div>
           </form>
           <div className="RegisterForm-footer">
