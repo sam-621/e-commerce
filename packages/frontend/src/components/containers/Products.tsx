@@ -59,7 +59,7 @@ const Products = ({ url = '/products', products }: IProductsProps) => {
                 description={prod.description}
                 price={prod.price}
                 name={prod.name}
-                isGeneric={products ? false : isGeneric}
+                isUserProducts={products ? false : isGeneric}
               />
             );
           })}

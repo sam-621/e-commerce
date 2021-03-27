@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { put } from '../../utils/petitions';
 import { Loader } from '.';
 
-const Product = ({ description, image, price, name, id, isGeneric }: IProductProps) => {
+const Product = ({ description, image, price, name, id, isUserProducts }: IProductProps) => {
   const [_, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const cookie = new Cookie();
@@ -20,6 +20,7 @@ const Product = ({ description, image, price, name, id, isGeneric }: IProductPro
 
   async function addToCart() {
     setIsLoading(true);
+
     const headers = { api_key: API_KEY, authorization: token };
     const data: IProduct = { description, image, price, name, frontID: id };
 
@@ -27,11 +28,13 @@ const Product = ({ description, image, price, name, id, isGeneric }: IProductPro
       put('/cart/add', data, { headers }).then((res) => {
         const product = { ...res.data.data, frontID: id };
         dispatch(addToCartAction(product));
+
         setIsLoading(false);
         toast.success('Added to cart');
       });
     } catch (e) {
       setIsLoading(false);
+
       toast.error('Ocurrio un error al agregar al carrito');
     }
   }
@@ -50,7 +53,7 @@ const Product = ({ description, image, price, name, id, isGeneric }: IProductPro
           <p>$ {price}</p>
         </div>
         <div className="Product-options-btn">
-          {token && isGeneric ? (
+          {token && isUserProducts ? (
             isLoading ? (
               <Loader />
             ) : (
@@ -71,7 +74,7 @@ interface IProductProps {
   description: string;
   price: number;
   id?: number | any;
-  isGeneric?: boolean;
+  isUserProducts?: boolean; //this means that are products that user bought or is in his/her cart
 }
 
 export default Product;
