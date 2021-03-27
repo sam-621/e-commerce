@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 import { API_KEY } from '../../config';
 import Cookie from 'universal-cookie';
 import CartContext from '../../context/cart/cart';
-import { IAction, ICtxReturns, IInitialState, IProduct } from '../../context/interfaces';
+import { IAction, IInitialState, IProduct } from '../../context/interfaces';
 import { addToCartAction } from '../../context/cart/actionsCreator';
 import { toast } from 'react-toastify';
 import { put } from '../../utils/petitions';
-import { Loader } from '../elements';
+import { Loader } from '.';
 
 const Product = ({ description, image, price, name, id, isGeneric }: IProductProps) => {
-  const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
+  const [_, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const cookie = new Cookie();
   const token: string | null = cookie.get('token');

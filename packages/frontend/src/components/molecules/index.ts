@@ -1,5 +1,5 @@
 import Searcher from './Searcher';
-import Product from './Product';
+import Product from '../elements/Product';
 import ProductForBuy from './ProductForBuy';
 import CartCard from './CartCard';
 import BasicInfo from './BasicInfo';
