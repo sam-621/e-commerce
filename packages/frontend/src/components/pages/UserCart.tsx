@@ -1,7 +1,7 @@
 import React, { Dispatch, useContext } from 'react';
 import CartContext from '../../context/cart/cart';
 import { IAction, IInitialState } from '../../context/interfaces';
-import { Products } from '../containers';
+import { Products } from '../elements';
 import { Nav } from '../elements';
 
 const UserCart = () => {

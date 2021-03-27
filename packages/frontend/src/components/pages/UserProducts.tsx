@@ -1,5 +1,5 @@
 import React from 'react';
-import { Products } from '../containers';
+import { Products } from '../elements';
 import { Nav } from '../elements';
 
 const UserProducts = () => {

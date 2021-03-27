@@ -3,8 +3,8 @@ import '../../styles/containers/products.css';
 import '../../styles/toastify.css';
 
 import { get } from '../../utils/petitions';
-import { Product } from '../elements';
-import { Loader } from '../elements';
+import { Product } from '.';
+import { Loader } from '.';
 import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
 import { ToastContainer } from 'react-toastify';
