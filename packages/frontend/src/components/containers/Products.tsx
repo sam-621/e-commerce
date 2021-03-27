@@ -3,7 +3,7 @@ import '../../styles/containers/products.css';
 import '../../styles/toastify.css';
 
 import { get } from '../../utils/petitions';
-import { Product } from '../molecules';
+import { Product } from '../elements';
 import { Loader } from '../elements';
 import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
