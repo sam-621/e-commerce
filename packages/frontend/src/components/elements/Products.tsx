@@ -14,19 +14,25 @@ import Cookies from 'universal-cookie';
 const Products = ({ url = '/products', products }: IProductsProps) => {
   const [data, setData] = useState<Array<IProduct>>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const isGeneric: boolean = url === '/products';
+  const isNoAuthRequired: boolean = url === '/products';
 
   async function getProducts(): Promise<void> {
     try {
       setLoading(true);
 
-      if (isGeneric) {
-        const res = await get(url);
-        setData(res.data.data);
-      } else {
-        const res = await get(url, { headers: { authorization: new Cookies().get('token') } });
-        setData(res.data.data.productsBought);
+      if (products) {
+        console.log('in products');
+
+        setData(products);
+        setLoading(false);
+        return;
       }
+
+      const res = await get(url, { headers: { authorization: new Cookies().get('token') } });
+      console.log(res);
+
+      setData(res.data.data);
+
       setLoading(false);
     } catch (e) {
       const httpException = new HTTPException(e.message);
@@ -38,10 +44,7 @@ const Products = ({ url = '/products', products }: IProductsProps) => {
   }
 
   useEffect(() => {
-    if (!products) {
-      getProducts();
-    }
-    setData(products);
+    getProducts();
   }, []);
 
   return (
@@ -55,11 +58,11 @@ const Products = ({ url = '/products', products }: IProductsProps) => {
               <Product
                 key={prod._id}
                 image={prod.image}
-                id={isGeneric ? prod._id : prod.frontID}
+                id={isNoAuthRequired ? prod._id : prod.frontID}
                 description={prod.description}
                 price={prod.price}
                 name={prod.name}
-                isUserProducts={products ? false : isGeneric}
+                isUserProducts={products ? false : isNoAuthRequired}
               />
             );
           })}
