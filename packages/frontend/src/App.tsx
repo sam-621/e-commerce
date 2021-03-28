@@ -1,17 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/app.css';
-import {
-  Register,
-  Login,
-  Home,
-  Payment,
-  Main,
-  Cart,
-  User,
-  UserProducts,
-  UserCart,
-} from './components/pages/';
+import { Main } from './components/pages/';
+import Login from './components/modules/Login/Login';
+import Register from './components/modules/Register/Register';
+import Home from './components/modules/Home/Home';
+import Payment from './components/modules/Payment/Payment';
+import Cart from './components/modules/Cart/Cart';
+import User from './components/modules/User/User/User';
+import UserProducts from './components/modules/User/userProducts/UserProducts';
+import UserCart from './components/modules/User/userCart/UserCart';
+
 import { CartContextProvider } from './context/cart/cart';
 import ProtectedRoute from './ProtectedRoute';
 

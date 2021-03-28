@@ -1,8 +1,4 @@
 import Searcher from './Searcher';
-import Product from './Product';
-import ProductForBuy from './ProductForBuy';
-import CartCard from './CartCard';
-import BasicInfo from './BasicInfo';
-import ListProducts from './ListProducts';
+import ListProducts from '../modules/User/User/ListProducts';
 
-export { Searcher, Product, ProductForBuy, CartCard, BasicInfo, ListProducts };
+export { Searcher, ListProducts };
