@@ -1,8 +1,8 @@
 import React, { Dispatch, useContext, useEffect, useState } from 'react';
-import CartContext from '../../context/cart/cart';
-import { IAction, IInitialState } from '../../context/interfaces';
-import { Loader, Products } from '../elements';
-import { Nav } from '../elements';
+import CartContext from '../../../../context/cart/cart';
+import { IAction, IInitialState } from '../../../../context/interfaces';
+import { Loader, Products } from '../../../elements';
+import { Nav } from '../../../elements';
 
 const UserCart = () => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];

@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../styles/molecules/listProducts.css';
+import '../../../styles/molecules/listProducts.css';
 import { Link } from 'react-router-dom';
-import { MiniProduct } from '../atoms';
-import { IProduct } from '../../context/interfaces';
+import MiniProduct from './MiniProduct';
+import { IProduct } from '../../../context/interfaces';
 
 const ListProducts = ({ products, title, url }: IListProductsProps) => {
   return (

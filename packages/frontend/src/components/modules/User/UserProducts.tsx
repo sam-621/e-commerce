@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/containers/userProducts.css';
-import { IProduct } from '../../context/interfaces';
-import { ListProducts } from '../molecules';
+import '../../../styles/containers/userProducts.css';
+import { IProduct } from '../../../context/interfaces';
+import ListProducts from './ListProducts';
 
 const UserProducts = ({ productsBought, cartProducts }: IUserProductsProps) => {
   return (

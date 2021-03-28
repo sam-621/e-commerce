@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
-import { IProduct } from '../../context/interfaces';
-import { get } from '../../utils/petitions';
-import { Loader, Products } from '../elements';
-import { Nav } from '../elements';
+import { IProduct } from '../../../../context/interfaces';
+import { get } from '../../../../utils/petitions';
+import { Loader, Products } from '../../../elements';
+import { Nav } from '../../../elements';
 
 const UserProducts = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
