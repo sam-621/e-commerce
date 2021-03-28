@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import '../../../../styles/molecules/basicInfo.css';
 import { HTTPException } from '../../../../utils/HttpException';
-import { post } from '../../../../utils/petitions';
+import { post, put } from '../../../../utils/petitions';
 import UserSubmit from './UserSubmit';
 import UserInput from './UserInput';
 import LogOut from './LogOut';
@@ -21,7 +21,7 @@ const BasicInfo = ({ email, username }: IBasicInfoProps) => {
     const config = { headers: { authorization: cookie.get('token') } };
 
     try {
-      const res = await post('/user', data, config);
+      await put('/user', data, config);
       setIsLoading(false);
       toast.success('Data updated');
     } catch (e) {

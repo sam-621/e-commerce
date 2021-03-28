@@ -16,7 +16,7 @@ router.post('/login', loginValidator, areWrongData, loginController);
 
 router.get('/user', jwtMiddleware, getUserData);
 
-router.post('/user', jwtMiddleware, updateInfoValidator, areWrongData, updateUserData);
+router.put('/user', jwtMiddleware, updateInfoValidator, areWrongData, updateUserData);
 
 router.get('/refresh', jwtMiddleware, refreshTokenController);
 
