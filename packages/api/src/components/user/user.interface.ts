@@ -1,16 +1,6 @@
-import { Document, ObjectId } from 'mongoose';
-import { Request, Response, NextFunction } from 'express';
+import { Document } from 'mongoose';
 import { IPayload } from '../auth/auth.interfaces';
-import { IRequest } from '../../middleware/interfaces.middlewares';
-
-export interface IProduct {
-  _id?: ObjectId;
-  frontID: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-}
+import { IProduct } from '../interfaces/IProducts';
 
 export interface IUser extends Document {
   username?: string;
@@ -18,10 +8,6 @@ export interface IUser extends Document {
   password: string;
   cart?: IProduct[];
   productsBought?: IProduct[];
-}
-
-export interface IController {
-  (req: IRequest, res: Response, next: NextFunction): Promise<Response>;
 }
 
 export interface IDataForToken extends IPayload {

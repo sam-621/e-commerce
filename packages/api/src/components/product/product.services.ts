@@ -1,5 +1,6 @@
 import { ObjectId } from 'mongoose';
-import { IProduct, IUser } from '../user/user.interface';
+import { IProduct } from '../interfaces/IProducts';
+import { IUser } from '../user/user.interface';
 import UserModel from '../user/user.models';
 
 class Product {

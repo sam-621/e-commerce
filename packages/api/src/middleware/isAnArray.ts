@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { IProduct } from '../components/user/user.interface';
+import { IProduct } from '../components/interfaces/IProducts';
 
 async function isAnArray(
   req: Request,

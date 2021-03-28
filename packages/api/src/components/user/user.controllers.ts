@@ -1,8 +1,5 @@
-import { IController } from './user.interface';
+import { IController } from '../interfaces/IController';
 import { User } from './user.services';
-import jwt from 'jsonwebtoken';
-import { IRequest } from '../../middleware/interfaces.middlewares';
-import { NextFunction, Response } from 'express';
 import { AuthServices } from '../auth/auth.services';
 import { IPayload } from '../auth/auth.interfaces';
 
@@ -81,7 +78,7 @@ const updateUserData: IController = async (req, res, next) => {
   });
 };
 
-const refreshTokenController = async (req: IRequest, res: Response, next: NextFunction) => {
+const refreshTokenController: IController = async (req, res, next) => {
   const authService = new AuthServices();
 
   const tokenRefreshed: string = authService.refreshToken(req.user.id);

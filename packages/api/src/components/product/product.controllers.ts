@@ -1,16 +1,16 @@
-import { IControllerWithToken } from './product.interfaces';
 import { products } from './products';
 import { Product } from './product.services';
-import { IProduct } from '../user/user.interface';
+import { IProduct } from '../interfaces/IProducts';
+import { IController } from '../interfaces/IController';
 
-const getProductsController: IControllerWithToken = (req, res, next) => {
+const getProductsController: IController = (req, res, next) => {
   return res.status(200).json({
     data: products,
     message: 'OK',
   });
 };
 
-const buyProductController: IControllerWithToken = async (req, res, next) => {
+const buyProductController: IController = async (req, res, next) => {
   const products: IProduct[] = req.body;
 
   const product = new Product();
