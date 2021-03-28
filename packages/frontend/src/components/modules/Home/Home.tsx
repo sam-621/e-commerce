@@ -1,11 +1,11 @@
 import React from 'react';
 
 // import { Searcher } from '../molecules';
-import { Products } from '../elements';
-import { Nav } from '../elements/';
-import { useAuth } from '../../hooks';
+import { Products } from '../../elements';
+import { Nav } from '../../elements';
+import { useAuth } from '../../../hooks';
 import Cookies from 'universal-cookie';
-import { Loader } from '../elements';
+import { Loader } from '../../elements';
 
 const Home = () => {
   const cookie = new Cookies();
