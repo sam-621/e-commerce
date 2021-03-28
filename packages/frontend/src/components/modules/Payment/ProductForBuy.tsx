@@ -1,8 +1,8 @@
 import React from 'react';
-import { IProduct } from '../../context/interfaces';
+import { IProduct } from '../../../context/interfaces';
 import '../../styles/molecules/productForBuy.css';
 
-import { PayPal } from '../containers';
+import PayPal from './PayPal';
 
 const ProductForBuy = ({ products }: IProductProps) => {
   return (

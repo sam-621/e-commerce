@@ -2,15 +2,15 @@ import React from 'react';
 import '../../styles/pages/payment.css';
 import '../../styles/toastify.css';
 
-import { Nav } from '../elements';
-import { productsData } from '../../products';
-import { ProductForBuy } from '../molecules';
+import { Nav } from '../../elements';
+import { productsData } from '../../../products';
+import ProductForBuy from './ProductForBuy';
 import { useParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAuth } from '../../hooks';
+import { useAuth } from '../../../hooks';
 import Cookies from 'universal-cookie';
-import { Loader } from '../elements';
+import { Loader } from '../../elements';
 
 const Payment = () => {
   const cookies = new Cookies();

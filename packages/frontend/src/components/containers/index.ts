@@ -1,4 +1,4 @@
-import PayPal from './PayPal';
+import PayPal from '../modules/Payment/PayPal';
 import CartContent from './CartContent';
 import UserForms from './UserForms';
 import UserProducts from './UserProducts';

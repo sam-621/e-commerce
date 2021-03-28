@@ -5,9 +5,9 @@ import axios from 'axios';
 import Cookie from 'universal-cookie';
 import { toast } from 'react-toastify';
 
-import { API_KEY, API_URI, MODE } from '../../config';
-import { Loader } from '../elements';
-import { IProduct } from '../../context/interfaces';
+import { API_KEY, API_URI, MODE } from '../../../config';
+import { Loader } from '../../elements';
+import { IProduct } from '../../../context/interfaces';
 
 const PayPal = ({ products }: IPayPalProps) => {
   const cookie = new Cookie();
