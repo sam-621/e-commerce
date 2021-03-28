@@ -25,6 +25,7 @@ const Products = ({ products = [] }: IProductsProps) => {
       }
 
       const res = await get('/products');
+      console.log(res);
 
       setData(res.data.data);
       setLoading(false);
@@ -52,7 +53,7 @@ const Products = ({ products = [] }: IProductsProps) => {
               <Product
                 key={prod._id}
                 image={prod.image}
-                id={prod._id}
+                id={areThereAlreadyProducts ? prod.frontID : prod._id}
                 description={prod.description}
                 price={prod.price}
                 name={prod.name}
