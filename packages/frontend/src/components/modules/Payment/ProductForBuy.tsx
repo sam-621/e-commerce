@@ -1,6 +1,6 @@
 import React from 'react';
 import { IProduct } from '../../../context/interfaces';
-import '../../styles/molecules/productForBuy.css';
+import '../../../styles/molecules/productForBuy.css';
 
 import PayPal from './PayPal';
 

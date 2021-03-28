@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/containers/paypal.css';
+import '../../../styles/containers/paypal.css';
 import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
