@@ -1,10 +1,11 @@
 import { ObjectId } from 'mongoose';
 import { IProduct } from '../interfaces/IProducts';
+import { IService } from '../interfaces/IService';
 import { IUser } from '../user/user.interface';
 import UserModel from '../user/user.models';
 
 class Product {
-  public async buyProduct(buyerID: ObjectId, products: IProduct[]) {
+  public async buyProduct(buyerID: ObjectId, products: IProduct[]): Promise<IService> {
     try {
       const user: IUser = await UserModel.findById(buyerID);
 
@@ -26,7 +27,7 @@ class Product {
     }
   }
 
-  public async addToCart(buyerID: ObjectId, product: IProduct) {
+  public async addToCart(buyerID: ObjectId, product: IProduct): Promise<IService> {
     try {
       const user: IUser = await UserModel.findById(buyerID);
 

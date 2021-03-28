@@ -2,10 +2,11 @@ import { ObjectId } from 'mongoose';
 import { IProduct } from '../interfaces/IProducts';
 import { IUser } from '../user/user.interface';
 import UserModel from '../user/user.models';
-import { IAddToCartParams, ICartServiceRes } from './cart.interfaces';
+import { IAddToCartParams } from './cart.interfaces';
+import { IService } from '../interfaces/IService';
 
 class Cart {
-  public async addToCart(params: IAddToCartParams): Promise<ICartServiceRes> {
+  public async addToCart(params: IAddToCartParams): Promise<IService> {
     const { buyerID, description, image, name, price, frontID } = params;
 
     try {
@@ -37,7 +38,7 @@ class Cart {
     }
   }
 
-  public async getCartProducts(userID: ObjectId): Promise<ICartServiceRes> {
+  public async getCartProducts(userID: ObjectId): Promise<IService> {
     try {
       const cartProducts: IProduct[] = await UserModel.findById(userID, 'cart');
 
@@ -55,7 +56,7 @@ class Cart {
     }
   }
 
-  public async removeCartProduct(productID: ObjectId, userID: ObjectId): Promise<ICartServiceRes> {
+  public async removeCartProduct(productID: ObjectId, userID: ObjectId): Promise<IService> {
     try {
       await UserModel.updateOne({ _id: userID }, { $pull: { cart: { _id: productID } } });
 

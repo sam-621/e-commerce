@@ -1,8 +1,8 @@
 import { IUser, IDataForToken } from './user.interface';
 import UserModel from './user.models';
 import argon from 'argon2';
-import { ICartServiceRes } from '../cart/cart.interfaces';
 import { ObjectId } from 'mongoose';
+import { IService } from '../interfaces/IService';
 
 class User {
   private readonly username: string;
@@ -56,7 +56,7 @@ class User {
     }
   }
 
-  public async UpdateUserInfo(userID: ObjectId): Promise<ICartServiceRes> {
+  public async UpdateUserInfo(userID: ObjectId): Promise<IService> {
     try {
       await UserModel.findByIdAndUpdate(userID, { username: this.username, email: this.email });
 
@@ -68,11 +68,6 @@ class User {
       return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500 };
     }
   }
-}
-
-interface IUpdateUserInfoProp {
-  username: string;
-  email: string;
 }
 
 export { User };

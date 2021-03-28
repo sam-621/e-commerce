@@ -3,7 +3,7 @@ import { User } from './user.services';
 import { AuthServices } from '../auth/auth.services';
 import { IPayload } from '../auth/auth.interfaces';
 
-const registerController: IController = async (req, res, next) => {
+const registerController: IController = async (req, res) => {
   const { username, email, password } = req.body;
 
   const user = new User(username, email, password);
@@ -27,7 +27,7 @@ const registerController: IController = async (req, res, next) => {
   return res.status(201).json({ data: token, message: 'USER REGISTERED' });
 };
 
-const loginController: IController = async (req, res, next) => {
+const loginController: IController = async (req, res) => {
   const user = new User('', req.body.email, req.body.password);
 
   const { id, err } = await user.login();
@@ -49,7 +49,7 @@ const loginController: IController = async (req, res, next) => {
   return res.status(200).json({ data: token, message: 'USER LOGGED' });
 };
 
-const getUserData: IController = async (req, res, next) => {
+const getUserData: IController = async (req, res) => {
   const authServices = new AuthServices();
 
   const user = await authServices.getUser(req.user.id);
@@ -67,7 +67,7 @@ const getUserData: IController = async (req, res, next) => {
   });
 };
 
-const updateUserData: IController = async (req, res, next) => {
+const updateUserData: IController = async (req, res) => {
   const user = new User(req.body.username, req.body.email, '');
 
   const { data, msg, statusCode } = await user.UpdateUserInfo(req.user.id);
@@ -78,7 +78,7 @@ const updateUserData: IController = async (req, res, next) => {
   });
 };
 
-const refreshTokenController: IController = async (req, res, next) => {
+const refreshTokenController: IController = async (req, res) => {
   const authService = new AuthServices();
 
   const tokenRefreshed: string = authService.refreshToken(req.user.id);

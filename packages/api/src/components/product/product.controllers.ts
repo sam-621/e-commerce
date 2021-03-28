@@ -3,14 +3,14 @@ import { Product } from './product.services';
 import { IProduct } from '../interfaces/IProducts';
 import { IController } from '../interfaces/IController';
 
-const getProductsController: IController = (req, res, next) => {
+const getProductsController: IController = (_, res) => {
   return res.status(200).json({
     data: products,
     message: 'OK',
   });
 };
 
-const buyProductController: IController = async (req, res, next) => {
+const buyProductController: IController = async (req, res) => {
   const products: IProduct[] = req.body;
 
   const product = new Product();
