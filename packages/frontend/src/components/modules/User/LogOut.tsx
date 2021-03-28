@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/atoms/logOut.css';
+import '../../../styles/atoms/logOut.css';
 import Cookies from 'universal-cookie';
 
 const Logout = () => {

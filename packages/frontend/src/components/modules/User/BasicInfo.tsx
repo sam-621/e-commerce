@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
-import '../../styles/molecules/basicInfo.css';
-import { HTTPException } from '../../utils/HttpException';
-import { post } from '../../utils/petitions';
-import { LogOut, UserInput, UserSubmit } from '../atoms';
+import '../../../styles/molecules/basicInfo.css';
+import { HTTPException } from '../../../utils/HttpException';
+import { post } from '../../../utils/petitions';
+import UserSubmit from './UserSubmit';
+import UserInput from './UserInput';
+import LogOut from './LogOut';
 
 const BasicInfo = ({ email, username }: IBasicInfoProps) => {
   const cookie = new Cookies();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../../styles/containers/userForms.css';
 
-import { BasicInfo } from '../../molecules';
+import BasicInfo from './BasicInfo';
 import UserProducts from './UserProducts';
 import { IProduct } from '../../../context/interfaces';
 import { get } from '../../../utils/petitions';
