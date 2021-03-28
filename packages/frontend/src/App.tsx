@@ -7,9 +7,9 @@ import Register from './components/modules/Register/Register';
 import Home from './components/modules/Home/Home';
 import Payment from './components/modules/Payment/Payment';
 import Cart from './components/modules/Cart/Cart';
-import User from './components/modules/User/User';
-import UserProducts from './components/modules/User/userProductsPage/UserProducts';
-import UserCart from './components/modules/User/userCarts/UserCart';
+import User from './components/modules/User/User/User';
+import UserProducts from './components/modules/User/userProducts/UserProducts';
+import UserCart from './components/modules/User/userCart/UserCart';
 
 import { CartContextProvider } from './context/cart/cart';
 import ProtectedRoute from './ProtectedRoute';

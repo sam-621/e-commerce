@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import UserForms from './UserForms';
-import { Nav } from '../../elements';
+import { Nav } from '../../../elements';
 
 const User = () => {
   return (

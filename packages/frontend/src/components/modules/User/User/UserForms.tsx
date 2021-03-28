@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../../../styles/containers/userForms.css';
+import '../../../../styles/containers/userForms.css';
 
 import BasicInfo from './BasicInfo';
 import UserProducts from './UserProducts';
-import { IProduct } from '../../../context/interfaces';
-import { get } from '../../../utils/petitions';
+import { IProduct } from '../../../../context/interfaces';
+import { get } from '../../../../utils/petitions';
 import Cookies from 'universal-cookie';
-import { Loader } from '../../elements';
+import { Loader } from '../../../elements';
 
 const UserForms = () => {
   const cookie = new Cookies();

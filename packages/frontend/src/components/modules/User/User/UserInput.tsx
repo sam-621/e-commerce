@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/atoms/userInput.css';
+import '../../../../styles/atoms/userInput.css';
 
 const UserInput = ({ label, type, placeHolder = '', value, setValue }: IUserInputProps) => {
   return (

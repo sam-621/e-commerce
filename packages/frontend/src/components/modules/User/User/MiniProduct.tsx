@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/atoms/miniProduct.css';
+import '../../../../styles/atoms/miniProduct.css';
 
 const MiniProduct = ({ productName, price, frontID }: IMiniProductProps) => {
   return (

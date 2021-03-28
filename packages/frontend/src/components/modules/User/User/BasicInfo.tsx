@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
-import '../../../styles/molecules/basicInfo.css';
-import { HTTPException } from '../../../utils/HttpException';
-import { post } from '../../../utils/petitions';
+import '../../../../styles/molecules/basicInfo.css';
+import { HTTPException } from '../../../../utils/HttpException';
+import { post } from '../../../../utils/petitions';
 import UserSubmit from './UserSubmit';
 import UserInput from './UserInput';
 import LogOut from './LogOut';
