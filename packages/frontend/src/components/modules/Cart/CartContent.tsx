@@ -1,9 +1,9 @@
 import React, { Dispatch, useContext } from 'react';
-import '../../styles/containers/cartContent.css';
+import '../../../styles/containers/cartContent.css';
 
-import { CartCard } from '../molecules/';
-import CartContext from '../../context/cart/cart';
-import { IAction, IInitialState } from '../../context/interfaces';
+import CartCard from './CartCard';
+import CartContext from '../../../context/cart/cart';
+import { IAction, IInitialState } from '../../../context/interfaces';
 
 const CartContent = () => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
