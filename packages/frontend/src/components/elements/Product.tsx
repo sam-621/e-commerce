@@ -1,7 +1,7 @@
 import React, { Dispatch, useContext, useState } from 'react';
 import '../../styles/molecules/product.css';
 
-import AddIcon from '../../img/add.svg';
+import AddIcon from '../../svg/add.svg';
 import { Link } from 'react-router-dom';
 import { API_KEY } from '../../config';
 import Cookie from 'universal-cookie';

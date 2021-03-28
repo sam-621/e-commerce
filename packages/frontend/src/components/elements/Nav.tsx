@@ -3,8 +3,8 @@ import '../../styles/elements/nav.css';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
-import UserIcon from '../../img/usericon.svg';
-import CartIcon from '../../img/cart.svg';
+import UserIcon from '../../svg/usericon.svg';
+import CartIcon from '../../svg/cart.svg';
 import CartContext from '../../context/cart/cart';
 import { IAction, IInitialState } from '../../context/interfaces';
 

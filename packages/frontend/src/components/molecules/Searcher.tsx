@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/molecules/searcher.css';
 
-import SearchIcon from '../../img/search.svg';
+import SearchIcon from '../../svg/search.svg';
 
 const Searcher = () => {
   return (

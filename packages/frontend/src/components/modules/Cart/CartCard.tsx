@@ -1,7 +1,7 @@
 import React, { Dispatch, useContext, useState } from 'react';
 import '../../../styles/molecules/cartCard.css';
 import { HTTPException } from '../../../utils/HttpException';
-import RemoveIcon from '../../../img/remove.svg';
+import RemoveIcon from '../../../svg/remove.svg';
 import Cookie from 'universal-cookie';
 import { API_KEY } from '../../../config';
 import CartContext from '../../../context/cart/cart';
