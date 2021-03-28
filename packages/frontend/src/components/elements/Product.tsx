@@ -35,7 +35,7 @@ const Product = ({ description, image, price, name, id, isUserProducts }: IProdu
     } catch (e) {
       setIsLoading(false);
 
-      toast.error('Ocurrio un error al agregar al carrito');
+      toast.error('An error ocurred adding the products to cart');
     }
   }
 

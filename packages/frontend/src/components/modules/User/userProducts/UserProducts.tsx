@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import { IProduct } from '../../../../context/interfaces';
 import { get } from '../../../../utils/petitions';
@@ -15,7 +16,7 @@ const UserProducts = () => {
         setProducts(res.data.data.productsBought);
         setIsLoading(false);
       } catch (e) {
-        console.log(e);
+        toast.error('An error ocurred fetching the products');
         setIsLoading(false);
       }
     }

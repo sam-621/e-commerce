@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { API_KEY } from '../config';
 import AxiosInstance from '../utils/Axios';
-import { IUseAuth, IUseAuthReturns } from './interfaces';
+import { IUseAuth } from './interfaces';
 
 const useAuth: IUseAuth = (tokenArg) => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
@@ -32,10 +32,6 @@ const useAuth: IUseAuth = (tokenArg) => {
 
   useEffect(() => {
     refreshToken();
-
-    // return () => {
-    //   console.log('??');
-    // };
   }, []);
 
   return { isAuth, finished, token };

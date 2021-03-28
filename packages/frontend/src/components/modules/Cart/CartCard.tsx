@@ -13,7 +13,7 @@ import { put } from '../../../utils/petitions';
 import { Loader } from '../../elements';
 
 const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
-  const [state, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
+  const [_, dispatch] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const cookie = new Cookie();
 
@@ -31,6 +31,7 @@ const CartCard = ({ img, price, name, _id, frontID }: ICartCard) => {
     } catch (e) {
       const httpException = new HTTPException(e.message);
       const msg: string = httpException.getProductsMessage();
+
       setIsLoading(false);
       toast.error(msg);
     }

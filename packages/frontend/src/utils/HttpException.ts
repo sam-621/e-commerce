@@ -16,7 +16,7 @@ class HTTPException {
       case 401:
         message = 'There is already an account with that email';
         break;
-      case 500:
+      default:
         message = 'Something went wrong, try it later';
         break;
     }
@@ -35,7 +35,7 @@ class HTTPException {
       case 401:
         message = 'Wrong credentials';
         break;
-      case 500:
+      default:
         message = 'Something went wrong, try it later';
         break;
     }
@@ -51,7 +51,7 @@ class HTTPException {
       case 401:
         message = `You don't have permission to see this content`;
         break;
-      case 500:
+      default:
         message = 'Something went wrong, try it later';
         break;
     }

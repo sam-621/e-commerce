@@ -6,7 +6,7 @@ import { get } from '../../utils/petitions';
 import { Loader, Product } from '.';
 import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Products = ({ products = [] }: IProductsProps) => {
@@ -31,7 +31,7 @@ const Products = ({ products = [] }: IProductsProps) => {
     } catch (e) {
       const httpException = new HTTPException(e.message);
       const msg = httpException.getProductsMessage();
-      alert(msg);
+      toast.error(msg);
 
       setLoading(false);
     }
