@@ -12,7 +12,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const Products = ({ products = [] }: IProductsProps) => {
   const [data, setData] = useState<Array<IProduct>>(products);
   const areThereAlreadyProducts = products.length > 0;
-  console.log(areThereAlreadyProducts);
 
   const [loading, setLoading] = useState<boolean>(false);
 

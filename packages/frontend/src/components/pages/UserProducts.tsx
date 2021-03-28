@@ -12,7 +12,6 @@ const UserProducts = () => {
     async function fetchData() {
       try {
         const res = await get('/user', { headers: { authorization: new Cookies().get('token') } });
-        console.log(res);
         setProducts(res.data.data.productsBought);
         setIsLoading(false);
       } catch (e) {
