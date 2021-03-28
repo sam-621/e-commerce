@@ -176,3 +176,59 @@ describe('Refresh token endpoint', () => {
     done();
   });
 });
+
+describe('Update user info endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+  beforeEach(clearDatabase);
+
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).put('/user');
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO API_KEY PROVIDED');
+    done();
+  });
+
+  test('Should response 401 NO TOKEN PROVIDED', async (done) => {
+    const res = await req(app).put('/user').set('api_key', API_KEY);
+
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe('NO TOKEN PROVIDED');
+    done();
+  });
+
+  test('Should response 400, WRONG DATA SCHEMA', async (done) => {
+    const token1: string = await registerUserAndGetToken();
+
+    const res = await req(app)
+      .put('/user')
+      .set('api_key', API_KEY)
+      .set('authorization', token1)
+      .send({
+        username: 'admin_v2',
+        email: 'admin_v2gmail.com',
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body.message).toBe('WRONG DATA SCHEMA');
+    done();
+  });
+
+  test('Should response 200, USER UPDATED', async (done) => {
+    const token: string = await registerUserAndGetToken();
+
+    const res = await req(app)
+      .put('/user')
+      .set('api_key', API_KEY)
+      .set('authorization', token)
+      .send({
+        username: 'admin_v2',
+        email: 'admin_v2@gmail.com',
+      });
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('USER UPDATED');
+    done();
+  });
+});

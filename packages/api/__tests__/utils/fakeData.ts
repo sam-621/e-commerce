@@ -22,11 +22,14 @@ const token =
 const tokenExpired =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2FiZmFiMTI0ZmY1MDkzNTRkYzg3NyIsImlhdCI6MTYxNTA0NjU4MSwiZXhwIjoxNjE1MDQ2NTgxfQ.VekBYAaO4UXaOOQZlVRNfNxUup8tXmp9LB5Jc3glKdg';
 
-async function registerUserAndGetToken(): Promise<string> {
+async function registerUserAndGetToken(
+  username: string = 'admin',
+  email: string = 'admin@gmail.com'
+): Promise<string> {
   try {
     const user = new UserModel({
-      username: 'admin',
-      email: 'admin@gmail.com',
+      username: username,
+      email: email,
       password: '123456',
     });
 
