@@ -3,36 +3,31 @@ import '../../styles/containers/products.css';
 import '../../styles/toastify.css';
 
 import { get } from '../../utils/petitions';
-import { Product } from '.';
-import { Loader } from '.';
+import { Loader, Product } from '.';
 import { IProduct } from '../../context/interfaces';
 import { HTTPException } from '../../utils/HttpException';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Cookies from 'universal-cookie';
 
-const Products = ({ url = '/products', products }: IProductsProps) => {
-  const [data, setData] = useState<Array<IProduct>>([]);
+const Products = ({ products = [] }: IProductsProps) => {
+  const [data, setData] = useState<Array<IProduct>>(products);
+  const areThereAlreadyProducts = products.length > 0;
+  console.log(areThereAlreadyProducts);
+
   const [loading, setLoading] = useState<boolean>(false);
-  const isNoAuthRequired: boolean = url === '/products';
 
   async function getProducts(): Promise<void> {
     try {
       setLoading(true);
 
-      if (products) {
-        console.log('in products');
-
-        setData(products);
+      if (areThereAlreadyProducts) {
         setLoading(false);
         return;
       }
 
-      const res = await get(url, { headers: { authorization: new Cookies().get('token') } });
-      console.log(res);
+      const res = await get('/products');
 
       setData(res.data.data);
-
       setLoading(false);
     } catch (e) {
       const httpException = new HTTPException(e.message);
@@ -58,11 +53,11 @@ const Products = ({ url = '/products', products }: IProductsProps) => {
               <Product
                 key={prod._id}
                 image={prod.image}
-                id={isNoAuthRequired ? prod._id : prod.frontID}
+                id={prod._id}
                 description={prod.description}
                 price={prod.price}
                 name={prod.name}
-                isUserProducts={products ? false : isNoAuthRequired}
+                isUserProducts={areThereAlreadyProducts}
               />
             );
           })}
@@ -83,6 +78,5 @@ const Products = ({ url = '/products', products }: IProductsProps) => {
 export default Products;
 
 interface IProductsProps {
-  url?: string;
   products?: IProduct[];
 }

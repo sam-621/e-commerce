@@ -53,7 +53,7 @@ const Product = ({ description, image, price, name, id, isUserProducts }: IProdu
           <p>$ {price}</p>
         </div>
         <div className="Product-options-btn">
-          {token && isUserProducts ? (
+          {token && !isUserProducts ? (
             isLoading ? (
               <Loader />
             ) : (
