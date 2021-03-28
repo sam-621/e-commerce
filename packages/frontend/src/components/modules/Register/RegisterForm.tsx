@@ -1,14 +1,14 @@
 import React, { useState, SyntheticEvent } from 'react';
-import '../../styles/containers/registerForm.css';
-import '../../styles/toastify.css';
+import '../../../styles/containers/registerForm.css';
+import '../../../styles/toastify.css';
 import { Link, useHistory } from 'react-router-dom';
-import { post } from '../../utils/petitions';
+import { post } from '../../../utils/petitions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Loader, PrimaryButton } from '../elements/';
-import { Input } from '../elements';
-import { HTTPException } from '../../utils/HttpException';
+import { Loader, PrimaryButton } from '../../elements';
+import { Input } from '../../elements';
+import { HTTPException } from '../../../utils/HttpException';
 import Cookie from 'universal-cookie';
 
 const RegisterForm = () => {
