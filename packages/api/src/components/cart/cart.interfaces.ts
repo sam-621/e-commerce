@@ -8,9 +8,3 @@ export interface IAddToCartParams {
   description: string;
   image: string;
 }
-
-export interface ICartServiceRes {
-  data: null | IProduct[] | IProduct;
-  msg: string;
-  statusCode: number;
-}
