@@ -1,11 +1,11 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import { useAuth } from '../../hooks';
-import { Loader } from '../elements';
+import { useAuth } from '../../../hooks';
+import { Loader } from '../../elements';
 
-import { LoginForm } from '../containers/';
-import { Nav } from '../elements';
+import LoginForm from './LoginForm';
+import { Nav } from '../../elements';
 
 const Login = () => {
   const cookie = new Cookies();

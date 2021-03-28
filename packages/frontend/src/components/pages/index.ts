@@ -1,5 +1,4 @@
 import Main from './Main';
-import Login from './Login';
 import Register from './Register';
 import Home from './Home';
 import Payment from './Payment';
@@ -8,4 +7,4 @@ import User from './User';
 import UserProducts from './UserProducts';
 import UserCart from './UserCart';
 
-export { Main, Login, Register, Home, Payment, Cart, User, UserProducts, UserCart };
+export { Main, Register, Home, Payment, Cart, User, UserProducts, UserCart };

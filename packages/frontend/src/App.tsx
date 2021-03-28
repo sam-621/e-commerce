@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/app.css';
 import {
   Register,
-  Login,
   Home,
   Payment,
   Main,
@@ -12,6 +11,7 @@ import {
   UserProducts,
   UserCart,
 } from './components/pages/';
+import Login from './components/modules/Login/Login';
 import { CartContextProvider } from './context/cart/cart';
 import ProtectedRoute from './ProtectedRoute';
 
