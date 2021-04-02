@@ -9,7 +9,6 @@
     "start:app": "lerna run start",
     "dev:app": "lerna run dev",
     "test:app": "lerna run test",
-
     "heroku-prebuild": "cd packages/api && npm install --dev",
     "start": "cd packages/api && npm run start",
     "build": "cd packages/api && npm run build"
@@ -37,4 +36,3 @@
     }
   }
 }
-
