@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack serve --open chrome",
     "build": "webpack --mode production",
-    "start": "webpack serve --content-base ./dist/  --open chrome --mode production"
+    "start": "webpack serve --content-base ./dist/  --open chrome --mode production",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
