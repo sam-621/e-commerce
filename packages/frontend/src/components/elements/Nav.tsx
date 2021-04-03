@@ -1,7 +1,6 @@
 import React, { Dispatch, useContext } from 'react';
 import '../../styles/elements/nav.css';
 import { Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 
 import UserIcon from '../../svg/usericon.svg';
 import CartIcon from '../../svg/cart.svg';
@@ -10,8 +9,6 @@ import { IAction, IInitialState } from '../../context/interfaces';
 
 const Nav = ({ isAuth }: { isAuth: boolean }) => {
   const [state] = useContext(CartContext) as [IInitialState, Dispatch<IAction>];
-
-  const cookie = new Cookies();
 
   return (
     <nav className="Nav">

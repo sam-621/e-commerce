@@ -1,4 +1,4 @@
-import { Dispatch, DispatchWithoutAction, SetStateAction } from 'react';
+import { Dispatch } from 'react';
 
 interface IProduct {
   _id?: string;
