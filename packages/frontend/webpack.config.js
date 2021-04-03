@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
   entry: path.resolve(__dirname, 'src/Index.tsx'),
   output: {
@@ -55,5 +58,9 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
     port: 8000,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
   },
 };
