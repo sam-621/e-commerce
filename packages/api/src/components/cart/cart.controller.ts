@@ -2,7 +2,7 @@ import { IController } from '../interfaces/IController';
 import { IAddToCartParams } from './cart.interfaces';
 import { Cart } from './cart.services';
 
-const addToCartController: IController = async (req, res, next) => {
+const addToCartController: IController = async (req, res) => {
   const dto = req.body;
 
   const params: IAddToCartParams = { ...dto, buyerID: req.user.id };
@@ -17,7 +17,7 @@ const addToCartController: IController = async (req, res, next) => {
   });
 };
 
-const getCartProductsController: IController = async (req, res, next) => {
+const getCartProductsController: IController = async (req, res) => {
   const cart = new Cart();
 
   const { data, msg, statusCode } = await cart.getCartProducts(req.user.id);
@@ -28,7 +28,7 @@ const getCartProductsController: IController = async (req, res, next) => {
   });
 };
 
-const removeCartProductController: IController = async (req, res, next) => {
+const removeCartProductController: IController = async (req, res) => {
   const cart = new Cart();
 
   const { data, msg, statusCode } = await cart.removeCartProduct(req.body.productID, req.user.id);

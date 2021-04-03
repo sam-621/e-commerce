@@ -18,7 +18,7 @@ class ErrorHandler extends Error {
   }
 }
 
-function handlerErrors(err: IHandlerErrors, req: Request, res: Response, next: NextFunction) {
+function handlerErrors(err: IHandlerErrors, req: Request, res: Response) {
   const { statusCode, message, error } = err;
 
   if (MODE === 'dev') err.logError(error);
