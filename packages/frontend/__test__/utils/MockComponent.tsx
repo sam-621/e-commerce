@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactElement } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const MockComponent = ({ Component }: IMockComponent) => {
@@ -14,7 +14,7 @@ const MockComponent = ({ Component }: IMockComponent) => {
 };
 
 interface IMockComponent {
-  Component: any;
+  Component: ReactElement;
 }
 
 export default MockComponent;
