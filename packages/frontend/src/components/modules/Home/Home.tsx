@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 // import { Searcher } from '../molecules';
 import { Products } from '../../elements';
@@ -7,7 +7,7 @@ import { useAuth } from '../../../hooks';
 import Cookies from 'universal-cookie';
 import { Loader } from '../../elements';
 
-const Home = () => {
+const Home: FC = () => {
   const cookie = new Cookies();
   const { isAuth, finished, token } = useAuth(cookie.get('token'));
 

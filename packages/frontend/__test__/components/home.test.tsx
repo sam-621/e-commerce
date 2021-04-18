@@ -1,16 +1,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Home from './Home';
+import Home from '../../src/components/modules/Home/Home';
+import MockComponent from '../utils/mockComponent';
 
 describe('<Home />', () => {
   test('should render', () => {
-    const component = render(<Home p="Test" />);
+    const component = render(<MockComponent Component={<Home />} />);
 
-    const h1Element = screen.getByText('Hola :)');
+    const logo = screen.getByText('Shopy');
 
     screen.debug();
 
-    expect(h1Element).toBeInTheDocument();
+    expect(logo).toBeInTheDocument();
   });
 });
