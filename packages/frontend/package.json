@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
     "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.22",
     "@types/react": "^17.0.0",
@@ -56,5 +58,13 @@
     "react-router-dom": "^5.2.0",
     "react-toastify": "^7.0.3",
     "universal-cookie": "^4.0.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "preset": "ts-jest",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/mocks/styleMock.js",
+      "\\.(jpg|jpeg|png|svg)$": "<rootDir>/mocks/fileMock.js"
+    }
   }
 }
