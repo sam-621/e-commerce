@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Home from '../../src/components/modules/Home/Home';
-import MockComponent from '../utils/mockComponent';
+import MockComponent from '../utils/MockComponent';
 
 describe('<Home />', () => {
   test('should render', () => {
