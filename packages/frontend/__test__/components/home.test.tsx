@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, fireEvent, prettyDOM, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Home from '../../src/components/modules/Home/Home';
 import { CartContextProvider } from '../../src/context/cart/cart';
@@ -32,24 +32,25 @@ describe('<Home />', () => {
       </CartContextProvider>
     );
 
-    let AddToCartButtons: HTMLElement[];
+    let addToCartButtons: HTMLElement[];
     await waitFor(() => {
-      AddToCartButtons = screen.getAllByAltText('add to cart icon');
+      addToCartButtons = screen.getAllByAltText('add to cart icon');
     });
 
-    expect(AddToCartButtons.length).toBe(6);
+    expect(addToCartButtons.length).toBe(6);
 
-    const button: HTMLElement = AddToCartButtons[0].parentElement;
+    const addToCartButton: HTMLElement = addToCartButtons[0].parentElement;
 
     act(() => {
-      fireEvent.click(button);
+      fireEvent.click(addToCartButton);
+      fireEvent.click(addToCartButton);
     });
 
     let cartCounter: HTMLElement;
     await waitFor(() => {
-      cartCounter = screen.getByText('1');
+      cartCounter = screen.getByTitle('go to cart').childNodes[1] as HTMLElement;
     });
 
-    expect(cartCounter.innerHTML).toBe('1');
+    expect(cartCounter.innerHTML).toBe('2');
   });
 });

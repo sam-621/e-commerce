@@ -18,7 +18,7 @@ const Nav = ({ isAuth }: { isAuth: boolean }) => {
       <div className="Nav-actions">
         {isAuth ? (
           <>
-            <Link to="/cart" className="Nav-actions-cart">
+            <Link to="/cart" title="go to cart" className="Nav-actions-cart">
               <img src={CartIcon} />
               <p>{state.cart.length}</p>
             </Link>
