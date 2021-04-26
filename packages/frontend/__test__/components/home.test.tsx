@@ -21,6 +21,7 @@ jest.mock('../../src/hooks', () => ({
 
 jest.mock('../../src/utils/petitions', () => ({
   get: jest.fn(async () => Promise.resolve({ data: { data: productsData } })),
+  put: jest.fn(async () => Promise.resolve({ data: { data: productsData } })),
 }));
 
 describe('<Home />', () => {
