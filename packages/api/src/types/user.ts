@@ -1,3 +1,4 @@
+import { Document, ObjectId } from 'mongoose';
 import { IProduct } from './products';
 
 export interface IUser {
@@ -8,3 +9,5 @@ export interface IUser {
   userCart: IProduct[];
   userProductsBought: IProduct[];
 }
+
+export interface IUserDocument extends Document, IUser {}
