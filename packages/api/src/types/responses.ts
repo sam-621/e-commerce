@@ -10,3 +10,10 @@ export interface IResponse {
 export interface IError {
   msg: String;
 }
+
+export interface IErrorHandler {
+  statusCode: number;
+  msg: string;
+  error: any;
+  logError(error: any): void;
+}

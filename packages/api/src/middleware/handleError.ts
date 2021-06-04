@@ -1,6 +1,6 @@
 import { MODE } from '../config';
-import { IHandlerErrors } from './interfaces.middlewares';
-import { Request, Response, NextFunction } from 'express';
+import { IErrorHandler } from '../types/responses';
+import { Request, Response } from 'express';
 
 class ErrorHandler extends Error {
   private statusCode: number;
@@ -18,14 +18,15 @@ class ErrorHandler extends Error {
   }
 }
 
-function handlerErrors(err: IHandlerErrors, req: Request, res: Response) {
-  const { statusCode, message, error } = err;
+function handlerErrors(err: IErrorHandler, req: Request, res: Response) {
+  const { statusCode, msg, error } = err;
 
   if (MODE === 'dev') err.logError(error);
 
   return res.status(statusCode).json({
-    statusCode,
-    message,
+    data: null,
+    msg: null,
+    error: { msg: msg },
   });
 }
 
