@@ -1,18 +1,17 @@
 import { ObjectId, QueryOptions } from 'mongoose';
 import UserModel from '../db/models/user.models';
 import { IUser, IUserDocument } from '../types/user';
-import { IUserRepository } from './interface.repository';
 
-class UserRepository implements IUserRepository {
-  public async getUserById(id: ObjectId, fields: String[]): Promise<IUserDocument> {
+class UserRepository {
+  public static async getUserById(id: ObjectId, fields: String[]): Promise<IUserDocument> {
     return await UserModel.findById(id, fields);
   }
 
-  public async deleteUser(id: ObjectId, options: QueryOptions): Promise<void> {
+  public static async deleteUser(id: ObjectId, options: QueryOptions): Promise<void> {
     await UserModel.findByIdAndDelete(id, options);
   }
 
-  public async updateUser(
+  public static async updateUser(
     id: ObjectId,
     data: IUser,
     options: QueryOptions & { upsert: true }
@@ -20,7 +19,7 @@ class UserRepository implements IUserRepository {
     return await UserModel.findByIdAndUpdate(id, data, options);
   }
 
-  public async saveUser(data: IUser): Promise<void> {
+  public static async saveUser(data: IUser): Promise<void> {
     const newUser = new UserModel(data);
 
     await newUser.save();
