@@ -6,8 +6,9 @@ function areWrongData(req: Request, res: Response, next: NextFunction) {
 
   if (!errors.isEmpty()) {
     return res.status(400).json({
-      message: 'Some of your data are incorrect',
       data: null,
+      message: null,
+      error: { msg: 'Some of your data are incorrect' },
     });
   }
 

@@ -9,7 +9,8 @@ async function isAnArray(
   if (!Array.isArray(req.body)) {
     return res.status(400).json({
       data: null,
-      message: 'WRONG DATA SCHEMA',
+      message: null,
+      error: { msg: 'Some of your data are incorrect' },
     });
   }
 
@@ -18,7 +19,8 @@ async function isAnArray(
   if (!isOk) {
     return res.status(400).json({
       data: null,
-      message: 'WRONG DATA SCHEMA',
+      message: null,
+      error: { msg: 'Some of your data are incorrect' },
     });
   }
 

@@ -1,9 +1,9 @@
 import { Response, NextFunction } from 'express';
-import { IRequest } from './interfaces.middlewares';
-import UserModel from '../components//user/user.models';
-import { IUser } from '../components/user/user.interface';
+import { IRequest } from '../types/controllers';
+import { IUser } from '../types/user';
 import { AuthServices } from '../components/auth/auth.services';
 import { IDecoded, IDecodedService } from '../components/auth/auth.interfaces';
+import UserRepository from '../repository/user.repository';
 
 async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   const token = req.headers['authorization'];
@@ -16,22 +16,24 @@ async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   }
 
   try {
-    const authServices = new AuthServices();
-    const { decoded, err }: IDecodedService = authServices.verifyToken(token);
+    const { decoded, err }: IDecodedService = AuthServices.verifyToken(token);
 
     if (err) {
       return res.status(400).json({
         data: null,
-        message: err,
+        message: null,
+        error: err,
       });
     }
 
-    const user: IUser = await UserModel.findById(decoded.id, '_id');
+    // const user: IUser = await UserModel.findById(decoded.id, '_id');
+    const user: IUser = await UserRepository.getUserById(decoded.id, ['_id']);
 
     if (!user) {
       return res.status(401).json({
-        statusCode: 401,
-        message: 'UNAUTHORIZED',
+        data: null,
+        message: null,
+        error: { msg: 'You dont have permisions' },
       });
     }
 
@@ -41,8 +43,9 @@ async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
     console.log(err);
 
     return res.status(500).json({
-      statusCode: 500,
-      message: 'INTERNAL SERVER ERROR',
+      data: null,
+      message: null,
+      error: { msg: 'INTERNAL SERVER ERROR' },
     });
   }
 }
