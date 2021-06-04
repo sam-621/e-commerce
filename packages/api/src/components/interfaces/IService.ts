@@ -1,5 +1,7 @@
+import { IError } from '../../types/responses';
+
 export interface IService {
   data: any;
-  msg: string;
-  statusCode: number;
+  message: string;
+  error: IError;
 }

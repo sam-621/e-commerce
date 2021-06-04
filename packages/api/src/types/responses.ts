@@ -8,7 +8,7 @@ export interface IResponse {
 }
 
 export interface IError {
-  msg: String;
+  message: String;
 }
 
 export interface IErrorHandler {
