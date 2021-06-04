@@ -148,3 +148,5 @@ const products: IAllProducts = {
     },
   ],
 };
+
+export default products;
