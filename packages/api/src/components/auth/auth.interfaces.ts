@@ -1,5 +1,6 @@
 import { ObjectId } from 'mongoose';
-import { IUser } from '../user/user.interface';
+import { IError } from '../../types/responses';
+import { IUser } from '../../types/user';
 
 export interface IDecoded {
   id: ObjectId;
@@ -12,12 +13,12 @@ export interface IPayload {
 }
 
 export interface IGetUser {
-  err: { statusCode: number; msg: string };
+  err: IError;
   data: IUser | null;
   msg: string;
 }
 
 export interface IDecodedService {
   decoded: IDecoded;
-  err: string;
+  err: IError;
 }
