@@ -1,8 +1,11 @@
-const products = {
+import { IAllProducts } from '../types/products';
+
+const products: IAllProducts = {
   guajolotas: [
     {
       id: 1,
-      product: 'guajolota',
+      frontId: 1,
+      name: 'guajolota',
       flavor: 'verde',
       description: 'Verde',
       price: 25,
@@ -11,7 +14,8 @@ const products = {
     },
     {
       id: 2,
-      product: 'guajolota',
+      frontId: 2,
+      name: 'guajolota',
       flavor: 'mole',
       description: 'Mole',
       price: 25,
@@ -20,7 +24,8 @@ const products = {
     },
     {
       id: 3,
-      product: 'guajolota',
+      frontId: 3,
+      name: 'guajolota',
       flavor: 'guayaba',
       description: 'Guayaba',
       price: 25,
@@ -29,7 +34,8 @@ const products = {
     },
     {
       id: 4,
-      product: 'guajolota',
+      frontId: 4,
+      name: 'guajolota',
       flavor: 'pina',
       description: 'Piña',
       price: 25,
@@ -38,7 +44,8 @@ const products = {
     },
     {
       id: 5,
-      product: 'guajolota',
+      frontId: 5,
+      name: 'guajolota',
       flavor: 'pasas',
       description: 'Pasas',
       price: 25,
@@ -49,7 +56,8 @@ const products = {
   bebidas: [
     {
       id: 1,
-      product: 'bebida',
+      frontId: 1,
+      name: 'bebida',
       flavor: 'champurrado',
       description: 'Champurrado',
       price: 12,
@@ -58,7 +66,8 @@ const products = {
     },
     {
       id: 2,
-      product: 'bebida',
+      frontId: 2,
+      name: 'bebida',
       flavor: 'atole',
       description: 'Atole de Arroz con Leche',
       price: 12,
@@ -67,7 +76,8 @@ const products = {
     },
     {
       id: 3,
-      product: 'bebida',
+      frontId: 3,
+      name: 'bebida',
       flavor: 'chocolate',
       description: 'Chocolate Caliente',
       price: 12,
@@ -76,7 +86,8 @@ const products = {
     },
     {
       id: 4,
-      product: 'bebida',
+      frontId: 4,
+      name: 'bebida',
       flavor: 'cafe',
       description: 'Café Negro',
       price: 12,
@@ -87,7 +98,8 @@ const products = {
   tamales: [
     {
       id: 1,
-      product: 'tamal',
+      frontId: 1,
+      name: 'tamal',
       flavor: 'verde',
       description: 'Tamal Verde',
       price: 14,
@@ -96,7 +108,8 @@ const products = {
     },
     {
       id: 2,
-      product: 'tamal',
+      frontId: 2,
+      name: 'tamal',
       flavor: 'mole',
       description: 'Tamal de Mole',
       price: 14,
@@ -105,7 +118,8 @@ const products = {
     },
     {
       id: 3,
-      product: 'tamal',
+      frontId: 3,
+      name: 'tamal',
       flavor: 'guayaba',
       description: 'Tamal de Guayaba',
       price: 14,
@@ -114,7 +128,8 @@ const products = {
     },
     {
       id: 4,
-      product: 'tamal',
+      frontId: 4,
+      name: 'tamal',
       flavor: 'pina',
       description: 'Tamal de Piña',
       price: 14,
@@ -123,7 +138,8 @@ const products = {
     },
     {
       id: 5,
-      product: 'tamal',
+      frontId: 5,
+      name: 'tamal',
       flavor: 'pasas',
       description: 'Tamal de Pasas',
       price: 14,
