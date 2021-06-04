@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongoose';
 import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
-import UserModel from '../user/user.models';
+import UserRepository from '../../repository/user.repository';
 import { IDecoded, IGetUser, IPayload, IDecodedService } from './auth.interfaces';
 
 class AuthServices {
-  public createToken(payload: IPayload): string {
+  public static createToken(payload: IPayload): string {
     const token: string = jwt.sign(
       payload,
       JWT_SECRET,
@@ -15,7 +15,7 @@ class AuthServices {
     return token;
   }
 
-  public verifyToken(token: string): IDecodedService {
+  public static verifyToken(token: string): IDecodedService {
     try {
       const decoded: IDecoded = jwt.verify(token, JWT_SECRET) as IDecoded;
 
@@ -25,13 +25,13 @@ class AuthServices {
       return { decoded, err: null };
     } catch (e) {
       if (e.message === 'jwt expired') {
-        return { decoded: null, err: 'JWT HAS EXPIRED' };
+        return { decoded: null, err: { msg: 'Your session has expired' } };
       }
-      console.log(e);
+      return { decoded: null, err: { msg: 'Something wrong occurred' } };
     }
   }
 
-  public refreshToken(id: ObjectId): string {
+  public static refreshToken(id: ObjectId): string {
     const payload: IPayload = {
       id: id,
     };
@@ -41,9 +41,9 @@ class AuthServices {
     return tokenRefreshed;
   }
 
-  public async getUser(userID: ObjectId): Promise<IGetUser> {
+  public static async getUser(userID: ObjectId, fields: string[]): Promise<IGetUser> {
     try {
-      const user = await UserModel.findById(userID, 'email username cart productsBought');
+      const user = await UserRepository.getUserById(userID, fields);
 
       return {
         data: user,
@@ -51,11 +51,10 @@ class AuthServices {
         err: null,
       };
     } catch (e) {
-      console.log(e);
       return {
         data: null,
-        msg: 'INTERNAL SERVER ERROR',
-        err: { msg: 'INTERNAL SERVER ERROR', statusCode: 500 },
+        msg: null,
+        err: { msg: 'INTERNAL SERVER ERROR' },
       };
     }
   }
