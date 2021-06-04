@@ -1,8 +1,9 @@
 import { ObjectId, QueryOptions } from 'mongoose';
 import UserModel from '../db/models/user.models';
 import { IUser, IUserDocument } from '../types/user';
+import { IUserRepository } from './interface.repository';
 
-class UserRepository {
+class UserRepository implements IUserRepository {
   public async getUserById(id: ObjectId, fields: String[]): Promise<IUserDocument> {
     return await UserModel.findById(id, fields);
   }
