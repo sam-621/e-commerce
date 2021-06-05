@@ -1,4 +1,4 @@
-import { IController } from '../interfaces/IController';
+import { IController } from '../../types/controllers';
 import { IAddToCartParams } from './cart.interfaces';
 import { Cart } from './cart.services';
 
@@ -9,33 +9,36 @@ const addToCartController: IController = async (req, res) => {
 
   const cart = new Cart();
 
-  const { data, msg, statusCode } = await cart.addToCart(params);
+  const { data, message, error } = await cart.addToCart(params);
 
-  return res.status(statusCode).json({
+  return res.status(error?.statusCode || 200).json({
     data: data,
-    message: msg,
+    message: message,
+    error: { message: error.message },
   });
 };
 
 const getCartProductsController: IController = async (req, res) => {
   const cart = new Cart();
 
-  const { data, msg, statusCode } = await cart.getCartProducts(req.user.id);
+  const { data, message, error } = await cart.getCartProducts(req.user.id);
 
-  return res.status(statusCode).json({
-    message: msg,
+  return res.status(error?.statusCode || 200).json({
+    message: message,
     data,
+    error: error ? { message: error.message } : null,
   });
 };
 
 const removeCartProductController: IController = async (req, res) => {
   const cart = new Cart();
 
-  const { data, msg, statusCode } = await cart.removeCartProduct(req.body.productID, req.user.id);
+  const { data, message, error } = await cart.removeCartProduct(req.body.productID, req.user.id);
 
-  return res.status(statusCode).json({
-    message: msg,
+  return res.status(error?.statusCode || 200).json({
+    message: message,
     data,
+    error: error ? { message: error.message } : null,
   });
 };
 

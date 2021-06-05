@@ -1,10 +1,7 @@
 import { ObjectId } from 'mongoose';
+import { IProduct } from '../../types/products';
 
 export interface IAddToCartParams {
-  frontID: number;
-  buyerID: ObjectId;
-  name: string;
-  price: number;
-  description: string;
-  image: string;
+  product: IProduct;
+  userId: ObjectId;
 }

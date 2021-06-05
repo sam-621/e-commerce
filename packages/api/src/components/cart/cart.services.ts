@@ -1,57 +1,51 @@
 import { ObjectId } from 'mongoose';
-import { IProduct } from '../interfaces/IProducts';
-import { IUser } from '../user/user.interface';
-import UserModel from '../user/user.models';
+import { IProduct } from '../../types/products';
+import { IUser, IUserDocument } from '../../types/user';
+import UserModel from '../../db/models/user.models';
 import { IAddToCartParams } from './cart.interfaces';
 import { IService } from '../interfaces/IService';
+import UserRepository from '../../repository/user.repository';
 
 class Cart {
-  public async addToCart(params: IAddToCartParams): Promise<IService> {
-    const { buyerID, description, image, name, price, frontID } = params;
-
+  public async addToCart({ product, userId }: IAddToCartParams): Promise<IService> {
     try {
-      const user: IUser = await UserModel.findById(buyerID);
+      const user: IUserDocument = await UserModel.findById(userId);
 
-      user.cart.push({
-        frontID,
-        name: name,
-        price: price,
-        description: description,
-        image: image,
-      });
+      user.userCart.push(product);
 
       await user.save();
 
       return {
-        data: user.cart[user.cart.length - 1],
-        msg: 'PRODUCT ADDED TO CART',
-        statusCode: 200,
+        data: user.userCart[user.userCart.length - 1],
+        message: 'Products added to cart',
+        error: null,
       };
     } catch (e) {
       console.log(e);
 
       return {
         data: null,
-        msg: 'INTERNAL SERVER ERROR',
-        statusCode: 500,
+        message: null,
+        error: { message: 'Something went wrong', statusCode: 500 },
       };
     }
   }
 
   public async getCartProducts(userID: ObjectId): Promise<IService> {
     try {
-      const cartProducts: IProduct[] = await UserModel.findById(userID, 'cart');
+      // const cartProducts: IProduct[] = await UserModel.findById(userID, 'cart');
+      const cartProducts = await UserRepository.getUserById(userID, ['cart']);
 
       return {
         data: cartProducts,
-        msg: 'OK',
-        statusCode: 200,
+        message: 'OK',
+        error: null,
       };
     } catch (e) {
       return {
         data: null,
-        msg: 'INTERNAL SERVER ERROR',
-        statusCode: 500,
+        message: null,
+        error: { message: 'Something went wrong', statusCode: 500 },
       };
     }
   }
@@ -62,10 +56,14 @@ class Cart {
 
       const cartProducts: IProduct[] = await UserModel.findById(userID, 'cart');
 
-      return { data: cartProducts, msg: 'PRODUCT REMOVED', statusCode: 200 };
+      return { data: cartProducts, message: 'PRODUCT REMOVED', error: null };
     } catch (e) {
       console.log(e);
-      return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500 };
+      return {
+        data: null,
+        message: null,
+        error: { message: 'Something went wrong', statusCode: 500 },
+      };
     }
   }
 }
