@@ -1,6 +1,6 @@
-import UserModel from '../../src/components/user/user.models';
+import UserModel from '../../src/db/models/user.models';
 import jwt from 'jsonwebtoken';
-import { IUser } from '../../src/components/user/user.interface';
+import { IUser } from '../../src/types/user';
 
 class MockUser {
   constructor(public username: string, public email: string, public password: string) {}

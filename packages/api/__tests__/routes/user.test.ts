@@ -10,7 +10,7 @@ import {
   tokenExpired,
 } from '../utils';
 import { API_KEY } from '../../src/config';
-import UserModel from '../../src/components/user/user.models';
+import UserModel from '../../src/db/models/user.models';
 const app = new App(3000).App;
 
 describe('Register endpoint', () => {
