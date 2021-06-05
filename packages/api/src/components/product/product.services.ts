@@ -1,50 +1,50 @@
 import { ObjectId } from 'mongoose';
-import { IProduct } from '../interfaces/IProducts';
+import { IProduct } from '../../types/products';
 import { IService } from '../interfaces/IService';
-import { IUser } from '../user/user.interface';
-import UserModel from '../user/user.models';
+import { IUserDocument } from '../../types/user';
+import UserRepository from '../../repository/user.repository';
 
 class Product {
-  public async buyProduct(buyerID: ObjectId, products: IProduct[]): Promise<IService> {
+  public static async buyProduct(buyerID: ObjectId, products: IProduct[]): Promise<IService> {
     try {
-      const user: IUser = await UserModel.findById(buyerID);
+      const user: IUserDocument = await UserRepository.getUserById(buyerID);
 
-      user.productsBought = user.productsBought.concat(products);
+      user.userProductsBought = user.userProductsBought.concat(products);
 
       await user.save();
 
       return {
         data: null,
-        msg: 'PRODUCT BOUGHT',
-        statusCode: 200,
+        message: 'PRODUCT BOUGHT',
+        error: null,
       };
     } catch (e) {
       return {
         data: null,
-        msg: 'INTERNAL SERVER ERROR',
-        statusCode: 500,
+        message: null,
+        error: { message: 'Something went wrong', statusCode: 500 },
       };
     }
   }
 
-  public async addToCart(buyerID: ObjectId, product: IProduct): Promise<IService> {
+  public static async addToCart(buyerID: ObjectId, product: IProduct): Promise<IService> {
     try {
-      const user: IUser = await UserModel.findById(buyerID);
+      const user: IUserDocument = await UserRepository.getUserById(buyerID);
 
-      user.cart.push(product);
+      user.userCart.push(product);
 
       await user.save();
 
       return {
         data: null,
-        msg: 'PRODUCT ADDED TO CART',
-        statusCode: 200,
+        message: 'PRODUCT ADDED TO CART',
+        error: null,
       };
     } catch (e) {
       return {
         data: null,
-        msg: 'INTERNAL SERVER ERROR',
-        statusCode: 500,
+        message: 'INTERNAL SERVER ERROR',
+        error: { message: 'Something went wrong', statusCode: 500 },
       };
     }
   }

@@ -1,7 +1,7 @@
-import { products } from './products';
+import products from '../../db/products';
 import { Product } from './product.services';
-import { IProduct } from '../interfaces/IProducts';
-import { IController } from '../interfaces/IController';
+import { IProduct } from '../../types/products';
+import { IController } from '../../types/controllers';
 
 const getProductsController: IController = (_, res) => {
   return res.status(200).json({
@@ -13,13 +13,12 @@ const getProductsController: IController = (_, res) => {
 const buyProductController: IController = async (req, res) => {
   const products: IProduct[] = req.body;
 
-  const product = new Product();
+  const { data, message, error } = await Product.buyProduct(req.user.id, products);
 
-  const { data, msg, statusCode } = await product.buyProduct(req.user.id, products);
-
-  return res.status(statusCode).json({
+  return res.status(error.statusCode || 200).json({
     data: data,
-    message: msg,
+    message: message,
+    error: { message: error.message },
   });
 };
 
