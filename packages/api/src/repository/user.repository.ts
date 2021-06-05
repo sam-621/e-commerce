@@ -18,7 +18,7 @@ class UserRepository {
   public static async updateUser(
     id: ObjectId,
     data: IUser,
-    options?: QueryOptions & { upsert: true }
+    options?: QueryOptions
   ): Promise<IUserDocument> {
     return await UserModel.findByIdAndUpdate(id, data, options);
   }

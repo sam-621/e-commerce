@@ -13,12 +13,12 @@ export interface IPayload {
 }
 
 export interface IGetUser {
-  err: IError;
+  error: { message: string; statusCode: number };
   data: IUser | null;
-  msg: string;
+  message: string;
 }
 
 export interface IDecodedService {
   decoded: IDecoded;
-  err: IError;
+  error: IError;
 }

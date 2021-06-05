@@ -52,9 +52,17 @@ class User {
       return { data: null, message: 'USER UPDATED', error: null };
     } catch (e) {
       if (e.code === 11000) {
-        return { data: null, message: null, error: { message: 'EMAIL ALREADY TAKEN' } };
+        return {
+          data: null,
+          message: null,
+          error: { message: 'EMAIL ALREADY TAKEN', statusCode: 400 },
+        };
       }
-      return { data: null, message: null, error: { message: 'INTERNAL SERVER ERROR' } };
+      return {
+        data: null,
+        message: null,
+        error: { message: 'INTERNAL SERVER ERROR', statusCode: 500 },
+      };
     }
   }
 }

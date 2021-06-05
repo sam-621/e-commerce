@@ -22,12 +22,12 @@ class AuthServices {
       delete decoded.exp;
       delete decoded.iat;
 
-      return { decoded, err: null };
+      return { decoded, error: null };
     } catch (e) {
       if (e.message === 'jwt expired') {
-        return { decoded: null, err: { msg: 'Your session has expired' } };
+        return { decoded: null, error: { message: 'Your session has expired' } };
       }
-      return { decoded: null, err: { msg: 'Something wrong occurred' } };
+      return { decoded: null, error: { message: 'Something wrong occurred' } };
     }
   }
 
@@ -41,20 +41,20 @@ class AuthServices {
     return tokenRefreshed;
   }
 
-  public static async getUser(userID: ObjectId, fields: string[]): Promise<IGetUser> {
+  public static async getUser(userID: ObjectId, fields?: string[]): Promise<IGetUser> {
     try {
-      const user = await UserRepository.getUserById(userID, fields);
+      const user = await UserRepository.getUserById(userID, fields || null);
 
       return {
         data: user,
-        msg: 'OK',
-        err: null,
+        message: 'OK',
+        error: null,
       };
     } catch (e) {
       return {
         data: null,
-        msg: null,
-        err: { msg: 'INTERNAL SERVER ERROR' },
+        message: null,
+        error: { message: 'INTERNAL SERVER ERROR', statusCode: 500 },
       };
     }
   }
