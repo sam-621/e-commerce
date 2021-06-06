@@ -1,5 +1,8 @@
+import { IAllProducts, IProduct } from './products';
+import { IUser, IUserDocument } from './user';
+
 export interface IServiceResponse {
-  data: any;
+  data: IUser | IUserDocument | IProduct | IAllProducts;
   error: IErroService;
   message: string;
 }

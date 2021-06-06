@@ -1,9 +1,9 @@
 import { IAllProducts, IProduct } from './products';
-import { IUser } from './user';
+import { IUser, IUserDocument } from './user';
 
 export interface IResponse {
-  data: IUser | IProduct | IAllProducts;
-  msg: String;
+  data: IUser | IUserDocument | IProduct | IAllProducts;
+  message: String;
   error: IError;
 }
 
@@ -13,7 +13,7 @@ export interface IError {
 
 export interface IErrorHandler {
   statusCode: number;
-  msg: string;
+  message: string;
   error: any;
   logError(error: any): void;
 }
