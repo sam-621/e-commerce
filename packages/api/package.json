@@ -27,6 +27,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
+    "@types/cors": "^2.8.10",
     "@types/express": "^4.17.9",
     "@types/express-validator": "^3.0.0",
     "@types/jest": "^26.0.19",
@@ -66,8 +67,8 @@
     },
     "testEnvironment": "node",
     "displayName": {
-    "name": "SERVER",
-    "color": "yellow"
+      "name": "SERVER",
+      "color": "yellow"
     }
   }
 }

@@ -1,14 +1,14 @@
 import express, { Application } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import { MODE } from './config';
+import { envVars } from './config';
 import { router } from './router';
 
 class server {
   public App: Application;
-  private port: number | string;
+  private port: number;
 
-  constructor(port: number | string) {
+  constructor(port: number) {
     this.port = port;
     this.App = express();
     this.middlewareInput();
@@ -29,7 +29,7 @@ class server {
   private middlewareOutput(): void {}
 
   public startServer(): void {
-    this.App.listen(this.port, () => console.log(`PORT[${this.port}] MODE[${MODE}]`));
+    this.App.listen(this.port, () => console.log(`PORT[${this.port}] MODE[${envVars.MODE}]`));
   }
 }
 
