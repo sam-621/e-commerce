@@ -1,8 +1,5 @@
-import { IAllProducts, IProduct } from './products';
-import { IUser, IUserDocument } from './user';
-
 export interface IServiceResponse {
-  data: IUser | IUserDocument | IProduct | IAllProducts;
+  data: any;
   error: IErroService;
   message: string;
 }
@@ -10,4 +7,5 @@ export interface IServiceResponse {
 export interface IErroService {
   statusCode: number;
   message: string;
+  e?: any;
 }
