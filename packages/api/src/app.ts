@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import { apiKey, handlerErrors } from './middleware';
 import { MODE } from './config';
 import { router } from './router';
 
@@ -20,7 +19,6 @@ class server {
   private middlewareInput(): void {
     this.App.use(cors());
     this.App.use(helmet());
-    this.App.use(apiKey);
     this.App.use(express.json());
   }
 
@@ -28,9 +26,7 @@ class server {
     router(this.App);
   }
 
-  private middlewareOutput(): void {
-    this.App.use(handlerErrors);
-  }
+  private middlewareOutput(): void {}
 
   public startServer(): void {
     this.App.listen(this.port, () => console.log(`PORT[${this.port}] MODE[${MODE}]`));
