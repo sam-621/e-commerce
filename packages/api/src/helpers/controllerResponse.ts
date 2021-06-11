@@ -11,10 +11,10 @@ class ControllerResponse {
     this.data = data;
     this.message = message;
     this.statusCode = statusCode;
-    this.response();
+    // this.response();
   }
 
-  private response() {
+  public response(): Response {
     return this.res.status(this.statusCode).json({
       data: this.data,
       message: this.message,
