@@ -4,6 +4,8 @@ import { ObjectId } from 'mongoose';
 import { IServiceResponse } from '../../types/services';
 import UserRepository from '../../repository/user.repository';
 import { responses } from '../../config/';
+import { IPayload } from '../../types/jwt';
+import { AuthServices } from '../auth/auth.services';
 
 class User {
   public static async register(data: IUser): Promise<IServiceResponse> {
@@ -12,8 +14,14 @@ class User {
 
       const user = await UserRepository.saveUser({ ...data, password: hashedPassword });
 
+      const payload: IPayload = {
+        id: user._id,
+      };
+
+      const token = AuthServices.createToken(payload);
+
       return {
-        data: user._id,
+        data: token,
         message: 'User registered',
         error: null,
       };
@@ -61,8 +69,14 @@ class User {
         };
       }
 
+      const payload: IPayload = {
+        id: user._id,
+      };
+
+      const token = AuthServices.createToken(payload);
+
       return {
-        data: user._id,
+        data: token,
         message: 'User logged',
         error: null,
       };
