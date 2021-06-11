@@ -1,14 +1,25 @@
 import { Response } from 'express';
 
-const controllerResponse: IHelperControllerResponse = (res, data, message, statusCode) => {
-  return res.status(statusCode).json({
-    data: data,
-    message: message,
-  });
-};
+class ControllerResponse {
+  private res: Response;
+  private data: any;
+  private message: string;
+  private statusCode: number;
 
-export interface IHelperControllerResponse {
-  (res: Response, data: any, message: string, statusCode: number, error: any): Response;
+  constructor(res: Response, data: any, message: string, statusCode: number) {
+    this.res = res;
+    this.data = data;
+    this.message = message;
+    this.statusCode = statusCode;
+    this.response();
+  }
+
+  private response() {
+    return this.res.status(this.statusCode).json({
+      data: this.data,
+      message: this.message,
+    });
+  }
 }
 
-export default controllerResponse;
+export default ControllerResponse;
