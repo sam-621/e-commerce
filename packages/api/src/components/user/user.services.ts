@@ -6,6 +6,7 @@ import UserRepository from '../../repository/user.repository';
 import { responses } from '../../config/';
 import { IPayload } from '../../types/jwt';
 import { AuthServices } from '../auth/auth.services';
+import serviceResponse from '../../helpers/srviceResponse';
 
 class User {
   public static async register(data: IUser): Promise<IServiceResponse> {
@@ -20,24 +21,13 @@ class User {
 
       const token = AuthServices.createToken(payload);
 
-      return {
-        data: token,
-        message: 'User registered',
-        error: null,
-      };
+      return serviceResponse(token, 'User registered', 200, null);
     } catch (e) {
       if (e.code === 11000) {
-        return {
-          data: null,
-          message: null,
-          error: { message: responses.EMAIL_ALREADY_TAKEN, statusCode: 400, e: e },
-        };
+        return serviceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, e);
       }
-      return {
-        data: null,
-        message: null,
-        error: { message: responses.ERROR_500, statusCode: 500, e: e },
-      };
+
+      return serviceResponse(null, responses.ERROR_500, 500, e);
     }
   }
 
@@ -46,27 +36,13 @@ class User {
       const user: IUserDocument = await UserRepository.getUserByEmail(email, ['password', '_id']);
 
       if (!user) {
-        return {
-          data: null,
-          message: null,
-          error: {
-            message: responses.WRONG_CREDENTIALS,
-            statusCode: 401,
-          },
-        };
+        return serviceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
       }
 
       const isTheSamePassword = await argon.verify(user.password, password);
 
       if (!isTheSamePassword) {
-        return {
-          data: null,
-          message: null,
-          error: {
-            message: responses.WRONG_CREDENTIALS,
-            statusCode: 401,
-          },
-        };
+        return serviceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
       }
 
       const payload: IPayload = {
@@ -75,17 +51,9 @@ class User {
 
       const token = AuthServices.createToken(payload);
 
-      return {
-        data: token,
-        message: 'User logged',
-        error: null,
-      };
+      return serviceResponse(token, 'User loger', 200, null);
     } catch (e) {
-      return {
-        data: null,
-        message: null,
-        error: { message: responses.ERROR_500, statusCode: 500, e: e },
-      };
+      return serviceResponse(null, responses.ERROR_500, 500, e);
     }
   }
 
@@ -97,20 +65,13 @@ class User {
     try {
       await UserRepository.updateUser(userID, { username: username, email: email });
 
-      return { data: null, message: 'User updated', error: null };
+      return serviceResponse(null, 'User updated', 500, null);
     } catch (e) {
       if (e.code === 11000) {
-        return {
-          data: null,
-          message: null,
-          error: { message: responses.EMAIL_ALREADY_TAKEN, statusCode: 400, e: e },
-        };
+        return serviceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, null);
       }
-      return {
-        data: null,
-        message: null,
-        error: { message: responses.ERROR_500, statusCode: 500, e: e },
-      };
+
+      return serviceResponse(null, responses.ERROR_500, 500, null);
     }
   }
 }
