@@ -1,16 +1,14 @@
 import { Response } from 'express';
-import { IErroService } from '../types/services';
 
-const controllerResponse: IHelperControllerResponse = (res, data, message, statusCode, error) => {
-  return res.status(error?.statusCode || statusCode).json({
+const controllerResponse: IHelperControllerResponse = (res, data, message, statusCode) => {
+  return res.status(statusCode).json({
     data: data,
     message: message,
-    error: error,
   });
 };
 
 export interface IHelperControllerResponse {
-  (res: Response, data: any, message: string, statusCode: number, error: IErroService): Response;
+  (res: Response, data: any, message: string, statusCode: number, error: any): Response;
 }
 
 export default controllerResponse;
