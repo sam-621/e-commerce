@@ -11,6 +11,11 @@ class ServiceResponse implements IServiceResponseClass {
     this.message = message;
     this.statusCode = statusCode;
     this.error = error;
+    this.logError();
+  }
+
+  private logError() {
+    console.log(this.error);
   }
 }
 

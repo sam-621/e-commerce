@@ -7,7 +7,14 @@ function areWrongData(req: Request, res: Response, next: NextFunction) {
   const errors: Result = validationResult(req);
 
   if (!errors.isEmpty()) {
-    return new ControllerResponse(res, null, responses.WRONG_DATA_SCHEMA, statusCodes.BAD_REQUES);
+    console.log(errors.array());
+
+    return new ControllerResponse(
+      res,
+      null,
+      responses.WRONG_DATA_SCHEMA,
+      statusCodes.BAD_REQUES
+    ).response();
   }
 
   next();

@@ -11,17 +11,19 @@ async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
   const token = req.headers['authorization'];
 
   if (!token) {
-    return new ControllerResponse(res, null, 'No token provided', statusCodes.BAD_REQUES);
+    return new ControllerResponse(
+      res,
+      null,
+      'No token provided',
+      statusCodes.BAD_REQUES
+    ).response();
   }
 
   try {
     const { data, error, message, statusCode } = AuthServices.verifyToken(token);
 
     if (error) {
-      return res.status(statusCode).json({
-        data,
-        message,
-      });
+      return new ControllerResponse(res, null, message, statusCode).response();
     }
 
     const user: IUser = await UserModel.findById(data.id, '_id');

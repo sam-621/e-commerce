@@ -9,19 +9,19 @@ import { AuthServices } from '../auth/auth.services';
 import ServiceResponse from '../../helpers/ServiceResponse';
 
 class User {
-  public static async register(data: IUser): Promise<IServiceResponse> {
+  public static async register(userInfo: IUser): Promise<IServiceResponse> {
     try {
-      const hashedPassword = await argon.hash(data.password);
+      const hashedPassword = await argon.hash(userInfo.password);
 
-      const user = await UserRepository.saveUser({ ...data, password: hashedPassword });
+      const user = await UserRepository.saveUser({ ...userInfo, password: hashedPassword });
 
       const payload: IPayload = {
         id: user._id,
       };
 
-      const token = AuthServices.createToken(payload);
+      const { data } = AuthServices.createToken(payload);
 
-      return new ServiceResponse(token, 'User registered', 200, null);
+      return new ServiceResponse(data, 'User registered', 200, null);
     } catch (e) {
       if (e.code === 11000) {
         return new ServiceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, e);
@@ -32,26 +32,31 @@ class User {
   }
 
   public static async login(email: string, password: string): Promise<IServiceResponse> {
+    console.log({
+      email: email,
+      password: password,
+    });
+
     try {
       const user: IUserDocument = await UserRepository.getUserByEmail(email, ['password', '_id']);
 
       if (!user) {
-        return new ServiceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
+        return new ServiceResponse(null, responses.WRONG_CREDENTIALS, 401, 'no user');
       }
 
       const isTheSamePassword = await argon.verify(user.password, password);
 
       if (!isTheSamePassword) {
-        return new ServiceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
+        return new ServiceResponse(null, responses.WRONG_CREDENTIALS, 401, 'no password');
       }
 
       const payload: IPayload = {
         id: user._id,
       };
 
-      const token = AuthServices.createToken(payload);
+      const { data } = AuthServices.createToken(payload);
 
-      return new ServiceResponse(token, 'User loger', 200, null);
+      return new ServiceResponse(data, 'User loger', 200, null);
     } catch (e) {
       return new ServiceResponse(null, responses.ERROR_500, 500, e);
     }
