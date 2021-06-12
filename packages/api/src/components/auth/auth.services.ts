@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongoose';
-import { envVars, responses } from '../../config';
+import { envVars, responses, statusCodes } from '../../config';
 import UserRepository from '../../repository/user.repository';
 import { IDecoded, IPayload } from '../../types/jwt';
 import { IServiceResponse } from '../../types/services';
-import ErrorHandler from '../../errors/ErrorHandler';
+import ServiceResponse from '../../helpers/ServiceResponse';
 
 class AuthServices {
   public static createToken(payload: IPayload): IServiceResponse {
@@ -14,11 +14,7 @@ class AuthServices {
       envVars.MODE === 'production' ? { expiresIn: envVars.EXPIRES_IN } : null
     );
 
-    return {
-      data: token,
-      message: '',
-      error: null,
-    };
+    return new ServiceResponse(token, '', 200);
   }
 
   public static verifyToken(token: string): IServiceResponse {
@@ -28,24 +24,12 @@ class AuthServices {
       delete decoded.exp;
       delete decoded.iat;
 
-      return {
-        data: decoded,
-        message: '',
-        error: null,
-      };
+      return new ServiceResponse(decoded, '', statusCodes.OK);
     } catch (e) {
       if (e.message === 'jwt expired') {
-        return {
-          data: null,
-          error: { message: responses.TOKEN_EXPIRED, statusCode: 401, e: e },
-          message: null,
-        };
+        return new ServiceResponse(null, '', statusCodes.UNAUTHORIZED, e);
       }
-      return {
-        data: null,
-        error: { message: responses.ERROR_500, statusCode: 500, e: e },
-        message: '',
-      };
+      return new ServiceResponse(null, responses.ERROR_500, statusCodes.INTERNAL_SERVER_ERROR, e);
     }
   }
 
@@ -54,32 +38,18 @@ class AuthServices {
       id: id,
     };
 
-    const { data, error, message } = this.createToken(payload);
+    const { data, message, statusCode, error } = this.createToken(payload);
 
-    if (error) throw new ErrorHandler(error.message, error.statusCode, error.e);
-
-    return {
-      data: data,
-      error: error,
-      message: message,
-    };
+    return new ServiceResponse(data, message, statusCode, error);
   }
 
   public static async getUser(userID: ObjectId, fields?: string[]): Promise<IServiceResponse> {
     try {
       const user = await UserRepository.getUserById(userID, fields || null);
 
-      return {
-        data: user,
-        message: 'OK',
-        error: null,
-      };
+      return new ServiceResponse(user, 'OK', statusCodes.OK);
     } catch (e) {
-      return {
-        data: null,
-        message: null,
-        error: { message: 'INTERNAL SERVER ERROR', statusCode: 500, e: e },
-      };
+      return new ServiceResponse(null, responses.ERROR_500, statusCodes.INTERNAL_SERVER_ERROR);
     }
   }
 }
