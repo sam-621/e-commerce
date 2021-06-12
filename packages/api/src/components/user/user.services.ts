@@ -6,7 +6,7 @@ import UserRepository from '../../repository/user.repository';
 import { responses } from '../../config/';
 import { IPayload } from '../../types/jwt';
 import { AuthServices } from '../auth/auth.services';
-import serviceResponse from '../../helpers/srviceResponse';
+import serviceResponse from '../../helpers/ServiceResponse';
 
 class User {
   public static async register(data: IUser): Promise<IServiceResponse> {
