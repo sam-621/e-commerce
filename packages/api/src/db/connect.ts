@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { MODE } from '../config';
+import { envVars } from '../config';
 
 async function connection(uri: string) {
   try {
@@ -9,7 +9,7 @@ async function connection(uri: string) {
       useFindAndModify: false,
       useCreateIndex: true,
     });
-    MODE === 'dev' ? console.log(`DB connected [${uri}]`) : console.log('DB connected');
+    envVars.MODE === 'dev' ? console.log(`DB connected [${uri}]`) : console.log('DB connected');
   } catch (error) {
     console.log(error);
     throw new Error('INTERNAL SERVER ERROR');
