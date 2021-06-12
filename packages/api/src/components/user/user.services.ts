@@ -6,7 +6,7 @@ import UserRepository from '../../repository/user.repository';
 import { responses } from '../../config/';
 import { IPayload } from '../../types/jwt';
 import { AuthServices } from '../auth/auth.services';
-import serviceResponse from '../../helpers/ServiceResponse';
+import ServiceResponse from '../../helpers/ServiceResponse';
 
 class User {
   public static async register(data: IUser): Promise<IServiceResponse> {
@@ -21,13 +21,13 @@ class User {
 
       const token = AuthServices.createToken(payload);
 
-      return serviceResponse(token, 'User registered', 200, null);
+      return new ServiceResponse(token, 'User registered', 200, null);
     } catch (e) {
       if (e.code === 11000) {
-        return serviceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, e);
+        return new ServiceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, e);
       }
 
-      return serviceResponse(null, responses.ERROR_500, 500, e);
+      return new ServiceResponse(null, responses.ERROR_500, 500, e);
     }
   }
 
@@ -36,13 +36,13 @@ class User {
       const user: IUserDocument = await UserRepository.getUserByEmail(email, ['password', '_id']);
 
       if (!user) {
-        return serviceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
+        return new ServiceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
       }
 
       const isTheSamePassword = await argon.verify(user.password, password);
 
       if (!isTheSamePassword) {
-        return serviceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
+        return new ServiceResponse(null, responses.WRONG_CREDENTIALS, 401, null);
       }
 
       const payload: IPayload = {
@@ -51,9 +51,9 @@ class User {
 
       const token = AuthServices.createToken(payload);
 
-      return serviceResponse(token, 'User loger', 200, null);
+      return new ServiceResponse(token, 'User loger', 200, null);
     } catch (e) {
-      return serviceResponse(null, responses.ERROR_500, 500, e);
+      return new ServiceResponse(null, responses.ERROR_500, 500, e);
     }
   }
 
@@ -65,13 +65,13 @@ class User {
     try {
       await UserRepository.updateUser(userID, { username: username, email: email });
 
-      return serviceResponse(null, 'User updated', 500, null);
+      return new ServiceResponse(null, 'User updated', 500, null);
     } catch (e) {
       if (e.code === 11000) {
-        return serviceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, null);
+        return new ServiceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, null);
       }
 
-      return serviceResponse(null, responses.ERROR_500, 500, null);
+      return new ServiceResponse(null, responses.ERROR_500, 500, null);
     }
   }
 }

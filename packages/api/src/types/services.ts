@@ -4,3 +4,10 @@ export interface IServiceResponse {
   statusCode: number;
   error: any;
 }
+
+export interface IServiceResponseClass {
+  data: any;
+  message: string;
+  statusCode: number;
+  error: any;
+}
