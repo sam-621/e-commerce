@@ -13,6 +13,7 @@ const userSchema: Schema = new Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  profilePic: { type: String, required: false, default: '' },
   cart: { type: [ProductSchema], required: false, default: [] },
   productsBought: { type: [ProductSchema], required: false, default: [] },
 });

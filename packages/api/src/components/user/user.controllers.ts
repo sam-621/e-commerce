@@ -16,7 +16,7 @@ const loginController: IController = async (req, res) => {
 };
 
 const getUserData: IController = async (req, res) => {
-  const { data, statusCode, message } = await AuthServices.getUser(req.user.id);
+  const { data, statusCode, message } = await AuthServices.getUser(req.user.id, ['-password']);
 
   return new ControllerResponse(res, data, message, statusCode).response();
 };
