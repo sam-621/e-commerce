@@ -1,6 +1,5 @@
 export interface IProduct {
   id: number;
-  frontId: number;
   name: String;
   flavor: String;
   description: String;
