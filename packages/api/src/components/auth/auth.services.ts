@@ -26,8 +26,14 @@ class AuthServices {
 
       return new ServiceResponse(decoded, '', statusCodes.OK);
     } catch (e) {
+      console.log(e.message);
+
       if (e.message === 'jwt expired') {
-        return new ServiceResponse(null, '', statusCodes.UNAUTHORIZED, e);
+        return new ServiceResponse(null, 'Your session has expired', statusCodes.UNAUTHORIZED, e);
+      }
+
+      if (e.message === 'invalid signature') {
+        return new ServiceResponse(null, 'token is corrupted', statusCodes.UNAUTHORIZED, e);
       }
       return new ServiceResponse(null, responses.ERROR_500, statusCodes.INTERNAL_SERVER_ERROR, e);
     }
