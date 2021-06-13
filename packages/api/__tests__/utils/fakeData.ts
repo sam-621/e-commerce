@@ -1,6 +1,7 @@
 import UserModel from '../../src/db/models/user.models';
 import jwt from 'jsonwebtoken';
 import { IUser } from '../../src/types/user';
+import { envVars } from '../../src/config/';
 
 class MockUser {
   constructor(public username: string, public email: string, public password: string) {}
@@ -15,9 +16,6 @@ class MockProduct {
     public description: string
   ) {}
 }
-
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjYwMWViOTYxOTc1MWY2MDFhY2JjZGRlZiIsImlhdCI6MTYxMjYyNzM4OX0.iFQ_YmCY5VP7mGhnqic5DlyL7wBAziqeUUORduurhuU';
 
 const tokenExpired =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2FiZmFiMTI0ZmY1MDkzNTRkYzg3NyIsImlhdCI6MTYxNTA0NjU4MSwiZXhwIjoxNjE1MDQ2NTgxfQ.VekBYAaO4UXaOOQZlVRNfNxUup8tXmp9LB5Jc3glKdg';
@@ -35,7 +33,7 @@ async function registerUserAndGetToken(
 
     await user.save();
 
-    const token = jwt.sign({ id: user._id }, 'jwt_secret');
+    const token = jwt.sign({ id: user._id }, envVars.JWT_SECRET);
 
     return token;
   } catch (e) {
@@ -68,4 +66,4 @@ async function addToCart(): Promise<IUser> {
   }
 }
 
-export { MockUser, token, tokenExpired, MockProduct, registerUserAndGetToken, addToCart };
+export { MockUser, tokenExpired, MockProduct, registerUserAndGetToken, addToCart };

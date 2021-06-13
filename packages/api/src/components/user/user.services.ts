@@ -21,7 +21,7 @@ class User {
 
       const { data } = AuthServices.createToken(payload);
 
-      return new ServiceResponse(data, 'User registered', 200, null);
+      return new ServiceResponse(data, 'User registered', 201, null);
     } catch (e) {
       if (e.code === 11000) {
         return new ServiceResponse(null, responses.EMAIL_ALREADY_TAKEN, 400, e);
@@ -32,11 +32,6 @@ class User {
   }
 
   public static async login(email: string, password: string): Promise<IServiceResponse> {
-    console.log({
-      email: email,
-      password: password,
-    });
-
     try {
       const user: IUserDocument = await UserRepository.getUserByEmail(email, ['password', '_id']);
 

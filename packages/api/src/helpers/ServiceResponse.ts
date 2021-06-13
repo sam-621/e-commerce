@@ -1,3 +1,4 @@
+import { envVars } from '../config';
 import { IServiceResponseClass } from '../types/services';
 
 class ServiceResponse implements IServiceResponseClass {
@@ -15,7 +16,7 @@ class ServiceResponse implements IServiceResponseClass {
   }
 
   private logError() {
-    console.log(this.error);
+    this.error && envVars.MODE !== 'test' && console.log(this.error);
   }
 }
 

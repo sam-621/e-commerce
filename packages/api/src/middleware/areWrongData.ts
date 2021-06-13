@@ -7,8 +7,6 @@ function areWrongData(req: Request, res: Response, next: NextFunction) {
   const errors: Result = validationResult(req);
 
   if (!errors.isEmpty()) {
-    console.log(errors.array());
-
     return new ControllerResponse(
       res,
       null,
