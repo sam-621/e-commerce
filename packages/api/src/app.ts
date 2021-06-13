@@ -3,6 +3,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import { envVars } from './config';
 import { router } from './router';
+import { apiKey } from './middleware/apiKey';
 
 class server {
   public App: Application;
@@ -20,6 +21,7 @@ class server {
     this.App.use(cors());
     this.App.use(helmet());
     this.App.use(express.json());
+    this.App.use(apiKey);
   }
 
   private routing(): void {
