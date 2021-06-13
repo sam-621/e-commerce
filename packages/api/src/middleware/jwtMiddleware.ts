@@ -15,7 +15,7 @@ async function jwtMiddleware(req: IRequest, res: Response, next: NextFunction) {
       res,
       null,
       'No token provided',
-      statusCodes.BAD_REQUES
+      statusCodes.UNAUTHORIZED
     ).response();
   }
 

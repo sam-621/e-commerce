@@ -17,9 +17,6 @@ class MockProduct {
   ) {}
 }
 
-const tokenExpired =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2FiZmFiMTI0ZmY1MDkzNTRkYzg3NyIsImlhdCI6MTYxNTA0NjU4MSwiZXhwIjoxNjE1MDQ2NTgxfQ.VekBYAaO4UXaOOQZlVRNfNxUup8tXmp9LB5Jc3glKdg';
-
 async function registerUserAndGetToken(
   username: string = 'admin',
   email: string = 'admin@gmail.com'
@@ -66,4 +63,4 @@ async function addToCart(): Promise<IUser> {
   }
 }
 
-export { MockUser, tokenExpired, MockProduct, registerUserAndGetToken, addToCart };
+export { MockUser, MockProduct, registerUserAndGetToken, addToCart };

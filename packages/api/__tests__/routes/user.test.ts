@@ -7,7 +7,6 @@ import {
   dbConnectionAnCreateUser,
   clearDatabase,
   registerUserAndGetToken,
-  tokenExpired,
 } from '../utils';
 import { envVars, responses, statusCodes } from '../../src/config';
 import UserModel from '../../src/db/models/user.models';
@@ -47,147 +46,136 @@ describe('Register endpoint', () => {
   });
 });
 
-// describe('Login endpoint', () => {
-//   beforeAll(dbConnectionAnCreateUser);
-//   afterAll(dbClose);
+describe('Login endpoint', () => {
+  beforeAll(dbConnectionAnCreateUser);
+  afterAll(dbClose);
 
-//   test('Should response 401 NO API_KEY PROVIDED', async (done) => {
-//     const res = await req(app).post('/login');
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).post('/login');
 
-//     expect(res.status).toBe(401);
-//     // expect(res.body.message).toBe('NO API_KEY PROVIDED');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.UNAUTHORIZED);
+    // expect(res.body.message).toBe('NO API_KEY PROVIDED');
+    done();
+  });
 
-//   test('Should response 400 WRONG DATA SCHEMA', async (done) => {
-//     const mockUser = new MockUser('', 'admim@gmail.c', '123');
-//     const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
+  test('Should response 400 WRONG DATA SCHEMA', async (done) => {
+    const mockUser = new MockUser('', 'admim@gmail.c', '123');
+    const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
 
-//     expect(res.status).toBe(400);
-//     // expect(res.body.message).toBe('WRONG DATA SCHEMA');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.BAD_REQUES);
+    done();
+  });
 
-//   test('Should response 401 WRONG EMAIL', async (done) => {
-//     const mockUser = new MockUser('admin', 'awrongAdmin@gmail.com', '123456');
+  test('Should response 401 WRONG EMAIL', async (done) => {
+    const mockUser = new MockUser('admin', 'awrongAdmin@gmail.com', '123456');
 
-//     const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
+    const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
 
-//     expect(res.status).toBe(401);
-//     // expect(res.body.message).toBe('WRONG CREDENTIALS');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.UNAUTHORIZED);
+    done();
+  });
 
-//   test('Should response 401 WRONG PASSWORD', async (done) => {
-//     const mockUser = new MockUser('admin', 'admin@gmail.com', '1234567');
+  test('Should response 401 WRONG PASSWORD', async (done) => {
+    const mockUser = new MockUser('admin', 'admin@gmail.com', '1234567');
 
-//     const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
+    const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
 
-//     expect(res.status).toBe(401);
-//     // expect(res.body.message).toBe('WRONG CREDENTIALS');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.UNAUTHORIZED);
+    done();
+  });
 
-//   test('Should response 200 EVERYTHING OK', async (done) => {
-//     const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
+  test('Should response 200 EVERYTHING OK', async (done) => {
+    const mockUser = new MockUser('admin', 'admin@gmail.com', '123456');
 
-//     const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
+    const res = await req(app).post('/login').set('api_key', envVars.API_KEY).send(mockUser);
 
-//     expect(res.status).toBe(200);
-//     // expect(res.body.message).toBe('USER LOGGED');
-//     done();
-//   });
-// });
+    expect(res.status).toBe(statusCodes.OK);
+    done();
+  });
+});
 
-// describe('Get user info endpoint', () => {
-//   beforeAll(dbConnection);
-//   afterAll(dbClose);
-//   beforeEach(clearDatabase);
+describe('Get user info endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+  beforeEach(clearDatabase);
 
-//   test('Should response 401 NO API_KEY PROVIDED', async (done) => {
-//     const res = await req(app).get('/user');
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).get('/user');
 
-//     expect(res.status).toBe(401);
-//     // expect(res.body.message).toBe('NO API_KEY PROVIDED');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.UNAUTHORIZED);
+    done();
+  });
 
-//   test('Should response 401 NO TOKEN PROVIDED', async (done) => {
-//     const res = await req(app).get('/user').set('api_key', envVars.API_KEY);
+  test('Should response 401 NO TOKEN PROVIDED', async (done) => {
+    const res = await req(app).get('/user').set('api_key', envVars.API_KEY);
 
-//     expect(res.status).toBe(401);
-//     // expect(res.body.message).toBe('NO TOKEN PROVIDED');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.UNAUTHORIZED);
+    done();
+  });
 
-//   test('Should response 200 OK', async (done) => {
-//     const token: string = await registerUserAndGetToken();
-//     const res = await req(app)
-//       .get('/user')
-//       .set('authorization', token)
-//       .set('api_key', envVars.API_KEY);
+  test('Should response 200 OK', async (done) => {
+    const token: string = await registerUserAndGetToken();
+    const res = await req(app)
+      .get('/user')
+      .set('authorization', token)
+      .set('api_key', envVars.API_KEY);
 
-//     expect(res.status).toBe(200);
-//     // expect(res.body.message).toBe('OK');
-//     expect(res.body.data.email).toBe('admin@gmail.com');
-//     expect(res.body.data.cart.length).toBe(0);
-//     expect(res.body.data.productsBought.length).toBe(0);
-//     done();
-//   });
-// });
+    expect(res.status).toBe(statusCodes.OK);
+    expect(res.body.data.email).toBe('admin@gmail.com');
+    expect(res.body.data.cart.length).toBe(0);
+    expect(res.body.data.productsBought.length).toBe(0);
+    done();
+  });
+});
 
-// describe('Update user info endpoint', () => {
-//   beforeAll(dbConnection);
-//   afterAll(dbClose);
-//   beforeEach(clearDatabase);
+describe('Update user info endpoint', () => {
+  beforeAll(dbConnection);
+  afterAll(dbClose);
+  beforeEach(clearDatabase);
 
-//   test('Should response 401 NO API_KEY PROVIDED', async (done) => {
-//     const res = await req(app).put('/user');
+  test('Should response 401 NO API_KEY PROVIDED', async (done) => {
+    const res = await req(app).put('/user');
 
-//     expect(res.status).toBe(401);
-//     // expect(res.body.message).toBe('NO API_KEY PROVIDED');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.UNAUTHORIZED);
+    done();
+  });
 
-//   test('Should response 401 NO TOKEN PROVIDED', async (done) => {
-//     const res = await req(app).put('/user').set('api_key', envVars.API_KEY);
+  test('Should response 401 NO TOKEN PROVIDED', async (done) => {
+    const res = await req(app).put('/user').set('api_key', envVars.API_KEY);
 
-//     expect(res.status).toBe(401);
-//     // expect(res.body.message).toBe('NO TOKEN PROVIDED');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.UNAUTHORIZED);
+    done();
+  });
 
-//   test('Should response 400, WRONG DATA SCHEMA', async (done) => {
-//     const token1: string = await registerUserAndGetToken();
+  test('Should response 400, WRONG DATA SCHEMA', async (done) => {
+    const token1: string = await registerUserAndGetToken();
 
-//     const res = await req(app)
-//       .put('/user')
-//       .set('api_key', envVars.API_KEY)
-//       .set('authorization', token1)
-//       .send({
-//         username: 'admin_v2',
-//         email: 'admin_v2gmail.com',
-//       });
+    const res = await req(app)
+      .put('/user')
+      .set('api_key', envVars.API_KEY)
+      .set('authorization', token1)
+      .send({
+        username: 'admin_v2',
+        email: 'admin_v2gmail.com',
+      });
 
-//     expect(res.status).toBe(400);
-//     // expect(res.body.message).toBe('WRONG DATA SCHEMA');
-//     done();
-//   });
+    expect(res.status).toBe(statusCodes.BAD_REQUES);
+    done();
+  });
 
-//   test('Should response 200, USER UPDATED', async (done) => {
-//     const token: string = await registerUserAndGetToken();
+  test('Should response 200, USER UPDATED', async (done) => {
+    const token: string = await registerUserAndGetToken();
 
-//     const res = await req(app)
-//       .put('/user')
-//       .set('api_key', envVars.API_KEY)
-//       .set('authorization', token)
-//       .send({
-//         username: 'admin_v2',
-//         email: 'admin_v2@gmail.com',
-//       });
+    const res = await req(app)
+      .put('/user')
+      .set('api_key', envVars.API_KEY)
+      .set('authorization', token)
+      .send({
+        username: 'admin_v2',
+        email: 'admin_v2@gmail.com',
+      });
 
-//     expect(res.status).toBe(200);
-//     // expect(res.body.message).toBe('USER UPDATED');
-//     done();
-//   });
-// });
+    expect(res.status).toBe(statusCodes.OK);
+    done();
+  });
+});
