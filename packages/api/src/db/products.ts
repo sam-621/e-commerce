@@ -4,7 +4,6 @@ const products: IAllProducts = {
   guajolotas: [
     {
       id: 1,
-      frontId: 1,
       name: 'guajolota',
       flavor: 'verde',
       description: 'Verde',
@@ -14,7 +13,6 @@ const products: IAllProducts = {
     },
     {
       id: 2,
-      frontId: 2,
       name: 'guajolota',
       flavor: 'mole',
       description: 'Mole',
@@ -24,7 +22,6 @@ const products: IAllProducts = {
     },
     {
       id: 3,
-      frontId: 3,
       name: 'guajolota',
       flavor: 'guayaba',
       description: 'Guayaba',
@@ -34,7 +31,6 @@ const products: IAllProducts = {
     },
     {
       id: 4,
-      frontId: 4,
       name: 'guajolota',
       flavor: 'pina',
       description: 'Piña',
@@ -44,7 +40,6 @@ const products: IAllProducts = {
     },
     {
       id: 5,
-      frontId: 5,
       name: 'guajolota',
       flavor: 'pasas',
       description: 'Pasas',
@@ -56,7 +51,6 @@ const products: IAllProducts = {
   bebidas: [
     {
       id: 1,
-      frontId: 1,
       name: 'bebida',
       flavor: 'champurrado',
       description: 'Champurrado',
@@ -66,7 +60,6 @@ const products: IAllProducts = {
     },
     {
       id: 2,
-      frontId: 2,
       name: 'bebida',
       flavor: 'atole',
       description: 'Atole de Arroz con Leche',
@@ -76,7 +69,6 @@ const products: IAllProducts = {
     },
     {
       id: 3,
-      frontId: 3,
       name: 'bebida',
       flavor: 'chocolate',
       description: 'Chocolate Caliente',
@@ -86,7 +78,6 @@ const products: IAllProducts = {
     },
     {
       id: 4,
-      frontId: 4,
       name: 'bebida',
       flavor: 'cafe',
       description: 'Café Negro',
@@ -98,7 +89,6 @@ const products: IAllProducts = {
   tamales: [
     {
       id: 1,
-      frontId: 1,
       name: 'tamal',
       flavor: 'verde',
       description: 'Tamal Verde',
@@ -108,7 +98,6 @@ const products: IAllProducts = {
     },
     {
       id: 2,
-      frontId: 2,
       name: 'tamal',
       flavor: 'mole',
       description: 'Tamal de Mole',
@@ -118,7 +107,6 @@ const products: IAllProducts = {
     },
     {
       id: 3,
-      frontId: 3,
       name: 'tamal',
       flavor: 'guayaba',
       description: 'Tamal de Guayaba',
@@ -128,7 +116,6 @@ const products: IAllProducts = {
     },
     {
       id: 4,
-      frontId: 4,
       name: 'tamal',
       flavor: 'pina',
       description: 'Tamal de Piña',
@@ -138,7 +125,6 @@ const products: IAllProducts = {
     },
     {
       id: 5,
-      frontId: 5,
       name: 'tamal',
       flavor: 'pasas',
       description: 'Tamal de Pasas',
