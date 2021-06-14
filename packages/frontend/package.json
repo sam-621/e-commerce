@@ -1,0 +1,31 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "frontend package",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogeliosamuel621/E-commerce.git"
+  },
+  "author": "rogeliosamuel621",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rogeliosamuel621/E-commerce/issues"
+  },
+  "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme",
+  "devDependencies": {
+    "@types/node": "^15.12.2",
+    "@types/react": "^17.0.11",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "next": "^10.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
