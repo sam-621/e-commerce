@@ -1,9 +1,0 @@
-.Header {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 10px 35px 10px;
-}
-.Header div h1 {
-  font-size: 2.4rem;
-  margin: 0;
-}
