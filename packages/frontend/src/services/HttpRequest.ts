@@ -19,4 +19,11 @@ export default class HttpRequest {
   public configEnpoint(endpoint: string) {
     this.endpoint = endpoint;
   }
+
+  public addToken(token: string) {
+    this.headers = {
+      ...this.headers,
+      authorization: token,
+    };
+  }
 }
