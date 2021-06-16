@@ -1,4 +1,4 @@
-import { BASE_URL } from '../config/envVars';
+import { BASE_URL, MODE } from '../config/envVars';
 import { IHeaders } from '../types/services';
 
 export default class HttpRequest {
@@ -16,14 +16,20 @@ export default class HttpRequest {
     };
   }
 
-  public configEnpoint(endpoint: string) {
+  public configEnpoint(endpoint: string): void {
     this.endpoint = endpoint;
   }
 
-  public addToken(token: string) {
+  public addToken(token: string): void {
     this.headers = {
       ...this.headers,
       authorization: token,
     };
+  }
+
+  private urlBuilder(): string {
+    const port: number | String = MODE === 'dev' ? this.port : '';
+
+    return `${this.baseUrl}${this.port}/${this.endpoint}`;
   }
 }
