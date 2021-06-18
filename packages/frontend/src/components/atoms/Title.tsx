@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
+import { OPTIONAL_TITLES } from '../../helpers/title';
 
 const Title = () => {
   const router = useRouter();
+  const title: string = OPTIONAL_TITLES[router.pathname];
 
   return (
     <>
-      <h1 role="heading"></h1>
+      <h1 role="heading">{title}</h1>
     </>
   );
 };

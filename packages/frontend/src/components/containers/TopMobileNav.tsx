@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Title from '../atoms/Title';
 
 const TopMobileNav = () => {
   return (
@@ -6,7 +7,9 @@ const TopMobileNav = () => {
       <div>
         <Image title="Logo" alt="Logo" src="/images/logo.svg" width={40} height={40} />
       </div>
-      <div></div>
+      <div>
+        <Title />
+      </div>
       <div></div>
     </nav>
   );
