@@ -1,6 +1,6 @@
 import { IProduct } from './products';
 
 export interface IAction {
-  payload: IProduct | IProduct[];
+  payload: IProduct;
   type: string;
 }
