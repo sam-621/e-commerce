@@ -1,5 +1,6 @@
 const Dotenv = require('dotenv-webpack');
 const withPlugins = require('next-compose-plugins');
+const path = require('path');
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -7,6 +8,9 @@ const withPlugins = require('next-compose-plugins');
 const nextConfig = {
   future: {
     webpack5: true,
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'src/styles')],
   },
   webpack: (config) => {
     config.plugins.push(new Dotenv({ systemvars: true }));
