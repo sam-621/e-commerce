@@ -2,7 +2,7 @@ import { IProduct } from './products';
 import { IUserReduxStore } from './user';
 
 export interface IAction {
-  payload: IProduct;
+  payload: unknown;
   type: string;
 }
 
