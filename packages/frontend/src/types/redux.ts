@@ -1,4 +1,5 @@
 import { IProduct } from './products';
+import { IUserReduxStore } from './user';
 
 export interface IAction {
   payload: IProduct;
@@ -7,4 +8,5 @@ export interface IAction {
 
 export interface IReduxState {
   cart: IProduct[];
+  user: IUserReduxStore;
 }

@@ -8,8 +8,8 @@ const PrimaryButton = ({ onClick, text, type }: IPrimaryButtonProps) => {
 
 interface IPrimaryButtonProps {
   text: string;
-  onClick: () => unknown;
   type: 'button' | 'submit' | 'reset';
+  onClick?: () => unknown;
 }
 
 export default PrimaryButton;

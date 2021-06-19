@@ -8,3 +8,8 @@ export interface IUser {
   userCart: IProduct[];
   userProductsBought: IProduct[];
 }
+
+export interface IUserReduxStore {
+  data: IUser;
+  isLogged: boolean;
+}
