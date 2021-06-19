@@ -18,17 +18,17 @@ Demo: [E-commerce app](https://ecommerce-621.netlify.app/)
 
 ### Install
 ```
-yarn install:app
+npm install:app
 ```
 
 ### Development
 - api
 ```
-cd packages/api && yarn dev
+cd packages/api && npm dev
 ```
 - frontend
 ```
-cd packages/frontend && yarn dev
+cd packages/frontend && npm dev
 ```
 
 ### Production
