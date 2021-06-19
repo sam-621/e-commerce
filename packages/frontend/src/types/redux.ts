@@ -1,4 +1,6 @@
+import { IProduct } from './products';
+
 export interface IAction {
-  payload: unknown;
+  payload: IProduct | IProduct[];
   type: string;
 }
