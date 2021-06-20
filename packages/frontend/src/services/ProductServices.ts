@@ -11,8 +11,9 @@ export default class ProductServices extends HttpRequest {
   public async getAllProducts(): Promise<IAllProducts> {
     try {
       const response = await this.configGetAllProducts();
+      console.log(response);
 
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return error.response;
     }

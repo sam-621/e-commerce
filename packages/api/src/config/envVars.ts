@@ -7,7 +7,7 @@ const envVars = {
   MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce',
   EXPIRES_IN: process.env.EXPIRES_IN || '3h',
   JWT_SECRET: process.env.JWT_SECRET || 'secret',
-  PORT: process.env.PORT as unknown as number,
+  PORT: (process.env.PORT as unknown as number) || 4000,
 };
 
 export default envVars;
