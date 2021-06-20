@@ -6,7 +6,7 @@ const Product: FC<IProductProps> = ({ image, name, price, id }) => {
   return (
     <article className="Product">
       <Link href={`/products/${name}-${id}`}>
-        <a>
+        <a className="Product-image">
           <Image src={image} title={name} alt={name} width={80} height={80} />
         </a>
       </Link>

@@ -1,5 +1,9 @@
+body {
+  background-color: #FAFAFE
+}
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-@import url('./containers/topMobileNav.css');
 @import url('./atoms/primaryButton.css');
 @import url('./atoms/title.css');
+@import url('./molecules/product.css');
+@import url('./containers/topMobileNav.css');
