@@ -7,8 +7,15 @@ const UPDATE_USER_LOGGED: string = 'UPDATE_USER_LOGGED';
 
 // STORE
 const initialState: IUserReduxStore = {
-  data: null,
-  isLogged: null,
+  data: {
+    email: '',
+    username: '',
+    password: '',
+    profilePic: '',
+    userCart: [],
+    userProductsBought: [],
+  },
+  isLogged: false,
 };
 
 // REDUCER
