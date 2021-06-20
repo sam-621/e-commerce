@@ -2,8 +2,8 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import { MODE } from '../config/envVars';
-import cart from './reducers/cart';
-import user from './reducers/user';
+import cart from './ducks/cart';
+import user from './ducks/user';
 
 const ignoredLogs: string[] = [];
 
