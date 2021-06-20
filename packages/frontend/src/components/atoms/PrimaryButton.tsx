@@ -1,6 +1,6 @@
 const PrimaryButton = ({ onClick, text, type }: IPrimaryButtonProps) => {
   return (
-    <button type={type} onClick={onClick}>
+    <button className="PrimaryButton" type={type} onClick={onClick}>
       {text}
     </button>
   );
