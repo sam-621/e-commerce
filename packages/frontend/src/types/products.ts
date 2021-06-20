@@ -1,8 +1,8 @@
 export interface IProduct {
   id: number;
-  name: String;
-  flavor: String;
-  description: String;
+  name: string;
+  flavor: string;
+  description: string;
   price: number;
-  image: String;
+  image: string;
 }
