@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
+import { GetStaticProps } from 'next';
 import TopMobileNav from '../components/containers/TopMobileNav';
 import ProductsHome from '../components/containers/ProductsHome';
-import { GetStaticProps } from 'next';
 import ProductServices from '../services/ProductServices';
 import { IAllProducts, IProduct } from '../types/products';
+import BottomMobileNav from '../components/containers/BottomMobileNav';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   return (
     <>
       <TopMobileNav />
       <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
+      <BottomMobileNav />
     </>
   );
 };
@@ -17,7 +19,6 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const productServices = new ProductServices();
   const products: IAllProducts = await productServices.getAllProducts();
-  console.log(products);
 
   return {
     props: {
