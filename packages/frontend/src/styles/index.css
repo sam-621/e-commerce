@@ -14,5 +14,6 @@ body {
 
 @import url('./containers/topMobileNav.css');
 @import url('./containers/productsHome.css');
+@import url('./containers/bottomMobileNav.css');
 
 /* @import url('../../node_modules/swiper/swiper.scss'); */
