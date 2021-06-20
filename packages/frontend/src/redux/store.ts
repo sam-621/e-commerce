@@ -3,6 +3,7 @@ import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import { MODE } from '../config/envVars';
 import cart from './reducers/cart';
+import user from './reducers/user';
 
 const ignoredLogs: string[] = [];
 
@@ -20,6 +21,7 @@ const logger = createLogger({
 const store = createStore(
   combineReducers({
     cart,
+    user,
   }),
   {},
   MODE === 'DEV' ? applyMiddleware(thunk, logger) : applyMiddleware(thunk)

@@ -14,8 +14,8 @@ const initialState: IUserReduxStore = {
 // REDUCER
 export default function reducer(state = initialState, action: IUserAction): IUserReduxStore {
   const ACTIONS = {
-    [UPDATE_USER_DATA]: { ...state, data: action.payload.data },
-    [UPDATE_USER_LOGGED]: { ...state, isLogged: action.payload.isLogged },
+    [UPDATE_USER_DATA]: { ...state, data: action.payload?.data },
+    [UPDATE_USER_LOGGED]: { ...state, isLogged: action.payload?.isLogged },
   };
 
   return ACTIONS[action.type] || state;
