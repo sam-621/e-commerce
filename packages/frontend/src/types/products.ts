@@ -6,3 +6,9 @@ export interface IProduct {
   price: number;
   image: string;
 }
+
+export interface IAllProducts {
+  guajolotas: IProduct[];
+  bebidas: IProduct[];
+  tamales: IProduct[];
+}
