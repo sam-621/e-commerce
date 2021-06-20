@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { IServiceResponse } from '../types/services';
+import { IProduct } from '../types/products';
 import HttpRequest from './HttpRequest';
 
 export default class ProductsServices extends HttpRequest {
@@ -8,11 +8,11 @@ export default class ProductsServices extends HttpRequest {
     return this.get();
   }
 
-  public async getAllProducts(): Promise<IServiceResponse> {
+  public async getAllProducts(): Promise<IProduct[]> {
     try {
       const response = await this.configGetAllProducts();
 
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return error.response;
     }

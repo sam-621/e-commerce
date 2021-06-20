@@ -3,8 +3,3 @@ export interface IHeaders {
   authorization?: string;
   'Content-Type': string;
 }
-
-export interface IServiceResponse {
-  data: unknown;
-  message: string;
-}
