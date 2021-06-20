@@ -5,5 +5,8 @@ body {
 
 @import url('./atoms/primaryButton.css');
 @import url('./atoms/title.css');
+@import url('./atoms/addToCartButton.css');
+
 @import url('./molecules/product.css');
+
 @import url('./containers/topMobileNav.css');

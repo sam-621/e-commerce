@@ -13,6 +13,7 @@
 .Product-info {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .Product-info-text {
   display: grid;
@@ -23,5 +24,6 @@
 }
 .Product-info-button {
   display: flex;
-  align-items: baseline;
+  height: 100%;
+  align-items: flex-end;
 }

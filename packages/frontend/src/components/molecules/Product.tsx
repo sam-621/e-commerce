@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import AddToCartButton from '../atoms/AddToCartButton';
 
 const Product: FC<IProductProps> = ({ image, name, price, id }) => {
   return (
@@ -15,7 +16,9 @@ const Product: FC<IProductProps> = ({ image, name, price, id }) => {
           <h3>{name}</h3>
           <span>${price}</span>
         </div>
-        <div className="Product-info-button"></div>
+        <div className="Product-info-button">
+          <AddToCartButton />
+        </div>
       </div>
     </article>
   );
