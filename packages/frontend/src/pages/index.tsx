@@ -5,10 +5,12 @@ import ProductsHome from '../components/containers/ProductsHome';
 import ProductServices from '../services/ProductServices';
 import { IAllProducts, IProduct } from '../types/products';
 import BottomMobileNav from '../components/containers/BottomMobileNav';
+import ModalWrapper from '../components/templates/ModalWrapper';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   return (
     <>
+      <ModalWrapper isOpenProp={true} />
       <TopMobileNav />
       <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
       <BottomMobileNav />
