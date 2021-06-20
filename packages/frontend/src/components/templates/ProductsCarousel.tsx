@@ -19,7 +19,7 @@ const ProductsCarousel: FC<IProductsCarouselProps> = ({ products, text }) => {
         pagination={{ dynamicBullets: true }}
       >
         {products?.map((item) => (
-          <SwiperSlide>
+          <SwiperSlide key={item.id}>
             <Product
               id={item.id}
               key={item.id}
