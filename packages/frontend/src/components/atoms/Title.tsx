@@ -7,7 +7,9 @@ const Title = () => {
 
   return (
     <>
-      <h1 role="heading">{title}</h1>
+      <h1 className="Title" role="heading">
+        {title}
+      </h1>
     </>
   );
 };
