@@ -1,4 +1,6 @@
-const PrimaryButton = ({ onClick, text, type }: IPrimaryButtonProps) => {
+import { FC } from 'react';
+
+const PrimaryButton: FC<IPrimaryButtonProps> = ({ onClick, text, type }) => {
   return (
     <button className="PrimaryButton" type={type} onClick={onClick}>
       {text}
