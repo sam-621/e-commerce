@@ -8,7 +8,7 @@ import PrimaryButton from '../atoms/PrimaryButton';
 const TopMobileNav = () => {
   const isLogged: boolean = useSelector<IReduxState>((state) => state.user.isLogged) as boolean;
   return (
-    <nav>
+    <nav className="TopMobileNav">
       <div>
         <Image title="Logo" alt="Logo" src="/images/logo.svg" width={40} height={40} />
       </div>
