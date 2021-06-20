@@ -8,7 +8,7 @@ const Product: FC<IProductProps> = ({ image, name, price, id }) => {
     <article className="Product">
       <Link href={`/products/${name}-${id}`}>
         <a className="Product-image">
-          <Image src={image} title={name} alt={name} width={80} height={80} />
+          <Image src={image} title={name} alt={name} width={80} height={80} loading={'eager'} />
         </a>
       </Link>
       <div className="Product-info">

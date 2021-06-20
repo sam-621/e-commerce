@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import TopMobileNav from '../components/containers/TopMobileNav';
-import Product from '../components/molecules/Product';
 import ProductsHome from '../components/containers/ProductsHome';
 import { GetStaticProps } from 'next';
 import ProductServices from '../services/ProductServices';

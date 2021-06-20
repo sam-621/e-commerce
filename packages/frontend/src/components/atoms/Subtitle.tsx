@@ -3,7 +3,7 @@ import { FC } from 'react';
 const Subtitle: FC<ISubtitleProps> = ({ text }) => {
   return (
     <>
-      <h2>{text}</h2>
+      <h2 className="Subtitle">{text}</h2>
     </>
   );
 };

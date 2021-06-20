@@ -1,23 +1,13 @@
-import { FC, useEffect } from 'react';
-import ProductServices from '../../services/ProductServices';
+import { FC } from 'react';
 import { IProduct } from '../../types/products';
 import ProductsCarousel from '../templates/ProductsCarousel';
 
 const ProductsHome: FC<IProductsHomeProps> = ({ guajolotas, drinks, tamales }) => {
-  useEffect(() => {
-    const fetch = async () => {
-      const service = new ProductServices();
-      const res = await service.getAllProducts();
-      console.log(res);
-    };
-    fetch();
-  });
-
   return (
     <section className="ProductsHome">
-      <ProductsCarousel products={guajolotas} />
-      <ProductsCarousel products={drinks} />
-      <ProductsCarousel products={tamales} />
+      <ProductsCarousel products={guajolotas} text="Guajolotas" />
+      <ProductsCarousel products={drinks} text="Drinks" />
+      <ProductsCarousel products={tamales} text="Tamales" />
     </section>
   );
 };

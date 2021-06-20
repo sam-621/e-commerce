@@ -8,6 +8,7 @@ body {
 @import url('./atoms/primaryButton.css');
 @import url('./atoms/title.css');
 @import url('./atoms/addToCartButton.css');
+@import url('./atoms/subtitle.css');
 
 @import url('./molecules/product.css');
 
