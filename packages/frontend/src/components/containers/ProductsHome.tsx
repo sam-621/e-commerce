@@ -14,11 +14,11 @@ const ProductsHome: FC<IProductsHomeProps> = ({ guajolotas, drinks, tamales }) =
   });
 
   return (
-    <>
+    <section className="ProductsHome">
       <ProductsCarousel products={guajolotas} />
-      {/* <ProductsCarousel products={drinks} /> */}
-      {/* <ProductsCarousel products={tamales} /> */}
-    </>
+      <ProductsCarousel products={drinks} />
+      <ProductsCarousel products={tamales} />
+    </section>
   );
 };
 

@@ -5,7 +5,7 @@ import Product from '../molecules/Product';
 
 const ProductsCarousel: FC<IProductsCarouselProps> = ({ products }) => {
   return (
-    <Swiper tag="section" slidesPerView={2}>
+    <Swiper tag="section" slidesPerView={2} spaceBetween={15} style={{ padding: '0 10px' }}>
       {products?.map((item) => (
         <SwiperSlide>
           <Product
