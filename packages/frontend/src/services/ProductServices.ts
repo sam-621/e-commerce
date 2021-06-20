@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { IProduct } from '../types/products';
 import HttpRequest from './HttpRequest';
 
-export default class ProductsServices extends HttpRequest {
+export default class ProductServices extends HttpRequest {
   private configGetAllProducts(): Promise<AxiosResponse> {
     this.configEnpoint('products');
     return this.get();
