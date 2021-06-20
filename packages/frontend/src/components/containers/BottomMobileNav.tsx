@@ -2,9 +2,9 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { IReduxState } from '../../types/redux';
 import { IUserReduxStore } from '../../types/user';
+import ProfilePic from '../atoms/ProfilePic';
 
 const BottomMobileNav = () => {
-  const DEFAULT_USER_IMAGE = '/images/user.svg';
   const user: IUserReduxStore = useSelector<IReduxState>((state) => state.user) as IUserReduxStore;
 
   return (
@@ -13,11 +13,7 @@ const BottomMobileNav = () => {
         <Image src="/images/history.svg" width={30} height={30} />
       </div>
       <div className="BottomMobileNav-profilePic">
-        {user.isLogged ? (
-          <Image src={user.data.profilePic} width={30} height={30} />
-        ) : (
-          <Image src={DEFAULT_USER_IMAGE} width={30} height={30} />
-        )}
+        <ProfilePic profilePic={user.data.profilePic} isLogged={user.isLogged} />
       </div>
       <div>
         <Image src="/images/graphs.svg" width={30} height={30} />
