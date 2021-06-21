@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Input from '../atoms/Input';
+import PrimaryButton from '../atoms/PrimaryButton';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
@@ -28,6 +29,9 @@ const RegisterForm = () => {
         value={confirmPassowrd}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
+      <div className="RegisterForm-submit">
+        <PrimaryButton type="submit" text="Create an account" />
+      </div>
     </form>
   );
 };
