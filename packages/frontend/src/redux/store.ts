@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { MODE } from '../config/envVars';
 import cart from './ducks/cart';
 import user from './ducks/user';
+import modal from './ducks/modal';
 
 const ignoredLogs: string[] = [];
 
@@ -22,6 +23,7 @@ const store = createStore(
   combineReducers({
     cart,
     user,
+    modal,
   }),
   {},
   MODE === 'DEV' ? applyMiddleware(thunk, logger) : applyMiddleware(thunk)
