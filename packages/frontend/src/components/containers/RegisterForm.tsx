@@ -6,7 +6,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
   const [confirmPassowrd, setConfirmPassword] = useState('');
   return (
-    <form method="post">
+    <form method="post" className="RegisterForm">
       <Input
         id="input-1"
         label="Email"
