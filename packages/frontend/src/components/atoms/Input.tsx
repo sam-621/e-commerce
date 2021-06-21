@@ -11,8 +11,8 @@ const Input: FC<IInputProps> = ({ label, type, onChange, value, id }) => {
 
 interface IInputProps {
   label: string;
-  type: string;
-  onChange: () => void;
+  type: 'text' | 'password';
+  onChange: (e: any) => void;
   value: string;
   id: string;
 }
