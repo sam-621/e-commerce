@@ -4,6 +4,7 @@ const useClickOutside: IUseClickOutside = (ref, callback) => {
   const handleClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target as HTMLInputElement)) {
       callback();
+      console.log('hi');
     }
   };
 
