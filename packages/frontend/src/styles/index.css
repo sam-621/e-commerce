@@ -9,6 +9,7 @@ body {
 @import url('./atoms/title.css');
 @import url('./atoms/addToCartButton.css');
 @import url('./atoms/subtitle.css');
+@import url('./atoms/input.css');
 
 @import url('./molecules/product.css');
 

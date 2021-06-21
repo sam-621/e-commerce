@@ -6,11 +6,14 @@ import ProductServices from '../services/ProductServices';
 import { IAllProducts, IProduct } from '../types/products';
 import BottomMobileNav from '../components/containers/BottomMobileNav';
 import ModalWrapper from '../components/templates/ModalWrapper';
+import RegisterForm from '../components/containers/RegisterForm';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   return (
     <>
-      <ModalWrapper isOpenProp={true} />
+      <ModalWrapper isOpenProp={true}>
+        <RegisterForm />
+      </ModalWrapper>
       <TopMobileNav />
       <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
       <BottomMobileNav />

@@ -12,21 +12,21 @@ const RegisterForm = () => {
         label="Email"
         type="text"
         value={email}
-        onChange={(e) => setEmail(e.target)}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <Input
         id="input-2"
         label="Password"
         type="password"
         value={password}
-        onChange={(e) => setPassword(e.target)}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <Input
         id="input-3"
         label="Password"
         type="password"
         value={confirmPassowrd}
-        onChange={(e) => setConfirmPassword(e.target)}
+        onChange={(e) => setConfirmPassword(e.target.value)}
       />
     </form>
   );
