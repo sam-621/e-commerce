@@ -3,6 +3,12 @@
   grid-gap: 20px;
   padding: 20px;
 }
+.RegisterForm-title {
+  font-weight: 500;
+  color: #454545;
+  text-align: center;
+  margin: 0;
+}
 .RegisterForm-submit {
   justify-self: center;
 }
