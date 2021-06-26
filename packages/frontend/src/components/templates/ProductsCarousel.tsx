@@ -4,10 +4,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { IProduct } from '../../types/products';
 import Product from '../molecules/Product';
 import Subtitle from '../atoms/Subtitle';
+import { useMedia } from '../../hooks/useMedia';
+import { mediaFrom768 } from '../../helpers/mediaQueries';
 
 SwiperCore.use([Navigation, Scrollbar, Pagination, EffectCoverflow]);
 
 const ProductsCarousel: FC<IProductsCarouselProps> = ({ products, text }) => {
+  const isTablet = useMedia(mediaFrom768);
+
   return (
     <div style={{ margin: '20px 0' }}>
       <Subtitle text={text} />
