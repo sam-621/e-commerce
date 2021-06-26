@@ -1,6 +1,6 @@
 body {
   font-family: 'Quicksand', sans-serif;
-  background-color: #FAFAFE;
+  background-color: #fafafe;
   margin: 0;
 }
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
@@ -10,6 +10,7 @@ body {
 @import url('./atoms/addToCartButton.css');
 @import url('./atoms/subtitle.css');
 @import url('./atoms/input.css');
+@import url('./atoms/PrimaryLink.css');
 
 @import url('./molecules/product.css');
 

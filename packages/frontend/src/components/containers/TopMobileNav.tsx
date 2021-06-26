@@ -11,7 +11,7 @@ const TopMobileNav = () => {
   const { pathname } = useRouter();
 
   const linkText: string = pathname !== '/Register' ? 'Register' : 'Login';
-  const linkUrl = pathname !== '/Register' ? '/register' : '/login';
+  const linkUrl = pathname !== '/Register' ? '/Register' : '/login';
 
   return (
     <nav className="TopMobileNav">
