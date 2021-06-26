@@ -8,14 +8,14 @@ import { useMedia } from '../../hooks/useMedia';
 import {
   getSlidesToPreview,
   mediaFrom1440,
-  mediaFrom425,
+  mediaFrom530,
   mediaFrom768,
 } from '../../helpers/mediaQueries';
 
 SwiperCore.use([Navigation, Scrollbar, Pagination, EffectCoverflow]);
 
 const ProductsCarousel: FC<IProductsCarouselProps> = ({ products, text }) => {
-  const isMobile = useMedia(mediaFrom425);
+  const isMobile = useMedia(mediaFrom530);
   const isTablet = useMedia(mediaFrom768);
   const isDesktop = useMedia(mediaFrom1440);
 
