@@ -5,17 +5,21 @@ import { IProduct } from '../../types/products';
 import Product from '../molecules/Product';
 import Subtitle from '../atoms/Subtitle';
 import { useMedia } from '../../hooks/useMedia';
-import { mediaFrom1024, mediaFrom425, mediaFrom768 } from '../../helpers/mediaQueries';
-
-const OPTIONAL_SLIDES = {};
+import {
+  getSlidesToPreview,
+  mediaFrom1440,
+  mediaFrom425,
+  mediaFrom768,
+} from '../../helpers/mediaQueries';
 
 SwiperCore.use([Navigation, Scrollbar, Pagination, EffectCoverflow]);
 
 const ProductsCarousel: FC<IProductsCarouselProps> = ({ products, text }) => {
-  const isTablet = useMedia(mediaFrom768);
-  const isDesktop = useMedia(mediaFrom1024);
   const isMobile = useMedia(mediaFrom425);
-  const slidesToPreview = isMobile ? 2 : isTablet ? 3 : 5;
+  const isTablet = useMedia(mediaFrom768);
+  const isDesktop = useMedia(mediaFrom1440);
+
+  const slidesToPreview = getSlidesToPreview(isMobile, isTablet, isDesktop);
 
   return (
     <div style={{ margin: '20px 0' }}>
