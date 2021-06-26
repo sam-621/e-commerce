@@ -5,6 +5,7 @@ import CartButton from '../atoms/CartButton';
 import { useSelector } from 'react-redux';
 import { IReduxState } from '../../types/redux';
 import PrimaryLink from '../atoms/PrimaryLink';
+import Link from 'next/link';
 
 const TopMobileNav = () => {
   const isLogged: boolean = useSelector<IReduxState>((state) => state.user.isLogged) as boolean;
@@ -16,7 +17,11 @@ const TopMobileNav = () => {
   return (
     <nav className="TopMobileNav">
       <div>
-        <Image title="Logo" alt="Logo" src="/images/logo.svg" width={40} height={40} />
+        <Link href="/">
+          <a href="">
+            <Image title="Logo" alt="Logo" src="/images/logo.svg" width={40} height={40} />
+          </a>
+        </Link>
       </div>
       <div>
         <Title />
