@@ -1,13 +1,13 @@
-import RegisterForm from '../components/containers/RegisterForm';
+import LoginForm from '../components/containers/LoginForm';
 import TopMobileNav from '../components/containers/TopMobileNav';
 
-const Register = () => {
+const Login = () => {
   return (
     <>
       <TopMobileNav />
-      <RegisterForm />
+      <LoginForm />
     </>
   );
 };
 
-export default Register;
+export default Login;
