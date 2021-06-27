@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FC } from 'react';
 
-const IconLink: FC<IIconLinkProps> = ({ alt, href, title, src, width, height }) => {
+const IconLink: FC<IIconLinkProps> = ({ alt, href, title, src, width = 30, height = 30 }) => {
   return (
     <Link href={href}>
       <a href="">
