@@ -18,6 +18,7 @@ body {
 @import url('./containers/productsHome.css');
 @import url('./containers/bottomMobileNav.css');
 @import url('./containers/registerForm.css');
+@import url('./containers/asideDesktopNav.css');
 
 @import url('./templates/modalWrapper.css');
 
