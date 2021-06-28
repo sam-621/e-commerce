@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { mediaFrom1440 } from '../../helpers/mediaQueries';
 import { useMedia } from '../../hooks/useMedia';
 import { IProduct } from '../../types/products';
-import ProductsCarousel from '../templates/ProductsCarousel';
-import ProductsDesktopList from './ProductsDesktopList';
+import ProductsCarousel from '../containers/ProductsCarousel';
+import ProductsDesktopList from '../containers/ProductsDesktopList';
 
 const ProductsHome: FC<IProductsHomeProps> = ({ guajolotas, drinks, tamales }) => {
   const isNotDesktop = useMedia(mediaFrom1440);

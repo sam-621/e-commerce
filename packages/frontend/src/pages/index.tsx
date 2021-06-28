@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { GetStaticProps } from 'next';
 import TopMobileNav from '../components/containers/TopMobileNav';
-import ProductsHome from '../components/containers/ProductsHome';
+import ProductsHome from '../components/templates/ProductsHome';
 import ProductServices from '../services/ProductServices';
 import { IAllProducts, IProduct } from '../types/products';
 import BottomMobileNav from '../components/containers/BottomMobileNav';
