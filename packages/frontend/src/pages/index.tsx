@@ -16,7 +16,7 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   return (
     <>
       {isNotDesktop && <TopMobileNav />}
-      <main className="Index">
+      <main className={isNotDesktop ? '' : 'Index'}>
         {!isNotDesktop && <AsideDesktopNav />}
         <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
       </main>
