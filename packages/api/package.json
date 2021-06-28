@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node ./dist/bundle.js",
-    "dev": "NODE_ENV=dev nodemon ./src/index.ts",
+    "dev": "nodemon ./src/index.ts",
     "test:app": "jest ./app/",
     "test": "NODE_ENV=test jest ./routes/"
   },
