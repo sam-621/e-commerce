@@ -5,18 +5,20 @@ import Subtitle from '../atoms/Subtitle';
 
 const ProductsDesktopList: FC<IProductsDesktopList> = ({ products, text }) => {
   return (
-    <section style={{ margin: '20px 0' }}>
+    <section style={{ margin: '20px 0' }} className="ProductsDesktopList">
       <Subtitle text={text} />
 
-      {products?.map((item) => (
-        <Product
-          key={item.id}
-          id={item.id}
-          image={item.image}
-          name={item.name}
-          price={item.price}
-        />
-      ))}
+      <div className="ProductsDesktopList-products">
+        {products?.map((item) => (
+          <Product
+            key={item.id}
+            id={item.id}
+            image={item.image}
+            name={item.name}
+            price={item.price}
+          />
+        ))}
+      </div>
     </section>
   );
 };

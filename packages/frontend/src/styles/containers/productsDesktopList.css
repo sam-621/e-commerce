@@ -1,0 +1,6 @@
+.ProductsDesktopList-products {
+  display: flex;
+}
+.ProductsDesktopList-products article {
+  margin: 0 20px;
+}
