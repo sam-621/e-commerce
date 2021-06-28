@@ -22,4 +22,6 @@ body {
 
 @import url('./templates/modalWrapper.css');
 
+@import url('./pages/index.css');
+
 /* @import url('../../node_modules/swiper/swiper.scss'); */

@@ -13,7 +13,7 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   const isDesktop = useMedia(mediaFrom1440);
   return (
     <>
-      <TopMobileNav />
+      {!isDesktop && <TopMobileNav />}
       <main className="Index">
         {isDesktop && <AsideDesktopNav />}
         <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
