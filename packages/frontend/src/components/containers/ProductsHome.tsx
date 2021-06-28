@@ -1,13 +1,27 @@
 import { FC } from 'react';
+import { mediaFrom1440 } from '../../helpers/mediaQueries';
+import { useMedia } from '../../hooks/useMedia';
 import { IProduct } from '../../types/products';
 import ProductsCarousel from '../templates/ProductsCarousel';
+import ProductsDesktopList from './ProductsDesktopList';
 
 const ProductsHome: FC<IProductsHomeProps> = ({ guajolotas, drinks, tamales }) => {
+  const isDesktop = useMedia(mediaFrom1440);
   return (
     <section className="ProductsHome">
-      <ProductsCarousel products={guajolotas} text="Guajolotas" />
-      <ProductsCarousel products={drinks} text="Drinks" />
-      <ProductsCarousel products={tamales} text="Tamales" />
+      {!isDesktop ? (
+        <>
+          <ProductsCarousel products={guajolotas} text="Guajolotas" />
+          <ProductsCarousel products={drinks} text="Drinks" />
+          <ProductsCarousel products={tamales} text="Tamales" />
+        </>
+      ) : (
+        <>
+          <ProductsDesktopList products={guajolotas} text="Guajolotas" />
+          <ProductsDesktopList products={drinks} text="Drinks" />
+          <ProductsDesktopList products={tamales} text="Tamales" />
+        </>
+      )}
     </section>
   );
 };
