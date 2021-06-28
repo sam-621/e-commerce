@@ -6,10 +6,10 @@ import ProductsCarousel from '../templates/ProductsCarousel';
 import ProductsDesktopList from './ProductsDesktopList';
 
 const ProductsHome: FC<IProductsHomeProps> = ({ guajolotas, drinks, tamales }) => {
-  const isDesktop = useMedia(mediaFrom1440);
+  const isNotDesktop = useMedia(mediaFrom1440);
   return (
     <section className="ProductsHome">
-      {!isDesktop ? (
+      {isNotDesktop ? (
         <>
           <ProductsCarousel products={guajolotas} text="Guajolotas" />
           <ProductsCarousel products={drinks} text="Drinks" />

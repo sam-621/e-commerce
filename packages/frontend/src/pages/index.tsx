@@ -10,15 +10,17 @@ import { mediaFrom1440 } from '../helpers/mediaQueries';
 import AsideDesktopNav from '../components/containers/AsideDesktopNav';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
-  const isDesktop = useMedia(mediaFrom1440);
+  const isNotDesktop = useMedia(mediaFrom1440);
+  console.log(isNotDesktop);
+
   return (
     <>
-      {!isDesktop && <TopMobileNav />}
+      {isNotDesktop && <TopMobileNav />}
       <main className="Index">
-        {isDesktop && <AsideDesktopNav />}
+        {!isNotDesktop && <AsideDesktopNav />}
         <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
       </main>
-      {!isDesktop && <BottomMobileNav />}
+      {isNotDesktop && <BottomMobileNav />}
     </>
   );
 };
