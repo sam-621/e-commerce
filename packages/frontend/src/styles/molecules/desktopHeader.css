@@ -1,0 +1,11 @@
+.DesktopHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.DesktopHeader-text h1 {
+  color: #454545;
+}
+.DesktopHeader-text h1 strong {
+  color: #f9a109;
+}

@@ -3,13 +3,14 @@ import SecondaryLink from '../atoms/SecondaryLink';
 
 const DesktopHeader = () => {
   return (
-    <header>
-      <div>
+    <header className="DesktopHeader">
+      <div className="DesktopHeader-text">
         <h1>
-          <strong>Shoppingify</strong>allows you take your shopping list wherever you go
+          <strong>Shoppingify</strong> allows you take your
+          <br /> shopping list wherever you go
         </h1>
       </div>
-      <div>
+      <div className="DesktopHeader-options">
         <PrimaryLink text="Register" url="/register" />
         <SecondaryLink text="Login" url="/login" />
       </div>

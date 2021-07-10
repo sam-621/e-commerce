@@ -14,6 +14,7 @@ body {
 @import url('./atoms/secondaryLink.css');
 
 @import url('./molecules/product.css');
+@import url('./molecules/desktopHeader.css');
 
 @import url('./containers/topMobileNav.css');
 @import url('./containers/productsHome.css');

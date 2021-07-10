@@ -1,7 +1,7 @@
 .PrimaryButton {
   font-family: 'Quicksand', sans-serif;
-  background-color: #F9A109;
-  border: none;
+  background-color: #f9a109;
+  border: 1px solid #f9a109;
   border-radius: 5px;
   padding: 10px;
   color: white;
