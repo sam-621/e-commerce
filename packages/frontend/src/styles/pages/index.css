@@ -1,6 +1,6 @@
 .Index {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 2.3fr 1fr;
 }
 .Index-center {
   overflow-y: scroll;
