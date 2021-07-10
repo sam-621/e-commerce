@@ -28,7 +28,7 @@ const ProductsCarousel: FC<IProductsCarouselProps> = ({ products, text }) => {
         tag="section"
         slidesPerView={slidesToPreview}
         spaceBetween={15}
-        style={{ padding: '0 10px' }}
+        style={{ padding: '5px 10px' }}
         pagination={{ dynamicBullets: true }}
       >
         {products?.map((item) => (
