@@ -11,21 +11,29 @@ import AsideDesktopNav from '../components/containers/AsideDesktopNav';
 import DesktopHeader from '../components/molecules/DesktopHeader';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
-  const isNotDesktop = useMedia(mediaFrom1440);
+  const isMobile = useMedia(mediaFrom1440);
 
-  return (
+  const DesktopPage = () => (
     <>
-      {isNotDesktop && <TopMobileNav />}
-      <main className={isNotDesktop ? '' : 'Index'}>
-        {!isNotDesktop && <AsideDesktopNav />}
+      <main className="Index">
+        <AsideDesktopNav />
         <section>
-          {!isNotDesktop && <DesktopHeader />}
+          <DesktopHeader />
           <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
         </section>
       </main>
-      {isNotDesktop && <BottomMobileNav />}
     </>
   );
+
+  const MobilePage = () => (
+    <>
+      <TopMobileNav />
+      <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
+      <BottomMobileNav />
+    </>
+  );
+
+  return isMobile ? <MobilePage /> : <DesktopPage />;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
