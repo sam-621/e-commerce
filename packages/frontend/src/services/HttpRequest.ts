@@ -1,4 +1,4 @@
-import { BASE_URL, MODE } from '../config/envVars';
+import { API_KEY, BASE_URL, MODE } from '../config/envVars';
 import { IHeaders } from '../types/services';
 import axios, { AxiosResponse } from 'axios';
 
@@ -12,7 +12,7 @@ export default class HttpRequest {
     this.port = 6000;
     this.baseUrl = BASE_URL;
     this.headers = {
-      api_key: process.env.API_KEY,
+      api_key: API_KEY,
       'Content-Type': 'application/json',
     };
   }

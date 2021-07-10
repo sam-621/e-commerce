@@ -1,5 +1,3 @@
-const Dotenv = require('dotenv-webpack');
-const withPlugins = require('next-compose-plugins');
 const path = require('path');
 
 /**
@@ -14,10 +12,6 @@ const nextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
-  },
-  webpack: (config) => {
-    config.plugins.push(new Dotenv({ systemvars: true }));
-    return config;
   },
 };
 
