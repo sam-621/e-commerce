@@ -9,7 +9,7 @@ const AsideDesktopProduct = () => {
 
   return (
     <aside>
-      {productSelected ? <ProductDetails /> : <NoProductSelected />}
+      {productSelected ? null : <NoProductSelected />}
       <div>
         <Image src="/images/girl-with-cart.svg" layout="fill" />
       </div>

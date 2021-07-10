@@ -9,6 +9,7 @@ import { useMedia } from '../hooks/useMedia';
 import { mediaFrom1440 } from '../helpers/mediaQueries';
 import AsideDesktopNav from '../components/containers/AsideDesktopNav';
 import DesktopHeader from '../components/molecules/DesktopHeader';
+import AsideDesktopProduct from '../components/containers/AsideDesktopProduct';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   const isMobile = useMedia(mediaFrom1440);
@@ -21,6 +22,7 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
           <DesktopHeader />
           <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
         </section>
+        <AsideDesktopProduct />
       </main>
     </>
   );
