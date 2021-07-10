@@ -9,3 +9,9 @@
 .DesktopHeader-text h1 strong {
   color: #f9a109;
 }
+.DesktopHeader-options {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  gap: 40px;
+}
