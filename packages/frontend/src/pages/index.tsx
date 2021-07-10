@@ -11,7 +11,6 @@ import AsideDesktopNav from '../components/containers/AsideDesktopNav';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   const isNotDesktop = useMedia(mediaFrom1440);
-  console.log(isNotDesktop);
 
   return (
     <>

@@ -9,7 +9,7 @@ export default class HttpRequest {
   private headers: IHeaders;
 
   constructor() {
-    this.port = 4000;
+    this.port = 6000;
     this.baseUrl = BASE_URL;
     this.headers = {
       api_key: process.env.API_KEY,
