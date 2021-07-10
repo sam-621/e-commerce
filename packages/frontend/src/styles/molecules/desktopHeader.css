@@ -2,10 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 35px;
 }
 .DesktopHeader-text h1 {
   color: #454545;
   font-size: 22px;
+  margin: 0;
 }
 .DesktopHeader-text h1 strong {
   color: #f9a109;
