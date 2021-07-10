@@ -1,0 +1,5 @@
+.NoProductSelected {
+  background-color: #80485b;
+  display: flex;
+  justify-content: center;
+}
