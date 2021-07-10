@@ -8,6 +8,7 @@ import BottomMobileNav from '../components/containers/BottomMobileNav';
 import { useMedia } from '../hooks/useMedia';
 import { mediaFrom1440 } from '../helpers/mediaQueries';
 import AsideDesktopNav from '../components/containers/AsideDesktopNav';
+import DesktopHeader from '../components/molecules/DesktopHeader';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   const isNotDesktop = useMedia(mediaFrom1440);
@@ -17,7 +18,10 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
       {isNotDesktop && <TopMobileNav />}
       <main className={isNotDesktop ? '' : 'Index'}>
         {!isNotDesktop && <AsideDesktopNav />}
-        <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
+        <section>
+          {!isNotDesktop && <DesktopHeader />}
+          <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
+        </section>
       </main>
       {isNotDesktop && <BottomMobileNav />}
     </>

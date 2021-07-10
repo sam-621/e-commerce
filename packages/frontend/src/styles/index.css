@@ -11,6 +11,7 @@ body {
 @import url('./atoms/subtitle.css');
 @import url('./atoms/input.css');
 @import url('./atoms/PrimaryLink.css');
+@import url('./atoms/secondaryLink.css');
 
 @import url('./molecules/product.css');
 
