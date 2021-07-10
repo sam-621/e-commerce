@@ -9,4 +9,5 @@ export interface IAction {
 export interface IReduxState {
   cart: IProduct[];
   user: IUserReduxStore;
+  productSelected: IProduct | null;
 }
