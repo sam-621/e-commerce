@@ -44,9 +44,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      guajolotas: products.guajolotas,
-      drinks: products.bebidas,
-      tamales: products.tamales,
+      guajolotas: products?.guajolotas || null,
+      drinks: products?.bebidas || null,
+      tamales: products?.tamales || null,
     },
   };
 };
