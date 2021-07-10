@@ -8,10 +8,10 @@ const AsideDesktopProduct = () => {
   const productSelected = useSelector<IReduxState>((state) => state.productSelected) as IProduct;
 
   return (
-    <aside>
+    <aside className="AsideDesktopProduct">
       {productSelected ? null : <NoProductSelected />}
-      <div>
-        <Image src="/images/girl-with-cart.svg" layout="fill" />
+      <div className="AsideDesktopProduct-image">
+        <Image src="/images/girl-with-cart.svg" width={245} height={203} />
       </div>
     </aside>
   );

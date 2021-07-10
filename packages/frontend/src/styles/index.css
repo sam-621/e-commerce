@@ -23,6 +23,7 @@ body {
 @import url('./containers/registerForm.css');
 @import url('./containers/asideDesktopNav.css');
 @import url('./containers/productsDesktopList.css');
+@import url('./containers/asideDesktopProduct.css');
 
 @import url('./templates/modalWrapper.css');
 
