@@ -1,4 +1,5 @@
 import PrimaryLink from '../atoms/PrimaryLink';
+import SecondaryLink from '../atoms/SecondaryLink';
 
 const DesktopHeader = () => {
   return (
@@ -10,6 +11,7 @@ const DesktopHeader = () => {
       </div>
       <div>
         <PrimaryLink text="Register" url="/register" />
+        <SecondaryLink text="Login" url="/login" />
       </div>
     </header>
   );
