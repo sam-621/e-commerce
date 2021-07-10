@@ -18,7 +18,7 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
     <>
       <main className="Index">
         <AsideDesktopNav />
-        <section>
+        <section className="Index-center">
           <DesktopHeader />
           <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
         </section>

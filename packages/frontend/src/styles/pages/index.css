@@ -2,3 +2,8 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
 }
+.Index-center {
+  overflow-y: scroll;
+  height: 100vh;
+  padding: 15px 80px;
+}

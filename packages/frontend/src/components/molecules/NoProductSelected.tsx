@@ -4,7 +4,7 @@ const NoProductSelected = () => {
   return (
     <div className="NoProductSelected">
       <div className="NoProductSelected-image">
-        <Image src="/image/drink.svg" layout="fill" />
+        {/* <Image src="/image/drink.svg" width={40} height /> */}
       </div>
       <div className="NoProductSelected-text">
         <p>
