@@ -1,0 +1,22 @@
+.Index {
+  display: grid;
+  grid-template-columns: auto 2.3fr 1fr;
+}
+.Index-center {
+  overflow-y: scroll;
+  height: 100vh;
+  padding: 0 80px;
+}
+.Index-center::-webkit-scrollbar {
+  background: #deecf8;
+  width: 5px;
+  border-radius: 5px;
+}
+.Index-center::-webkit-scrollbar-thumb {
+  background: #f9a109;
+  border-radius: 5px;
+}
+/* Cambiamos el fondo cuando esté en active */
+.Index-center::-webkit-scrollbar-thumb:active {
+  background-color: #f9a109;
+}

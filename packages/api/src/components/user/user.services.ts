@@ -1,71 +1,97 @@
-import { IUser, IDataForToken } from './user.interface';
-import UserModel from './user.models';
+import { IUser, IUserDocument } from '../../types/user';
 import argon from 'argon2';
 import { ObjectId } from 'mongoose';
-import { IService } from '../interfaces/IService';
+import { IServiceResponse } from '../../types/services';
+import UserRepository from '../../repository/user.repository';
+import { responses, statusCodes } from '../../config/';
+import { IPayload } from '../../types/jwt';
+import { AuthServices } from '../auth/auth.services';
+import ServiceResponse from '../../helpers/ServiceResponse';
 
 class User {
-  private readonly username: string;
-  private readonly email: string;
-  private password: string;
-
-  constructor(username: string, email: string, password: string) {
-    this.username = username;
-    this.email = email;
-    this.password = password;
-  }
-
-  public async register(): Promise<IDataForToken> {
+  public static async register(userInfo: IUser): Promise<IServiceResponse> {
     try {
-      const hashedPassword = await argon.hash(this.password);
+      const hashedPassword = await argon.hash(userInfo.password);
 
-      const user = new UserModel({
-        email: this.email,
-        username: this.username,
-        password: hashedPassword,
-      });
+      const user = await UserRepository.saveUser({ ...userInfo, password: hashedPassword });
 
-      await user.save();
+      const payload: IPayload = {
+        id: user._id,
+      };
 
-      return { id: user._id, err: null };
+      const { data } = AuthServices.createToken(payload);
+
+      return new ServiceResponse(data, 'User registered', statusCodes.CONTENT_CREATED, null);
     } catch (e) {
       if (e.code === 11000) {
-        return { id: null, err: { msg: 'EMAIL ALREADY TAKEN', statusCode: 401 } };
+        return new ServiceResponse(null, responses.EMAIL_ALREADY_TAKEN, statusCodes.BAD_REQUES, e);
       }
-      return { id: null, err: { msg: 'INTERNAL SERVER ERROR', statusCode: 500 } };
+
+      return new ServiceResponse(null, responses.ERROR_500, statusCodes.INTERNAL_SERVER_ERROR, e);
     }
   }
 
-  public async login(): Promise<IDataForToken> {
+  public static async login(email: string, password: string): Promise<IServiceResponse> {
     try {
-      const user: IUser = await UserModel.findOne({ email: this.email }, 'password _id');
+      const user: IUserDocument = await UserRepository.getUserByEmail(email, ['password', '_id']);
 
       if (!user) {
-        return { id: null, err: { msg: 'WRONG CREDENTIALS', statusCode: 401 } };
+        return new ServiceResponse(
+          null,
+          responses.WRONG_CREDENTIALS,
+          statusCodes.UNAUTHORIZED,
+          'no user'
+        );
       }
 
-      const passwordsMatch = await argon.verify(user.password, this.password);
+      const isTheSamePassword = await argon.verify(user.password, password);
 
-      if (!passwordsMatch) {
-        return { id: null, err: { msg: 'WRONG CREDENTIALS', statusCode: 401 } };
+      if (!isTheSamePassword) {
+        return new ServiceResponse(
+          null,
+          responses.WRONG_CREDENTIALS,
+          statusCodes.UNAUTHORIZED,
+          'no password'
+        );
       }
 
-      return { id: user._id, err: null };
+      const payload: IPayload = {
+        id: user._id,
+      };
+
+      const { data } = AuthServices.createToken(payload);
+
+      return new ServiceResponse(data, 'User loger', statusCodes.OK, null);
     } catch (e) {
-      return { id: null, err: { msg: 'INTERNAL SERVER ERROR', statusCode: 500 } };
+      return new ServiceResponse(null, responses.ERROR_500, statusCodes.INTERNAL_SERVER_ERROR, e);
     }
   }
 
-  public async UpdateUserInfo(userID: ObjectId): Promise<IService> {
+  public static async UpdateUserInfo(
+    userID: ObjectId,
+    username: string,
+    email: string
+  ): Promise<IServiceResponse> {
     try {
-      await UserModel.findByIdAndUpdate(userID, { username: this.username, email: this.email });
+      await UserRepository.updateUser(userID, { username: username, email: email });
 
-      return { data: null, msg: 'USER UPDATED', statusCode: 200 };
+      return new ServiceResponse(null, 'User updated', statusCodes.OK, null);
     } catch (e) {
       if (e.code === 11000) {
-        return { data: null, msg: 'EMAIL ALREADY TAKEN', statusCode: 401 };
+        return new ServiceResponse(
+          null,
+          responses.EMAIL_ALREADY_TAKEN,
+          statusCodes.BAD_REQUES,
+          null
+        );
       }
-      return { data: null, msg: 'INTERNAL SERVER ERROR', statusCode: 500 };
+
+      return new ServiceResponse(
+        null,
+        responses.ERROR_500,
+        statusCodes.INTERNAL_SERVER_ERROR,
+        null
+      );
     }
   }
 }

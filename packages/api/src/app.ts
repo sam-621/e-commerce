@@ -1,15 +1,15 @@
 import express, { Application } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import { apiKey, handlerErrors } from './middleware';
-import { MODE } from './config';
+import { envVars } from './config';
 import { router } from './router';
+import { apiKey } from './middleware/apiKey';
 
 class server {
   public App: Application;
-  private port: number | string;
+  private port: number;
 
-  constructor(port: number | string) {
+  constructor(port: number) {
     this.port = port;
     this.App = express();
     this.middlewareInput();
@@ -20,20 +20,18 @@ class server {
   private middlewareInput(): void {
     this.App.use(cors());
     this.App.use(helmet());
-    this.App.use(apiKey);
     this.App.use(express.json());
+    this.App.use(apiKey);
   }
 
   private routing(): void {
     router(this.App);
   }
 
-  private middlewareOutput(): void {
-    this.App.use(handlerErrors);
-  }
+  private middlewareOutput(): void {}
 
   public startServer(): void {
-    this.App.listen(this.port, () => console.log(`PORT[${this.port}] MODE[${MODE}]`));
+    this.App.listen(this.port, () => console.log(`PORT[${this.port}] MODE[${envVars.MODE}]`));
   }
 }
 

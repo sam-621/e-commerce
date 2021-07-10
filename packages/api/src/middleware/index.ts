@@ -1,7 +1,4 @@
-import { apiKey } from './apiKey';
-import { ErrorHandler, handlerErrors } from './handleError';
-import { jwtMiddleware } from './jwt';
-import areWrongData from './wrongData';
-import isAnArray from './isAnArray';
+import { jwtMiddleware } from './jwtMiddleware';
+import areWrongData from './areWrongData';
 
-export { apiKey, handlerErrors, ErrorHandler, areWrongData, jwtMiddleware, isAnArray };
+export { jwtMiddleware, areWrongData };

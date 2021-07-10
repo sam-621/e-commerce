@@ -1,0 +1,16 @@
+.SecondaryLink {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  color: #f9a109;
+  border: 1px solid #f9a109;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 1080px) {
+  .SecondaryLink {
+    padding: 10px 20px;
+  }
+}

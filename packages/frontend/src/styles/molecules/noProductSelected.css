@@ -1,0 +1,24 @@
+.NoProductSelected {
+  background-color: #fff0de;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0 40px;
+}
+.NoProductSelected-card {
+  background-color: #80485b;
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  border-radius: 5px;
+}
+.NoProductSelected-card p {
+  color: #ffffff;
+  padding: 0 20px;
+  text-align: center;
+}
+.NoProductSelected-image {
+  display: flex;
+  justify-content: center;
+}

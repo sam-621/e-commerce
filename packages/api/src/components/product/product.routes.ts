@@ -1,10 +1,7 @@
 import { Router } from 'express';
-import { jwtMiddleware, isAnArray } from '../../middleware/';
+import { getProductController } from './product.controller';
 const router = Router();
-import { getProductsController, buyProductController } from './product.controllers';
 
-router.get('/products', getProductsController);
-
-router.put('/products/buy', jwtMiddleware, isAnArray, buyProductController);
+router.get('/products', getProductController);
 
 export { router as productRouter };

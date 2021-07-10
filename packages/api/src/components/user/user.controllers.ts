@@ -1,92 +1,38 @@
-import { IController } from '../interfaces/IController';
+import { IController } from '../../types/controllers';
 import { User } from './user.services';
 import { AuthServices } from '../auth/auth.services';
-import { IPayload } from '../auth/auth.interfaces';
+import ControllerResponse from '../../helpers/ControllerResponse';
 
 const registerController: IController = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { data, message, statusCode } = await User.register(req.body);
 
-  const user = new User(username, email, password);
-
-  const { id, err } = await user.register();
-
-  if (err) {
-    return res.status(err.statusCode).json({
-      message: err.msg,
-    });
-  }
-
-  const authService = new AuthServices();
-
-  const payload: IPayload = {
-    id,
-  };
-
-  const token = authService.createToken(payload);
-
-  return res.status(201).json({ data: token, message: 'USER REGISTERED' });
+  return new ControllerResponse(res, data, message, statusCode).response();
 };
 
 const loginController: IController = async (req, res) => {
-  const user = new User('', req.body.email, req.body.password);
+  const { data, message, statusCode } = await User.login(req.body.email, req.body.password);
 
-  const { id, err } = await user.login();
-
-  if (err) {
-    return res.status(err.statusCode).json({
-      message: err.msg,
-    });
-  }
-
-  const authService = new AuthServices();
-
-  const payload: IPayload = {
-    id,
-  };
-
-  const token = authService.createToken(payload);
-
-  return res.status(200).json({ data: token, message: 'USER LOGGED' });
+  return new ControllerResponse(res, data, message, statusCode).response();
 };
 
 const getUserData: IController = async (req, res) => {
-  const authServices = new AuthServices();
+  const { data, statusCode, message } = await AuthServices.getUser(req.user.id, ['-password']);
 
-  const user = await authServices.getUser(req.user.id);
-
-  if (user.err) {
-    return res.status(user.err.statusCode).json({
-      message: user.err.msg,
-      data: null,
-    });
-  }
-
-  return res.status(200).json({
-    message: user.msg,
-    data: user.data,
-  });
+  return new ControllerResponse(res, data, message, statusCode).response();
 };
 
 const updateUserData: IController = async (req, res) => {
-  const user = new User(req.body.username, req.body.email, '');
+  const { username, email } = req.body;
 
-  const { data, msg, statusCode } = await user.UpdateUserInfo(req.user.id);
+  const { data, statusCode, message } = await User.UpdateUserInfo(req.user.id, username, email);
 
-  return res.status(statusCode).json({
-    message: msg,
-    data: data,
-  });
+  return new ControllerResponse(res, data, message, statusCode).response();
 };
 
 const refreshTokenController: IController = async (req, res) => {
-  const authService = new AuthServices();
+  const { data, statusCode, message } = AuthServices.refreshToken(req.user.id);
 
-  const tokenRefreshed: string = authService.refreshToken(req.user.id);
-
-  return res.status(200).json({
-    message: 'TOKEN REFRESHED',
-    data: tokenRefreshed,
-  });
+  return new ControllerResponse(res, data, message, statusCode).response();
 };
 
 export { registerController, loginController, refreshTokenController, getUserData, updateUserData };

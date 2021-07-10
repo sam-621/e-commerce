@@ -1,16 +1,15 @@
-import { API_KEY } from '../config';
-import { IApiKeyMiddleware } from './interfaces.middlewares';
+import { envVars } from '../config';
+import ControllerResponse from '../helpers/ControllerResponse';
+import { IApiKeyMiddleware } from '../types/middlewares';
 
 const apiKey: IApiKeyMiddleware = (req, res, next) => {
   const apiKey = req.headers['api_key'];
 
-  if (!apiKey || apiKey !== API_KEY) {
-    return res.status(401).json({
-      message: 'NO API_KEY PROVIDED',
-    });
+  if (!apiKey || apiKey !== envVars.API_KEY) {
+    return new ControllerResponse(res, null, 'No api key provided', 401).response();
   }
 
-  if (apiKey === API_KEY) {
+  if (apiKey === envVars.API_KEY) {
     return next();
   }
 };

@@ -1,0 +1,32 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #fafafe;
+  margin: 0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@import url('./atoms/primaryButton.css');
+@import url('./atoms/title.css');
+@import url('./atoms/addToCartButton.css');
+@import url('./atoms/subtitle.css');
+@import url('./atoms/input.css');
+@import url('./atoms/PrimaryLink.css');
+@import url('./atoms/secondaryLink.css');
+
+@import url('./molecules/product.css');
+@import url('./molecules/desktopHeader.css');
+@import url('./molecules/noProductSelected.css');
+
+@import url('./containers/topMobileNav.css');
+@import url('./containers/productsHome.css');
+@import url('./containers/bottomMobileNav.css');
+@import url('./containers/registerForm.css');
+@import url('./containers/asideDesktopNav.css');
+@import url('./containers/productsDesktopList.css');
+@import url('./containers/asideDesktopProduct.css');
+
+@import url('./templates/modalWrapper.css');
+
+@import url('./pages/index.css');
+
+/* @import url('../../node_modules/swiper/swiper.scss'); */

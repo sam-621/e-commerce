@@ -1,0 +1,16 @@
+.PrimaryButton {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f9a109;
+  border: 1px solid #f9a109;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 1080px) {
+  .PrimaryButton {
+    padding: 10px 20px;
+  }
+}

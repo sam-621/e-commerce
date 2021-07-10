@@ -1,62 +1,61 @@
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongoose';
-import { JWT_SECRET, MODE, EXPIRES_IN } from '../../config';
-import UserModel from '../user/user.models';
-import { IDecoded, IGetUser, IPayload, IDecodedService } from './auth.interfaces';
+import { envVars, responses, statusCodes } from '../../config';
+import UserRepository from '../../repository/user.repository';
+import { IDecoded, IPayload } from '../../types/jwt';
+import { IServiceResponse } from '../../types/services';
+import ServiceResponse from '../../helpers/ServiceResponse';
 
 class AuthServices {
-  public createToken(payload: IPayload): string {
+  public static createToken(payload: IPayload): IServiceResponse {
     const token: string = jwt.sign(
       payload,
-      JWT_SECRET,
-      MODE === 'production' ? { expiresIn: EXPIRES_IN } : null
+      envVars.JWT_SECRET,
+      envVars.MODE === 'production' ? { expiresIn: envVars.EXPIRES_IN } : null
     );
 
-    return token;
+    return new ServiceResponse(token, '', 200);
   }
 
-  public verifyToken(token: string): IDecodedService {
+  public static verifyToken(token: string): IServiceResponse {
     try {
-      const decoded: IDecoded = jwt.verify(token, JWT_SECRET) as IDecoded;
+      const decoded: IDecoded = jwt.verify(token, envVars.JWT_SECRET) as IDecoded;
 
       delete decoded.exp;
       delete decoded.iat;
 
-      return { decoded, err: null };
+      return new ServiceResponse(decoded, '', statusCodes.OK);
     } catch (e) {
+      console.log(e.message);
+
       if (e.message === 'jwt expired') {
-        return { decoded: null, err: 'JWT HAS EXPIRED' };
+        return new ServiceResponse(null, 'Your session has expired', statusCodes.UNAUTHORIZED, e);
       }
-      console.log(e);
+
+      if (e.message === 'invalid signature') {
+        return new ServiceResponse(null, 'token is corrupted', statusCodes.UNAUTHORIZED, e);
+      }
+      return new ServiceResponse(null, responses.ERROR_500, statusCodes.INTERNAL_SERVER_ERROR, e);
     }
   }
 
-  public refreshToken(id: ObjectId): string {
+  public static refreshToken(id: ObjectId): IServiceResponse {
     const payload: IPayload = {
       id: id,
     };
 
-    const tokenRefreshed: string = this.createToken(payload);
+    const { data, message, statusCode, error } = this.createToken(payload);
 
-    return tokenRefreshed;
+    return new ServiceResponse(data, message, statusCode, error);
   }
 
-  public async getUser(userID: ObjectId): Promise<IGetUser> {
+  public static async getUser(userID: ObjectId, fields?: string[]): Promise<IServiceResponse> {
     try {
-      const user = await UserModel.findById(userID, 'email username cart productsBought');
+      const user = await UserRepository.getUserById(userID, fields || null);
 
-      return {
-        data: user,
-        msg: 'OK',
-        err: null,
-      };
+      return new ServiceResponse(user, 'OK', statusCodes.OK);
     } catch (e) {
-      console.log(e);
-      return {
-        data: null,
-        msg: 'INTERNAL SERVER ERROR',
-        err: { msg: 'INTERNAL SERVER ERROR', statusCode: 500 },
-      };
+      return new ServiceResponse(null, responses.ERROR_500, statusCodes.INTERNAL_SERVER_ERROR);
     }
   }
 }
