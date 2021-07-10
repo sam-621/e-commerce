@@ -27,3 +27,9 @@
   height: 100%;
   align-items: flex-end;
 }
+
+@media screen and (min-width: 1080px) {
+  .Product {
+    min-width: 140px;
+  }
+}
