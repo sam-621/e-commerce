@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import AddToCartButton from '../atoms/AddToCartButton';
 
@@ -8,7 +7,7 @@ const Product: FC<IProductProps> = ({ image, name, price, id }) => {
     <article className="Product">
       <Link href={`/products/${name}-${id}`}>
         <a className="Product-image">
-          <Image src={image} title={name} alt={name} width={80} height={80} loading={'eager'} />
+          <img src={image} title={name} alt={name} width={80} height={80} loading={'eager'} />
         </a>
       </Link>
       <div className="Product-info">

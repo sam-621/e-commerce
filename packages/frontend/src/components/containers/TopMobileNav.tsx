@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Title from '../atoms/Title';
 import CartButton from '../atoms/CartButton';
@@ -19,7 +18,7 @@ const TopMobileNav = () => {
       <div>
         <Link href="/">
           <a href="">
-            <Image title="Logo" alt="Logo" src="/images/logo.svg" width={40} height={40} />
+            <img title="Logo" alt="Logo" src="/images/logo.svg" width={40} height={40} />
           </a>
         </Link>
       </div>
