@@ -5,7 +5,7 @@ const path = require('path');
  **/
 const nextConfig = {
   images: {
-    domains: ['juan-jose-mayorga-projects.s3.amazonaws.com'],
+    domains: ['juan-jose-mayorga-projects.s3.amazonaws.com', 'ecommerce-621.netlify.app'],
   },
   future: {
     webpack5: true,
