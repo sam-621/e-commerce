@@ -4,8 +4,13 @@
   border: 1px solid #f9a109;
   border-radius: 5px;
   padding: 10px;
-  min-width: 100px;
   text-align: center;
   color: white;
   font-size: 16px;
+}
+
+@media screen and (min-width: 1080px) {
+  .PrimaryButton {
+    padding: 10px 20px;
+  }
 }
