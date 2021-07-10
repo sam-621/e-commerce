@@ -1,8 +1,19 @@
 .NoProductSelected {
+  background-color: #fff0de;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+.NoProductSelected-card {
   background-color: #80485b;
   display: flex;
   justify-content: center;
 }
 .NoProductSelected-text {
   color: #ffffff;
+}
+.NoProductSelected-image {
+  display: flex;
+  justify-content: center;
 }
