@@ -4,6 +4,8 @@
   color: #f9a109;
   border: 1px solid #f9a109;
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 0;
+  min-width: 100px;
+  text-align: center;
   text-decoration: none;
 }

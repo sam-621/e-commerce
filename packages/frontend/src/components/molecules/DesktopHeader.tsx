@@ -11,8 +11,8 @@ const DesktopHeader = () => {
         </h1>
       </div>
       <div className="DesktopHeader-options">
-        <PrimaryLink text="Register" url="/register" />
         <SecondaryLink text="Login" url="/login" />
+        <PrimaryLink text="Register" url="/Register" />
       </div>
     </header>
   );
