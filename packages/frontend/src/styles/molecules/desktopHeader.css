@@ -5,6 +5,7 @@
 }
 .DesktopHeader-text h1 {
   color: #454545;
+  font-size: 22px;
 }
 .DesktopHeader-text h1 strong {
   color: #f9a109;
@@ -14,4 +15,10 @@
   width: 50%;
   justify-content: flex-end;
   gap: 40px;
+}
+
+@media screen and (max-width: 1346px) {
+  .DesktopHeader-text h1 {
+    font-size: 18px;
+  }
 }
