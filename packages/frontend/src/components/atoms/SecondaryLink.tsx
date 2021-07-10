@@ -4,7 +4,7 @@ import { FC } from 'react';
 const SecondaryLink: FC<ISecondaryLinkProps> = ({ text, url }) => {
   return (
     <Link href={url}>
-      <a href={url} className="SecondaryLink">
+      <a href="/" className="SecondaryLink">
         {text}
       </a>
     </Link>

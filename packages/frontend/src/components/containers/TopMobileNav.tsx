@@ -10,8 +10,8 @@ const TopMobileNav = () => {
   const isLogged: boolean = useSelector<IReduxState>((state) => state.user.isLogged) as boolean;
   const { pathname } = useRouter();
 
-  const linkText: string = pathname !== '/Register' ? 'Register' : 'Login';
-  const linkUrl = pathname !== '/Register' ? '/Register' : '/login';
+  const linkText: string = pathname !== '/register' ? 'Register' : 'Login';
+  const linkUrl = pathname !== '/register' ? '/register' : '/login';
 
   return (
     <nav className="TopMobileNav">

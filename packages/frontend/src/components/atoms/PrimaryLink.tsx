@@ -4,7 +4,7 @@ import { FC } from 'react';
 const PrimaryLink: FC<IPrimaryLinkProps> = ({ text, url }) => {
   return (
     <Link href={url}>
-      <a href={url} className="PrimaryButton PrimaryLink">
+      <a href="/" className="PrimaryButton PrimaryLink">
         {text}
       </a>
     </Link>
