@@ -10,12 +10,18 @@ import { mediaFrom1440 } from '../helpers/mediaQueries';
 import AsideDesktopNav from '../components/containers/AsideDesktopNav';
 import DesktopHeader from '../components/molecules/DesktopHeader';
 import AsideDesktopProduct from '../components/containers/AsideDesktopProduct';
+import Metatags from '../components/containers/Metatags';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   const isMobile = useMedia(mediaFrom1440);
 
   const DesktopPage = () => (
     <>
+      <Metatags
+        title="Shoppingify | Home"
+        description="An E-commerce where you can buy products"
+        keywords="Buy Products guappjolotadas"
+      />
       <main className="Index">
         <AsideDesktopNav />
         <section className="Index-center">
@@ -29,6 +35,11 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
 
   const MobilePage = () => (
     <>
+      <Metatags
+        title="Shoppingify | Home"
+        description="An E-commerce where you can buy products"
+        keywords="Buy Products guappjolotadas"
+      />
       <TopMobileNav />
       <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
       <BottomMobileNav />

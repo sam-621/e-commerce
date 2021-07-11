@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { FC } from 'react';
 
-const Metatags: FC<MetatagsProps> = ({ title, description, keywords }) => {
+const Metatags: FC<MetatagsProps> = ({ title, description, keywords, children }) => {
   return (
     <Head>
       <title>{title}</title>
@@ -10,6 +10,7 @@ const Metatags: FC<MetatagsProps> = ({ title, description, keywords }) => {
       <meta name="title" content={title} />
       <meta name="description" content={description} />
       <link rel="icon" href="/images/logo.svg" />
+      {children}
     </Head>
   );
 };
