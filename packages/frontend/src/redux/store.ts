@@ -26,7 +26,7 @@ const store = createStore(
     productSelected,
   }),
   {},
-  MODE === 'DEV' ? applyMiddleware(thunk, logger) : applyMiddleware(thunk)
+  MODE === 'dev' ? applyMiddleware(thunk, logger) : applyMiddleware(thunk)
 );
 
 export default store;
