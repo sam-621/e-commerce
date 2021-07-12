@@ -1,5 +1,5 @@
 import RegisterForm from '../components/containers/RegisterForm';
-import TopMobileNav from '../components/containers/TopMobileNav';
+import TopMobileNav from '../components/containers/Mobile/TopMobileNav';
 
 const Register = () => {
   return (

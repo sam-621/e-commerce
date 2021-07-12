@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import Title from '../atoms/Title';
-import CartButton from '../atoms/Butons/CartButton';
+import Title from '../../atoms/Title';
+import CartButton from '../../atoms/Butons/CartButton';
 import { useSelector } from 'react-redux';
-import { IReduxState } from '../../types/redux';
-import PrimaryLink from '../atoms/Butons/PrimaryLink';
+import { IReduxState } from '../../../types/redux';
+import PrimaryLink from '../../atoms/Butons/PrimaryLink';
 import Link from 'next/link';
 
 const TopMobileNav = () => {

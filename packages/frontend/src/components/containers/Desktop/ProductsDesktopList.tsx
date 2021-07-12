@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { IProduct } from '../../types/products';
-import Product from '../molecules/Product';
-import Subtitle from '../atoms/Subtitle';
+import { IProduct } from '../../../types/products';
+import Product from '../../molecules/Product';
+import Subtitle from '../../atoms/Subtitle';
 
 const ProductsDesktopList: FC<IProductsDesktopList> = ({ products, text }) => {
   return (

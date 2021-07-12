@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
-import { IReduxState } from '../../types/redux';
-import { IUserReduxStore } from '../../types/user';
-import ProfilePic from '../atoms/ProfilePic';
+import { IReduxState } from '../../../types/redux';
+import { IUserReduxStore } from '../../../types/user';
+import ProfilePic from '../../atoms/ProfilePic';
 
 const BottomMobileNav = () => {
   const user: IUserReduxStore = useSelector<IReduxState>((state) => state.user) as IUserReduxStore;

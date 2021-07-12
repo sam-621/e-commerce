@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IProduct } from '../../types/products';
-import Product from '../molecules/Product';
-import Subtitle from '../atoms/Subtitle';
-import { useMedia } from '../../hooks/useMedia';
+import { IProduct } from '../../../types/products';
+import Product from '../../molecules/Product';
+import Subtitle from '../../atoms/Subtitle';
+import { useMedia } from '../../../hooks/useMedia';
 import {
   getSlidesToPreview,
   mediaFrom1440,
   mediaFrom530,
   mediaFrom768,
-} from '../../helpers/mediaQueries';
+} from '../../../helpers/mediaQueries';
 
 SwiperCore.use([Navigation, Scrollbar, Pagination, EffectCoverflow]);
 

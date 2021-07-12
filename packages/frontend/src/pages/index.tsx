@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import { GetStaticProps } from 'next';
-import TopMobileNav from '../components/containers/TopMobileNav';
+import TopMobileNav from '../components/containers/Mobile/TopMobileNav';
 import ProductsHome from '../components/templates/ProductsHome';
 import ProductServices from '../services/ProductServices';
 import { IAllProducts, IProduct } from '../types/products';
-import BottomMobileNav from '../components/containers/BottomMobileNav';
+import BottomMobileNav from '../components/containers/Mobile/BottomMobileNav';
 import { useMedia } from '../hooks/useMedia';
 import { mediaFrom1440 } from '../helpers/mediaQueries';
-import AsideDesktopNav from '../components/containers/AsideDesktopNav';
+import AsideDesktopNav from '../components/containers/Desktop/AsideDesktopNav';
 import DesktopHeader from '../components/molecules/DesktopHeader';
-import AsideDesktopProduct from '../components/containers/AsideDesktopProduct';
+import AsideDesktopProduct from '../components/containers/Desktop/AsideDesktopProduct';
 import Metatags from '../components/containers/Metatags';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
