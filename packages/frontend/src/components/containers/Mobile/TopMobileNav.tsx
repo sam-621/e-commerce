@@ -1,17 +1,15 @@
 import { useRouter } from 'next/router';
 import Title from '../../atoms/Title';
 import CartButton from '../../atoms/Butons/CartButton';
-import { useSelector } from 'react-redux';
-import { IReduxState } from '../../../types/redux';
 import PrimaryLink from '../../atoms/Butons/PrimaryLink';
 import Link from 'next/link';
 
 const TopMobileNav = () => {
-  const isLogged: boolean = useSelector<IReduxState>((state) => state.user.isLogged) as boolean;
   const { pathname } = useRouter();
 
   const linkText: string = pathname !== '/register' ? 'Register' : 'Login';
   const linkUrl = pathname !== '/register' ? '/register' : '/login';
+  const isInAuthPage = pathname === '/register' || pathname === '/login';
 
   return (
     <nav className="TopMobileNav">
@@ -25,7 +23,7 @@ const TopMobileNav = () => {
       <div>
         <Title />
       </div>
-      {isLogged ? <CartButton /> : <PrimaryLink text={linkText} url={linkUrl} />}
+      {!isInAuthPage ? <CartButton /> : <PrimaryLink text={linkText} url={linkUrl} />}
     </nav>
   );
 };
