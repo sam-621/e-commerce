@@ -1,5 +1,5 @@
 import IconLink from '../../atoms/IconLink';
-import AddToCartButton from '../../atoms/Butons/AddToCartButton';
+import CartButton from '@Components/atoms/Butons/CartButton';
 
 const AsideDesktopNav = () => {
   return (
@@ -24,7 +24,7 @@ const AsideDesktopNav = () => {
           />
         </div>
         <div className="AsideDesktopNav-cart">
-          <AddToCartButton />
+          <CartButton />
         </div>
       </div>
     </aside>

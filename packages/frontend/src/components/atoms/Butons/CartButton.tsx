@@ -8,8 +8,10 @@ const CartButton = () => {
 
   return (
     <div>
-      <span>{cart.length}</span>
-      <Image src="/images/cart.svg" width="20" height="20" />
+      <div className="CartButton">
+        <Image src="/images/cart.svg" width="40" height="40" />
+        <span>{cart.length}</span>
+      </div>
     </div>
   );
 };
