@@ -5,6 +5,6 @@ export interface IHeaders {
 }
 
 export interface IResponse {
-  data: unknown;
-  message: string;
+  readonly data: unknown;
+  readonly message: string;
 }
