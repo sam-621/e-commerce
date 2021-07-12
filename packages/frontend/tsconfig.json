@@ -18,7 +18,17 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "@Components/*": ["components/*"],
+      "@Helpers/*": ["helpers/*"],
+      "@Hooks/*": ["hooks/*"],
+      "@Redux/*": ["redux/*"],
+      "@Services/*": ["services/*"],
+      "@Types/*": ["types/*"]
+    }
+
   },
   "exclude": [
     "node_modules"
