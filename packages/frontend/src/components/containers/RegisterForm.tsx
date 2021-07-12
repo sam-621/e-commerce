@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Input from '../atoms/Input';
-import PrimaryButton from '../atoms/PrimaryButton';
+import PrimaryButton from '../atoms/Butons/PrimaryButton';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');

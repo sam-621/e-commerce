@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import AddToCartButton from '../atoms/AddToCartButton';
+import AddToCartButton from '../atoms/Butons/AddToCartButton';
 
 const Product: FC<IProductProps> = ({ image, name, price, id }) => {
   return (

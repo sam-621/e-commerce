@@ -1,5 +1,5 @@
 import IconLink from '../atoms/IconLink';
-import AddToCartButton from '../atoms/AddToCartButton';
+import AddToCartButton from '../atoms/Butons/AddToCartButton';
 
 const AsideDesktopNav = () => {
   return (

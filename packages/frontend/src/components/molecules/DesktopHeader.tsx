@@ -1,5 +1,5 @@
-import PrimaryLink from '../atoms/PrimaryLink';
-import SecondaryLink from '../atoms/SecondaryLink';
+import PrimaryLink from '../atoms/Butons/PrimaryLink';
+import SecondaryLink from '../atoms/Butons/SecondaryLink';
 
 const DesktopHeader = () => {
   return (
