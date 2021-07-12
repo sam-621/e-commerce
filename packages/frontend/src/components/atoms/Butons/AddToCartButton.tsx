@@ -1,4 +1,11 @@
+import { IReduxState } from '@Types/redux';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+
 const AddToCartButton = () => {
+  const isLogged = useSelector<IReduxState>((state) => state.user.isLogged) as boolean;
+  const router = useRouter();
+
   return (
     <button className="AddToCartButton" type="button">
       <img src="/images/add.svg" width={20} height={20} />
