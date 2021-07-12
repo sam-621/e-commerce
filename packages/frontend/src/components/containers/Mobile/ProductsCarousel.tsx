@@ -33,13 +33,7 @@ const ProductsCarousel: FC<IProductsCarouselProps> = ({ products, text }) => {
       >
         {products?.map((item) => (
           <SwiperSlide key={item.id}>
-            <Product
-              id={item.id}
-              key={item.id}
-              image={item.image}
-              name={item.name}
-              price={item.price}
-            />
+            <Product key={item.id} product={item} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -10,13 +10,7 @@ const ProductsDesktopList: FC<IProductsDesktopList> = ({ products, text }) => {
 
       <div className="ProductsDesktopList-products">
         {products?.map((item) => (
-          <Product
-            key={item.id}
-            id={item.id}
-            image={item.image}
-            name={item.name}
-            price={item.price}
-          />
+          <Product key={item.id} product={item} />
         ))}
       </div>
     </section>

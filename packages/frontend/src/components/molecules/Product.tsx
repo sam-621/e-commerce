@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import AddToCartButton from '../atoms/Butons/AddToCartButton';
+import { IProduct } from '@Types/products';
 
-const Product: FC<IProductProps> = ({ image, name, price, id }) => {
+const Product: FC<IProductProps> = ({ product }) => {
+  const { image, name, price, id } = product;
+
   return (
     <article className="Product">
       <Link href={`/products/${name}-${id}`}>
@@ -16,7 +19,7 @@ const Product: FC<IProductProps> = ({ image, name, price, id }) => {
           <span>${price}</span>
         </div>
         <div className="Product-info-button">
-          <AddToCartButton />
+          <AddToCartButton product={product} />
         </div>
       </div>
     </article>
@@ -24,10 +27,7 @@ const Product: FC<IProductProps> = ({ image, name, price, id }) => {
 };
 
 interface IProductProps {
-  image: string;
-  name: string;
-  price: number;
-  id: number;
+  product: IProduct;
 }
 
 export default Product;
