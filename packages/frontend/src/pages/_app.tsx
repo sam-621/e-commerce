@@ -3,11 +3,14 @@ import { Provider } from 'react-redux';
 import store from '@Redux/store';
 import '../styles/index.css';
 import 'swiper/swiper-bundle.css';
+import AppWrapper from '@Components/templates/AppWrapper';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <AppWrapper>
+        <Component {...pageProps} />
+      </AppWrapper>
     </Provider>
   );
 }
