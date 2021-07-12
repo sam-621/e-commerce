@@ -1,10 +1,11 @@
 import Image from 'next/image';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IProduct } from '@Types/products';
 import { IReduxState } from '@Types/redux';
 
 const CartButton = () => {
   const cart: IProduct[] = useSelector<IReduxState>((state) => state.cart) as IProduct[];
+  const dispatch = useDispatch();
 
   return (
     <div>
