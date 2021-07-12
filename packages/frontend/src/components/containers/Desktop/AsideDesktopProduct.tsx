@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { IProduct } from '../../../types/products';
-import { IReduxState } from '../../../types/redux';
+import { IProduct } from '@Types/products';
+import { IReduxState } from '@Types/redux';
 import NoProductSelected from '../../molecules/NoProductSelected';
 
 const AsideDesktopProduct = () => {

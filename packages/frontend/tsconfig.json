@@ -19,7 +19,7 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": "./src/",
+    "baseUrl": "src",
     "paths": {
       "@Components/*": ["components/*"],
       "@Helpers/*": ["helpers/*"],

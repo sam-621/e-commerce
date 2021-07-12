@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { OPTIONAL_TITLES } from '../../helpers/title';
+import { OPTIONAL_TITLES } from '@Helpers/title';
 
 const Title = () => {
   const router = useRouter();

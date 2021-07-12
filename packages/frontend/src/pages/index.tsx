@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 import { GetStaticProps } from 'next';
-import TopMobileNav from '../components/containers/Mobile/TopMobileNav';
-import ProductsHome from '../components/templates/ProductsHome';
-import ProductServices from '../services/ProductServices';
-import { IAllProducts, IProduct } from '../types/products';
-import BottomMobileNav from '../components/containers/Mobile/BottomMobileNav';
-import { useMedia } from '../hooks/useMedia';
-import { mediaFrom1440 } from '../helpers/mediaQueries';
-import AsideDesktopNav from '../components/containers/Desktop/AsideDesktopNav';
-import DesktopHeader from '../components/molecules/DesktopHeader';
-import AsideDesktopProduct from '../components/containers/Desktop/AsideDesktopProduct';
-import Metatags from '../components/containers/Metatags';
+import TopMobileNav from '@Components/containers/Mobile/TopMobileNav';
+import ProductsHome from '@Components/templates/ProductsHome';
+import ProductServices from '@Services/ProductServices';
+import { IAllProducts, IProduct } from '@Types/products';
+import BottomMobileNav from '@Components/containers/Mobile/BottomMobileNav';
+import { useMedia } from '@Hooks/useMedia';
+import { mediaFrom1440 } from '@Helpers/mediaQueries';
+import AsideDesktopNav from '@Components/containers/Desktop/AsideDesktopNav';
+import DesktopHeader from '@Components/molecules/DesktopHeader';
+import AsideDesktopProduct from '@Components/containers/Desktop/AsideDesktopProduct';
+import Metatags from '@Components/containers/Metatags';
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
   const isMobile = useMedia(mediaFrom1440);

@@ -1,6 +1,6 @@
-import { API_KEY, BASE_URL, MODE } from '../config/envVars';
-import { IHeaders } from '../types/services';
 import axios, { AxiosResponse } from 'axios';
+import { API_KEY, BASE_URL, MODE } from '../config/envVars';
+import { IHeaders } from '@Types/services';
 
 export default class HttpRequest {
   private port: number;

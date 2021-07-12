@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { IAllProducts } from '../types/products';
+import { IAllProducts } from '@Types/products';
 import HttpRequest from './HttpRequest';
 
 export default class ProductServices extends HttpRequest {

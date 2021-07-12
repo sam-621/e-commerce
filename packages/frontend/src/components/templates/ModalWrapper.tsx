@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react';
-import useClickOutside from '../../hooks/useCLickOutside';
+import useClickOutside from '@Hooks/useCLickOutside';
 
 const ModalWrapper: FC<IModalWrapperProps> = ({ children, isOpenProp }) => {
   const modalRef = useRef(null);

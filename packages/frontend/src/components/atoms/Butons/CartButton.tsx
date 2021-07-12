@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
-import { IProduct } from '../../../types/products';
-import { IReduxState } from '../../../types/redux';
+import { IProduct } from '@Types/products';
+import { IReduxState } from '@Types/redux';
 
 const CartButton = () => {
   const cart: IProduct[] = useSelector<IReduxState>((state) => state.cart) as IProduct[];

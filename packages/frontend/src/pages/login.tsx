@@ -1,5 +1,5 @@
-import LoginForm from '../components/containers/LoginForm';
-import TopMobileNav from '../components/containers/Mobile/TopMobileNav';
+import LoginForm from '@Components/containers/LoginForm';
+import TopMobileNav from '@Components/containers/Mobile/TopMobileNav';
 
 const Login = () => {
   return (

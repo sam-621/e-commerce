@@ -1,5 +1,5 @@
-import { IAction } from '../../types/redux';
-import { IUser, IUserReduxStore } from '../../types/user';
+import { IAction } from '@Types/redux';
+import { IUser, IUserReduxStore } from '@Types/user';
 
 // CONSTANTS
 const UPDATE_USER_DATA: string = 'UPDATE_USER_DATA';

@@ -1,5 +1,5 @@
-import { IProduct } from '../../types/products';
-import { IAction } from '../../types/redux';
+import { IProduct } from '@Types/products';
+import { IAction } from '@Types/redux';
 
 // CONSTANTS
 const SELECT_PRODUCT: string = 'SELECT_PRODUCT';

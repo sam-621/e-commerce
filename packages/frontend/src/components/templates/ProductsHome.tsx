@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { mediaFrom1440 } from '../../helpers/mediaQueries';
-import { useMedia } from '../../hooks/useMedia';
-import { IProduct } from '../../types/products';
+import { mediaFrom1440 } from '@Helpers/mediaQueries';
+import { useMedia } from '@Hooks/useMedia';
+import { IProduct } from '@Types/products';
 import ProductsCarousel from '../containers/Mobile/ProductsCarousel';
 import ProductsDesktopList from '../containers/Desktop/ProductsDesktopList';
 

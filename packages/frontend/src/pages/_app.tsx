@@ -1,6 +1,6 @@
 import { AppProps } from 'next/dist/next-server/lib/router/router';
 import { Provider } from 'react-redux';
-import store from '../redux/store';
+import store from '@Redux/store';
 import '../styles/index.css';
 import 'swiper/swiper-bundle.css';
 

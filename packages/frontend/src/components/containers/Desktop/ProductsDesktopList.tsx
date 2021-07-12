@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IProduct } from '../../../types/products';
+import { IProduct } from '@Types/products';
 import Product from '../../molecules/Product';
 import Subtitle from '../../atoms/Subtitle';
 
