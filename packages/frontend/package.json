@@ -4,7 +4,7 @@
   "description": "frontend package",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3050",
     "build": "next build",
     "start": "next start"
   },
