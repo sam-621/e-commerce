@@ -8,9 +8,16 @@
 }
 .Input input {
   font-family: 'Quicksand', sans-serif;
-  background: #E9E9E9;
+  background: #e9e9e9;
   font-size: 16px;
-  border: 1px solid #BEBEBE;
+  border: 1px solid #bebebe;
   border-radius: 5px;
   padding: 5px;
+}
+
+.Input-error input {
+  border: 1px solid #eb5757;
+}
+.Input-error span {
+  color: #eb5757;
 }

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 const Input: FC<IInputProps> = ({ label, type, onChange, value, id, hasError, errorMessage }) => {
   return (
-    <div className={`Input ${hasError ? 'input-error' : ''}`}>
+    <div className={`Input ${hasError ? 'Input-error' : ''}`}>
       <label htmlFor={id}>{label}</label>
       <input id={id} type={type} required onChange={onChange} value={value} />
       {hasError && <span role="alert">{errorMessage}</span>}

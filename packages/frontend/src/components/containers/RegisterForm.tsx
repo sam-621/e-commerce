@@ -15,6 +15,8 @@ const RegisterForm = () => {
         type="text"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        hasError={true}
+        errorMessage="An error has occured"
       />
       <Input
         id="input-2"
