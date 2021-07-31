@@ -16,7 +16,7 @@ export default class UserService extends HttpRequest {
       return response.data;
     } catch (error) {
       if (error.response) {
-        return error.response;
+        return { errorMessage: error.response.data.message };
       }
       return error.message;
     }
@@ -24,5 +24,6 @@ export default class UserService extends HttpRequest {
 }
 
 interface IRegisterResponse extends IResponse {
-  data: string;
+  data?: string;
+  errorMessage?: string;
 }
