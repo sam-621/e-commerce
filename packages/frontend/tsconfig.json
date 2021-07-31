@@ -26,7 +26,8 @@
       "@Hooks/*": ["hooks/*"],
       "@Redux/*": ["redux/*"],
       "@Services/*": ["services/*"],
-      "@Types/*": ["types/*"]
+      "@Types/*": ["types/*"],
+      "@Libs/*": ["libs/*"]
     }
 
   },
