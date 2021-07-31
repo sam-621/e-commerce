@@ -15,6 +15,8 @@ export default class UserService extends HttpRequest {
 
       return response.data;
     } catch (error) {
+      console.log(error.response);
+
       if (error.response) {
         return { errorMessage: error.response.data.message };
       }
