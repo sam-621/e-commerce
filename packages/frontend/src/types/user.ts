@@ -1,12 +1,12 @@
 import { IProduct } from './products';
 
 export interface IUser {
-  profilePic: string;
-  username: string;
+  profilePic?: string;
+  username?: string;
   email: string;
   password: string;
-  userCart: IProduct[];
-  userProductsBought: IProduct[];
+  userCart?: IProduct[];
+  userProductsBought?: IProduct[];
 }
 
 export interface IUserReduxStore {
