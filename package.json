@@ -1,17 +1,12 @@
 {
-  "name": "e-commerce",
-  "version": "0.0.0",
-  "description": "an e-commerce",
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "frontend package",
   "main": "index.js",
   "scripts": {
-    "install:app": "yarn && lerna bootstrap",
-    "build:app": "lerna run build",
-    "start:app": "lerna run start",
-    "dev:app": "lerna run dev",
-    "test:app": "lerna run test",
-    "heroku-prebuild": "cd packages/api && yarn --dev",
-    "start": "cd packages/api && yarn start",
-    "build": "cd packages/api && yarn build"
+    "dev": "next dev -p 3050",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -24,14 +19,25 @@
   },
   "homepage": "https://github.com/rogeliosamuel621/E-commerce#readme",
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "husky": "^4.3.8",
-    "lerna": "^3.22.1"
+    "@types/node": "^15.12.2",
+    "@types/react": "^17.0.11",
+    "@types/redux-logger": "^3.0.8",
+    "dotenv-webpack": "^7.0.3",
+    "next-compose-plugins": "^2.2.1",
+    "typescript": "^4.3.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run test:app"
-    }
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.21.1",
+    "next": "^10.2.3",
+    "react": "^17.0.2",
+    "react-cookie": "^4.0.3",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.35.1",
+    "swiper": "^6.7.0"
   }
 }
