@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { API_KEY, BASE_URL, MODE } from '../config/envVars';
+import { API_KEY, BASE_URL, MODE, PORT } from '../config/envVars';
 import { IHeaders } from '@Types/services';
 
 export default class HttpRequest {
@@ -9,7 +9,7 @@ export default class HttpRequest {
   private headers: IHeaders;
 
   constructor() {
-    this.port = 4003;
+    this.port = PORT;
     this.baseUrl = BASE_URL;
     this.headers = {
       api_key: API_KEY,
