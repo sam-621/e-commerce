@@ -52,7 +52,6 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const productServices = new ProductServices();
   const products: IAllProducts = (await productServices.getAllProducts())?.data;
-  console.log(products);
 
   return {
     props: {
