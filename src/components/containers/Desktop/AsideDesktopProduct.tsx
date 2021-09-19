@@ -1,12 +1,13 @@
-import { useSelector } from 'react-redux';
-import { IProduct } from '@Types/products';
-import { IReduxState } from '@Types/redux';
-import NoProductSelected from '../../molecules/NoProductSelected';
+import { useSelector } from 'react-redux'
+import { IProduct } from '@Types/products'
+import { IReduxState } from '@Types/redux'
+import NoProductSelected from '../../molecules/NoProductSelected'
+import DesktopCartSection from './DesktopCartSection'
 
-const AsideDesktopProduct = () => {
-  const productSelected = useSelector<IReduxState>((state) => state.productSelected) as IProduct;
+const AsideDesktopCart = () => {
+  const productSelected = useSelector<IReduxState>((state) => state.cart) as IProduct
 
-  return productSelected ? null : <NoProductSelected />;
-};
+  return productSelected ? <DesktopCartSection /> : <NoProductSelected />
+}
 
-export default AsideDesktopProduct;
+export default AsideDesktopCart
