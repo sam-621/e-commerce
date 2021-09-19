@@ -1,8 +1,12 @@
 import DeleteButton from '@Components/atoms/Butons/DeleteButton'
+import { removePorductWithNoSession } from '@Helpers/cart'
 import Image from 'next/image'
 import { FC } from 'react'
+import { useDispatch } from 'react-redux'
 
-const CartItem: FC<Props> = ({ image, name, price }) => {
+const CartItem: FC<Props> = ({ image, name, price, id }) => {
+  const dispatch = useDispatch()
+
   return (
     <article className='CartItem'>
       <div className='CartItem-image'>
@@ -13,7 +17,7 @@ const CartItem: FC<Props> = ({ image, name, price }) => {
       </div>
       <div className='CartItem-actions'>
         <span className='CartItem-actions-price'>${price}</span>
-        <DeleteButton onClick={() => console.log('hi')} />
+        <DeleteButton onClick={() => removePorductWithNoSession(id, dispatch)} />
       </div>
     </article>
   )
@@ -23,6 +27,7 @@ interface Props {
   image: string
   name: string
   price: number
+  id?: number
 }
 
 export default CartItem

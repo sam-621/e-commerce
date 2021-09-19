@@ -1,7 +1,6 @@
 import CartItem from '@Components/molecules/CartItem'
 import { IProduct } from '@Types/products'
 import { IReduxState } from '@Types/redux'
-import Image from 'next/image'
 import { useSelector } from 'react-redux'
 
 const DesktopCartSection = () => {
@@ -13,7 +12,13 @@ const DesktopCartSection = () => {
       </div>
       <div className='NoProductSelected-cards'>
         {cart.map((item) => (
-          <CartItem key={item.id} name={item.name} image={item.image} price={item.price} />
+          <CartItem
+            key={item.id}
+            name={item.name}
+            image={item.image}
+            price={item.price}
+            id={item.id}
+          />
         ))}
       </div>
     </aside>
