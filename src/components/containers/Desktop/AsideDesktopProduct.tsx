@@ -5,9 +5,9 @@ import NoProductSelected from '../../molecules/NoProductSelected'
 import DesktopCartSection from './DesktopCartSection'
 
 const AsideDesktopCart = () => {
-  const productSelected = useSelector<IReduxState>((state) => state.cart) as IProduct
+  const cart = useSelector<IReduxState>((state) => state.cart) as IProduct[]
 
-  return productSelected ? <DesktopCartSection /> : <NoProductSelected />
+  return !!cart.length ? <DesktopCartSection /> : <NoProductSelected />
 }
 
 export default AsideDesktopCart
