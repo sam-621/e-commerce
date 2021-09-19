@@ -17,6 +17,7 @@ body {
 @import url('./molecules/product.css');
 @import url('./molecules/desktopHeader.css');
 @import url('./molecules/noProductSelected.css');
+@import url('./molecules/cartItem.css');
 
 @import url('./containers/topMobileNav.css');
 @import url('./containers/productsHome.css');

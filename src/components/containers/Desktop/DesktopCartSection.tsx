@@ -11,13 +11,10 @@ const DesktopCartSection = () => {
       <div className='NoProductSelected-card'>
         <p>Cart</p>
       </div>
-      <div>
+      <div className='NoProductSelected-cards'>
         {cart.map((item) => (
           <CartItem key={item.id} name={item.name} image={item.image} price={item.price} />
         ))}
-      </div>
-      <div className='NoProductSelected-image'>
-        <Image src='/images/girl-with-cart.svg' width={245} height={203} />
       </div>
     </aside>
   )

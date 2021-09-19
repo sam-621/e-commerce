@@ -1,16 +1,17 @@
 .NoProductSelected {
   background-color: #fff0de;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
   height: 100vh;
   padding: 0 40px;
+  grid-template-rows: auto 1fr auto;
 }
 .NoProductSelected-card {
   background-color: #80485b;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   margin-top: 35px;
+  height: max-content;
   border-radius: 5px;
 }
 .NoProductSelected-card p {
@@ -21,4 +22,11 @@
 .NoProductSelected-image {
   display: flex;
   justify-content: center;
+}
+
+.NoProductSelected-cards {
+  margin-top: 30px;
+  height: 60vh;
+  overflow: scroll;
+  padding: 1px;
 }

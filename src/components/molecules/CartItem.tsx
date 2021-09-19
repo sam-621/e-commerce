@@ -3,16 +3,16 @@ import { FC } from 'react'
 
 const CartItem: FC<Props> = ({ image, name, price }) => {
   return (
-    <article>
-      <div>
+    <article className='CartItem'>
+      <div className='CartItem-image'>
         <Image src={image} width={80} height={80} />
       </div>
-      <div>
+      <div className='CartItem-name'>
         <p>{name}</p>
       </div>
-      <div>
-        <span>${price}</span>
-        <button>eliminar</button>
+      <div className='CartItem-actions'>
+        <span className='CartItem-actions-price'>${price}</span>
+        <button className='CartItem-actions-delete'>eliminar</button>
       </div>
     </article>
   )
