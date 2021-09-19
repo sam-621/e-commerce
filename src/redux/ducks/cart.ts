@@ -11,8 +11,8 @@ const initialState: IProduct[] = []
 // REDUCER
 export default function reducer(state = initialState, action: ICartAction): IProduct[] {
   const ACTIONS = {
-    [ADD_CART_PRODUCT]: state.concat(action.payload),
-    [REMOVE_CART_PRODUCT]: state.filter((item) => item.id !== action.payload.id),
+    [ADD_CART_PRODUCT]: state.concat(action.payload as IProduct),
+    [REMOVE_CART_PRODUCT]: state.filter((item) => item.id !== action.payload),
   }
 
   return ACTIONS[action.type] || state
@@ -32,5 +32,5 @@ export const removeCartProduct = (id: number): IAction => ({
 // INTERFACES
 interface ICartAction {
   type: string
-  payload: IProduct
+  payload: IProduct | number
 }

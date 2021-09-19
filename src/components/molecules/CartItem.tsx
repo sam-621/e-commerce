@@ -1,11 +1,12 @@
 import DeleteButton from '@Components/atoms/Butons/DeleteButton'
 import { removePorductWithNoSession } from '@Helpers/cart'
+import { IAction } from '@Types/redux'
 import Image from 'next/image'
-import { FC } from 'react'
+import { Dispatch, FC } from 'react'
 import { useDispatch } from 'react-redux'
 
 const CartItem: FC<Props> = ({ image, name, price, id }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<Dispatch<IAction>>()
 
   return (
     <article className='CartItem'>
