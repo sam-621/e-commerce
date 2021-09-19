@@ -13,6 +13,7 @@ body {
 @import url('./atoms/PrimaryLink.css');
 @import url('./atoms/secondaryLink.css');
 @import url('./atoms/buttons/CartButton.css');
+@import url('./atoms/buttons/deleteButton.css');
 
 @import url('./molecules/product.css');
 @import url('./molecules/desktopHeader.css');

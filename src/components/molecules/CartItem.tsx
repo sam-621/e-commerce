@@ -1,3 +1,4 @@
+import DeleteButton from '@Components/atoms/Butons/DeleteButton'
 import Image from 'next/image'
 import { FC } from 'react'
 
@@ -12,7 +13,7 @@ const CartItem: FC<Props> = ({ image, name, price }) => {
       </div>
       <div className='CartItem-actions'>
         <span className='CartItem-actions-price'>${price}</span>
-        <button className='CartItem-actions-delete'>eliminar</button>
+        <DeleteButton onClick={() => console.log('hi')} />
       </div>
     </article>
   )
