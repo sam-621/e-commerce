@@ -17,7 +17,7 @@ export default class HttpRequest {
     }
   }
 
-  public configEnpoint(endpoint: string): void {
+  public configEndpoint(endpoint: string): void {
     this.endpoint = endpoint
   }
 
