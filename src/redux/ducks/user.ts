@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action: IUserAction): IUse
 // ACTIONS
 export const updateUserData = (userData: IUser): IAction => ({
   type: UPDATE_USER_DATA,
-  payload: { userData },
+  payload: { data: userData },
 })
 
 export const updateUserLogged = (isLogged: boolean): IAction => ({

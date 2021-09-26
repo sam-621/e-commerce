@@ -48,7 +48,7 @@ export default class UserService extends HttpRequest {
   }
 
   private async getUserDataConfig(token: string): Promise<AxiosResponse<IUserService<IUser>>> {
-    this.configEndpoint(token)
+    this.addToken(token)
     this.configEndpoint('user')
 
     return this.get()
