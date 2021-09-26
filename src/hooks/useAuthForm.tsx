@@ -1,11 +1,8 @@
 import { SyntheticEvent, useState } from 'react'
-import { useCookieApp } from '@Libs/react-cookie/useCookieApp'
 import UserService from '@Services/UserServices'
 import { unstable_batchedUpdates } from 'react-dom'
 import { showErrorToast } from '@Libs/react-toastify/toast'
-import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import { updateUserData, updateUserLogged } from '@Redux/ducks/user'
+import { useLogin } from './useLogin'
 
 const WRONG_EMAIL_FORMAT = 'Email format is incorrect'
 const PASSWORDS_DOES_NOT_MATCH = 'Passwords does not match'
@@ -17,13 +14,11 @@ export const useAuthForm = (
   confirmPassword?: string,
   isLogin = false
 ) => {
-  const dispatch = useDispatch()
-  const router = useRouter()
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [confirmPasswordError, setConfirmPasswordError] = useState('')
   const [apiError, setApiError] = useState('')
-  const [_, setCookie] = useCookieApp('token')
+  const { login } = useLogin()
 
   const handleSubmit = async (e: SyntheticEvent): Promise<void> => {
     e.preventDefault()
@@ -62,19 +57,7 @@ export const useAuthForm = (
       return
     }
 
-    const { data, errorMessage: userError } = await new UserService().getUserData(token)
-
-    if (userError) {
-      setApiError(userError)
-      showErrorToast(userError)
-      return
-    }
-
-    setCookie('token', token)
-    dispatch(updateUserLogged(true))
-    dispatch(updateUserData(data))
-
-    router.push('/')
+    login(token)
   }
 
   return {

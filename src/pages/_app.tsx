@@ -5,14 +5,17 @@ import '../styles/index.css'
 import 'swiper/swiper-bundle.css'
 import 'react-toastify/dist/ReactToastify.css'
 import AppWrapper from '@Components/templates/AppWrapper'
+import { CookiesProvider } from 'react-cookie'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <AppWrapper>
-        <Component {...pageProps} />
-      </AppWrapper>
-    </Provider>
+    <CookiesProvider>
+      <Provider store={store}>
+        <AppWrapper>
+          <Component {...pageProps} />
+        </AppWrapper>
+      </Provider>
+    </CookiesProvider>
   )
 }
 

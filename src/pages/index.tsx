@@ -1,19 +1,19 @@
-import React, { FC } from 'react';
-import { GetStaticProps } from 'next';
-import TopMobileNav from '@Components/containers/Mobile/TopMobileNav';
-import ProductsHome from '@Components/templates/ProductsHome';
-import ProductServices from '@Services/ProductServices';
-import { IAllProducts, IProduct } from '@Types/products';
-import BottomMobileNav from '@Components/containers/Mobile/BottomMobileNav';
-import { useMedia } from '@Hooks/useMedia';
-import { mediaFrom1440 } from '@Helpers/mediaQueries';
-import AsideDesktopNav from '@Components/containers/Desktop/AsideDesktopNav';
-import DesktopHeader from '@Components/molecules/DesktopHeader';
-import AsideDesktopProduct from '@Components/containers/Desktop/AsideDesktopProduct';
-import Metatags from '@Components/containers/Metatags';
+import React, { FC } from 'react'
+import { GetStaticProps } from 'next'
+import TopMobileNav from '@Components/containers/Mobile/TopMobileNav'
+import ProductsHome from '@Components/templates/ProductsHome'
+import ProductServices from '@Services/ProductServices'
+import { IAllProducts, IProduct } from '@Types/products'
+import BottomMobileNav from '@Components/containers/Mobile/BottomMobileNav'
+import { useMedia } from '@Hooks/useMedia'
+import { mediaFrom1440 } from '@Helpers/mediaQueries'
+import AsideDesktopNav from '@Components/containers/Desktop/AsideDesktopNav'
+import DesktopHeader from '@Components/molecules/DesktopHeader'
+import AsideDesktopProduct from '@Components/containers/Desktop/AsideDesktopProduct'
+import Metatags from '@Components/containers/Metatags'
 
 const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
-  const isMobile = useMedia(mediaFrom1440);
+  const isMobile = useMedia(mediaFrom1440)
 
   const DesktopPage = () => (
     <>
@@ -31,7 +31,7 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
         <AsideDesktopProduct />
       </main>
     </>
-  );
+  )
 
   const MobilePage = () => (
     <>
@@ -44,14 +44,14 @@ const Page: FC<IHomeProps> = ({ drinks, guajolotas, tamales }) => {
       <ProductsHome drinks={drinks} guajolotas={guajolotas} tamales={tamales} />
       <BottomMobileNav />
     </>
-  );
+  )
 
-  return isMobile ? <MobilePage /> : <DesktopPage />;
-};
+  return isMobile ? <MobilePage /> : <DesktopPage />
+}
 
 export const getStaticProps: GetStaticProps = async () => {
-  const productServices = new ProductServices();
-  const products: IAllProducts = (await productServices.getAllProducts())?.data;
+  const productServices = new ProductServices()
+  const products: IAllProducts = (await productServices.getAllProducts())?.data
 
   return {
     props: {
@@ -59,13 +59,13 @@ export const getStaticProps: GetStaticProps = async () => {
       drinks: products?.bebidas || null,
       tamales: products?.tamales || null,
     },
-  };
-};
-
-interface IHomeProps {
-  guajolotas?: IProduct[];
-  drinks?: IProduct[];
-  tamales?: IProduct[];
+  }
 }
 
-export default Page;
+interface IHomeProps {
+  guajolotas?: IProduct[]
+  drinks?: IProduct[]
+  tamales?: IProduct[]
+}
+
+export default Page
