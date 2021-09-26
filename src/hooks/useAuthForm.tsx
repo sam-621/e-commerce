@@ -4,6 +4,7 @@ import UserService from '@Services/UserServices'
 import { unstable_batchedUpdates } from 'react-dom'
 import { toast } from 'react-toastify'
 import { showErrorToast, showSuccessToast } from '@Libs/react-toastify/toast'
+import { useRouter } from 'next/router'
 
 const WRONG_EMAIL_FORMAT = 'Email format is incorrect'
 const PASSWORDS_DOES_NOT_MATCH = 'Passwords does not match'
@@ -15,11 +16,14 @@ export const useAuthForm = (
   confirmPassword?: string,
   isLogin = false
 ) => {
+  const router = useRouter()
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [confirmPasswordError, setConfirmPasswordError] = useState('')
   const [apiError, setApiError] = useState('')
   const [_, setCookie] = useCookieApp('token')
+
+  const service = isLogin ? new UserService().login : new UserService().register
 
   const handleSubmit = async (e: SyntheticEvent): Promise<void> => {
     e.preventDefault()
@@ -42,20 +46,26 @@ export const useAuthForm = (
       return
     }
 
-    const { data, errorMessage } = await new UserService().register({
+    const dto = {
       email,
       password,
-      username: 'username test', // remove username dependency from the db an api
-    })
+      username: 'username test',
+    }
+
+    const { data, errorMessage } = isLogin
+      ? await new UserService().login(dto)
+      : await new UserService().register(dto)
 
     if (errorMessage) {
+      console.log(errorMessage)
+
       setApiError(errorMessage)
       showErrorToast(errorMessage)
       return
     }
 
     setCookie('token', data)
-    showSuccessToast('You have been registered successfully')
+    router.push('/')
   }
 
   return {

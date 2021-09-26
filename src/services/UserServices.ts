@@ -25,7 +25,7 @@ export default class UserService extends HttpRequest {
     }
   }
 
-  private configLogin(user: IUser): Promise<AxiosResponse<IResponse>> {
+  private configLogin(user: IUser): Promise<AxiosResponse<ILoginResponse>> {
     this.configEndpoint('login')
     return this.post(user)
   }
@@ -52,5 +52,6 @@ interface IRegisterResponse extends IResponse {
 }
 
 interface ILoginResponse extends IResponse {
+  data?: string
   errorMessage?: string
 }

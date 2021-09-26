@@ -1,32 +1,23 @@
-import { useState } from 'react';
-import Input from '../atoms/Input';
-import PrimaryButton from '../atoms/Butons/PrimaryButton';
+import Input from '../atoms/Input'
+import PrimaryButton from '../atoms/Butons/PrimaryButton'
+import { useField } from '@Hooks/useField'
+import { useAuthForm } from '@Hooks/useAuthForm'
 
 const RegisterForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const email = useField('email', 'Email', 'input-1')
+  const password = useField('password', 'Password', 'input-2')
+  const { error, handleSubmit } = useAuthForm(email.value, password.value, undefined, true)
+
   return (
-    <form method="post" className="RegisterForm">
+    <form method="post" className="RegisterForm" onSubmit={handleSubmit}>
       <h2 className="RegisterForm-title">Login</h2>
-      <Input
-        id="input-1"
-        label="Email"
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Input
-        id="input-2"
-        label="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <Input {...email} errorMessage={error.emailError} />
+      <Input {...password} errorMessage={error.passwordError} />
       <div className="RegisterForm-submit">
-        <PrimaryButton type="submit" text="Create an account" />
+        <PrimaryButton type="submit" text="Login" />
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default RegisterForm;
+export default RegisterForm
