@@ -1,3 +1,4 @@
+import { getErrorMsg } from '@Helpers/error'
 import { IResponse } from '@Types/services'
 import { IUser } from '@Types/user'
 import { AxiosResponse } from 'axios'
@@ -15,7 +16,7 @@ export default class UserService extends HttpRequest {
 
       return response.data
     } catch (error) {
-      console.log(error.response)
+      getErrorMsg(error)
 
       if (error.response) {
         return { errorMessage: error.response.data.message }

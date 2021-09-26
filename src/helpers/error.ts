@@ -12,5 +12,5 @@ export const getErrorMsg = (error: any) => {
     return
   }
 
-  console.log(error.message)
+  console.log(error)
 }
