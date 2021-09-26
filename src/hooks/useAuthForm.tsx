@@ -43,6 +43,7 @@ export const useAuthForm = (
     const { data, errorMessage } = await new UserService().register({
       email,
       password,
+      username: 'username test', // remove username dependency from the db an api
     })
 
     if (errorMessage) {
