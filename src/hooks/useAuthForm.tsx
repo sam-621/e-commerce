@@ -62,8 +62,6 @@ export const useAuthForm = (
       return
     }
 
-    console.log(token)
-
     const { data, errorMessage: userError } = await new UserService().getUserData(token)
 
     if (userError) {
