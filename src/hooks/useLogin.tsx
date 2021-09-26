@@ -5,6 +5,7 @@ import { showErrorToast } from '@Libs/react-toastify/toast'
 import { updateUserData, updateUserLogged } from '@Redux/ducks/user'
 import UserService from '@Services/UserServices'
 import { IUser } from '@Types/user'
+import { COOKIE_MAX_AGE } from 'config/consts'
 import router from 'next/router'
 import { useDispatch } from 'react-redux'
 
@@ -20,7 +21,7 @@ export const useLogin = () => {
       return
     }
 
-    setToken('token', token)
+    setToken('token', token, { maxAge: COOKIE_MAX_AGE })
     dispatch(updateUserLogged(true))
     dispatch(updateUserData(data))
     const cartProducts = getCartProductsFromLS()
