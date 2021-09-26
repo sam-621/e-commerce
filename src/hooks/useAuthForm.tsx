@@ -5,6 +5,8 @@ import { unstable_batchedUpdates } from 'react-dom'
 import { toast } from 'react-toastify'
 import { showErrorToast, showSuccessToast } from '@Libs/react-toastify/toast'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import { updateUserLogged } from '@Redux/ducks/user'
 
 const WRONG_EMAIL_FORMAT = 'Email format is incorrect'
 const PASSWORDS_DOES_NOT_MATCH = 'Passwords does not match'
@@ -16,14 +18,13 @@ export const useAuthForm = (
   confirmPassword?: string,
   isLogin = false
 ) => {
+  const dispatch = useDispatch()
   const router = useRouter()
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [confirmPasswordError, setConfirmPasswordError] = useState('')
   const [apiError, setApiError] = useState('')
   const [_, setCookie] = useCookieApp('token')
-
-  const service = isLogin ? new UserService().login : new UserService().register
 
   const handleSubmit = async (e: SyntheticEvent): Promise<void> => {
     e.preventDefault()
@@ -65,6 +66,7 @@ export const useAuthForm = (
     }
 
     setCookie('token', data)
+    dispatch(updateUserLogged(true))
     router.push('/')
   }
 
