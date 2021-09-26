@@ -1,16 +1,16 @@
 import { getErrorMsg } from '@Helpers/error'
-import { IResponse } from '@Types/services'
+import { IResponse, IUserService } from '@Types/services'
 import { IUser } from '@Types/user'
 import { AxiosResponse } from 'axios'
 import HttpRequest from './HttpRequest'
 
 export default class UserService extends HttpRequest {
-  private configRegister(user: IUser): Promise<AxiosResponse<IRegisterResponse>> {
+  private configRegister(user: IUser): Promise<AxiosResponse<IUserService<string>>> {
     this.configEndpoint('register')
     return this.post(user)
   }
 
-  public async register(user: IUser): Promise<IRegisterResponse> {
+  public async register(user: IUser): Promise<IUserService<string>> {
     try {
       const response = await this.configRegister(user)
 
@@ -21,16 +21,17 @@ export default class UserService extends HttpRequest {
       if (error.response) {
         return { errorMessage: error.response.data.message }
       }
+
       return error.message
     }
   }
 
-  private configLogin(user: IUser): Promise<AxiosResponse<ILoginResponse>> {
+  private configLogin(user: IUser): Promise<AxiosResponse<IUserService<string>>> {
     this.configEndpoint('login')
     return this.post(user)
   }
 
-  public async login(user: IUser): Promise<ILoginResponse> {
+  public async login(user: IUser): Promise<IUserService<string>> {
     try {
       const response = await this.configLogin(user)
 
@@ -41,17 +42,31 @@ export default class UserService extends HttpRequest {
       if (error.response) {
         return { errorMessage: error.response.data.message }
       }
+
       return error.message
     }
   }
-}
 
-interface IRegisterResponse extends IResponse {
-  data?: string
-  errorMessage?: string
-}
+  private async getUserDataConfig(token: string): Promise<AxiosResponse<IUserService<IUser>>> {
+    this.configEndpoint(token)
+    this.configEndpoint('user')
 
-interface ILoginResponse extends IResponse {
-  data?: string
-  errorMessage?: string
+    return this.get()
+  }
+
+  public async getUserData(token: string): Promise<IUserService<IUser>> {
+    try {
+      const response = await this.getUserDataConfig(token)
+
+      return response.data
+    } catch (error) {
+      getErrorMsg(error)
+
+      if (error.response) {
+        return { errorMessage: error.response.data.message }
+      }
+
+      return error.message
+    }
+  }
 }
