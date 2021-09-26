@@ -70,3 +70,11 @@ export default class UserService extends HttpRequest {
     }
   }
 }
+
+/**
+ * get token from cooke and update logged status in redux
+ *
+ * update logged status in redux
+ * get user data and update userData info in redux
+ * get cart products from LS and save it
+ */

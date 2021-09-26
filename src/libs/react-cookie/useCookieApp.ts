@@ -1,5 +1,5 @@
-import { useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie'
 
 export const useCookieApp = (name: string) => {
-  return useCookies([name]);
-};
+  return useCookies([name])
+}

@@ -20,3 +20,7 @@ export const removePorductWithNoSession = (id: number, dispatch: Dispatch<IActio
   localStorage.setItem(CART_FIELD, JSON.stringify(coursesFiltered))
   dispatch(removeCartProduct(id))
 }
+
+export const getCartProductsFromLS = (): IProduct[] => {
+  return JSON.parse(window.localStorage.getItem(CART_FIELD)) || []
+}
