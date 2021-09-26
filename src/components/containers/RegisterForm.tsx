@@ -2,7 +2,6 @@ import Input from '../atoms/Input'
 import PrimaryButton from '../atoms/Butons/PrimaryButton'
 import { useField } from '@Hooks/useField'
 import { useAuthForm } from '@Hooks/useAuthForm'
-import { toast } from 'react-toastify'
 
 const RegisterForm = () => {
   const email = useField('email', 'Email', 'input-1')

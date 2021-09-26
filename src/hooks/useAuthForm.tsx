@@ -3,6 +3,7 @@ import { useCookieApp } from '@Libs/react-cookie/useCookieApp'
 import UserService from '@Services/UserServices'
 import { unstable_batchedUpdates } from 'react-dom'
 import { toast } from 'react-toastify'
+import { showErrorToast, showSuccessToast } from '@Libs/react-toastify/toast'
 
 const WRONG_EMAIL_FORMAT = 'Email format is incorrect'
 const PASSWORDS_DOES_NOT_MATCH = 'Passwords does not match'
@@ -49,12 +50,12 @@ export const useAuthForm = (
 
     if (errorMessage) {
       setApiError(errorMessage)
-      toast.error(errorMessage)
+      showErrorToast(errorMessage)
       return
     }
 
     setCookie('token', data)
-    toast.success('You have been registered successfully')
+    showSuccessToast('You have been registered successfully')
   }
 
   return {
