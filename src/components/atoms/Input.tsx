@@ -1,12 +1,12 @@
 import { inputType } from '@Hooks/useField'
 import { FC } from 'react'
 
-const Input: FC<IInputProps> = ({ label, type, onChange, value, id, hasError, errorMessage }) => {
+const Input: FC<IInputProps> = ({ label, type, onChange, value, id, errorMessage }) => {
   return (
-    <div className={`Input ${hasError ? 'Input-error' : ''}`}>
+    <div className={`Input ${!!errorMessage ? 'Input-error' : ''}`}>
       <label htmlFor={id}>{label}</label>
       <input id={id} type={type} required onChange={onChange} value={value} />
-      {hasError && <span role="alert">{errorMessage}</span>}
+      {!!errorMessage && <span role="alert">{errorMessage}</span>}
     </div>
   )
 }
@@ -17,7 +17,6 @@ interface IInputProps {
   onChange: (e: any) => void
   value: string
   id: string
-  hasError?: boolean
   errorMessage?: string | JSX.Element
 }
 
