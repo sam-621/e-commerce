@@ -6,3 +6,4 @@ dist
 yarn.lock
 
 .vercel
+.DS_Store
